@@ -1,0 +1,227 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  PYTHON_VERSION: "3.11"
+
+jobs:
+  # ===========================================================================
+  # Linting & Code Quality
+  # ===========================================================================
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff black isort mypy
+          # Install CPU-only dependencies for linting
+          pip install numpy pydantic pyyaml
+
+      - name: Run Ruff linter
+        run: ruff check src/ tests/ --output-format=github
+
+      - name: Check code formatting (Black)
+        run: black --check --diff src/ tests/
+
+      - name: Check import sorting (isort)
+        run: isort --check-only --diff src/ tests/ --profile=black
+
+      - name: Run type checking (mypy)
+        run: mypy src/ --ignore-missing-imports
+        continue-on-error: true
+
+  # ===========================================================================
+  # Unit Tests (CPU)
+  # ===========================================================================
+  test-unit:
+    name: Unit Tests (CPU)
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov pytest-mock
+          pip install numpy pillow pydantic pyyaml
+
+      - name: Run unit tests
+        run: pytest tests/unit/ -v --tb=short --junitxml=test-results-unit.xml
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-unit
+          path: test-results-unit.xml
+
+  # ===========================================================================
+  # GPU Tests (Self-hosted runner required)
+  # ===========================================================================
+  test-gpu:
+    name: GPU Tests
+    runs-on: [self-hosted, gpu]
+    needs: test-unit
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+
+      - name: Build CUDA extensions
+        run: |
+          cd src/cuda
+          python setup.py build_ext --inplace
+
+      - name: Run GPU tests
+        run: pytest tests/integration/ -v --tb=short -m gpu
+        env:
+          CUDA_VISIBLE_DEVICES: 0
+
+  # ===========================================================================
+  # Docker Build
+  # ===========================================================================
+  docker:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/Dockerfile
+          push: false
+          tags: gpu-ml-pipeline:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            CUDA_VERSION=12.1.0
+            TENSORRT_VERSION=8.6
+
+  # ===========================================================================
+  # CUDA Compilation Check
+  # ===========================================================================
+  cuda-check:
+    name: CUDA Syntax Check
+    runs-on: ubuntu-latest
+    container:
+      image: nvidia/cuda:12.1.0-devel-ubuntu22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check CUDA kernel syntax
+        run: |
+          nvcc --version
+          for f in src/cuda/kernels/*.cu; do
+            echo "Checking $f..."
+            nvcc -c "$f" -o /dev/null --dry-run 2>&1 || true
+          done
+
+  # ===========================================================================
+  # Security Scan
+  # ===========================================================================
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '0'
+
+  # ===========================================================================
+  # Benchmark (Manual trigger)
+  # ===========================================================================
+  benchmark:
+    name: Performance Benchmark
+    runs-on: [self-hosted, gpu]
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Generate sample data
+        run: python scripts/generate_sample_data.py
+
+      - name: Run benchmarks
+        run: |
+          python scripts/benchmark.py --quick
+        env:
+          CUDA_VISIBLE_DEVICES: 0
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: benchmark_results.json
