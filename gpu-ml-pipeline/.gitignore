@@ -1,0 +1,97 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# C extensions
+*.o
+*.a
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# mypy
+.mypy_cache/
+
+# Model files (too large for git)
+*.onnx
+*.engine
+*.plan
+*.pt
+*.pth
+*.bin
+models/
+engines/
+
+# Data files
+data/
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# Cache
+cache/
+*.cache
+calibration.cache
+timing.cache
+
+# Logs
+*.log
+logs/
+
+# TensorRT
+*.trt
+
+# CUDA build artifacts
+*.cubin
+*.fatbin
+*.ptx
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env.local
+secrets.yaml

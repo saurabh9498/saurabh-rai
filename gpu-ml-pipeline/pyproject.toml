@@ -1,0 +1,110 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel", "pybind11>=2.11"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpu-ml-pipeline"
+version = "1.0.0"
+description = "GPU-accelerated ML inference pipeline with CUDA kernels and TensorRT optimization"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Saurabh Rai", email = "rai.saurabh9491@gmail.com"}
+]
+keywords = [
+    "gpu",
+    "cuda",
+    "tensorrt",
+    "ml",
+    "inference",
+    "optimization",
+    "triton"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: C++",
+    "Programming Language :: Cython",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Environment :: GPU :: NVIDIA CUDA",
+]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "torch>=2.0.0",
+    "onnx>=1.14.0",
+    "Pillow>=10.0.0",
+    "opencv-python>=4.8.0",
+    "pydantic>=2.5.0",
+    "PyYAML>=6.0.1",
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+]
+
+[project.optional-dependencies]
+triton = [
+    "tritonclient[all]>=2.38.0",
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-benchmark>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "ruff>=0.1.0",
+    "mypy>=1.6.0",
+]
+all = [
+    "tritonclient[all]>=2.38.0",
+    "pycuda>=2022.2",
+    "tensorrt>=8.6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/saurabh-rai/gpu-ml-pipeline"
+Documentation = "https://github.com/saurabh-rai/gpu-ml-pipeline#readme"
+Repository = "https://github.com/saurabh-rai/gpu-ml-pipeline.git"
+Issues = "https://github.com/saurabh-rai/gpu-ml-pipeline/issues"
+
+[project.scripts]
+gpu-pipeline = "src.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311']
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+ignore = ["E501", "B008"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short"
+markers = [
+    "gpu: marks tests as requiring GPU",
+    "slow: marks tests as slow",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["tests/*", "*/__init__.py"]
