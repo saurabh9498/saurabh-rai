@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # FastAPI Backend
+  # ============================================
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: production
+    container_name: multi-agent-api
+    ports:
+      - "8000:8000"
+    environment:
+      - LLM_PROVIDER=${LLM_PROVIDER:-openai}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - VECTOR_STORE=chromadb
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+      - LOG_LEVEL=INFO
+      - ENVIRONMENT=production
+    volumes:
+      - chroma_data:/app/data/chroma
+      - knowledge_base:/app/data/knowledge_base
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - multi-agent-network
+
+  # ============================================
+  # Streamlit UI
+  # ============================================
+  ui:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: production
+    container_name: multi-agent-ui
+    command: streamlit run ui/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - multi-agent-network
+
+  # ============================================
+  # Development Services
+  # ============================================
+  api-dev:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: development
+    container_name: multi-agent-api-dev
+    ports:
+      - "8000:8000"
+    environment:
+      - LLM_PROVIDER=${LLM_PROVIDER:-openai}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - VECTOR_STORE=chromadb
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+      - LOG_LEVEL=DEBUG
+      - ENVIRONMENT=development
+    volumes:
+      - ../src:/app/src:ro
+      - ../ui:/app/ui:ro
+      - ../config:/app/config:ro
+      - chroma_data:/app/data/chroma
+    networks:
+      - multi-agent-network
+    profiles:
+      - dev
+
+  # ============================================
+  # ChromaDB (Optional standalone)
+  # ============================================
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: chromadb
+    ports:
+      - "8080:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - ALLOW_RESET=true
+      - ANONYMIZED_TELEMETRY=false
+    networks:
+      - multi-agent-network
+    profiles:
+      - with-chroma
+
+# ============================================
+# Networks
+# ============================================
+networks:
+  multi-agent-network:
+    driver: bridge
+
+# ============================================
+# Volumes
+# ============================================
+volumes:
+  chroma_data:
+    driver: local
+  knowledge_base:
+    driver: local
