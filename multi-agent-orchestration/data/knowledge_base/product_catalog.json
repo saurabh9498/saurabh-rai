@@ -1,0 +1,175 @@
+[
+  {
+    "id": "PROD-001",
+    "name": "Enterprise Analytics Suite",
+    "category": "Analytics",
+    "description": "Comprehensive business intelligence platform with real-time dashboards, custom reporting, and AI-powered insights.",
+    "pricing": {
+      "model": "subscription",
+      "tiers": [
+        {
+          "name": "Starter",
+          "price": 499,
+          "period": "month",
+          "users": 5
+        },
+        {
+          "name": "Professional",
+          "price": 1499,
+          "period": "month",
+          "users": 25
+        },
+        {
+          "name": "Enterprise",
+          "price": "custom",
+          "period": "month",
+          "users": "unlimited"
+        }
+      ]
+    },
+    "features": [
+      "Real-time dashboards",
+      "Custom report builder",
+      "50+ data connectors",
+      "AI anomaly detection",
+      "Scheduled exports",
+      "Role-based access control"
+    ],
+    "integrations": [
+      "Salesforce",
+      "HubSpot",
+      "Snowflake",
+      "BigQuery",
+      "PostgreSQL"
+    ],
+    "support": "24/7 for Enterprise tier"
+  },
+  {
+    "id": "PROD-002",
+    "name": "SecureAuth Platform",
+    "category": "Security",
+    "description": "Enterprise identity and access management solution with SSO, MFA, and adaptive authentication.",
+    "pricing": {
+      "model": "per-user",
+      "base_price": 3,
+      "period": "month",
+      "minimum_users": 100
+    },
+    "features": [
+      "Single Sign-On (SSO)",
+      "Multi-factor authentication",
+      "Adaptive risk-based auth",
+      "Directory sync (AD, LDAP)",
+      "SCIM provisioning",
+      "Audit logging"
+    ],
+    "compliance": [
+      "SOC 2 Type II",
+      "ISO 27001",
+      "GDPR",
+      "HIPAA"
+    ],
+    "support": "Business hours + emergency"
+  },
+  {
+    "id": "PROD-003",
+    "name": "CloudSync Storage",
+    "category": "Infrastructure",
+    "description": "Distributed cloud storage solution with automatic replication, versioning, and global CDN.",
+    "pricing": {
+      "model": "usage-based",
+      "storage_per_gb": 0.023,
+      "transfer_per_gb": 0.09,
+      "requests_per_10k": 0.005
+    },
+    "features": [
+      "11 nines durability",
+      "Cross-region replication",
+      "Version history (90 days)",
+      "Global CDN",
+      "Encryption at rest",
+      "Lifecycle policies"
+    ],
+    "sla": "99.99% availability",
+    "support": "24/7 for all tiers"
+  },
+  {
+    "id": "PROD-004",
+    "name": "DevOps Automation Hub",
+    "category": "Developer Tools",
+    "description": "End-to-end CI/CD platform with container orchestration, infrastructure as code, and monitoring.",
+    "pricing": {
+      "model": "subscription",
+      "tiers": [
+        {
+          "name": "Team",
+          "price": 299,
+          "period": "month",
+          "build_minutes": 3000
+        },
+        {
+          "name": "Business",
+          "price": 999,
+          "period": "month",
+          "build_minutes": 15000
+        },
+        {
+          "name": "Enterprise",
+          "price": "custom",
+          "period": "month",
+          "build_minutes": "unlimited"
+        }
+      ]
+    },
+    "features": [
+      "CI/CD pipelines",
+      "Container registry",
+      "Kubernetes deployment",
+      "Infrastructure as Code",
+      "Secret management",
+      "Deployment approvals"
+    ],
+    "integrations": [
+      "GitHub",
+      "GitLab",
+      "Bitbucket",
+      "Jira",
+      "Slack"
+    ],
+    "support": "Community (Team), Priority (Business+)"
+  },
+  {
+    "id": "PROD-005",
+    "name": "AI Document Processor",
+    "category": "AI/ML",
+    "description": "Intelligent document processing with OCR, entity extraction, and automated classification.",
+    "pricing": {
+      "model": "per-document",
+      "price_per_page": 0.01,
+      "volume_discounts": [
+        {
+          "threshold": 10000,
+          "discount": 0.1
+        },
+        {
+          "threshold": 100000,
+          "discount": 0.25
+        },
+        {
+          "threshold": 1000000,
+          "discount": 0.4
+        }
+      ]
+    },
+    "features": [
+      "OCR (50+ languages)",
+      "Named entity recognition",
+      "Document classification",
+      "Table extraction",
+      "Signature detection",
+      "Custom model training"
+    ],
+    "accuracy": "99.2% OCR accuracy",
+    "processing_speed": "< 2 seconds per page"
+  }
+]
