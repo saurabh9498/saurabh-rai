@@ -1,0 +1,135 @@
+# Multi-Agent AI System - Agent Configuration
+# This file configures the behavior of each agent in the system
+
+# ============================================
+# Orchestrator Agent
+# ============================================
+orchestrator:
+  model: gpt-4-turbo
+  temperature: 0.1
+  max_tokens: 4096
+  timeout: 120
+  max_iterations: 15
+  enable_parallel: false
+  
+  # Routing configuration
+  routing:
+    default_agent: research
+    fallback_enabled: true
+    confidence_threshold: 0.7
+
+# ============================================
+# Research Agent
+# ============================================
+research_agent:
+  model: gpt-4-turbo
+  temperature: 0.3
+  max_tokens: 4096
+  timeout: 60
+  
+  # Tool configuration
+  tools:
+    rag_query:
+      enabled: true
+      top_k: 10
+      rerank: true
+    web_search:
+      enabled: true
+      max_results: 5
+      safe_search: true
+    summarize:
+      enabled: true
+      max_length: 500
+  
+  # RAG configuration
+  rag:
+    use_hybrid_search: true
+    semantic_weight: 0.7
+    keyword_weight: 0.3
+
+# ============================================
+# Analyst Agent
+# ============================================
+analyst_agent:
+  model: gpt-4-turbo
+  temperature: 0.2
+  max_tokens: 4096
+  timeout: 90
+  
+  # Tool configuration
+  tools:
+    query_data:
+      enabled: true
+      max_rows: 10000
+    statistical_analysis:
+      enabled: true
+    trend_analysis:
+      enabled: true
+    compare:
+      enabled: true
+  
+  # Analysis configuration
+  analysis:
+    include_visualizations: true
+    include_recommendations: true
+    confidence_reporting: true
+
+# ============================================
+# Code Agent
+# ============================================
+code_agent:
+  model: gpt-4-turbo
+  temperature: 0.1
+  max_tokens: 8192
+  timeout: 60
+  
+  # Tool configuration
+  tools:
+    generate_code:
+      enabled: true
+      include_tests: true
+      include_docs: true
+    review_code:
+      enabled: true
+      focus:
+        - bugs
+        - security
+        - performance
+        - style
+    debug_code:
+      enabled: true
+    execute_code:
+      enabled: true
+      sandbox: true
+      timeout: 30
+  
+  # Execution configuration
+  execution:
+    allowed_languages:
+      - python
+    sandbox_mode: true
+    max_execution_time: 30
+    memory_limit_mb: 512
+
+# ============================================
+# Global Settings
+# ============================================
+global:
+  # Logging
+  log_level: INFO
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Tracing
+  enable_tracing: true
+  trace_storage: memory  # memory, file, or external
+  
+  # Rate limiting
+  rate_limit:
+    requests_per_minute: 60
+    tokens_per_minute: 100000
+  
+  # Caching
+  cache:
+    enabled: true
+    ttl_seconds: 3600
+    max_size_mb: 100
