@@ -1,0 +1,29 @@
+[
+  {
+    "id": "DOC-001",
+    "title": "Q1 Sales Report",
+    "content": "Sales increased by 25% in Q1, driven by enterprise deals.",
+    "metadata": {
+      "department": "Sales",
+      "date": "2024-04-01"
+    }
+  },
+  {
+    "id": "DOC-002",
+    "title": "Engineering Roadmap",
+    "content": "Key initiatives: Platform modernization, AI features, mobile app v2.",
+    "metadata": {
+      "department": "Engineering",
+      "date": "2024-03-15"
+    }
+  },
+  {
+    "id": "DOC-003",
+    "title": "Customer Feedback Summary",
+    "content": "Top requests: better reporting, Slack integration, faster support.",
+    "metadata": {
+      "department": "Product",
+      "date": "2024-03-28"
+    }
+  }
+]

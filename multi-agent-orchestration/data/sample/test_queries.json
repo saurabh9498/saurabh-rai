@@ -1,0 +1,185 @@
+[
+  {
+    "id": "Q-001",
+    "query": "What is the remote work policy?",
+    "expected_agent": "research",
+    "expected_sources": [
+      "company_policies.md"
+    ],
+    "expected_topics": [
+      "remote work",
+      "core hours",
+      "eligibility"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q-002",
+    "query": "How much PTO do I get after 3 years?",
+    "expected_agent": "research",
+    "expected_sources": [
+      "company_policies.md"
+    ],
+    "expected_answer_contains": [
+      "20 days"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q-003",
+    "query": "Compare the pricing of Analytics Suite vs DevOps Hub",
+    "expected_agent": "analyst",
+    "expected_sources": [
+      "product_catalog.json"
+    ],
+    "expected_output_type": "comparison_table",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q-004",
+    "query": "Write a Python function to authenticate with our API",
+    "expected_agent": "code",
+    "expected_sources": [
+      "technical_docs.md"
+    ],
+    "expected_output_type": "code",
+    "expected_language": "python",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q-005",
+    "query": "What security certifications do you have?",
+    "expected_agent": "research",
+    "expected_sources": [
+      "faq.json",
+      "product_catalog.json"
+    ],
+    "expected_topics": [
+      "SOC 2",
+      "ISO 27001",
+      "GDPR",
+      "HIPAA"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q-006",
+    "query": "I need to submit an expense for a $750 client dinner. What's the process?",
+    "expected_agent": "research",
+    "expected_sources": [
+      "company_policies.md"
+    ],
+    "expected_topics": [
+      "expense",
+      "approval",
+      "manager"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q-007",
+    "query": "Create a deployment script for our microservices",
+    "expected_agent": "code",
+    "expected_sources": [
+      "technical_docs.md"
+    ],
+    "expected_output_type": "code",
+    "expected_language": "bash",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q-008",
+    "query": "Analyze which product tier would be best for a 50-person startup",
+    "expected_agent": "analyst",
+    "expected_sources": [
+      "product_catalog.json",
+      "faq.json"
+    ],
+    "expected_output_type": "recommendation",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q-009",
+    "query": "How do I reset my password and enable 2FA?",
+    "expected_agent": "research",
+    "expected_sources": [
+      "faq.json"
+    ],
+    "expected_topics": [
+      "password reset",
+      "two-factor",
+      "authenticator"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "Q-010",
+    "query": "Troubleshoot: API calls are timing out intermittently",
+    "expected_agent": "research",
+    "expected_sources": [
+      "technical_docs.md"
+    ],
+    "expected_topics": [
+      "latency",
+      "troubleshooting",
+      "monitoring"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q-011",
+    "query": "Generate a summary report of all our product offerings for an investor pitch",
+    "expected_agent": "analyst",
+    "expected_sources": [
+      "product_catalog.json"
+    ],
+    "expected_output_type": "report",
+    "difficulty": "hard"
+  },
+  {
+    "id": "Q-012",
+    "query": "What's the per-page cost for processing 500,000 documents?",
+    "expected_agent": "analyst",
+    "expected_sources": [
+      "product_catalog.json"
+    ],
+    "expected_calculation": true,
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q-013",
+    "query": "Draft an email to request remote work approval from my manager",
+    "expected_agent": "research",
+    "expected_sources": [
+      "company_policies.md"
+    ],
+    "expected_output_type": "email_draft",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q-014",
+    "query": "Explain the authentication flow with a code example",
+    "expected_agent": "code",
+    "expected_sources": [
+      "technical_docs.md"
+    ],
+    "expected_output_type": "code_with_explanation",
+    "difficulty": "medium"
+  },
+  {
+    "id": "Q-015",
+    "query": "What compliance requirements do we meet for a healthcare customer?",
+    "expected_agent": "research",
+    "expected_sources": [
+      "faq.json",
+      "product_catalog.json"
+    ],
+    "expected_topics": [
+      "HIPAA",
+      "BAA",
+      "Enterprise",
+      "security"
+    ],
+    "difficulty": "medium"
+  }
+]
