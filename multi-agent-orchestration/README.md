@@ -163,6 +163,9 @@ flowchart LR
 
 ## 🚀 Quick Start
 
+> 📖 **New to this project?** See [QUICKSTART.md](QUICKSTART.md) for detailed setup instructions.
+
+
 ### Prerequisites
 
 - Python 3.10+
