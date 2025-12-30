@@ -1,0 +1,14 @@
+# NLU Configuration
+intent_classifier:
+  model: distilbert-base-uncased
+  max_length: 128
+  confidence_threshold: 0.7
+  fallback_intent: fallback
+
+entity_extractor:
+  use_transformer: true
+  model: dslim/bert-base-NER
+  
+sentiment:
+  enabled: true
+  model: distilbert-base-uncased-finetuned-sst-2-english

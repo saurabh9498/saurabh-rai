@@ -1,0 +1,402 @@
+[
+  {
+    "filename": "sample_001.wav",
+    "text": "Good afternoon",
+    "intent": "greeting",
+    "duration_seconds": 1.35,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_002.wav",
+    "text": "Make it warmer in here",
+    "intent": "control_device",
+    "duration_seconds": 2.27,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_003.wav",
+    "text": "I'm done",
+    "intent": "goodbye",
+    "duration_seconds": 1.17,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_004.wav",
+    "text": "Schedule a reminder for January 3rd at 7 o'clock",
+    "intent": "set_reminder",
+    "duration_seconds": 3.22,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_005.wav",
+    "text": "Howdy",
+    "intent": "greeting",
+    "duration_seconds": 1.08,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_006.wav",
+    "text": "I'm in the mood for hip hop",
+    "intent": "play_music",
+    "duration_seconds": 2.64,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_007.wav",
+    "text": "Instructions please",
+    "intent": "get_help",
+    "duration_seconds": 1.48,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_008.wav",
+    "text": "Wake me up at in an hour",
+    "intent": "set_reminder",
+    "duration_seconds": 2.66,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_009.wav",
+    "text": "I'm done",
+    "intent": "goodbye",
+    "duration_seconds": 1.29,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_010.wav",
+    "text": "I'm in the mood for country",
+    "intent": "play_music",
+    "duration_seconds": 2.68,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_011.wav",
+    "text": "Weather update for Toronto",
+    "intent": "check_weather",
+    "duration_seconds": 1.9,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_012.wav",
+    "text": "Hi there",
+    "intent": "greeting",
+    "duration_seconds": 1.12,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_013.wav",
+    "text": "Can you play Bruno Mars",
+    "intent": "play_music",
+    "duration_seconds": 2.07,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_014.wav",
+    "text": "Show me what you can do",
+    "intent": "get_help",
+    "duration_seconds": 2.46,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_015.wav",
+    "text": "blah blah",
+    "intent": "fallback",
+    "duration_seconds": 1.18,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_016.wav",
+    "text": "blah blah",
+    "intent": "fallback",
+    "duration_seconds": 1.4,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_017.wav",
+    "text": "How do I use this",
+    "intent": "get_help",
+    "duration_seconds": 2.27,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_018.wav",
+    "text": "blah blah",
+    "intent": "fallback",
+    "duration_seconds": 1.34,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_019.wav",
+    "text": "What's up",
+    "intent": "greeting",
+    "duration_seconds": 1.27,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_020.wav",
+    "text": "I'm done",
+    "intent": "goodbye",
+    "duration_seconds": 1.39,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_021.wav",
+    "text": "Howdy",
+    "intent": "greeting",
+    "duration_seconds": 1.04,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_022.wav",
+    "text": "random stuff",
+    "intent": "fallback",
+    "duration_seconds": 1.21,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_023.wav",
+    "text": "Howdy",
+    "intent": "greeting",
+    "duration_seconds": 1.04,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_024.wav",
+    "text": "Tell me your features",
+    "intent": "get_help",
+    "duration_seconds": 2.09,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_025.wav",
+    "text": "News about entertainment",
+    "intent": "get_news",
+    "duration_seconds": 1.42,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_026.wav",
+    "text": "Talk to you soon",
+    "intent": "goodbye",
+    "duration_seconds": 1.71,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_027.wav",
+    "text": "Play something relaxing",
+    "intent": "play_music",
+    "duration_seconds": 1.48,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_028.wav",
+    "text": "What's the forecast for the 20th",
+    "intent": "check_weather",
+    "duration_seconds": 2.74,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_029.wav",
+    "text": "Hey",
+    "intent": "greeting",
+    "duration_seconds": 1.06,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_030.wav",
+    "text": "What are your capabilities",
+    "intent": "get_help",
+    "duration_seconds": 2.2,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_031.wav",
+    "text": "Switch on heater in kitchen",
+    "intent": "control_device",
+    "duration_seconds": 2.48,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_032.wav",
+    "text": "Switch on air conditioner in office",
+    "intent": "control_device",
+    "duration_seconds": 2.48,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_033.wav",
+    "text": "Wake me up at evening",
+    "intent": "set_reminder",
+    "duration_seconds": 2.1,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_034.wav",
+    "text": "Is it going to be sunny in two days",
+    "intent": "check_weather",
+    "duration_seconds": 3.31,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_035.wav",
+    "text": "Alert me at 3pm to meeting prep",
+    "intent": "set_reminder",
+    "duration_seconds": 2.76,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_036.wav",
+    "text": "I'm in the mood for hip hop",
+    "intent": "play_music",
+    "duration_seconds": 2.74,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_037.wav",
+    "text": "random stuff",
+    "intent": "fallback",
+    "duration_seconds": 1.29,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_038.wav",
+    "text": "Read me the headlines",
+    "intent": "get_news",
+    "duration_seconds": 2.18,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_039.wav",
+    "text": "Help me book a flight for 1 people",
+    "intent": "book_flight",
+    "duration_seconds": 3.04,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_040.wav",
+    "text": "That's all, thanks",
+    "intent": "goodbye",
+    "duration_seconds": 1.86,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_041.wav",
+    "text": "Remind me next week to exercise",
+    "intent": "set_reminder",
+    "duration_seconds": 2.71,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_042.wav",
+    "text": "Set an alarm for 5:30pm",
+    "intent": "set_reminder",
+    "duration_seconds": 2.07,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_043.wav",
+    "text": "random stuff",
+    "intent": "fallback",
+    "duration_seconds": 1.22,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_044.wav",
+    "text": "Hey, what's going on",
+    "intent": "greeting",
+    "duration_seconds": 1.81,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_045.wav",
+    "text": "What's the weather like",
+    "intent": "check_weather",
+    "duration_seconds": 1.75,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_046.wav",
+    "text": "Can you play Taylor Swift",
+    "intent": "play_music",
+    "duration_seconds": 2.34,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_047.wav",
+    "text": "I want to book a flight",
+    "intent": "book_flight",
+    "duration_seconds": 2.78,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_048.wav",
+    "text": "Can you search for flights to Barcelona",
+    "intent": "book_flight",
+    "duration_seconds": 2.84,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_049.wav",
+    "text": "Is it going to be sunny December 15th",
+    "intent": "check_weather",
+    "duration_seconds": 3.04,
+    "sample_rate": 16000,
+    "channels": 1
+  },
+  {
+    "filename": "sample_050.wav",
+    "text": "Hello",
+    "intent": "greeting",
+    "duration_seconds": 1.13,
+    "sample_rate": 16000,
+    "channels": 1
+  }
+]

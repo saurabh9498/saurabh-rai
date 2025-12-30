@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="200" fill="url(#bg)"/>
+  
+  <!-- Voice wave -->
+  <path d="M50,100 Q100,60 150,100 Q200,140 250,100 Q300,60 350,100" 
+        stroke="#4ade80" stroke-width="3" fill="none" opacity="0.6"/>
+  
+  <!-- Components -->
+  <rect x="400" y="60" width="80" height="40" rx="5" fill="#3b82f6"/>
+  <text x="440" y="85" fill="white" font-size="12" text-anchor="middle">ASR</text>
+  
+  <rect x="500" y="60" width="80" height="40" rx="5" fill="#8b5cf6"/>
+  <text x="540" y="85" fill="white" font-size="12" text-anchor="middle">NLU</text>
+  
+  <rect x="600" y="60" width="80" height="40" rx="5" fill="#ec4899"/>
+  <text x="640" y="85" fill="white" font-size="12" text-anchor="middle">Dialog</text>
+  
+  <rect x="700" y="60" width="80" height="40" rx="5" fill="#f59e0b"/>
+  <text x="740" y="85" fill="white" font-size="12" text-anchor="middle">TTS</text>
+  
+  <!-- Arrows -->
+  <path d="M480,80 L500,80" stroke="white" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M580,80 L600,80" stroke="white" stroke-width="2"/>
+  <path d="M680,80 L700,80" stroke="white" stroke-width="2"/>
+  
+  <!-- Title -->
+  <text x="400" y="160" fill="white" font-size="24" font-weight="bold" text-anchor="middle">
+    Conversational AI Platform
+  </text>
+  <text x="400" y="185" fill="#94a3b8" font-size="14" text-anchor="middle">
+    Voice-enabled AI with Whisper, BERT, and Neural TTS
+  </text>
+</svg>

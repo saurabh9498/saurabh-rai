@@ -1,0 +1,26 @@
+# ASR Configuration
+model:
+  name: whisper
+  size: large-v3
+  device: cuda
+  compute_type: float16
+
+streaming:
+  chunk_duration_ms: 30
+  min_audio_length_ms: 500
+  silence_threshold_ms: 500
+
+vad:
+  enabled: true
+  threshold: 0.5
+  min_speech_duration_ms: 250
+
+languages:
+  default: en
+  supported:
+    - en
+    - es
+    - fr
+    - de
+    - zh
+    - ja

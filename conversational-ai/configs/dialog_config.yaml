@@ -1,0 +1,12 @@
+# Dialog Configuration
+state_tracker:
+  max_history_turns: 20
+  slot_confirmation_threshold: 0.8
+
+policy:
+  type: rule_based
+  fallback_after_turns: 3
+
+response_generator:
+  type: template
+  templates_path: configs/templates.yaml

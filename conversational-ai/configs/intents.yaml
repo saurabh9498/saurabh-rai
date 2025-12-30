@@ -1,0 +1,54 @@
+# Intent Definitions
+intents:
+  # Information
+  - name: get_weather
+    examples:
+      - "what's the weather like"
+      - "will it rain tomorrow"
+      - "temperature in New York"
+    slots: [location, date]
+    
+  - name: get_time
+    examples:
+      - "what time is it"
+      - "current time"
+    slots: []
+    
+  # Control
+  - name: set_timer
+    examples:
+      - "set a timer for 5 minutes"
+      - "timer 10 minutes"
+    slots: [duration, name]
+    required_slots: [duration]
+    
+  - name: set_reminder
+    examples:
+      - "remind me to call mom"
+      - "set a reminder for tomorrow"
+    slots: [time, message]
+    required_slots: [time, message]
+    
+  - name: play_music
+    examples:
+      - "play some music"
+      - "play songs by Taylor Swift"
+    slots: [song, artist, genre]
+    
+  # Conversation
+  - name: greeting
+    examples:
+      - "hello"
+      - "hi there"
+      - "good morning"
+      
+  - name: goodbye
+    examples:
+      - "bye"
+      - "see you later"
+      - "goodbye"
+      
+  - name: help
+    examples:
+      - "help me"
+      - "what can you do"

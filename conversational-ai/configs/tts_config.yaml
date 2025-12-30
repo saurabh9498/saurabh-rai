@@ -1,0 +1,19 @@
+# TTS Configuration
+model:
+  name: tts_models/en/ljspeech/vits
+  device: cuda
+
+synthesis:
+  sample_rate: 22050
+  speed: 1.0
+  
+streaming:
+  enabled: true
+  chunk_size_chars: 100
+
+voices:
+  default: ljspeech
+  available:
+    - ljspeech
+    - vctk_p225
+    - vctk_p226

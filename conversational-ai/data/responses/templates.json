@@ -1,0 +1,232 @@
+{
+  "version": "1.0.0",
+  "description": "Response templates for Conversational AI Assistant",
+  "templates": {
+    "greeting": {
+      "default": [
+        "Hello! How can I help you today?",
+        "Hi there! What can I do for you?",
+        "Hey! How may I assist you?"
+      ],
+      "morning": [
+        "Good morning! How can I help you today?",
+        "Good morning! What can I do for you?"
+      ],
+      "afternoon": [
+        "Good afternoon! How can I assist you?",
+        "Good afternoon! What can I help you with?"
+      ],
+      "evening": [
+        "Good evening! How may I help you?",
+        "Good evening! What can I do for you?"
+      ]
+    },
+    "goodbye": {
+      "default": [
+        "Goodbye! Have a great day!",
+        "Take care! Let me know if you need anything else.",
+        "Bye! It was nice talking to you."
+      ]
+    },
+    "help": {
+      "default": [
+        "I can help you with several things:\n- Booking flights\n- Checking the weather\n- Setting reminders\n- Playing music\n- Getting news updates\n- Controlling smart devices\n\nWhat would you like to do?",
+        "Here's what I can assist you with: flight bookings, weather updates, reminders, music, news, and smart home controls. What interests you?"
+      ]
+    },
+    "book_flight": {
+      "ask_destination": [
+        "Where would you like to fly to?",
+        "What's your destination?"
+      ],
+      "ask_origin": [
+        "Where will you be departing from?",
+        "What's your departure city?"
+      ],
+      "ask_date": [
+        "When would you like to travel?",
+        "What date works best for you?"
+      ],
+      "ask_passengers": [
+        "How many passengers will be traveling?",
+        "How many tickets do you need?"
+      ],
+      "ask_class": [
+        "Would you prefer economy, business, or first class?",
+        "What cabin class would you like?"
+      ],
+      "confirm": [
+        "Let me confirm: You want to fly from {origin} to {destination} on {date} for {passengers} passenger(s) in {class} class. Is that correct?",
+        "I have a {class} class flight from {origin} to {destination} on {date} for {passengers}. Should I proceed with the booking?"
+      ],
+      "success": [
+        "Your flight has been booked successfully! Your confirmation number is {confirmation_number}.",
+        "All done! Your flight from {origin} to {destination} is confirmed. Reference: {confirmation_number}"
+      ],
+      "error": [
+        "I'm sorry, I couldn't complete the booking. Would you like to try again?",
+        "There was an issue with the booking. Let me try a different option."
+      ]
+    },
+    "check_weather": {
+      "ask_location": [
+        "Which city would you like the weather for?",
+        "What location should I check?"
+      ],
+      "current": [
+        "The current weather in {location} is {condition} with a temperature of {temperature}°{unit}.",
+        "In {location}, it's currently {temperature}°{unit} and {condition}."
+      ],
+      "forecast": [
+        "The forecast for {location} shows {condition} with highs of {high}°{unit} and lows of {low}°{unit}.",
+        "Expect {condition} in {location} tomorrow, ranging from {low}°{unit} to {high}°{unit}."
+      ],
+      "error": [
+        "I couldn't get the weather information for that location. Could you try another city?",
+        "Sorry, weather data isn't available for that area right now."
+      ]
+    },
+    "set_reminder": {
+      "ask_task": [
+        "What would you like to be reminded about?",
+        "What should I remind you to do?"
+      ],
+      "ask_time": [
+        "When should I remind you?",
+        "What time would you like the reminder?"
+      ],
+      "confirm": [
+        "I'll remind you to {task} at {time}. Is that correct?",
+        "Reminder set: {task} at {time}. Sound good?"
+      ],
+      "success": [
+        "Your reminder has been set! I'll notify you to {task} at {time}.",
+        "All set! You'll be reminded about {task} at {time}."
+      ],
+      "error": [
+        "I couldn't set that reminder. Would you like to try again?",
+        "There was an issue creating the reminder. Let's try again."
+      ]
+    },
+    "play_music": {
+      "ask_query": [
+        "What would you like to listen to?",
+        "Any specific song, artist, or genre?"
+      ],
+      "playing": [
+        "Now playing {song} by {artist}.",
+        "Here's {song} by {artist}. Enjoy!"
+      ],
+      "playlist": [
+        "Playing your {playlist} playlist.",
+        "Starting the {playlist} playlist now."
+      ],
+      "error": [
+        "I couldn't find that song. Would you like to try something else?",
+        "Sorry, that track isn't available. Can I play something similar?"
+      ]
+    },
+    "get_news": {
+      "ask_topic": [
+        "What topic are you interested in? Tech, sports, business, entertainment?",
+        "Any specific news category you'd like to hear about?"
+      ],
+      "headlines": [
+        "Here are today's top headlines in {category}:\n{headlines}",
+        "The latest {category} news:\n{headlines}"
+      ],
+      "no_news": [
+        "I don't have any recent news on that topic. Would you like to hear about something else?",
+        "No major stories on that right now. Interested in a different category?"
+      ]
+    },
+    "control_device": {
+      "ask_device": [
+        "Which device would you like to control?",
+        "What device should I adjust?"
+      ],
+      "ask_action": [
+        "What would you like me to do with the {device}?",
+        "How should I adjust the {device}?"
+      ],
+      "confirm": [
+        "I'll {action} the {device}. Is that right?",
+        "Setting the {device} to {action}. Correct?"
+      ],
+      "success": [
+        "Done! The {device} has been {action}.",
+        "The {device} is now {action}."
+      ],
+      "not_found": [
+        "I couldn't find a device called {device}. What's the correct name?",
+        "That device isn't recognized. Could you check the name?"
+      ],
+      "error": [
+        "I wasn't able to control that device. Would you like to try again?",
+        "There was an issue with the {device}. Let me retry."
+      ]
+    },
+    "fallback": {
+      "default": [
+        "I'm not sure I understood that. Could you rephrase?",
+        "Sorry, I didn't catch that. Can you say it differently?",
+        "I'm having trouble understanding. Could you try again?"
+      ],
+      "clarify": [
+        "Did you mean {suggestion}?",
+        "Were you asking about {suggestion}?"
+      ],
+      "suggest": [
+        "I can help you with things like booking flights, checking weather, or setting reminders. What would you like?",
+        "I'm best at travel, weather, reminders, music, and smart home controls. How can I help?"
+      ]
+    },
+    "error": {
+      "general": [
+        "Something went wrong on my end. Let me try that again.",
+        "I encountered an error. Could you repeat your request?"
+      ],
+      "timeout": [
+        "That's taking longer than expected. Would you like me to try again?",
+        "The request timed out. Let me give it another shot."
+      ],
+      "service_unavailable": [
+        "That service is currently unavailable. Please try again later.",
+        "I'm having trouble connecting to that service right now."
+      ]
+    },
+    "acknowledgment": {
+      "positive": [
+        "Got it!",
+        "Sure thing!",
+        "Absolutely!",
+        "Of course!"
+      ],
+      "processing": [
+        "Let me check that for you.",
+        "One moment please.",
+        "Working on it."
+      ],
+      "confirm_yes": [
+        "Great!",
+        "Perfect!",
+        "Excellent!"
+      ],
+      "confirm_no": [
+        "No problem, let's start over.",
+        "Okay, what would you like to change?",
+        "Sure, let me know what's different."
+      ]
+    }
+  },
+  "ssml_enhancements": {
+    "emphasis": "<emphasis level=\"moderate\">{text}</emphasis>",
+    "pause_short": "<break time=\"300ms\"/>",
+    "pause_medium": "<break time=\"500ms\"/>",
+    "pause_long": "<break time=\"1s\"/>",
+    "spell_out": "<say-as interpret-as=\"spell-out\">{text}</say-as>",
+    "number": "<say-as interpret-as=\"cardinal\">{text}</say-as>",
+    "date": "<say-as interpret-as=\"date\" format=\"mdy\">{text}</say-as>",
+    "time": "<say-as interpret-as=\"time\" format=\"hms12\">{text}</say-as>"
+  }
+}

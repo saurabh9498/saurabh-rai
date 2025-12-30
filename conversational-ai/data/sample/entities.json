@@ -1,0 +1,752 @@
+[
+  {
+    "entity_type": "city",
+    "examples": [
+      {
+        "text": "New York",
+        "value": "new_york",
+        "synonyms": []
+      },
+      {
+        "text": "Los Angeles",
+        "value": "los_angeles",
+        "synonyms": []
+      },
+      {
+        "text": "Chicago",
+        "value": "chicago",
+        "synonyms": []
+      },
+      {
+        "text": "London",
+        "value": "london",
+        "synonyms": []
+      },
+      {
+        "text": "Paris",
+        "value": "paris",
+        "synonyms": []
+      },
+      {
+        "text": "Tokyo",
+        "value": "tokyo",
+        "synonyms": []
+      },
+      {
+        "text": "Sydney",
+        "value": "sydney",
+        "synonyms": []
+      },
+      {
+        "text": "Berlin",
+        "value": "berlin",
+        "synonyms": []
+      },
+      {
+        "text": "Toronto",
+        "value": "toronto",
+        "synonyms": []
+      },
+      {
+        "text": "Miami",
+        "value": "miami",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "destination",
+    "examples": [
+      {
+        "text": "New York",
+        "value": "new_york",
+        "synonyms": []
+      },
+      {
+        "text": "Los Angeles",
+        "value": "los_angeles",
+        "synonyms": []
+      },
+      {
+        "text": "London",
+        "value": "london",
+        "synonyms": []
+      },
+      {
+        "text": "Paris",
+        "value": "paris",
+        "synonyms": []
+      },
+      {
+        "text": "Tokyo",
+        "value": "tokyo",
+        "synonyms": []
+      },
+      {
+        "text": "Sydney",
+        "value": "sydney",
+        "synonyms": []
+      },
+      {
+        "text": "Rome",
+        "value": "rome",
+        "synonyms": []
+      },
+      {
+        "text": "Barcelona",
+        "value": "barcelona",
+        "synonyms": []
+      },
+      {
+        "text": "Dubai",
+        "value": "dubai",
+        "synonyms": []
+      },
+      {
+        "text": "Singapore",
+        "value": "singapore",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "origin",
+    "examples": [
+      {
+        "text": "San Francisco",
+        "value": "san_francisco",
+        "synonyms": []
+      },
+      {
+        "text": "Seattle",
+        "value": "seattle",
+        "synonyms": []
+      },
+      {
+        "text": "Boston",
+        "value": "boston",
+        "synonyms": []
+      },
+      {
+        "text": "Denver",
+        "value": "denver",
+        "synonyms": []
+      },
+      {
+        "text": "Atlanta",
+        "value": "atlanta",
+        "synonyms": []
+      },
+      {
+        "text": "Dallas",
+        "value": "dallas",
+        "synonyms": []
+      },
+      {
+        "text": "Phoenix",
+        "value": "phoenix",
+        "synonyms": []
+      },
+      {
+        "text": "Portland",
+        "value": "portland",
+        "synonyms": []
+      },
+      {
+        "text": "Austin",
+        "value": "austin",
+        "synonyms": []
+      },
+      {
+        "text": "Nashville",
+        "value": "nashville",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "date",
+    "examples": [
+      {
+        "text": "tomorrow",
+        "value": "tomorrow",
+        "synonyms": []
+      },
+      {
+        "text": "next Monday",
+        "value": "next_monday",
+        "synonyms": []
+      },
+      {
+        "text": "this Friday",
+        "value": "this_friday",
+        "synonyms": []
+      },
+      {
+        "text": "next week",
+        "value": "next_week",
+        "synonyms": []
+      },
+      {
+        "text": "in two days",
+        "value": "in_two_days",
+        "synonyms": []
+      },
+      {
+        "text": "December 15th",
+        "value": "december_15th",
+        "synonyms": []
+      },
+      {
+        "text": "January 3rd",
+        "value": "january_3rd",
+        "synonyms": []
+      },
+      {
+        "text": "the 20th",
+        "value": "the_20th",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "time",
+    "examples": [
+      {
+        "text": "9am",
+        "value": "9am",
+        "synonyms": []
+      },
+      {
+        "text": "10:30",
+        "value": "10:30",
+        "synonyms": []
+      },
+      {
+        "text": "noon",
+        "value": "noon",
+        "synonyms": []
+      },
+      {
+        "text": "3pm",
+        "value": "3pm",
+        "synonyms": []
+      },
+      {
+        "text": "5:30pm",
+        "value": "5:30pm",
+        "synonyms": []
+      },
+      {
+        "text": "7 o'clock",
+        "value": "7_o'clock",
+        "synonyms": []
+      },
+      {
+        "text": "morning",
+        "value": "morning",
+        "synonyms": []
+      },
+      {
+        "text": "evening",
+        "value": "evening",
+        "synonyms": []
+      },
+      {
+        "text": "at night",
+        "value": "at_night",
+        "synonyms": []
+      },
+      {
+        "text": "in an hour",
+        "value": "in_an_hour",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "task",
+    "examples": [
+      {
+        "text": "call mom",
+        "value": "call_mom",
+        "synonyms": []
+      },
+      {
+        "text": "buy groceries",
+        "value": "buy_groceries",
+        "synonyms": []
+      },
+      {
+        "text": "submit report",
+        "value": "submit_report",
+        "synonyms": []
+      },
+      {
+        "text": "exercise",
+        "value": "exercise",
+        "synonyms": []
+      },
+      {
+        "text": "take medication",
+        "value": "take_medication",
+        "synonyms": []
+      },
+      {
+        "text": "water plants",
+        "value": "water_plants",
+        "synonyms": []
+      },
+      {
+        "text": "pay bills",
+        "value": "pay_bills",
+        "synonyms": []
+      },
+      {
+        "text": "meeting prep",
+        "value": "meeting_prep",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "artist",
+    "examples": [
+      {
+        "text": "The Beatles",
+        "value": "the_beatles",
+        "synonyms": []
+      },
+      {
+        "text": "Taylor Swift",
+        "value": "taylor_swift",
+        "synonyms": []
+      },
+      {
+        "text": "Drake",
+        "value": "drake",
+        "synonyms": []
+      },
+      {
+        "text": "Adele",
+        "value": "adele",
+        "synonyms": []
+      },
+      {
+        "text": "Ed Sheeran",
+        "value": "ed_sheeran",
+        "synonyms": []
+      },
+      {
+        "text": "Coldplay",
+        "value": "coldplay",
+        "synonyms": []
+      },
+      {
+        "text": "Beyonc\u00e9",
+        "value": "beyonc\u00e9",
+        "synonyms": []
+      },
+      {
+        "text": "Bruno Mars",
+        "value": "bruno_mars",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "song",
+    "examples": [
+      {
+        "text": "Bohemian Rhapsody",
+        "value": "bohemian_rhapsody",
+        "synonyms": []
+      },
+      {
+        "text": "Shape of You",
+        "value": "shape_of_you",
+        "synonyms": []
+      },
+      {
+        "text": "Blinding Lights",
+        "value": "blinding_lights",
+        "synonyms": []
+      },
+      {
+        "text": "Bad Guy",
+        "value": "bad_guy",
+        "synonyms": []
+      },
+      {
+        "text": "Uptown Funk",
+        "value": "uptown_funk",
+        "synonyms": []
+      },
+      {
+        "text": "Happy",
+        "value": "happy",
+        "synonyms": []
+      },
+      {
+        "text": "Shake It Off",
+        "value": "shake_it_off",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "genre",
+    "examples": [
+      {
+        "text": "jazz",
+        "value": "jazz",
+        "synonyms": []
+      },
+      {
+        "text": "rock",
+        "value": "rock",
+        "synonyms": []
+      },
+      {
+        "text": "pop",
+        "value": "pop",
+        "synonyms": []
+      },
+      {
+        "text": "classical",
+        "value": "classical",
+        "synonyms": []
+      },
+      {
+        "text": "hip hop",
+        "value": "hip_hop",
+        "synonyms": []
+      },
+      {
+        "text": "country",
+        "value": "country",
+        "synonyms": []
+      },
+      {
+        "text": "electronic",
+        "value": "electronic",
+        "synonyms": []
+      },
+      {
+        "text": "R&B",
+        "value": "r&b",
+        "synonyms": []
+      },
+      {
+        "text": "indie",
+        "value": "indie",
+        "synonyms": []
+      },
+      {
+        "text": "folk",
+        "value": "folk",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "playlist",
+    "examples": [
+      {
+        "text": "workout",
+        "value": "workout",
+        "synonyms": []
+      },
+      {
+        "text": "chill",
+        "value": "chill",
+        "synonyms": []
+      },
+      {
+        "text": "focus",
+        "value": "focus",
+        "synonyms": []
+      },
+      {
+        "text": "party",
+        "value": "party",
+        "synonyms": []
+      },
+      {
+        "text": "sleep",
+        "value": "sleep",
+        "synonyms": []
+      },
+      {
+        "text": "road trip",
+        "value": "road_trip",
+        "synonyms": []
+      },
+      {
+        "text": "morning coffee",
+        "value": "morning_coffee",
+        "synonyms": []
+      },
+      {
+        "text": "evening wind down",
+        "value": "evening_wind_down",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "device",
+    "examples": [
+      {
+        "text": "lights",
+        "value": "lights",
+        "synonyms": []
+      },
+      {
+        "text": "TV",
+        "value": "tv",
+        "synonyms": []
+      },
+      {
+        "text": "thermostat",
+        "value": "thermostat",
+        "synonyms": []
+      },
+      {
+        "text": "speaker",
+        "value": "speaker",
+        "synonyms": []
+      },
+      {
+        "text": "fan",
+        "value": "fan",
+        "synonyms": []
+      },
+      {
+        "text": "air conditioner",
+        "value": "air_conditioner",
+        "synonyms": []
+      },
+      {
+        "text": "heater",
+        "value": "heater",
+        "synonyms": []
+      },
+      {
+        "text": "blinds",
+        "value": "blinds",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "room",
+    "examples": [
+      {
+        "text": "living room",
+        "value": "living_room",
+        "synonyms": []
+      },
+      {
+        "text": "bedroom",
+        "value": "bedroom",
+        "synonyms": []
+      },
+      {
+        "text": "kitchen",
+        "value": "kitchen",
+        "synonyms": []
+      },
+      {
+        "text": "bathroom",
+        "value": "bathroom",
+        "synonyms": []
+      },
+      {
+        "text": "office",
+        "value": "office",
+        "synonyms": []
+      },
+      {
+        "text": "garage",
+        "value": "garage",
+        "synonyms": []
+      },
+      {
+        "text": "basement",
+        "value": "basement",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "value",
+    "examples": [
+      {
+        "text": "50",
+        "value": "50",
+        "synonyms": []
+      },
+      {
+        "text": "75",
+        "value": "75",
+        "synonyms": []
+      },
+      {
+        "text": "100",
+        "value": "100",
+        "synonyms": []
+      },
+      {
+        "text": "low",
+        "value": "low",
+        "synonyms": []
+      },
+      {
+        "text": "medium",
+        "value": "medium",
+        "synonyms": []
+      },
+      {
+        "text": "high",
+        "value": "high",
+        "synonyms": []
+      },
+      {
+        "text": "25%",
+        "value": "25%",
+        "synonyms": []
+      },
+      {
+        "text": "maximum",
+        "value": "maximum",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "topic",
+    "examples": [
+      {
+        "text": "politics",
+        "value": "politics",
+        "synonyms": []
+      },
+      {
+        "text": "technology",
+        "value": "technology",
+        "synonyms": []
+      },
+      {
+        "text": "sports",
+        "value": "sports",
+        "synonyms": []
+      },
+      {
+        "text": "entertainment",
+        "value": "entertainment",
+        "synonyms": []
+      },
+      {
+        "text": "business",
+        "value": "business",
+        "synonyms": []
+      },
+      {
+        "text": "health",
+        "value": "health",
+        "synonyms": []
+      },
+      {
+        "text": "science",
+        "value": "science",
+        "synonyms": []
+      },
+      {
+        "text": "weather",
+        "value": "weather",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "location",
+    "examples": [
+      {
+        "text": "United States",
+        "value": "united_states",
+        "synonyms": []
+      },
+      {
+        "text": "Europe",
+        "value": "europe",
+        "synonyms": []
+      },
+      {
+        "text": "Asia",
+        "value": "asia",
+        "synonyms": []
+      },
+      {
+        "text": "local",
+        "value": "local",
+        "synonyms": []
+      },
+      {
+        "text": "worldwide",
+        "value": "worldwide",
+        "synonyms": []
+      },
+      {
+        "text": "my city",
+        "value": "my_city",
+        "synonyms": []
+      }
+    ]
+  },
+  {
+    "entity_type": "passengers",
+    "examples": [
+      {
+        "text": "1",
+        "value": "1",
+        "synonyms": []
+      },
+      {
+        "text": "2",
+        "value": "2",
+        "synonyms": []
+      },
+      {
+        "text": "3",
+        "value": "3",
+        "synonyms": []
+      },
+      {
+        "text": "4",
+        "value": "4",
+        "synonyms": []
+      },
+      {
+        "text": "5",
+        "value": "5",
+        "synonyms": []
+      },
+      {
+        "text": "just me",
+        "value": "just_me",
+        "synonyms": []
+      },
+      {
+        "text": "two of us",
+        "value": "two_of_us",
+        "synonyms": []
+      },
+      {
+        "text": "family of four",
+        "value": "family_of_four",
+        "synonyms": []
+      }
+    ]
+  }
+]
