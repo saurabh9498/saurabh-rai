@@ -1,0 +1,6002 @@
+[
+  {
+    "transaction_id": "txn_afed35f821b84468",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9947499582086535
+  },
+  {
+    "transaction_id": "txn_deb4cd82435a4715",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9938862573806526
+  },
+  {
+    "transaction_id": "txn_9f8d9e13fc43437c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9802586921519649
+  },
+  {
+    "transaction_id": "txn_0468e6b74ab844e6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9731625582507293
+  },
+  {
+    "transaction_id": "txn_9db68f0da5e3435b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9784769267308875
+  },
+  {
+    "transaction_id": "txn_bcaf1bb1febe4787",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9916934093472044
+  },
+  {
+    "transaction_id": "txn_b8311b8970d3435d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9698672269898055
+  },
+  {
+    "transaction_id": "txn_16b9f68ec4604fb1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9719366932054312
+  },
+  {
+    "transaction_id": "txn_dfff695b6a5349b1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9940441181237658
+  },
+  {
+    "transaction_id": "txn_80b690569b16441c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9628867775637353
+  },
+  {
+    "transaction_id": "txn_4c205c0fae644fa1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9629793199076258
+  },
+  {
+    "transaction_id": "txn_4a45aa4b89c840fe",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9843809616842536
+  },
+  {
+    "transaction_id": "txn_6afe939193504d88",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9654166065207501
+  },
+  {
+    "transaction_id": "txn_358e1e5266d94160",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9681659159657409
+  },
+  {
+    "transaction_id": "txn_0b4a28ae7ce446c9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9764945640038141
+  },
+  {
+    "transaction_id": "txn_e60f9759c76749a6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9507704474817725
+  },
+  {
+    "transaction_id": "txn_b2ec3a4269814724",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9537571914408053
+  },
+  {
+    "transaction_id": "txn_4ca9dfe6d0a54971",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9607137855120927
+  },
+  {
+    "transaction_id": "txn_00e15bd248c646cc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9650503323883768
+  },
+  {
+    "transaction_id": "txn_6faa055a62974fb3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9713954101638977
+  },
+  {
+    "transaction_id": "txn_d3749c903272410f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9664928270067339
+  },
+  {
+    "transaction_id": "txn_a9170e7ade154eb6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9658945211606239
+  },
+  {
+    "transaction_id": "txn_7cf6496fe8c841f2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9579400126517561
+  },
+  {
+    "transaction_id": "txn_a9de7b2885064283",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9584158278717985
+  },
+  {
+    "transaction_id": "txn_ee249eb43f054da6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9646427722289641
+  },
+  {
+    "transaction_id": "txn_8ac586763b714001",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9655414878427342
+  },
+  {
+    "transaction_id": "txn_964cc3c0386c401c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9821017329644263
+  },
+  {
+    "transaction_id": "txn_3aa39a1914bb4267",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9531471698015183
+  },
+  {
+    "transaction_id": "txn_5a5e8902a7264d59",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9501225547027692
+  },
+  {
+    "transaction_id": "txn_b780551b28574d4a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9842433628200533
+  },
+  {
+    "transaction_id": "txn_47665da65cbe4f14",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9829663562766126
+  },
+  {
+    "transaction_id": "txn_a70b5e02e6e64997",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9831459945107884
+  },
+  {
+    "transaction_id": "txn_1b0374a675104011",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9555047314807948
+  },
+  {
+    "transaction_id": "txn_2290f1fc270e4233",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9719617307992758
+  },
+  {
+    "transaction_id": "txn_c797c7a3c8784d94",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9903794034574693
+  },
+  {
+    "transaction_id": "txn_b8ce0197149e49ab",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9658994829760871
+  },
+  {
+    "transaction_id": "txn_2d934dc82e4b40dc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9952710361421732
+  },
+  {
+    "transaction_id": "txn_c4ee590a0e2e42a0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9972911663544511
+  },
+  {
+    "transaction_id": "txn_4c6095f6178b4846",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9569379498208802
+  },
+  {
+    "transaction_id": "txn_af352b4aa8014426",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9867441598420891
+  },
+  {
+    "transaction_id": "txn_42caa34708534df7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9630438730082578
+  },
+  {
+    "transaction_id": "txn_fff631d412ff4c86",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9990676586304558
+  },
+  {
+    "transaction_id": "txn_668275aede5b48a0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9755773961891953
+  },
+  {
+    "transaction_id": "txn_f31b70242f82477f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.979022576242821
+  },
+  {
+    "transaction_id": "txn_29ef006e24ee4438",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9769637753503762
+  },
+  {
+    "transaction_id": "txn_423eec8f3edd4122",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9671639282261755
+  },
+  {
+    "transaction_id": "txn_b5356b3d47864c2f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9686244250238092
+  },
+  {
+    "transaction_id": "txn_a1b501aedf024df1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9657674303520537
+  },
+  {
+    "transaction_id": "txn_15f78ba9637d4c7d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9769549439379287
+  },
+  {
+    "transaction_id": "txn_1fef5539e31d47fa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9763240556542545
+  },
+  {
+    "transaction_id": "txn_e550ee8dd9824062",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9510547293824293
+  },
+  {
+    "transaction_id": "txn_3c118e46a97a426a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9683500547121714
+  },
+  {
+    "transaction_id": "txn_4bf13c7656884cbc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9912452565842667
+  },
+  {
+    "transaction_id": "txn_24ad2b400c05437a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9799665104473568
+  },
+  {
+    "transaction_id": "txn_a152a5fe1098498d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9969442856527247
+  },
+  {
+    "transaction_id": "txn_dc60d6b2e55a4fe0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9722124049604352
+  },
+  {
+    "transaction_id": "txn_c09d34b58ecb46ba",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.997362237676333
+  },
+  {
+    "transaction_id": "txn_12370d64af404adf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9577268095434933
+  },
+  {
+    "transaction_id": "txn_bddb69b758644429",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.971239837235581
+  },
+  {
+    "transaction_id": "txn_1ea815eb0c8142a3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9955000849764745
+  },
+  {
+    "transaction_id": "txn_4857fb1e68914604",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.975677329823502
+  },
+  {
+    "transaction_id": "txn_6fee62a73c6d4295",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9784763477509244
+  },
+  {
+    "transaction_id": "txn_07c39790b306495d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.976806797375292
+  },
+  {
+    "transaction_id": "txn_6d2b69748dc04e80",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9838827130490879
+  },
+  {
+    "transaction_id": "txn_0fe2b8ba6a3e46a1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.964199774608737
+  },
+  {
+    "transaction_id": "txn_97bfd103f7a84792",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9568766756406614
+  },
+  {
+    "transaction_id": "txn_e50172a8b72b4bda",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9641125761588528
+  },
+  {
+    "transaction_id": "txn_fdc4754f1ef04e23",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9817494066689731
+  },
+  {
+    "transaction_id": "txn_946abdfcf2644827",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9838328723889084
+  },
+  {
+    "transaction_id": "txn_21c8964110ba48ab",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9575621887948427
+  },
+  {
+    "transaction_id": "txn_1f1a4bf20a4f4b26",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9812553826091752
+  },
+  {
+    "transaction_id": "txn_cbce74df48fc40bb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9720508603550646
+  },
+  {
+    "transaction_id": "txn_6ec2de88e89a4ad1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9794249048385948
+  },
+  {
+    "transaction_id": "txn_0f618ff4f9284dee",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9861688201006189
+  },
+  {
+    "transaction_id": "txn_7c2608c5f2e64acf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9939426237878347
+  },
+  {
+    "transaction_id": "txn_9d6b98fed1ab4acb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9710180329870302
+  },
+  {
+    "transaction_id": "txn_e65eac684b26457e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9836217979344307
+  },
+  {
+    "transaction_id": "txn_49f7243440ae4f7d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9942883547412477
+  },
+  {
+    "transaction_id": "txn_25acd41a9677427c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9582341508419554
+  },
+  {
+    "transaction_id": "txn_ab9a0307b9c241c5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9946542958619141
+  },
+  {
+    "transaction_id": "txn_635367c3af4b477e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9670271161309585
+  },
+  {
+    "transaction_id": "txn_1a1d33c6215b4a0e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9907749402151428
+  },
+  {
+    "transaction_id": "txn_1eb8314fa5974665",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9763440007069847
+  },
+  {
+    "transaction_id": "txn_6ba2ede2dd9e4c8a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.972858757793849
+  },
+  {
+    "transaction_id": "txn_a12dfe3fd1b84d34",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9976163676425583
+  },
+  {
+    "transaction_id": "txn_c167b2251d324e3c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9808022118877912
+  },
+  {
+    "transaction_id": "txn_73a8699bde504b6c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9583825032987012
+  },
+  {
+    "transaction_id": "txn_63c19ba8d9844e8e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9798042498081049
+  },
+  {
+    "transaction_id": "txn_a715b2bf585d4359",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9816859316031172
+  },
+  {
+    "transaction_id": "txn_6f448fba15534f4a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.957413658886513
+  },
+  {
+    "transaction_id": "txn_414c880c75524f41",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9535141854347631
+  },
+  {
+    "transaction_id": "txn_3fb5e5520e5f4d3f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9792221039673853
+  },
+  {
+    "transaction_id": "txn_50f83894561348af",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9649710568086851
+  },
+  {
+    "transaction_id": "txn_eb27046ea4ac4ce8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9544733242361156
+  },
+  {
+    "transaction_id": "txn_648dbdf9dbdd4e10",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.964140676892529
+  },
+  {
+    "transaction_id": "txn_3f49dd8053874540",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9874580202610078
+  },
+  {
+    "transaction_id": "txn_e340fff5627f41fe",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9882796945787755
+  },
+  {
+    "transaction_id": "txn_b5d4210d52f64147",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.977971081196162
+  },
+  {
+    "transaction_id": "txn_aa404abbba244adb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9544236759074157
+  },
+  {
+    "transaction_id": "txn_38cee9546d504794",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9879852272342164
+  },
+  {
+    "transaction_id": "txn_20714b58392d4d5c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9888548654040108
+  },
+  {
+    "transaction_id": "txn_757fa41c28f8489f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9964740119771738
+  },
+  {
+    "transaction_id": "txn_fdd36b5ef18f4174",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_238fee6c7b24463d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9947331372539167
+  },
+  {
+    "transaction_id": "txn_9e84cef97b2b438a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9886835328415517
+  },
+  {
+    "transaction_id": "txn_0434edfec8874930",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9846920084546757
+  },
+  {
+    "transaction_id": "txn_1029fb1878c54a5d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9598905198344572
+  },
+  {
+    "transaction_id": "txn_d34becdf62084756",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9819912443636319
+  },
+  {
+    "transaction_id": "txn_77f5962c6fc04193",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9848073430438855
+  },
+  {
+    "transaction_id": "txn_7d68cf783c584b83",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9873198010771486
+  },
+  {
+    "transaction_id": "txn_652402c494b84591",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9559019532677164
+  },
+  {
+    "transaction_id": "txn_f4d2482e52de40f1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9554321627409489
+  },
+  {
+    "transaction_id": "txn_49e9bbdf8b3c4a0b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9992831321587632
+  },
+  {
+    "transaction_id": "txn_1b0b2b4571584d2f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9895191374252639
+  },
+  {
+    "transaction_id": "txn_9e955699aaaf458e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9980397407392978
+  },
+  {
+    "transaction_id": "txn_ab6973fcbf3c40a0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9637997777756566
+  },
+  {
+    "transaction_id": "txn_c587a8650ca04e46",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9560853140764752
+  },
+  {
+    "transaction_id": "txn_925f9eecd1ec49de",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9749676173798009
+  },
+  {
+    "transaction_id": "txn_63331487bb634987",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9918560105834778
+  },
+  {
+    "transaction_id": "txn_6967576107794afa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9623162891600878
+  },
+  {
+    "transaction_id": "txn_aab7c91c1bcb4c49",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9587155948197117
+  },
+  {
+    "transaction_id": "txn_a41c2940019b4618",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9804985849808419
+  },
+  {
+    "transaction_id": "txn_0d3efcd23f5a47ca",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9661334150057903
+  },
+  {
+    "transaction_id": "txn_451a62c31c384c83",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9782568690969958
+  },
+  {
+    "transaction_id": "txn_f328b8a5f6634240",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9590780821525153
+  },
+  {
+    "transaction_id": "txn_93139faad9204382",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9801349415834155
+  },
+  {
+    "transaction_id": "txn_e01a9f081d11444c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9508738336207819
+  },
+  {
+    "transaction_id": "txn_29b99cd44838441a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9965066424691651
+  },
+  {
+    "transaction_id": "txn_a60b391ad5ec468f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9641214569229964
+  },
+  {
+    "transaction_id": "txn_9e93326eb2a0431c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9640669222826043
+  },
+  {
+    "transaction_id": "txn_54d9d7c64e4d4ebf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9863251210745181
+  },
+  {
+    "transaction_id": "txn_fea7b8f1a0a44e6d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9699427654870946
+  },
+  {
+    "transaction_id": "txn_10f71bb94df44eb4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9956191862300856
+  },
+  {
+    "transaction_id": "txn_70d56addb4554756",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9592626547511919
+  },
+  {
+    "transaction_id": "txn_e8784bda5d2f49dc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9583771903402032
+  },
+  {
+    "transaction_id": "txn_cbc01c33765d466b",
+    "is_fraud": true,
+    "fraud_pattern": "card_testing",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_b2cb77eed9fe4459",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9568891477022745
+  },
+  {
+    "transaction_id": "txn_46433b11be4940e2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9921568860751279
+  },
+  {
+    "transaction_id": "txn_7817daba26a64d5d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9933099633142529
+  },
+  {
+    "transaction_id": "txn_fbaf863a741e407e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9538041859140546
+  },
+  {
+    "transaction_id": "txn_260924a219ae4b2f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9874177691419994
+  },
+  {
+    "transaction_id": "txn_72729220b2144325",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9852331451459747
+  },
+  {
+    "transaction_id": "txn_4cbd4ce7ad194331",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9991458140583591
+  },
+  {
+    "transaction_id": "txn_b94abc34d4ac4cc4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9528251676462747
+  },
+  {
+    "transaction_id": "txn_72716fbaeefe41f3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9773411917579876
+  },
+  {
+    "transaction_id": "txn_a5292b57bea142c7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9577752319227998
+  },
+  {
+    "transaction_id": "txn_1d535996590349f0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9708245541788794
+  },
+  {
+    "transaction_id": "txn_1c1803b6392d4408",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9886016023464835
+  },
+  {
+    "transaction_id": "txn_6a8fd3452e874bf0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9605175295419726
+  },
+  {
+    "transaction_id": "txn_a4efa9783ea94f50",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9546712947075899
+  },
+  {
+    "transaction_id": "txn_fdb3fb06f96c462d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9574234069454846
+  },
+  {
+    "transaction_id": "txn_b7e9ab47dccd4cc8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9601827167341852
+  },
+  {
+    "transaction_id": "txn_57b3e54ada154f21",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9715263556132275
+  },
+  {
+    "transaction_id": "txn_8b52941a2dde4d44",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9745769825736383
+  },
+  {
+    "transaction_id": "txn_b4d63599087c4396",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9587466045661789
+  },
+  {
+    "transaction_id": "txn_180f763a874b49fa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9770136246202155
+  },
+  {
+    "transaction_id": "txn_202a94ae9d8b4c0c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9875881690748871
+  },
+  {
+    "transaction_id": "txn_7ba3ce91ac784e67",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9694791234923551
+  },
+  {
+    "transaction_id": "txn_55dc61512f484091",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9726726180916949
+  },
+  {
+    "transaction_id": "txn_daa90c57ec9842fc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9825717053987766
+  },
+  {
+    "transaction_id": "txn_623a683e141a4fa2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9833255832938576
+  },
+  {
+    "transaction_id": "txn_30047c4558574402",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9940777777861035
+  },
+  {
+    "transaction_id": "txn_857435d0f7954f46",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9683193214203032
+  },
+  {
+    "transaction_id": "txn_8431500af4744aa5",
+    "is_fraud": true,
+    "fraud_pattern": "synthetic_id",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_df70e55362c645c6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9758632456155424
+  },
+  {
+    "transaction_id": "txn_ac064af46d804ab3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9592062660455658
+  },
+  {
+    "transaction_id": "txn_c319166402904584",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9866514256438808
+  },
+  {
+    "transaction_id": "txn_bc2c969e374a498d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9524529660940491
+  },
+  {
+    "transaction_id": "txn_12842242c75d4d41",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.972623078938942
+  },
+  {
+    "transaction_id": "txn_cef0a18f59ac4075",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9668904843896505
+  },
+  {
+    "transaction_id": "txn_799c257f0cdc4f0c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9626134642388319
+  },
+  {
+    "transaction_id": "txn_9488b44c69b54b0c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9931628800655902
+  },
+  {
+    "transaction_id": "txn_fb4f652f3f4c457d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9996035267140035
+  },
+  {
+    "transaction_id": "txn_7df24e1e37234140",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9561557383351049
+  },
+  {
+    "transaction_id": "txn_dfb7c72d2aab4eec",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9977753776392481
+  },
+  {
+    "transaction_id": "txn_feebad2cac634bc3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9814860128351023
+  },
+  {
+    "transaction_id": "txn_20d1eeabb5984794",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.970857605558954
+  },
+  {
+    "transaction_id": "txn_d440182c3b504131",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.962684221624342
+  },
+  {
+    "transaction_id": "txn_74e9fd447abe406b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9558415377348709
+  },
+  {
+    "transaction_id": "txn_3d67792f5f73492b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9873806250813408
+  },
+  {
+    "transaction_id": "txn_26538449bf774627",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9665561321178042
+  },
+  {
+    "transaction_id": "txn_b9fcb49c130b4fc4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9793649518578537
+  },
+  {
+    "transaction_id": "txn_9268de1eb7a941e6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9763460957153296
+  },
+  {
+    "transaction_id": "txn_8fc6b38d29a74f4b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9609775689095632
+  },
+  {
+    "transaction_id": "txn_9e14656d2aad47ae",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9791144616719555
+  },
+  {
+    "transaction_id": "txn_5f85a2609f0c49c0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9870318167897458
+  },
+  {
+    "transaction_id": "txn_0558ae9007174d9c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9573135417140548
+  },
+  {
+    "transaction_id": "txn_a1e325de41fb4917",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9981028287463648
+  },
+  {
+    "transaction_id": "txn_54aca2dd104643b3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9710805975144006
+  },
+  {
+    "transaction_id": "txn_c19e546075084a73",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9861391711174985
+  },
+  {
+    "transaction_id": "txn_5b513b7abfa141be",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9657374298953295
+  },
+  {
+    "transaction_id": "txn_e5338e7db76c4758",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9784885406021339
+  },
+  {
+    "transaction_id": "txn_dd4f88f627fa4907",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.967531308788564
+  },
+  {
+    "transaction_id": "txn_f9a473a4d54f4c66",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9662164042581539
+  },
+  {
+    "transaction_id": "txn_cecaaaa541cb4832",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9572685984432299
+  },
+  {
+    "transaction_id": "txn_aacf08e70a744076",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9624062637280144
+  },
+  {
+    "transaction_id": "txn_08294421e6ba45f2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9742325483129999
+  },
+  {
+    "transaction_id": "txn_8b081352cb6340be",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9766969458635092
+  },
+  {
+    "transaction_id": "txn_452d1b874c1b4447",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9602986189718211
+  },
+  {
+    "transaction_id": "txn_a07c5b42ff8b42eb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.99729927881629
+  },
+  {
+    "transaction_id": "txn_561144337a204330",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.973298035589032
+  },
+  {
+    "transaction_id": "txn_1a5706fd4cf64190",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9634461588143705
+  },
+  {
+    "transaction_id": "txn_24cdb4b8bf844e54",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9527145751248213
+  },
+  {
+    "transaction_id": "txn_0e0cdadcc3e149bd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9984372487055317
+  },
+  {
+    "transaction_id": "txn_c2df9a19f7c241fc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9582036126607627
+  },
+  {
+    "transaction_id": "txn_33648699c1e946ba",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9567062986370485
+  },
+  {
+    "transaction_id": "txn_210195b71ad54cae",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.990976580384407
+  },
+  {
+    "transaction_id": "txn_6885f12c0b7f4ed5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9974541086979228
+  },
+  {
+    "transaction_id": "txn_0a8ed42b2b5a473d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9550994307338859
+  },
+  {
+    "transaction_id": "txn_b1fe24ef555f43cc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9951153138776396
+  },
+  {
+    "transaction_id": "txn_3017a0236a2a4717",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9883135001205845
+  },
+  {
+    "transaction_id": "txn_27b34b6ceba04c51",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9552650178674992
+  },
+  {
+    "transaction_id": "txn_6cd898a2af864b32",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.967221174048152
+  },
+  {
+    "transaction_id": "txn_ecce73f5c68f473d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9972729590007194
+  },
+  {
+    "transaction_id": "txn_586ee05711154bac",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9685355922778282
+  },
+  {
+    "transaction_id": "txn_b59ce4de20064b04",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9569445136486482
+  },
+  {
+    "transaction_id": "txn_d74d3203adec41d9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9709005693020873
+  },
+  {
+    "transaction_id": "txn_71897dc420fb454b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9836540190581256
+  },
+  {
+    "transaction_id": "txn_c7f48d5fc89e4e6b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9904226678457985
+  },
+  {
+    "transaction_id": "txn_64ad2ac902b741b8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9774211889675711
+  },
+  {
+    "transaction_id": "txn_37cd493fb8934ada",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9759142868290547
+  },
+  {
+    "transaction_id": "txn_6f0a288d8bad42e6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9871261571107074
+  },
+  {
+    "transaction_id": "txn_757db3de2ddc46e8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9901022714084062
+  },
+  {
+    "transaction_id": "txn_9db7ef15cf594600",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9616189566632154
+  },
+  {
+    "transaction_id": "txn_b5666e0b03354f13",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.982098476799787
+  },
+  {
+    "transaction_id": "txn_0973be0ddd934d86",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9589969932970231
+  },
+  {
+    "transaction_id": "txn_d1373663abab4337",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9938208866334586
+  },
+  {
+    "transaction_id": "txn_ad1172df7eed40b1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9703724569418734
+  },
+  {
+    "transaction_id": "txn_ec42b22636d3409b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9878781340934092
+  },
+  {
+    "transaction_id": "txn_43585a7b55ca4367",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9957013873030525
+  },
+  {
+    "transaction_id": "txn_4cccb0bf006b44e4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9795865044648399
+  },
+  {
+    "transaction_id": "txn_dc1b7666db704c4d",
+    "is_fraud": true,
+    "fraud_pattern": "card_testing",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_ddc796f6b8034866",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9756089315917635
+  },
+  {
+    "transaction_id": "txn_bae615bb12a24eaf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9815079025287385
+  },
+  {
+    "transaction_id": "txn_4d656a35f9ba4460",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.957631971368001
+  },
+  {
+    "transaction_id": "txn_79d9eb3a9eee40de",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9505595511997057
+  },
+  {
+    "transaction_id": "txn_33c740f40a89428b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9762468298372434
+  },
+  {
+    "transaction_id": "txn_491947a6e25e49b9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9793126690717073
+  },
+  {
+    "transaction_id": "txn_48285ff248494e4c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.955305594192587
+  },
+  {
+    "transaction_id": "txn_c90c48c13f5d443b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9672833199539808
+  },
+  {
+    "transaction_id": "txn_32c1a8b379894a64",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9893269115936761
+  },
+  {
+    "transaction_id": "txn_2abd89e04a5e4f81",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9692383010779451
+  },
+  {
+    "transaction_id": "txn_9c7ca26d5e3c4d58",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9808052345361591
+  },
+  {
+    "transaction_id": "txn_85f1459550e749ee",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9827621768858059
+  },
+  {
+    "transaction_id": "txn_4577b4be56ea460f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9697474660829566
+  },
+  {
+    "transaction_id": "txn_da5f52d9cb96406a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9861672810276532
+  },
+  {
+    "transaction_id": "txn_310340f774154e3b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9510335829686134
+  },
+  {
+    "transaction_id": "txn_430dae4f92b44ea2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9617465928634029
+  },
+  {
+    "transaction_id": "txn_70c2901f24e0432a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9541198862169623
+  },
+  {
+    "transaction_id": "txn_3fc7f5c52a9d4298",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9781914663629113
+  },
+  {
+    "transaction_id": "txn_179c9078986f4bb2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9862035554479506
+  },
+  {
+    "transaction_id": "txn_45bd02e5557b4c67",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9683958692231841
+  },
+  {
+    "transaction_id": "txn_c80b8a557f6f4a95",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9554238240636583
+  },
+  {
+    "transaction_id": "txn_5a36f659cab145b0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.998118399941387
+  },
+  {
+    "transaction_id": "txn_218db488726c4a01",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9696490476582801
+  },
+  {
+    "transaction_id": "txn_06e153a9cdf04e2f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9666075535469503
+  },
+  {
+    "transaction_id": "txn_23a79fec64f142a0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9996260714792121
+  },
+  {
+    "transaction_id": "txn_ef7c82f688cf47af",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9640687253833478
+  },
+  {
+    "transaction_id": "txn_dba3a4c6ef984eea",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9937007145148032
+  },
+  {
+    "transaction_id": "txn_fa39d9a79f2444f0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9554581126898549
+  },
+  {
+    "transaction_id": "txn_a93b516257254af9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9685457400005383
+  },
+  {
+    "transaction_id": "txn_93bdd369e2fa4f69",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9547697139224706
+  },
+  {
+    "transaction_id": "txn_c0b729c228ee4e0a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9990666465536789
+  },
+  {
+    "transaction_id": "txn_7bff81fe2fe7478b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9785269375036286
+  },
+  {
+    "transaction_id": "txn_ad40e8e8c44b485d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.962316706216391
+  },
+  {
+    "transaction_id": "txn_33f6368fca454184",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9940114606707383
+  },
+  {
+    "transaction_id": "txn_200d5e75636d43a7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9962081359588453
+  },
+  {
+    "transaction_id": "txn_76fddf469db14862",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9691129485024491
+  },
+  {
+    "transaction_id": "txn_89fa1816a0ff45fa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9586558525727374
+  },
+  {
+    "transaction_id": "txn_b1d76c50f32846b3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9543544421870269
+  },
+  {
+    "transaction_id": "txn_b6a47dda660e420e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9699331391426015
+  },
+  {
+    "transaction_id": "txn_f63739682b654d28",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9565100059219146
+  },
+  {
+    "transaction_id": "txn_a4ac6e7ab5124aa2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9543794858220915
+  },
+  {
+    "transaction_id": "txn_c0879a4aaa3b4f4e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9550095496286278
+  },
+  {
+    "transaction_id": "txn_8ef70b00fb0948e8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9934660840682903
+  },
+  {
+    "transaction_id": "txn_3e546e1124af402f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9584383846556129
+  },
+  {
+    "transaction_id": "txn_44b0fef6cbfd4390",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.976048247092692
+  },
+  {
+    "transaction_id": "txn_a85a6276707b4b12",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9832289943689111
+  },
+  {
+    "transaction_id": "txn_f8e85fa3fdf248b7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9589952584148447
+  },
+  {
+    "transaction_id": "txn_d227ed2566a34fc8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9855983504840665
+  },
+  {
+    "transaction_id": "txn_e329d20f7347460c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.962462571129949
+  },
+  {
+    "transaction_id": "txn_095624cf76db41a4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9969879496811332
+  },
+  {
+    "transaction_id": "txn_d1b98da2a86d4b06",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9894360864369014
+  },
+  {
+    "transaction_id": "txn_498fdf93362c402c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9670643070384777
+  },
+  {
+    "transaction_id": "txn_02bca55b650d46bc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9789666241749553
+  },
+  {
+    "transaction_id": "txn_7f206d716fdf4b57",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9913108589243412
+  },
+  {
+    "transaction_id": "txn_99600fc354a8435f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9820903856061901
+  },
+  {
+    "transaction_id": "txn_85ef7c4dff4c40bc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9999643238925894
+  },
+  {
+    "transaction_id": "txn_2c9a139efc694e09",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9514218599279357
+  },
+  {
+    "transaction_id": "txn_362355cbf22a4eba",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9871452899786798
+  },
+  {
+    "transaction_id": "txn_02311993e0134c83",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9851057454621658
+  },
+  {
+    "transaction_id": "txn_a9a8e9c4e8f34b7b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9907685446032176
+  },
+  {
+    "transaction_id": "txn_da131f2cf03b46c3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9649455935866944
+  },
+  {
+    "transaction_id": "txn_f153d4db66804fd7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9569377178394599
+  },
+  {
+    "transaction_id": "txn_f92694142cc34086",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9634590071945582
+  },
+  {
+    "transaction_id": "txn_739a708f049c4f89",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9560932540592428
+  },
+  {
+    "transaction_id": "txn_e4e6d499ba464d36",
+    "is_fraud": true,
+    "fraud_pattern": "synthetic_id",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_3a6cbfb450f34fb7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9715986109102671
+  },
+  {
+    "transaction_id": "txn_1a904ad6366040dc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9569396227430722
+  },
+  {
+    "transaction_id": "txn_89e5023af0924012",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9959386385181855
+  },
+  {
+    "transaction_id": "txn_bf6b7f9391894abd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9625513037346655
+  },
+  {
+    "transaction_id": "txn_f2754f4985bf4892",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9616214186933862
+  },
+  {
+    "transaction_id": "txn_8c25848747af42bd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9693287671714556
+  },
+  {
+    "transaction_id": "txn_bdd4d4024394402f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9785046567500894
+  },
+  {
+    "transaction_id": "txn_59b30d68a188474c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9999923462425956
+  },
+  {
+    "transaction_id": "txn_08c4fd218efc4368",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9803579428522231
+  },
+  {
+    "transaction_id": "txn_fd9786d7745d422a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9920912006133461
+  },
+  {
+    "transaction_id": "txn_e439ff955c3d429a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9520434764054196
+  },
+  {
+    "transaction_id": "txn_0e72b34f0302419d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9729861094471027
+  },
+  {
+    "transaction_id": "txn_3c10c99ac7b54303",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.995631038322616
+  },
+  {
+    "transaction_id": "txn_122622eac4ec47dc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9843038559664893
+  },
+  {
+    "transaction_id": "txn_da489688f523458c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9795443352994027
+  },
+  {
+    "transaction_id": "txn_3e33921764c1465c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9549375092518814
+  },
+  {
+    "transaction_id": "txn_0fa7703810dd4e72",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9581091230273805
+  },
+  {
+    "transaction_id": "txn_494f5ca21cc342b1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9762616613557965
+  },
+  {
+    "transaction_id": "txn_7e8ce3d7930d48d9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9772652393125779
+  },
+  {
+    "transaction_id": "txn_a4b355d7d3db4a5c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9799876387683794
+  },
+  {
+    "transaction_id": "txn_a46481509ff8423e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9777132603189669
+  },
+  {
+    "transaction_id": "txn_0b1423d6e1ab4c0c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9877690210642442
+  },
+  {
+    "transaction_id": "txn_983d3627e2d849f3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9696496542019618
+  },
+  {
+    "transaction_id": "txn_160b5903dd494836",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9706757587313747
+  },
+  {
+    "transaction_id": "txn_1bfc9e58068c4a1a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9903775473224681
+  },
+  {
+    "transaction_id": "txn_e3f3e9d6c4584eae",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9725216630413508
+  },
+  {
+    "transaction_id": "txn_c4ff474151734e9e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9508597346572187
+  },
+  {
+    "transaction_id": "txn_297cc8df9ce84de4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9581320591216563
+  },
+  {
+    "transaction_id": "txn_a8e8e647a09f46c5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9959219936338993
+  },
+  {
+    "transaction_id": "txn_5f9474e58d5f42dd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9795278330148923
+  },
+  {
+    "transaction_id": "txn_e76054cc4ff3404e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9658869193535939
+  },
+  {
+    "transaction_id": "txn_b8c69139dc644a98",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9788019008797028
+  },
+  {
+    "transaction_id": "txn_168f97b74d8a40ba",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9778354473695942
+  },
+  {
+    "transaction_id": "txn_a490172356c24964",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.965673719873702
+  },
+  {
+    "transaction_id": "txn_36370025c91044f3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9596977191088654
+  },
+  {
+    "transaction_id": "txn_fea16fce024b469c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9678934498752221
+  },
+  {
+    "transaction_id": "txn_1f8788ddb16f4fc6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9935270025907775
+  },
+  {
+    "transaction_id": "txn_68df2d9f347d463c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9629672870740893
+  },
+  {
+    "transaction_id": "txn_f2fba6cb0bba46c3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9809206198665061
+  },
+  {
+    "transaction_id": "txn_053679f8e99847a0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9766861508859005
+  },
+  {
+    "transaction_id": "txn_dab7155a4d6541f6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9562947108094259
+  },
+  {
+    "transaction_id": "txn_f4986bf2a92c4ca8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9590827665781968
+  },
+  {
+    "transaction_id": "txn_38b71795bb45476c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9956196706627318
+  },
+  {
+    "transaction_id": "txn_0884be5a3d284a3b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9860972207891275
+  },
+  {
+    "transaction_id": "txn_a0d423230dce4cef",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9688224810945604
+  },
+  {
+    "transaction_id": "txn_c3495df7c59144e6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9800263745929017
+  },
+  {
+    "transaction_id": "txn_66c68040f49b40fb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9763284960861623
+  },
+  {
+    "transaction_id": "txn_64043d7cdf124cde",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9787532495717863
+  },
+  {
+    "transaction_id": "txn_6c95333877b0449a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9510930220256744
+  },
+  {
+    "transaction_id": "txn_f24f25be24d849b3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9734435262190966
+  },
+  {
+    "transaction_id": "txn_ffe9dd2d00ba4ed1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9933930273804147
+  },
+  {
+    "transaction_id": "txn_eeada1cb9f3241f5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9547174884549419
+  },
+  {
+    "transaction_id": "txn_19c7f5891da74876",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9895536395285194
+  },
+  {
+    "transaction_id": "txn_ff4dda2ee49c4626",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9775387499839627
+  },
+  {
+    "transaction_id": "txn_eb67e5a97b204d96",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9930009564267792
+  },
+  {
+    "transaction_id": "txn_9f7dab73d2b84128",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9602797939119108
+  },
+  {
+    "transaction_id": "txn_086fcaed74394db2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9921829745512645
+  },
+  {
+    "transaction_id": "txn_b76d93580bf74a54",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.975602716499919
+  },
+  {
+    "transaction_id": "txn_d67a2cacb1054a56",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9822626791999464
+  },
+  {
+    "transaction_id": "txn_beb0ade343094550",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9506123802732298
+  },
+  {
+    "transaction_id": "txn_98c122f8867d447a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9562849454356508
+  },
+  {
+    "transaction_id": "txn_c1a35219ebae4492",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9898372848660985
+  },
+  {
+    "transaction_id": "txn_be7a4c769b0d44eb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9709162140044146
+  },
+  {
+    "transaction_id": "txn_02f1778d279444ef",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9706404701610851
+  },
+  {
+    "transaction_id": "txn_8c8a8d01388f46e4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9762422844754121
+  },
+  {
+    "transaction_id": "txn_1a50eb61f48e4681",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9875440062946963
+  },
+  {
+    "transaction_id": "txn_a09ac05579944259",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.998994310178943
+  },
+  {
+    "transaction_id": "txn_e2ace0fa4d9249ac",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9717049566223024
+  },
+  {
+    "transaction_id": "txn_42e1bddc16db423b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9929424690248708
+  },
+  {
+    "transaction_id": "txn_ee705cdd671549fd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9934613577751019
+  },
+  {
+    "transaction_id": "txn_f91df67136514d6a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9958281268881577
+  },
+  {
+    "transaction_id": "txn_082a328abc95472b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9773597918724843
+  },
+  {
+    "transaction_id": "txn_ea8bec23fc8740fe",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9615721382655417
+  },
+  {
+    "transaction_id": "txn_c4f948e681f742af",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.967039863741696
+  },
+  {
+    "transaction_id": "txn_e61c31dc79104115",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9580815959488485
+  },
+  {
+    "transaction_id": "txn_004240cf926b4df4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9532225835222022
+  },
+  {
+    "transaction_id": "txn_ed4c907edf2945cd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9850941996529637
+  },
+  {
+    "transaction_id": "txn_a71bdb21c0b74b36",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9691815317705816
+  },
+  {
+    "transaction_id": "txn_51ddb4ce3aa04816",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9503098641645241
+  },
+  {
+    "transaction_id": "txn_6c1151f292f24399",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9701856313398733
+  },
+  {
+    "transaction_id": "txn_f0027adeec534ca2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9981807480007266
+  },
+  {
+    "transaction_id": "txn_ef3da64ddb2b4cf2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.953388597003951
+  },
+  {
+    "transaction_id": "txn_636476145946424d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9903188863881784
+  },
+  {
+    "transaction_id": "txn_6ac0ca9e73074884",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9530782810309378
+  },
+  {
+    "transaction_id": "txn_087e9867e77140c6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9558356001307677
+  },
+  {
+    "transaction_id": "txn_d63d46620bda43fa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9842355192877298
+  },
+  {
+    "transaction_id": "txn_2baae26f52234837",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9758495992418117
+  },
+  {
+    "transaction_id": "txn_fdd123e1f7144e58",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9838318492395282
+  },
+  {
+    "transaction_id": "txn_0d1134b0d0954487",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.958019513640253
+  },
+  {
+    "transaction_id": "txn_f2036937474547e9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9530993113817099
+  },
+  {
+    "transaction_id": "txn_31f2abb6b8b744a4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9726478620664488
+  },
+  {
+    "transaction_id": "txn_3bcc8bba8b4a4bae",
+    "is_fraud": true,
+    "fraud_pattern": "synthetic_id",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_98349cfe93184850",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9723716441264089
+  },
+  {
+    "transaction_id": "txn_1b81d6a9fb064ca4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9581370662543324
+  },
+  {
+    "transaction_id": "txn_8488baf219bf4f84",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9707786289116341
+  },
+  {
+    "transaction_id": "txn_d8e8aaa61eaa4b20",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9895477634753638
+  },
+  {
+    "transaction_id": "txn_33339770c84a4563",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9811299563642298
+  },
+  {
+    "transaction_id": "txn_07d5181d40064dc2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9631146674187284
+  },
+  {
+    "transaction_id": "txn_0b280e2541af4524",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9639245015656881
+  },
+  {
+    "transaction_id": "txn_10ef31a258934582",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9526078444136111
+  },
+  {
+    "transaction_id": "txn_a245c957d6bb4400",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9980304890019073
+  },
+  {
+    "transaction_id": "txn_a38fff2137d54978",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9899828171346811
+  },
+  {
+    "transaction_id": "txn_33e48d81c259455a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9693601610336733
+  },
+  {
+    "transaction_id": "txn_393ff6d46d8245d4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9973439398333432
+  },
+  {
+    "transaction_id": "txn_c8350061ff034726",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9647833883723513
+  },
+  {
+    "transaction_id": "txn_6dbaccab5811431c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9836946178056316
+  },
+  {
+    "transaction_id": "txn_06c1a089e5c94384",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9818234018504447
+  },
+  {
+    "transaction_id": "txn_2e43a809cb454d94",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9896483748265433
+  },
+  {
+    "transaction_id": "txn_b426192170dd4b8c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9647164958265582
+  },
+  {
+    "transaction_id": "txn_5986e1bfba4e46d4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9532385532620143
+  },
+  {
+    "transaction_id": "txn_fac025d68e95497a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9736508334507075
+  },
+  {
+    "transaction_id": "txn_1219d7dee0a24227",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9844983037275974
+  },
+  {
+    "transaction_id": "txn_4e2609606a5e4d6a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9519325998869623
+  },
+  {
+    "transaction_id": "txn_f105763e23924895",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9882001346490548
+  },
+  {
+    "transaction_id": "txn_e093282294c8451f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9985135395007511
+  },
+  {
+    "transaction_id": "txn_b1eb655aa001456a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9865207658617686
+  },
+  {
+    "transaction_id": "txn_8534da4ef26f4839",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9805452442138766
+  },
+  {
+    "transaction_id": "txn_c2aac9dd579c406d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9762015283531341
+  },
+  {
+    "transaction_id": "txn_e73d838f0cdd476a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9711998407168326
+  },
+  {
+    "transaction_id": "txn_2b02b6edc3c94fe4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9895348118736648
+  },
+  {
+    "transaction_id": "txn_c4e2fe16cc454292",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9637566177237112
+  },
+  {
+    "transaction_id": "txn_29e7396c9b66405e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9839652151110627
+  },
+  {
+    "transaction_id": "txn_07fb47bdd6da46bc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9586861299368838
+  },
+  {
+    "transaction_id": "txn_b213a024df394abb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.981390229645934
+  },
+  {
+    "transaction_id": "txn_cac449f9a4214330",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9832649942022497
+  },
+  {
+    "transaction_id": "txn_d812e5ce485e4b2c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9645964852562937
+  },
+  {
+    "transaction_id": "txn_87036f07073f4edb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9665114511415049
+  },
+  {
+    "transaction_id": "txn_80f117172f7b4cf1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9843429389412418
+  },
+  {
+    "transaction_id": "txn_10991a7d32a442dd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.96640988840557
+  },
+  {
+    "transaction_id": "txn_8d265f0f9b6f4c04",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9935571489603342
+  },
+  {
+    "transaction_id": "txn_1d405af39ef34778",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9944067416565268
+  },
+  {
+    "transaction_id": "txn_026d2c28a85944b1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9528756350214439
+  },
+  {
+    "transaction_id": "txn_675e384a49ee4ccf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9887855660084114
+  },
+  {
+    "transaction_id": "txn_f7c8d7083f004f6f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9717908815030709
+  },
+  {
+    "transaction_id": "txn_5a46aa6237d741d3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.968726536593467
+  },
+  {
+    "transaction_id": "txn_cef29c2f94ab4d32",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9711514367786349
+  },
+  {
+    "transaction_id": "txn_0e3d2f1ecaf142e2",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_f322585f82aa463a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9721978478446444
+  },
+  {
+    "transaction_id": "txn_5f298529c9f74cbc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9764438288886356
+  },
+  {
+    "transaction_id": "txn_db375e863085489c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9770853595856301
+  },
+  {
+    "transaction_id": "txn_8677f6c09c7a45e9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9690114360070823
+  },
+  {
+    "transaction_id": "txn_82cd810cfd7b4c45",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9894792260666201
+  },
+  {
+    "transaction_id": "txn_e2d065b0d4c7485c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.982305313570012
+  },
+  {
+    "transaction_id": "txn_87d1133e5fb649c5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9775484603551453
+  },
+  {
+    "transaction_id": "txn_a51e077a4deb4812",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9564637624298632
+  },
+  {
+    "transaction_id": "txn_db989d69cfe6455a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9580093767641522
+  },
+  {
+    "transaction_id": "txn_33b4558da9214b82",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9534040354680194
+  },
+  {
+    "transaction_id": "txn_ac99225053fb4a69",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9929823577294539
+  },
+  {
+    "transaction_id": "txn_39b5f307299d4a2e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9897553714858971
+  },
+  {
+    "transaction_id": "txn_324357a9621c4265",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9623084102223904
+  },
+  {
+    "transaction_id": "txn_d62cd8a962db42c3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9622781695129358
+  },
+  {
+    "transaction_id": "txn_c456e66571f94644",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9846439574281226
+  },
+  {
+    "transaction_id": "txn_0ae5999b58de49ab",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9602662004896031
+  },
+  {
+    "transaction_id": "txn_51b49ea4bc214741",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9825535205702506
+  },
+  {
+    "transaction_id": "txn_39d51c98f5ba4783",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.958215714468557
+  },
+  {
+    "transaction_id": "txn_506db4f37daa406a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9864108806063094
+  },
+  {
+    "transaction_id": "txn_daef4a482a7e4f7d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9914551255407434
+  },
+  {
+    "transaction_id": "txn_ff7982554dd5471a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9864906969157595
+  },
+  {
+    "transaction_id": "txn_0685d43205fd4451",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9908953681594215
+  },
+  {
+    "transaction_id": "txn_512c6c0477364f66",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9853060815449809
+  },
+  {
+    "transaction_id": "txn_eea66674129242f4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9965418935095566
+  },
+  {
+    "transaction_id": "txn_f9332e8973424bdc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9524473562796101
+  },
+  {
+    "transaction_id": "txn_2fda1ff9236d4374",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.970509592307337
+  },
+  {
+    "transaction_id": "txn_10a20de6c1454f61",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9697302313450512
+  },
+  {
+    "transaction_id": "txn_dce7a540226b4ff3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9791135329908829
+  },
+  {
+    "transaction_id": "txn_5a203503682b403a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9757323412431771
+  },
+  {
+    "transaction_id": "txn_1f6a7b0e0dd44b63",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9667280138821974
+  },
+  {
+    "transaction_id": "txn_607e6510e2704f10",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9941385820537664
+  },
+  {
+    "transaction_id": "txn_88ac49bd95fb42b3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9920866547818289
+  },
+  {
+    "transaction_id": "txn_f9997886f43a44ff",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9683183135581857
+  },
+  {
+    "transaction_id": "txn_bd8f50268fc64346",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9663187494355582
+  },
+  {
+    "transaction_id": "txn_5aba779730404435",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9587307692447157
+  },
+  {
+    "transaction_id": "txn_affbf5a3d9164451",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.953685993651059
+  },
+  {
+    "transaction_id": "txn_5f3ac251fdb94334",
+    "is_fraud": true,
+    "fraud_pattern": "account_takeover",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_731cea49332e43e4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9872799339603933
+  },
+  {
+    "transaction_id": "txn_944c8860ee304569",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9660893084780712
+  },
+  {
+    "transaction_id": "txn_d25a6300e193438e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9705511920004837
+  },
+  {
+    "transaction_id": "txn_0f96fe54f8104b1f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9587312251026446
+  },
+  {
+    "transaction_id": "txn_925ac70e955847be",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9834400081007064
+  },
+  {
+    "transaction_id": "txn_5ed3a3e04ee94714",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9980872757943858
+  },
+  {
+    "transaction_id": "txn_997bc513139a44eb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9782006492486542
+  },
+  {
+    "transaction_id": "txn_39aa40a3489b4441",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9666884117992485
+  },
+  {
+    "transaction_id": "txn_ec060dbc8cd0425f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9728980089437242
+  },
+  {
+    "transaction_id": "txn_8cb41cfbef434b05",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9731302463981978
+  },
+  {
+    "transaction_id": "txn_fe42dba5aa8b4502",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9534141323405022
+  },
+  {
+    "transaction_id": "txn_be977c74e1904c51",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9715200022788671
+  },
+  {
+    "transaction_id": "txn_0f9dcec121c04797",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9731910400647444
+  },
+  {
+    "transaction_id": "txn_18102b4cf2b7473b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9755758398477985
+  },
+  {
+    "transaction_id": "txn_cc699311479b473e",
+    "is_fraud": true,
+    "fraud_pattern": "card_testing",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_bf1604aa1398465a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9556702498963309
+  },
+  {
+    "transaction_id": "txn_a7b052f7f12a4e31",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9582301114953233
+  },
+  {
+    "transaction_id": "txn_d04f4ea7e9aa4acf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9847993967482308
+  },
+  {
+    "transaction_id": "txn_cb3c7de52aab4208",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.964902563212739
+  },
+  {
+    "transaction_id": "txn_78ad89a05e104bb9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9565854258059535
+  },
+  {
+    "transaction_id": "txn_82551294856b4724",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9765995926799531
+  },
+  {
+    "transaction_id": "txn_9dad1b843d8545be",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9940977021334977
+  },
+  {
+    "transaction_id": "txn_108f433355074345",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9584224298366466
+  },
+  {
+    "transaction_id": "txn_1e52e5d848bc4bb8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9788711170759969
+  },
+  {
+    "transaction_id": "txn_47b1b217bd8247cb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9922751981040997
+  },
+  {
+    "transaction_id": "txn_fcd25fa4ed6143a1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9866054714462356
+  },
+  {
+    "transaction_id": "txn_54cfc2ffcd414291",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9979012277971782
+  },
+  {
+    "transaction_id": "txn_ef651e3afbdf4e5c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9628113323898704
+  },
+  {
+    "transaction_id": "txn_46e7275aa7ac4436",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9988385250479699
+  },
+  {
+    "transaction_id": "txn_0983cb1ca0c9413c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9830018774148981
+  },
+  {
+    "transaction_id": "txn_8867905bb2a44c43",
+    "is_fraud": true,
+    "fraud_pattern": "friendly_fraud",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_49fadda168fe450d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9909838268498911
+  },
+  {
+    "transaction_id": "txn_0e6a62ca4bfc4657",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9714166936924918
+  },
+  {
+    "transaction_id": "txn_9da66acc0dad4732",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9694699787868233
+  },
+  {
+    "transaction_id": "txn_6da5796f21b341db",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.957901169877553
+  },
+  {
+    "transaction_id": "txn_b260fd0395594a27",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9985631926193537
+  },
+  {
+    "transaction_id": "txn_01b01173ba564100",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9922254003570089
+  },
+  {
+    "transaction_id": "txn_8c52d2a9ffc24c12",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9945585502167575
+  },
+  {
+    "transaction_id": "txn_8dfde6cd205a40af",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9801873340770227
+  },
+  {
+    "transaction_id": "txn_c9faa4a0864244f5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9904503515013486
+  },
+  {
+    "transaction_id": "txn_534e4f2528fd46ca",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9596084664405948
+  },
+  {
+    "transaction_id": "txn_1cdfe39dac5d43ce",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9853289095449173
+  },
+  {
+    "transaction_id": "txn_97f0bde373b94030",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9599522748225572
+  },
+  {
+    "transaction_id": "txn_7e3c6be361ef4574",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9958845200924608
+  },
+  {
+    "transaction_id": "txn_21db2c18c4e4497a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9706916943358205
+  },
+  {
+    "transaction_id": "txn_69615a230dc54218",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9698093204819427
+  },
+  {
+    "transaction_id": "txn_3147c73e3eaa4497",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9943057810064361
+  },
+  {
+    "transaction_id": "txn_376ebb55c68a480b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9814373936808447
+  },
+  {
+    "transaction_id": "txn_ca5ce6f33b874ccf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9837799135852529
+  },
+  {
+    "transaction_id": "txn_024a82cd3d3245ac",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.955913651230001
+  },
+  {
+    "transaction_id": "txn_766d76e60e3b4969",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9587095590195508
+  },
+  {
+    "transaction_id": "txn_65fec16da3e64ce7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9640891758187583
+  },
+  {
+    "transaction_id": "txn_5dc6ab94f5df4fd2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9974506119945311
+  },
+  {
+    "transaction_id": "txn_071bdec2aa5b40c0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9995093477741305
+  },
+  {
+    "transaction_id": "txn_e066b8c45fe84b6c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9607829036800175
+  },
+  {
+    "transaction_id": "txn_52596ee5e6a542c9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.955555481488989
+  },
+  {
+    "transaction_id": "txn_0fe979601eda4bea",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9912359185092386
+  },
+  {
+    "transaction_id": "txn_5c3f08de0ee142c1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9962896459765198
+  },
+  {
+    "transaction_id": "txn_8b16aad63c5642e0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9911701186591468
+  },
+  {
+    "transaction_id": "txn_9f356f444d024ef8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9582356972168966
+  },
+  {
+    "transaction_id": "txn_69a2440296cb4fc9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9925489149024294
+  },
+  {
+    "transaction_id": "txn_413387f3b97b43ce",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9547444633710594
+  },
+  {
+    "transaction_id": "txn_1f6e3aed7fef41fc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9502162306909125
+  },
+  {
+    "transaction_id": "txn_852add6850d14fd3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9668945938208834
+  },
+  {
+    "transaction_id": "txn_9dc3ba26f91941b1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9933098850094355
+  },
+  {
+    "transaction_id": "txn_852cbbef45d6498f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9787841421318678
+  },
+  {
+    "transaction_id": "txn_595c2811a53c4e53",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9993712890293004
+  },
+  {
+    "transaction_id": "txn_f046f8e6e39341b1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9907241033632226
+  },
+  {
+    "transaction_id": "txn_f3386f36940f465e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9648931226025851
+  },
+  {
+    "transaction_id": "txn_b7136bc5b0d9423f",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_812bb115ae2048df",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9601343322068648
+  },
+  {
+    "transaction_id": "txn_8adbad819d1f415e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9533826240315735
+  },
+  {
+    "transaction_id": "txn_308e3ae03d9e4372",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9541404579184191
+  },
+  {
+    "transaction_id": "txn_39639e3436644c00",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9576235081117425
+  },
+  {
+    "transaction_id": "txn_6b66f874e7da4ab2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9935739854035551
+  },
+  {
+    "transaction_id": "txn_6c64681f920944df",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9804826559003081
+  },
+  {
+    "transaction_id": "txn_1dce5ea7ee294762",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9889790344901468
+  },
+  {
+    "transaction_id": "txn_72bcbb5841474aaa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.968256513965741
+  },
+  {
+    "transaction_id": "txn_61f9fcf4fdf643c2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9922637372927939
+  },
+  {
+    "transaction_id": "txn_4f42cc4a18a64829",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9703931857862569
+  },
+  {
+    "transaction_id": "txn_a6bc090994bf49f4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9968276908971799
+  },
+  {
+    "transaction_id": "txn_16a40ac0dd5940bd",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_b4edb945fab84982",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9725184794425918
+  },
+  {
+    "transaction_id": "txn_d6d42bff44f14d68",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9868212479162805
+  },
+  {
+    "transaction_id": "txn_eb954e0b9c8d41e4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9567716840342162
+  },
+  {
+    "transaction_id": "txn_38e92a403edc4c23",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9861311858317527
+  },
+  {
+    "transaction_id": "txn_c95ec1de481242f0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9610184062196501
+  },
+  {
+    "transaction_id": "txn_a009ffe7b0014f6e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.971149760362913
+  },
+  {
+    "transaction_id": "txn_3daf103b52ca4250",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9838361425391225
+  },
+  {
+    "transaction_id": "txn_58ba055feb8b4ba0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.988658156177868
+  },
+  {
+    "transaction_id": "txn_539ea2b38d9a40e7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9880900635056328
+  },
+  {
+    "transaction_id": "txn_b23b7d47d85b411d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9540662288950346
+  },
+  {
+    "transaction_id": "txn_81c8c75b2c6745b4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9772907774314842
+  },
+  {
+    "transaction_id": "txn_dc18ea077a9e4c36",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9606158069687231
+  },
+  {
+    "transaction_id": "txn_e22a6f7ef9e9411a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9898961447437212
+  },
+  {
+    "transaction_id": "txn_68016d5012f442d8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9602842313700606
+  },
+  {
+    "transaction_id": "txn_f009a71d29374be0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9744763368661726
+  },
+  {
+    "transaction_id": "txn_3a6c0242d26e4684",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9714458389293892
+  },
+  {
+    "transaction_id": "txn_d243563b890f4700",
+    "is_fraud": true,
+    "fraud_pattern": "account_takeover",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_7c2a15e8e5154ee4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9926629882817863
+  },
+  {
+    "transaction_id": "txn_70522605e3a84065",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9710335285758739
+  },
+  {
+    "transaction_id": "txn_3830a7f911ad4578",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9764299490367475
+  },
+  {
+    "transaction_id": "txn_cc667a09a5994c5f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9736860220286861
+  },
+  {
+    "transaction_id": "txn_b8391dc7cb48429a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9568926000409225
+  },
+  {
+    "transaction_id": "txn_0d73ec8e2d434147",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9644853280764294
+  },
+  {
+    "transaction_id": "txn_b61d1ef7dada44d5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9875552852838929
+  },
+  {
+    "transaction_id": "txn_4982fbfcc6a94c31",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.981256313434039
+  },
+  {
+    "transaction_id": "txn_30731a6bde2f4a80",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9578371590381582
+  },
+  {
+    "transaction_id": "txn_038857b34fb74e85",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9560763803524442
+  },
+  {
+    "transaction_id": "txn_39f5706d9c904563",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9689521589936949
+  },
+  {
+    "transaction_id": "txn_e0795a4b5ffd4a07",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9653251302962856
+  },
+  {
+    "transaction_id": "txn_382c00d223564351",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.993124924609198
+  },
+  {
+    "transaction_id": "txn_576b18c017954d4a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.979915729371073
+  },
+  {
+    "transaction_id": "txn_618bfd6371b24143",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9643947206855418
+  },
+  {
+    "transaction_id": "txn_8fb41ebb40324bc2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9662152102297368
+  },
+  {
+    "transaction_id": "txn_cd8c963213e44d7a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9692710021045259
+  },
+  {
+    "transaction_id": "txn_14e94b52af0a4e8f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9968325353983496
+  },
+  {
+    "transaction_id": "txn_bcad6fb7540f4e43",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9730840242858645
+  },
+  {
+    "transaction_id": "txn_c11a5979318f4700",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9554289772929769
+  },
+  {
+    "transaction_id": "txn_69773fa583414805",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9572087120477794
+  },
+  {
+    "transaction_id": "txn_1f05d9c4206e45c5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.982661768921606
+  },
+  {
+    "transaction_id": "txn_6c00699307f742bc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.98567773242667
+  },
+  {
+    "transaction_id": "txn_14adb9a7e965405c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.967653854776303
+  },
+  {
+    "transaction_id": "txn_89beb22ac2574994",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9974063984741509
+  },
+  {
+    "transaction_id": "txn_57fdb4c8d15142d4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9583341099821778
+  },
+  {
+    "transaction_id": "txn_be9051c156004a94",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9611381653061107
+  },
+  {
+    "transaction_id": "txn_14b2ecd38eff4a72",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9855522522421856
+  },
+  {
+    "transaction_id": "txn_95151c1bf281487a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9634972795537676
+  },
+  {
+    "transaction_id": "txn_122099dfc6704457",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9589187053855851
+  },
+  {
+    "transaction_id": "txn_3994c9518a0b49c5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9653100400727342
+  },
+  {
+    "transaction_id": "txn_cb999b78f93240aa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9642702842424677
+  },
+  {
+    "transaction_id": "txn_64351e5aebc44134",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9777817745028985
+  },
+  {
+    "transaction_id": "txn_b3026cfc1c6b4cc3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9585228246021106
+  },
+  {
+    "transaction_id": "txn_58c72958f7f0463b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9523637151202622
+  },
+  {
+    "transaction_id": "txn_cfe0d8211dcc43d9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9898126178282323
+  },
+  {
+    "transaction_id": "txn_b3fad33526f0402b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9672022403173598
+  },
+  {
+    "transaction_id": "txn_aeab45e8aec143c3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9870266122257075
+  },
+  {
+    "transaction_id": "txn_fc4aa28d5a1b4fa7",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_a902a421a5914c7f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9976243859089821
+  },
+  {
+    "transaction_id": "txn_16893ebc77fc44fb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9790492183150353
+  },
+  {
+    "transaction_id": "txn_0dc3ace00a1241f0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9855480139427975
+  },
+  {
+    "transaction_id": "txn_2c60bf967b2f4afa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9845370928256167
+  },
+  {
+    "transaction_id": "txn_2bbf65c464c94317",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9838671963367462
+  },
+  {
+    "transaction_id": "txn_68b6e01a15ea43b4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.983134544413387
+  },
+  {
+    "transaction_id": "txn_9850e3c27c6c4ed2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9759115039743702
+  },
+  {
+    "transaction_id": "txn_08837efd39a94329",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9610610329894663
+  },
+  {
+    "transaction_id": "txn_d2942c072392462f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9579599918433682
+  },
+  {
+    "transaction_id": "txn_041fcc00863a47a8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9804660915323719
+  },
+  {
+    "transaction_id": "txn_0bdeab14428f43e7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9592308922494587
+  },
+  {
+    "transaction_id": "txn_367155f5fa804a3c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9901064851138823
+  },
+  {
+    "transaction_id": "txn_fa89be81951d415c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9712024265293551
+  },
+  {
+    "transaction_id": "txn_ea3b253fd23e43e5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9593003413937127
+  },
+  {
+    "transaction_id": "txn_ecf17523227e4a9c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.954659340510205
+  },
+  {
+    "transaction_id": "txn_122881d1c09d4401",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9707666497017544
+  },
+  {
+    "transaction_id": "txn_bda7c0c44c5f49d3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9911428212790445
+  },
+  {
+    "transaction_id": "txn_4dd0c01958b44d65",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.986847793315245
+  },
+  {
+    "transaction_id": "txn_49a9dda361964161",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9685483800407014
+  },
+  {
+    "transaction_id": "txn_fdecd6dde5834265",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9852561502834947
+  },
+  {
+    "transaction_id": "txn_09ab19e5d54f4e2e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9590418942710264
+  },
+  {
+    "transaction_id": "txn_c87e2ccb80b44aa5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9710762039598626
+  },
+  {
+    "transaction_id": "txn_e6f52bec58594f3a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9529528142481494
+  },
+  {
+    "transaction_id": "txn_6c5d515b6a6f4f13",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9588477486969725
+  },
+  {
+    "transaction_id": "txn_ee3edb0bbd764dd3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.971359306421836
+  },
+  {
+    "transaction_id": "txn_c31cdea46df44196",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9607326145073896
+  },
+  {
+    "transaction_id": "txn_2d102bfd06684fcf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9617697947398336
+  },
+  {
+    "transaction_id": "txn_cbd7fb4ef1244183",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9975506962150532
+  },
+  {
+    "transaction_id": "txn_1974bf7f7c9d4d4c",
+    "is_fraud": true,
+    "fraud_pattern": "friendly_fraud",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_af249557987f4230",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9754840832149542
+  },
+  {
+    "transaction_id": "txn_23481c148869483c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9977939215273796
+  },
+  {
+    "transaction_id": "txn_ccb77c49b53543aa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9641244942709183
+  },
+  {
+    "transaction_id": "txn_92da445bb9164d6b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9956106788098529
+  },
+  {
+    "transaction_id": "txn_0ff584a7844e4fa8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9834043636585911
+  },
+  {
+    "transaction_id": "txn_74db2f86bd6b444a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9784081242801991
+  },
+  {
+    "transaction_id": "txn_8d216a8e27a64024",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9939720969075
+  },
+  {
+    "transaction_id": "txn_c26b83108e504288",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9770599092256479
+  },
+  {
+    "transaction_id": "txn_6ff7abf591154d9d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9914986858050914
+  },
+  {
+    "transaction_id": "txn_746afc8c085741a6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9561514472197101
+  },
+  {
+    "transaction_id": "txn_59452e95dd1c4ba3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9930788608105557
+  },
+  {
+    "transaction_id": "txn_799ce65915134995",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9937076110133969
+  },
+  {
+    "transaction_id": "txn_d5555d384c8b42a1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9659510371776808
+  },
+  {
+    "transaction_id": "txn_8848066dda42442b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9994441487081683
+  },
+  {
+    "transaction_id": "txn_af89c1d661e04732",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9998274945718075
+  },
+  {
+    "transaction_id": "txn_e9bb888aaa44448d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9947582207901644
+  },
+  {
+    "transaction_id": "txn_d1debf565c314785",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9731212870322358
+  },
+  {
+    "transaction_id": "txn_b48d65da94f64093",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9616207007955667
+  },
+  {
+    "transaction_id": "txn_f2038f069fee4d57",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9832140065578587
+  },
+  {
+    "transaction_id": "txn_735b6bcfe27943fd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9884988556918386
+  },
+  {
+    "transaction_id": "txn_8f985e357e944d18",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_2308bcc9d544487e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9981362696883339
+  },
+  {
+    "transaction_id": "txn_d07a5e064f454f02",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9739827897585465
+  },
+  {
+    "transaction_id": "txn_3dbb1e8ac55b45f4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9645237315292398
+  },
+  {
+    "transaction_id": "txn_d51141aa942b4055",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9626271250809239
+  },
+  {
+    "transaction_id": "txn_5aeca70fd0f24efc",
+    "is_fraud": true,
+    "fraud_pattern": "account_takeover",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_84bab2805e3f43ae",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9953386108492807
+  },
+  {
+    "transaction_id": "txn_0e17d76280ae4a0a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.963867080803391
+  },
+  {
+    "transaction_id": "txn_73cca233193a4bbe",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9864451386773208
+  },
+  {
+    "transaction_id": "txn_b74808da81834895",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.995131840134232
+  },
+  {
+    "transaction_id": "txn_59bdd45a2fa94c80",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9991041678757187
+  },
+  {
+    "transaction_id": "txn_6d484085ffd749aa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9807357594512588
+  },
+  {
+    "transaction_id": "txn_2035a14109164fa8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9801350585031957
+  },
+  {
+    "transaction_id": "txn_b61732c856f64c7a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9684036506707919
+  },
+  {
+    "transaction_id": "txn_e43c429e19e5449a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9596232252622128
+  },
+  {
+    "transaction_id": "txn_7cf7e47661b340b0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9541586200175616
+  },
+  {
+    "transaction_id": "txn_92a4d1118123461f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9531899929340194
+  },
+  {
+    "transaction_id": "txn_5b4c6a42fb9b42da",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9898934367812962
+  },
+  {
+    "transaction_id": "txn_1f1d27d646c74ada",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.967970560630708
+  },
+  {
+    "transaction_id": "txn_9ed5a55289114576",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9700091533134763
+  },
+  {
+    "transaction_id": "txn_01c073ba3992421e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9956730086818517
+  },
+  {
+    "transaction_id": "txn_46f7c275f6714afd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9606772225964475
+  },
+  {
+    "transaction_id": "txn_940508c61afd4f6a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9957651791017791
+  },
+  {
+    "transaction_id": "txn_da25dbd9f3b846aa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9989132265713573
+  },
+  {
+    "transaction_id": "txn_f7f508fbf98041a4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.988861259734007
+  },
+  {
+    "transaction_id": "txn_5b5a9f3c607e497b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.975206252920295
+  },
+  {
+    "transaction_id": "txn_c86899f3761245fa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9551295640974142
+  },
+  {
+    "transaction_id": "txn_9e5f80364d7b4f31",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9541128379575571
+  },
+  {
+    "transaction_id": "txn_37b74ffbce214e19",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9868455785863137
+  },
+  {
+    "transaction_id": "txn_fae1abacd0094c54",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9813662820356317
+  },
+  {
+    "transaction_id": "txn_7859f78ca3bc43aa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9798586767292387
+  },
+  {
+    "transaction_id": "txn_703fc8dfac6a49d3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9765699069445091
+  },
+  {
+    "transaction_id": "txn_deeb620a21ec460c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9638058997262008
+  },
+  {
+    "transaction_id": "txn_6983980d73b34da8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9678456458100649
+  },
+  {
+    "transaction_id": "txn_dc73a7c5447442b5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9523112900044319
+  },
+  {
+    "transaction_id": "txn_d03335f92e824fb1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.978666306499489
+  },
+  {
+    "transaction_id": "txn_90d931d0b6d94998",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9637314989884902
+  },
+  {
+    "transaction_id": "txn_1ecfbd274a7a4b7f",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_a7f2212a307949c9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9950693404630775
+  },
+  {
+    "transaction_id": "txn_4bd92f4a1a9e4756",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9856966172916534
+  },
+  {
+    "transaction_id": "txn_0ef71193f4a14f52",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9945057176510066
+  },
+  {
+    "transaction_id": "txn_8c9c7a912ced4abf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9773600820121731
+  },
+  {
+    "transaction_id": "txn_2802ab54b61a4fc0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9689982568003078
+  },
+  {
+    "transaction_id": "txn_26144a5999ad4da6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9712059065322818
+  },
+  {
+    "transaction_id": "txn_c011460120674936",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9665498218116723
+  },
+  {
+    "transaction_id": "txn_55336c41d7d84c92",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9640694305687404
+  },
+  {
+    "transaction_id": "txn_4db85092afb74edb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9569087143387345
+  },
+  {
+    "transaction_id": "txn_13e6545117584e0d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9895080222998481
+  },
+  {
+    "transaction_id": "txn_85cacea398064db2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9547787310257881
+  },
+  {
+    "transaction_id": "txn_440d2a9896a24331",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9508324145103881
+  },
+  {
+    "transaction_id": "txn_a69ce72e3744453d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9699286727623303
+  },
+  {
+    "transaction_id": "txn_c1f501cd377a4d8a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9998203898456364
+  },
+  {
+    "transaction_id": "txn_31ce9581a60b4d1f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9534529875278202
+  },
+  {
+    "transaction_id": "txn_a37bdbf4c6444e8a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9773231722466842
+  },
+  {
+    "transaction_id": "txn_62de0b66f7164bb1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9635818162526336
+  },
+  {
+    "transaction_id": "txn_595c5352d50e49fd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9857845362520342
+  },
+  {
+    "transaction_id": "txn_f6cd80edf9f04113",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9963005189431443
+  },
+  {
+    "transaction_id": "txn_a046a1e1579f4af9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9832346566816091
+  },
+  {
+    "transaction_id": "txn_2cfde5f2ed1e4f65",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9762296509835682
+  },
+  {
+    "transaction_id": "txn_b11181121da34722",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9909980004410991
+  },
+  {
+    "transaction_id": "txn_0b1060dd9def40ba",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9865677810598006
+  },
+  {
+    "transaction_id": "txn_d6fd3316afb24ec6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9923801534774622
+  },
+  {
+    "transaction_id": "txn_e0909ca23fbf4237",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9637639809906963
+  },
+  {
+    "transaction_id": "txn_7b3cb301029546fa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9846040432790333
+  },
+  {
+    "transaction_id": "txn_9dee4e2bc873423d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9742837222138728
+  },
+  {
+    "transaction_id": "txn_c0b5beed003443f4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9965799924072949
+  },
+  {
+    "transaction_id": "txn_fd16fe6278294536",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9950779249279431
+  },
+  {
+    "transaction_id": "txn_589737346f84431b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9614436033841095
+  },
+  {
+    "transaction_id": "txn_e24a399c148048aa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9910738744125265
+  },
+  {
+    "transaction_id": "txn_3ac38d65156d4ac6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9653315364842486
+  },
+  {
+    "transaction_id": "txn_86f9b89a65fe47fd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9529064245291622
+  },
+  {
+    "transaction_id": "txn_f1af8f2af3064726",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9714117062132265
+  },
+  {
+    "transaction_id": "txn_32f62a4e146d4ec7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9706875972333645
+  },
+  {
+    "transaction_id": "txn_275f1ae6db78424d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9955670493121168
+  },
+  {
+    "transaction_id": "txn_1a101816bc224edd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9647566119592406
+  },
+  {
+    "transaction_id": "txn_6d13f97e4b6c4bb2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9678407482874352
+  },
+  {
+    "transaction_id": "txn_26da9bb528904f9e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.966582804881644
+  },
+  {
+    "transaction_id": "txn_a209fb88714741eb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9693117932897768
+  },
+  {
+    "transaction_id": "txn_5be91dcb3c414736",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9790101900741923
+  },
+  {
+    "transaction_id": "txn_3cb7fb31147e4ed0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9638769872590894
+  },
+  {
+    "transaction_id": "txn_3af124e818c44a69",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9542897507502586
+  },
+  {
+    "transaction_id": "txn_b2594c299e604685",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9556025420839683
+  },
+  {
+    "transaction_id": "txn_3fdd7964f893409f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9842947237946035
+  },
+  {
+    "transaction_id": "txn_cc66d7e78d5940ca",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9839061990318703
+  },
+  {
+    "transaction_id": "txn_38b767a8d146431a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9785774109469306
+  },
+  {
+    "transaction_id": "txn_3399e627c6844504",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9568506179687309
+  },
+  {
+    "transaction_id": "txn_aab7516e4ce14798",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9549643881488868
+  },
+  {
+    "transaction_id": "txn_7fe824a6749e4c27",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9927156478843454
+  },
+  {
+    "transaction_id": "txn_1110c7b6a9e442f2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9632939449629662
+  },
+  {
+    "transaction_id": "txn_b100359eb95f4252",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9548628788931018
+  },
+  {
+    "transaction_id": "txn_694e7ab8d6aa47d1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9911239571842525
+  },
+  {
+    "transaction_id": "txn_9de87a48a9e44e20",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.985837482003968
+  },
+  {
+    "transaction_id": "txn_bcc9e333b6644eaf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9695182830476087
+  },
+  {
+    "transaction_id": "txn_eb96590ef485491e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9756314645803535
+  },
+  {
+    "transaction_id": "txn_884b0147edf446f1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9970036292956479
+  },
+  {
+    "transaction_id": "txn_22f31da281a24854",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9870089951727592
+  },
+  {
+    "transaction_id": "txn_cad2b35f909d478e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9529914362782258
+  },
+  {
+    "transaction_id": "txn_2a8c2987e659444e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9669908890271858
+  },
+  {
+    "transaction_id": "txn_c1806c81ef48454d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9651536456038338
+  },
+  {
+    "transaction_id": "txn_affe2bf72f3e4199",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9801114706834285
+  },
+  {
+    "transaction_id": "txn_7fea49e55cd3440e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9811342185057971
+  },
+  {
+    "transaction_id": "txn_f4326b45ccd64694",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9940251620381084
+  },
+  {
+    "transaction_id": "txn_cccd9362ebaf49ae",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9565276508852248
+  },
+  {
+    "transaction_id": "txn_b6cc95f802fa445c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9681772313547211
+  },
+  {
+    "transaction_id": "txn_c952d196b10340f4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9725098984834167
+  },
+  {
+    "transaction_id": "txn_bcf1b8e3e6004492",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9741616673004748
+  },
+  {
+    "transaction_id": "txn_7f6b771706c54f58",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9605793571105693
+  },
+  {
+    "transaction_id": "txn_6c72d7cce2164778",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9769781820589792
+  },
+  {
+    "transaction_id": "txn_b730b90c6d234a65",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9566824218039008
+  },
+  {
+    "transaction_id": "txn_dc274d5f7db549cd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9877150292142926
+  },
+  {
+    "transaction_id": "txn_cdaf9f334f7744c7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9713966115999384
+  },
+  {
+    "transaction_id": "txn_fab721f0516e4d67",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9841766165542118
+  },
+  {
+    "transaction_id": "txn_5a8177c4dda64181",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9921993284062339
+  },
+  {
+    "transaction_id": "txn_727e6c198bc34638",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9909772109362811
+  },
+  {
+    "transaction_id": "txn_06aaf94233674aa3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9647960003605246
+  },
+  {
+    "transaction_id": "txn_f9e3f0225c3a44f7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9571351787016479
+  },
+  {
+    "transaction_id": "txn_0a4d3f7f5fa54111",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9584844078541505
+  },
+  {
+    "transaction_id": "txn_15cd288020d54b99",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9591532996998525
+  },
+  {
+    "transaction_id": "txn_95e16a591ef04f68",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9692677140664329
+  },
+  {
+    "transaction_id": "txn_52ac46930a0d4964",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.962201725693032
+  },
+  {
+    "transaction_id": "txn_c3f609f293124ba5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9514077848304534
+  },
+  {
+    "transaction_id": "txn_7cc831b319524beb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9889215149150017
+  },
+  {
+    "transaction_id": "txn_207ab057e4e94c01",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9992732289452004
+  },
+  {
+    "transaction_id": "txn_88ef6cb6deb74600",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9888296563046483
+  },
+  {
+    "transaction_id": "txn_14909be466534795",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9818647207871206
+  },
+  {
+    "transaction_id": "txn_c450a8d4e773406d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9531799183172128
+  },
+  {
+    "transaction_id": "txn_1911fd56faef4c20",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9876115314835804
+  },
+  {
+    "transaction_id": "txn_c2ccf7a420a940f8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9653544096226447
+  },
+  {
+    "transaction_id": "txn_2c3060e4c55a42fc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9613301092958068
+  },
+  {
+    "transaction_id": "txn_e9dd5277ea2b4837",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9872602362221954
+  },
+  {
+    "transaction_id": "txn_a09ef6961dc94c0d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9784530169550724
+  },
+  {
+    "transaction_id": "txn_525903087c2e4630",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9920202696218404
+  },
+  {
+    "transaction_id": "txn_f0a0ae327c654073",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9749047905619037
+  },
+  {
+    "transaction_id": "txn_d4a83bd97e7f4f7c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9626809448041352
+  },
+  {
+    "transaction_id": "txn_d18d080bc66d4063",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9682156934930727
+  },
+  {
+    "transaction_id": "txn_9f0c24e3b2014b74",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.987312153865178
+  },
+  {
+    "transaction_id": "txn_3f3276a063174311",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9697313237437342
+  },
+  {
+    "transaction_id": "txn_893f220a67a94b3a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9806666309609531
+  },
+  {
+    "transaction_id": "txn_d19432c7203f4ea7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9589956768578809
+  },
+  {
+    "transaction_id": "txn_ea3f405adfb94970",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9724611976527603
+  },
+  {
+    "transaction_id": "txn_ccfe116a143c42c3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9629755488835231
+  },
+  {
+    "transaction_id": "txn_b85d1b9eb0084c98",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9957577635504962
+  },
+  {
+    "transaction_id": "txn_beca11638fab467f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9770125974791115
+  },
+  {
+    "transaction_id": "txn_3a987d4b020f440c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9936221090940622
+  },
+  {
+    "transaction_id": "txn_28e9794f25a64a6f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9950377857266962
+  },
+  {
+    "transaction_id": "txn_73116975dfe8466a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9649199003966692
+  },
+  {
+    "transaction_id": "txn_01825bb4d19f44a5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.961329284533608
+  },
+  {
+    "transaction_id": "txn_2f7a38e1c1cd4584",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9547045610174982
+  },
+  {
+    "transaction_id": "txn_a18f366c84524a29",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9978247107001729
+  },
+  {
+    "transaction_id": "txn_36116afbc68748bd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9893468522936526
+  },
+  {
+    "transaction_id": "txn_e2f035fec5504397",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9505198074927385
+  },
+  {
+    "transaction_id": "txn_8e73ed14a9d4407c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9763620831245049
+  },
+  {
+    "transaction_id": "txn_7e4b2b480c484508",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9537579430337779
+  },
+  {
+    "transaction_id": "txn_3ca67b3a886c4445",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9688697017847359
+  },
+  {
+    "transaction_id": "txn_21338913fc614de8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9650162533099514
+  },
+  {
+    "transaction_id": "txn_aaec57e6230f49bd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9746620692252155
+  },
+  {
+    "transaction_id": "txn_88ad66cf274e49ce",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9681798478296282
+  },
+  {
+    "transaction_id": "txn_8bd33f4c03784e08",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9738174413756535
+  },
+  {
+    "transaction_id": "txn_369835ec038f4d2e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9563397119109421
+  },
+  {
+    "transaction_id": "txn_4a671ae810534361",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9778165479603494
+  },
+  {
+    "transaction_id": "txn_119bf6d177ca452b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9528956887910116
+  },
+  {
+    "transaction_id": "txn_5aa66ff0300b4b55",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9645130299835334
+  },
+  {
+    "transaction_id": "txn_2d1062a27de8408b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9614262390044956
+  },
+  {
+    "transaction_id": "txn_7cbb5b87f62e4ec5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9643375585393762
+  },
+  {
+    "transaction_id": "txn_d035ff066f6742f5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.989706807511583
+  },
+  {
+    "transaction_id": "txn_24d98ca8d69c4cc4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9681630656766995
+  },
+  {
+    "transaction_id": "txn_540b2861ac1245df",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9739216615061654
+  },
+  {
+    "transaction_id": "txn_c83efa4341204670",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9764723536946153
+  },
+  {
+    "transaction_id": "txn_630879e1c94144d3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9696161150202957
+  },
+  {
+    "transaction_id": "txn_2cdf6d4d306a46a1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9842891501018682
+  },
+  {
+    "transaction_id": "txn_b004b761e40e4b4f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9580798560740699
+  },
+  {
+    "transaction_id": "txn_8a646ffb63bf4c54",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9508444695570605
+  },
+  {
+    "transaction_id": "txn_2dba450ad18a4fef",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.981434118943525
+  },
+  {
+    "transaction_id": "txn_48d364b044704e6d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9929142707554686
+  },
+  {
+    "transaction_id": "txn_bd3c9419cf034bbd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9913945404749465
+  },
+  {
+    "transaction_id": "txn_5b46d9075d2e47a1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9929873018769996
+  },
+  {
+    "transaction_id": "txn_1bf8df373b5e4f37",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9513314781071244
+  },
+  {
+    "transaction_id": "txn_8a67b2c556284f2f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9933057584082259
+  },
+  {
+    "transaction_id": "txn_37fec343b57e42c5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9926122095708213
+  },
+  {
+    "transaction_id": "txn_2b92b9c6f05245aa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9842747793837993
+  },
+  {
+    "transaction_id": "txn_a47a3c6a01994fd8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9901243081113545
+  },
+  {
+    "transaction_id": "txn_82d09e3ef0e7460a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9877269499747399
+  },
+  {
+    "transaction_id": "txn_3d6ebe4d145d4bec",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9939379912048266
+  },
+  {
+    "transaction_id": "txn_972825ead13d4ffb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9780042355586647
+  },
+  {
+    "transaction_id": "txn_20275e7b58c9432c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9920633121637303
+  },
+  {
+    "transaction_id": "txn_ce1697aeb02d4ffb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9549815467030062
+  },
+  {
+    "transaction_id": "txn_1028e921665e41d8",
+    "is_fraud": true,
+    "fraud_pattern": "account_takeover",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_2509579547654b03",
+    "is_fraud": true,
+    "fraud_pattern": "friendly_fraud",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_c4d149e4e3b94e78",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9521957286837381
+  },
+  {
+    "transaction_id": "txn_abbfa2fde6a145ba",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9531574888907177
+  },
+  {
+    "transaction_id": "txn_72e59cc5c73a46a5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9997414435521791
+  },
+  {
+    "transaction_id": "txn_2f0c3f39771c4b6f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9595124127956377
+  },
+  {
+    "transaction_id": "txn_56fe12d25af041d0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9931779079526676
+  },
+  {
+    "transaction_id": "txn_830b264837d5400e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9852980223142839
+  },
+  {
+    "transaction_id": "txn_868d0e94827641b2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.977210153061518
+  },
+  {
+    "transaction_id": "txn_99943d2e80114926",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9704382818880554
+  },
+  {
+    "transaction_id": "txn_04e0345d693541cf",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9728242807405912
+  },
+  {
+    "transaction_id": "txn_f34b662c92764e50",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9679389605837182
+  },
+  {
+    "transaction_id": "txn_39d512a5b9544d45",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9797150703325367
+  },
+  {
+    "transaction_id": "txn_366cf66543954b25",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9561608888842247
+  },
+  {
+    "transaction_id": "txn_f2d43c81be0a4ac9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9895286651795691
+  },
+  {
+    "transaction_id": "txn_829f85f6b4994667",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9727208831423915
+  },
+  {
+    "transaction_id": "txn_35f67a92f0d14540",
+    "is_fraud": true,
+    "fraud_pattern": "account_takeover",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_80de0b4d7af74fb6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9755193295270166
+  },
+  {
+    "transaction_id": "txn_0db8764f84bb48af",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.999010189831859
+  },
+  {
+    "transaction_id": "txn_b258ea2be8cf4e6e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9773182468086121
+  },
+  {
+    "transaction_id": "txn_479c223b12a2442f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9932146311133829
+  },
+  {
+    "transaction_id": "txn_bc7f5328030a4fc4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9709558895667545
+  },
+  {
+    "transaction_id": "txn_d67cc2af16cd4c27",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9848789020993581
+  },
+  {
+    "transaction_id": "txn_3576c2e432494231",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9931303512104138
+  },
+  {
+    "transaction_id": "txn_045fc4e82e43470d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9756592374641563
+  },
+  {
+    "transaction_id": "txn_08797d06345d4530",
+    "is_fraud": true,
+    "fraud_pattern": "bust_out",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_cd9850b2782d4fe6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9728913459241468
+  },
+  {
+    "transaction_id": "txn_c3ff539914c14083",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9922393293478102
+  },
+  {
+    "transaction_id": "txn_7c75da718aa94313",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.997006377408973
+  },
+  {
+    "transaction_id": "txn_6a4a9e87677349e8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9724479594119707
+  },
+  {
+    "transaction_id": "txn_1522b25b325a4b74",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9546755740128666
+  },
+  {
+    "transaction_id": "txn_873e608422ef4e99",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9583803117905212
+  },
+  {
+    "transaction_id": "txn_06c286c336434068",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.988221138083636
+  },
+  {
+    "transaction_id": "txn_5b84b59a0e444b77",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9779039806248249
+  },
+  {
+    "transaction_id": "txn_8ce245742069444c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9751951144126925
+  },
+  {
+    "transaction_id": "txn_6d1c17a7d9c14464",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9654428857227046
+  },
+  {
+    "transaction_id": "txn_c78be600f03a4d4e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.978165551068315
+  },
+  {
+    "transaction_id": "txn_ea8d40792737491c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9883904005866551
+  },
+  {
+    "transaction_id": "txn_89146e221aa74cdc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9901562347739944
+  },
+  {
+    "transaction_id": "txn_ce356d7f5d7b4042",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.998636489545153
+  },
+  {
+    "transaction_id": "txn_afbc3d4f4b934544",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9664345935486044
+  },
+  {
+    "transaction_id": "txn_d2de105cc5174ca5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9923116609877538
+  },
+  {
+    "transaction_id": "txn_f817e128302041c0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9606258101953984
+  },
+  {
+    "transaction_id": "txn_914a2a2756444dfd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9899326337959666
+  },
+  {
+    "transaction_id": "txn_ad660fea9ff046a3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9890917809440208
+  },
+  {
+    "transaction_id": "txn_ea402039a6534039",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9629107355269556
+  },
+  {
+    "transaction_id": "txn_6391b19b5ef14e87",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9547056867980763
+  },
+  {
+    "transaction_id": "txn_34e45354c96f4536",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9601211725580647
+  },
+  {
+    "transaction_id": "txn_7bdb6980b69a4e73",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9674257099674245
+  },
+  {
+    "transaction_id": "txn_bd78d363896447a9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9548942756274575
+  },
+  {
+    "transaction_id": "txn_10a3021306c34273",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9881507710862807
+  },
+  {
+    "transaction_id": "txn_a87e82754b4146f6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.958032103095569
+  },
+  {
+    "transaction_id": "txn_adc628cf232044b8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9600579901714255
+  },
+  {
+    "transaction_id": "txn_fe9a01d734ca491a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9932423282081028
+  },
+  {
+    "transaction_id": "txn_112a6cf5dcc54dda",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9645893081568117
+  },
+  {
+    "transaction_id": "txn_38b53958f1e04bbd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9613986617626002
+  },
+  {
+    "transaction_id": "txn_c5dab5c5d7e64d93",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9531958244409365
+  },
+  {
+    "transaction_id": "txn_8c2245afa40f45a5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9646614544623826
+  },
+  {
+    "transaction_id": "txn_77fc873e6eec4b1c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9613831583573871
+  },
+  {
+    "transaction_id": "txn_13b2caa936914ccb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9531715710633369
+  },
+  {
+    "transaction_id": "txn_61cecd167f984f77",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9987572784184873
+  },
+  {
+    "transaction_id": "txn_9ecae15b0ee44f05",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9961333294301611
+  },
+  {
+    "transaction_id": "txn_7da4f4515f1c4fd7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.974175642820844
+  },
+  {
+    "transaction_id": "txn_c92f8aea7f674127",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9538895434447986
+  },
+  {
+    "transaction_id": "txn_eee0b1b79a1f4f4e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.977306532865258
+  },
+  {
+    "transaction_id": "txn_4dbf4a12f11d4f4f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.99514579190991
+  },
+  {
+    "transaction_id": "txn_c5972006e6af41a4",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9857553767946352
+  },
+  {
+    "transaction_id": "txn_201ba515adb94dbb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9825969981498035
+  },
+  {
+    "transaction_id": "txn_23cbcf463e1045c1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.964428039560821
+  },
+  {
+    "transaction_id": "txn_491dc44b318c40c3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9896512267841534
+  },
+  {
+    "transaction_id": "txn_fdb8172129784770",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9872157916796195
+  },
+  {
+    "transaction_id": "txn_345b1115d6324d60",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.997801516795682
+  },
+  {
+    "transaction_id": "txn_0b18f44248924de5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9788649028591513
+  },
+  {
+    "transaction_id": "txn_cd74992e55304e31",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9876352592499155
+  },
+  {
+    "transaction_id": "txn_4cf7a66aa2574792",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9600648735307373
+  },
+  {
+    "transaction_id": "txn_2544085213f64cfa",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.980773759021651
+  },
+  {
+    "transaction_id": "txn_d7b752619c0b4f24",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9696026987027979
+  },
+  {
+    "transaction_id": "txn_892e8a8dab084ef0",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9646837852115907
+  },
+  {
+    "transaction_id": "txn_de426b1b6c084100",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9811454943971462
+  },
+  {
+    "transaction_id": "txn_85076b085d1b4fb9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9625325350008517
+  },
+  {
+    "transaction_id": "txn_0673e4753559400a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9809055160935348
+  },
+  {
+    "transaction_id": "txn_89cf4c46e0af4523",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9537569099837079
+  },
+  {
+    "transaction_id": "txn_364033fe97934a97",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9711624255373462
+  },
+  {
+    "transaction_id": "txn_ae4fcdf70f5c4c5d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9589362015494649
+  },
+  {
+    "transaction_id": "txn_6d16ffbec79d4a74",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.996534589925789
+  },
+  {
+    "transaction_id": "txn_068ff766ed8f4abd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.967827977098014
+  },
+  {
+    "transaction_id": "txn_8bc353f390e54fc7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9721854795463901
+  },
+  {
+    "transaction_id": "txn_519a2bf1ec6a4e95",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9736121803952343
+  },
+  {
+    "transaction_id": "txn_4ebf6e5313fa4114",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9655347436000933
+  },
+  {
+    "transaction_id": "txn_479691f9464e4585",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9678855413871462
+  },
+  {
+    "transaction_id": "txn_07f74d702bb24441",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9898614734674868
+  },
+  {
+    "transaction_id": "txn_b13dbf7e59844808",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9769339254065785
+  },
+  {
+    "transaction_id": "txn_9369646f38b84e9b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9773888832063488
+  },
+  {
+    "transaction_id": "txn_13dd4c28d759444f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9951045922603174
+  },
+  {
+    "transaction_id": "txn_83bcc90c23d444f8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9747688763972584
+  },
+  {
+    "transaction_id": "txn_6435a1a5cd774b0c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.977530356367894
+  },
+  {
+    "transaction_id": "txn_b4934413ae3247a6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9648075452486958
+  },
+  {
+    "transaction_id": "txn_646ee0afc89b43d7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9977132728050881
+  },
+  {
+    "transaction_id": "txn_06ebbb70a3a24564",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9533831427806937
+  },
+  {
+    "transaction_id": "txn_4c49ad4def6246b9",
+    "is_fraud": true,
+    "fraud_pattern": "synthetic_id",
+    "confidence": 1.0
+  },
+  {
+    "transaction_id": "txn_5bc40fbedab64acb",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9595177250045431
+  },
+  {
+    "transaction_id": "txn_7b17db6126944bd1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9879006720130458
+  },
+  {
+    "transaction_id": "txn_3fe0d5843bf54b14",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9630233077486532
+  },
+  {
+    "transaction_id": "txn_5248b6b12ed144d8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9797906901482648
+  },
+  {
+    "transaction_id": "txn_9ba2652b6ff845ed",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9913115088675916
+  },
+  {
+    "transaction_id": "txn_b9fbbac58b344242",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9997254185569768
+  },
+  {
+    "transaction_id": "txn_6eb512ff8e3d4b1b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9598716452249981
+  },
+  {
+    "transaction_id": "txn_3af3901060da43ee",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9819585100035775
+  },
+  {
+    "transaction_id": "txn_f036c2e6a0a74427",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9566565029067808
+  },
+  {
+    "transaction_id": "txn_041b692c9e944cce",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9930553795083401
+  },
+  {
+    "transaction_id": "txn_eeac34b3b9c44bb8",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.956748013698137
+  },
+  {
+    "transaction_id": "txn_7ae89325fa1e4fe1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9934766459710099
+  },
+  {
+    "transaction_id": "txn_5a80f412d3ef4d81",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.981449384990876
+  },
+  {
+    "transaction_id": "txn_d510affd7e2a49a1",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9881785723909269
+  },
+  {
+    "transaction_id": "txn_17409898292b4cd2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.979655879734743
+  },
+  {
+    "transaction_id": "txn_fde54af084d64d71",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9803993635299435
+  },
+  {
+    "transaction_id": "txn_e0dff3947c214d3a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9764325339327171
+  },
+  {
+    "transaction_id": "txn_20b83095ab5a448d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9875067183768775
+  },
+  {
+    "transaction_id": "txn_b026103fc9cb4161",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9803036295985982
+  },
+  {
+    "transaction_id": "txn_f43517cc054a4038",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.973947838302323
+  },
+  {
+    "transaction_id": "txn_9a2c1c5513854ee2",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9765631931247913
+  },
+  {
+    "transaction_id": "txn_5005475771674059",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.967642096846302
+  },
+  {
+    "transaction_id": "txn_e8a78a233f784301",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9715742453361491
+  },
+  {
+    "transaction_id": "txn_da2121a8d0c44de3",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9524609485841932
+  },
+  {
+    "transaction_id": "txn_e6dc3bce35bc435e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9705535093650015
+  },
+  {
+    "transaction_id": "txn_b45773d4ccfc4426",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9595118446782422
+  },
+  {
+    "transaction_id": "txn_b626af70d80b4b39",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9694967528286869
+  },
+  {
+    "transaction_id": "txn_b9228e6f266641a7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9827466870203935
+  },
+  {
+    "transaction_id": "txn_f106844b44a0413c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9833065668479729
+  },
+  {
+    "transaction_id": "txn_25c1448b072b4db5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9994762771266644
+  },
+  {
+    "transaction_id": "txn_2033d518846f4fa7",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9571951944648474
+  },
+  {
+    "transaction_id": "txn_32952adaf4244ddc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9767737945077068
+  },
+  {
+    "transaction_id": "txn_d9de72b9618e4312",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9987295020852353
+  },
+  {
+    "transaction_id": "txn_ae791b2810424041",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9904314137541704
+  },
+  {
+    "transaction_id": "txn_bf4f270cc1694a68",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9891150039277627
+  },
+  {
+    "transaction_id": "txn_df5cc4359f41473d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9742440839250486
+  },
+  {
+    "transaction_id": "txn_b02c686a42c94a17",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.966079430762455
+  },
+  {
+    "transaction_id": "txn_8f573aca6f004f0d",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9517474932375828
+  },
+  {
+    "transaction_id": "txn_b13e04685c864a4e",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9934404717625374
+  },
+  {
+    "transaction_id": "txn_0e24b21e43dc460b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9580187308488493
+  },
+  {
+    "transaction_id": "txn_90271f2b27904ea6",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9883175035474868
+  },
+  {
+    "transaction_id": "txn_ed306063d71d417c",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9653601096671102
+  },
+  {
+    "transaction_id": "txn_21e90566cb8e48da",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9924740577042496
+  },
+  {
+    "transaction_id": "txn_d571a62b0564441b",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.975903151101224
+  },
+  {
+    "transaction_id": "txn_95eee93ad13d4c44",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9505790941155042
+  },
+  {
+    "transaction_id": "txn_b950af3e0c734fd9",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.976225444573762
+  },
+  {
+    "transaction_id": "txn_7c3bd452507e4c83",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9929146123122656
+  },
+  {
+    "transaction_id": "txn_9381709c479b4a3a",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9538233740598878
+  },
+  {
+    "transaction_id": "txn_31ef8a3cf4ee41d5",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9662473439594583
+  },
+  {
+    "transaction_id": "txn_e3633a5f03e64dbc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9920437511010095
+  },
+  {
+    "transaction_id": "txn_6cc78cf874714cfc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9556323517844892
+  },
+  {
+    "transaction_id": "txn_e56304a84d714855",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9954331234019402
+  },
+  {
+    "transaction_id": "txn_0fd02a938c6b4326",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9559736070348389
+  },
+  {
+    "transaction_id": "txn_2ad8ba15ca0042bc",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9954893712218491
+  },
+  {
+    "transaction_id": "txn_449754a105ec4b3f",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9574418622849981
+  },
+  {
+    "transaction_id": "txn_2e22c794d14942bd",
+    "is_fraud": false,
+    "fraud_pattern": null,
+    "confidence": 0.9680652617232605
+  }
+]

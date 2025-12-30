@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f3460"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="50" x2="1200" y2="50"/>
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="150" x2="1200" y2="150"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="250" x2="1200" y2="250"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="600" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Real-Time Fraud Detection Architecture
+  </text>
+  
+  <!-- Ingestion -->
+  <g transform="translate(80, 120)">
+    <rect width="140" height="80" rx="8" fill="url(#cardGrad)" stroke="#e94560" stroke-width="2"/>
+    <text x="70" y="35" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Payment</text>
+    <text x="70" y="55" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Gateway</text>
+    <text x="70" y="72" font-family="Arial, sans-serif" font-size="10" fill="#e94560" text-anchor="middle">50K TPS</text>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <path d="M225 160 L275 160" stroke="url(#accentGrad)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e94560"/>
+    </marker>
+  </defs>
+  
+  <!-- Kafka -->
+  <g transform="translate(280, 120)">
+    <rect width="120" height="80" rx="8" fill="url(#cardGrad)" stroke="#4ade80" stroke-width="2"/>
+    <text x="60" y="35" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Kafka</text>
+    <text x="60" y="55" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Cluster</text>
+    <text x="60" y="72" font-family="Arial, sans-serif" font-size="10" fill="#4ade80" text-anchor="middle">Partitioned</text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <path d="M405 160 L455 160" stroke="url(#accentGrad)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Feature Engineering -->
+  <g transform="translate(460, 90)">
+    <rect width="180" height="140" rx="8" fill="url(#cardGrad)" stroke="#60a5fa" stroke-width="2"/>
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Stream Processor</text>
+    
+    <rect x="15" y="40" width="150" height="35" rx="4" fill="#1e3a5f"/>
+    <text x="90" y="62" font-family="Arial, sans-serif" font-size="11" fill="#60a5fa" text-anchor="middle">Feature Engineering</text>
+    
+    <rect x="15" y="85" width="150" height="35" rx="4" fill="#1e3a5f"/>
+    <text x="90" y="107" font-family="Arial, sans-serif" font-size="11" fill="#60a5fa" text-anchor="middle">150+ Features &lt;2ms</text>
+  </g>
+  
+  <!-- Redis -->
+  <g transform="translate(280, 260)">
+    <rect width="120" height="80" rx="8" fill="url(#cardGrad)" stroke="#f472b6" stroke-width="2"/>
+    <text x="60" y="35" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Redis</text>
+    <text x="60" y="55" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Cluster</text>
+    <text x="60" y="72" font-family="Arial, sans-serif" font-size="10" fill="#f472b6" text-anchor="middle">Feature Store</text>
+  </g>
+  
+  <!-- Redis connection -->
+  <path d="M400 300 L460 230" stroke="#f472b6" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+  
+  <!-- Arrow 3 -->
+  <path d="M645 160 L695 160" stroke="url(#accentGrad)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- ML Ensemble -->
+  <g transform="translate(700, 90)">
+    <rect width="180" height="140" rx="8" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="2"/>
+    <text x="90" y="25" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">ML Ensemble</text>
+    
+    <rect x="15" y="40" width="70" height="25" rx="4" fill="#1e3a5f"/>
+    <text x="50" y="57" font-family="Arial, sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle">XGBoost</text>
+    
+    <rect x="95" y="40" width="70" height="25" rx="4" fill="#1e3a5f"/>
+    <text x="130" y="57" font-family="Arial, sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle">Neural Net</text>
+    
+    <rect x="15" y="75" width="150" height="25" rx="4" fill="#1e3a5f"/>
+    <text x="90" y="92" font-family="Arial, sans-serif" font-size="9" fill="#fbbf24" text-anchor="middle">Isolation Forest</text>
+    
+    <text x="90" y="125" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24" text-anchor="middle">99.7% Precision</text>
+  </g>
+  
+  <!-- Arrow 4 -->
+  <path d="M885 160 L935 160" stroke="url(#accentGrad)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Decision -->
+  <g transform="translate(940, 120)">
+    <rect width="160" height="80" rx="8" fill="url(#cardGrad)" stroke="#a78bfa" stroke-width="2"/>
+    <text x="80" y="30" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle" font-weight="bold">Decision Engine</text>
+    
+    <text x="40" y="55" font-family="Arial, sans-serif" font-size="10" fill="#4ade80" text-anchor="middle">Approve</text>
+    <text x="80" y="55" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24" text-anchor="middle">Review</text>
+    <text x="120" y="55" font-family="Arial, sans-serif" font-size="10" fill="#ef4444" text-anchor="middle">Decline</text>
+    
+    <text x="80" y="72" font-family="Arial, sans-serif" font-size="10" fill="#a78bfa" text-anchor="middle">&lt;10ms E2E</text>
+  </g>
+  
+  <!-- Monitoring bar -->
+  <g transform="translate(80, 320)">
+    <rect width="1020" height="50" rx="8" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="2"/>
+    <text x="510" y="20" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="bold">Monitoring &amp; Observability</text>
+    <text x="510" y="38" font-family="Arial, sans-serif" font-size="10" fill="#38bdf8" text-anchor="middle">Prometheus | Grafana | Model Drift Detection | A/B Testing | Alerts</text>
+  </g>
+  
+  <!-- Stats -->
+  <g transform="translate(80, 260)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="11" fill="#ffffff">
+      <tspan fill="#4ade80">■</tspan> 50K+ TPS
+    </text>
+  </g>
+  <g transform="translate(180, 260)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="11" fill="#ffffff">
+      <tspan fill="#60a5fa">■</tspan> 8ms P99
+    </text>
+  </g>
+</svg>

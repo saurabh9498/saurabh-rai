@@ -1,0 +1,137 @@
+# Model Configuration
+# Fraud Detection System
+
+ensemble:
+  # Model weights (will be normalized to sum to 1)
+  models:
+    xgboost:
+      weight: 0.45
+      params:
+        n_estimators: 500
+        max_depth: 8
+        learning_rate: 0.05
+        subsample: 0.8
+        colsample_bytree: 0.8
+        min_child_weight: 5
+        scale_pos_weight: 10
+        reg_alpha: 0.1
+        reg_lambda: 1.0
+        
+    neural_net:
+      weight: 0.35
+      params:
+        hidden_dims: [256, 128, 64]
+        dropout: 0.3
+        batch_norm: true
+        learning_rate: 0.001
+        weight_decay: 0.00001
+        batch_size: 256
+        epochs: 100
+        early_stopping_patience: 10
+        focal_loss_gamma: 2.0
+        
+    isolation_forest:
+      weight: 0.20
+      params:
+        n_estimators: 200
+        contamination: 0.01
+        max_samples: auto
+        max_features: 1.0
+        bootstrap: false
+
+# Decision thresholds
+thresholds:
+  approve: 0.3      # Below this: auto-approve
+  review: 0.7       # Above approve, below this: step-up auth
+  decline: 0.9      # Above this: auto-decline
+  # Between review and decline: manual review
+
+# Feature configuration
+features:
+  velocity_windows:
+    - 1h
+    - 6h
+    - 24h
+    - 7d
+    
+  aggregation_windows:
+    - 1h
+    - 24h
+    - 7d
+    - 30d
+    
+  feature_list:
+    - txn_count_1h
+    - txn_count_6h
+    - txn_count_24h
+    - txn_count_7d
+    - amount_sum_1h
+    - amount_sum_24h
+    - amount_avg_30d
+    - amount_std_30d
+    - time_since_last_txn
+    - unique_merchants_24h
+    - unique_channels_24h
+    - is_first_transaction
+    - is_new_merchant
+    - is_new_device
+    - deviation_from_avg
+    - merchant_risk_score
+    - device_risk_score
+
+# Training configuration
+training:
+  test_size: 0.2
+  validation_size: 0.1
+  random_state: 42
+  stratify: true
+  
+  # Class balancing
+  class_balance:
+    method: scale_pos_weight  # or smote, undersampling
+    target_ratio: 1.0
+    
+  # Cross-validation
+  cv:
+    n_splits: 5
+    shuffle: true
+
+# Online learning
+online_learning:
+  enabled: true
+  update_frequency: 1h
+  min_samples: 1000
+  learning_rate_decay: 0.95
+  
+# Monitoring
+monitoring:
+  drift_detection:
+    enabled: true
+    threshold: 0.1
+    window_size: 1000
+    check_interval: 5m
+    
+  performance_tracking:
+    enabled: true
+    metrics:
+      - latency_p99
+      - throughput
+      - error_rate
+      - fraud_rate
+      - false_positive_rate
+      
+  alerts:
+    - name: high_latency
+      metric: latency_p99
+      threshold: 20  # ms
+      severity: warning
+      
+    - name: high_error_rate
+      metric: error_rate
+      threshold: 0.01
+      severity: critical
+      
+    - name: model_drift
+      metric: drift_score
+      threshold: 0.1
+      severity: warning

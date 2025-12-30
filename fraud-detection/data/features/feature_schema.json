@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "features": {
+    "velocity_features": [
+      {
+        "name": "txn_count_1h",
+        "type": "int",
+        "description": "Transactions in last hour"
+      },
+      {
+        "name": "txn_count_24h",
+        "type": "int",
+        "description": "Transactions in last 24 hours"
+      },
+      {
+        "name": "amount_sum_1h",
+        "type": "float",
+        "description": "Total amount in last hour"
+      },
+      {
+        "name": "amount_sum_24h",
+        "type": "float",
+        "description": "Total amount in last 24 hours"
+      }
+    ],
+    "deviation_features": [
+      {
+        "name": "deviation_from_avg",
+        "type": "float",
+        "description": "Amount deviation from 30-day average"
+      },
+      {
+        "name": "distance_from_usual",
+        "type": "float",
+        "description": "Distance from typical location (km)"
+      },
+      {
+        "name": "time_since_last_txn",
+        "type": "int",
+        "description": "Seconds since last transaction"
+      }
+    ],
+    "risk_indicators": [
+      {
+        "name": "is_new_device",
+        "type": "bool",
+        "description": "First transaction from this device"
+      },
+      {
+        "name": "is_new_merchant",
+        "type": "bool",
+        "description": "First transaction with this merchant"
+      },
+      {
+        "name": "is_unusual_hour",
+        "type": "bool",
+        "description": "Transaction outside normal hours"
+      },
+      {
+        "name": "is_high_risk_mcc",
+        "type": "bool",
+        "description": "High-risk merchant category"
+      }
+    ],
+    "model_inputs": [
+      {
+        "name": "amount_normalized",
+        "type": "float",
+        "description": "Log-normalized amount"
+      },
+      {
+        "name": "hour_of_day",
+        "type": "int",
+        "description": "Hour (0-23)"
+      },
+      {
+        "name": "day_of_week",
+        "type": "int",
+        "description": "Day (0-6)"
+      },
+      {
+        "name": "merchant_risk_score",
+        "type": "float",
+        "description": "Historical merchant risk"
+      }
+    ]
+  },
+  "target": {
+    "name": "is_fraud",
+    "type": "bool",
+    "description": "Whether transaction is fraudulent"
+  }
+}

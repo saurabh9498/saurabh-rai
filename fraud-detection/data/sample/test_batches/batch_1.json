@@ -1,0 +1,1902 @@
+[
+  {
+    "transaction_id": "txn_5bc40fbedab64acb",
+    "user_id": "usr_086895307bfc",
+    "amount": 282.83,
+    "currency": "USD",
+    "merchant_id": "mrc_res_0964c728",
+    "merchant_category": "restaurant",
+    "timestamp": "2025-12-02T05:42:50.544196",
+    "device_fingerprint": "fp_8f142804286d",
+    "ip_address_hash": "1863f694286c0619",
+    "location": {
+      "lat": 29.803544145647628,
+      "lon": -95.38846981911148
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_0fe2b8ba6a3e46a1",
+    "user_id": "usr_d1edce1c7c99",
+    "amount": 218.41,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_28a1d3b7",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-02T06:40:29.544196",
+    "device_fingerprint": "fp_5f16be4980f0",
+    "ip_address_hash": "d2ac480a252ff9a2",
+    "location": {
+      "lat": 47.6332104960598,
+      "lon": -122.28572857179579
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_7ba3ce91ac784e67",
+    "user_id": "usr_7d4bf23cfcc0",
+    "amount": 321.35,
+    "currency": "USD",
+    "merchant_id": "mrc_res_bef45d84",
+    "merchant_category": "restaurant",
+    "timestamp": "2025-12-02T07:07:23.544196",
+    "device_fingerprint": "fp_9a63026316d2",
+    "ip_address_hash": "b13f11b20394ccaf",
+    "location": {
+      "lat": 42.34117022017012,
+      "lon": -71.08456804145538
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_51b49ea4bc214741",
+    "user_id": "usr_da1f4271f5cd",
+    "amount": 125.18,
+    "currency": "USD",
+    "merchant_id": "mrc_gam_2e3842ac",
+    "merchant_category": "gambling",
+    "timestamp": "2025-12-02T07:45:15.544196",
+    "device_fingerprint": "fp_a143a2149d21",
+    "ip_address_hash": "0f39abd8e2ff1872",
+    "location": {
+      "lat": 47.65031943571652,
+      "lon": -122.31737654203201
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_dce7a540226b4ff3",
+    "user_id": "usr_208e84f0f221",
+    "amount": 572.74,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_113a7d60",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-02T07:59:11.544196",
+    "device_fingerprint": "fp_b1bd0f34b22d",
+    "ip_address_hash": "36bb124148b78d19",
+    "location": {
+      "lat": 41.92186339865863,
+      "lon": -87.63246018117407
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_b8c69139dc644a98",
+    "user_id": "usr_568a733d6a4e",
+    "amount": 256.52,
+    "currency": "USD",
+    "merchant_id": "mrc_ele_f5213868",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-02T08:10:29.544196",
+    "device_fingerprint": "fp_f2c6b0b1359e",
+    "ip_address_hash": "d5a4fb2cd79aeaa8",
+    "location": {
+      "lat": 47.64203879409497,
+      "lon": -122.31703088634814
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_ffe9dd2d00ba4ed1",
+    "user_id": "usr_208e84f0f221",
+    "amount": 220.02,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_2a03d67e",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-02T08:50:56.544196",
+    "device_fingerprint": "fp_b1bd0f34b22d",
+    "ip_address_hash": "18ad3e264fe9c3da",
+    "location": {
+      "lat": 41.90456139776085,
+      "lon": -87.58830292360884
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_1b0374a675104011",
+    "user_id": "usr_90b90685837d",
+    "amount": 632.13,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_c88a084a",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-02T09:16:12.544196",
+    "device_fingerprint": "fp_89a889d57e2d",
+    "ip_address_hash": "0315ccfec83e03a2",
+    "location": {
+      "lat": 25.721285990560844,
+      "lon": -80.18735577570204
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_a209fb88714741eb",
+    "user_id": "usr_d318b08968be",
+    "amount": 269.18,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_421f965a",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-02T09:45:15.544196",
+    "device_fingerprint": "fp_a6bcafa8b4f5",
+    "ip_address_hash": "f5d26b5ba83ee9e7",
+    "location": {
+      "lat": 33.40228594449759,
+      "lon": -112.03233470147968
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_5be91dcb3c414736",
+    "user_id": "usr_7d4bf23cfcc0",
+    "amount": 196.85,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_0dc88dd8",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-02T10:26:56.544196",
+    "device_fingerprint": "fp_8791757650a7",
+    "ip_address_hash": "4decc6f33bd3b911",
+    "location": {
+      "lat": 42.4011172256302,
+      "lon": -71.03130874740462
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_69615a230dc54218",
+    "user_id": "usr_7d363f4b4eed",
+    "amount": 95.51,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_025d58b5",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-02T11:56:35.544196",
+    "device_fingerprint": "fp_c6282e352abb",
+    "ip_address_hash": "66c8181b521f59e5",
+    "location": {
+      "lat": 39.72283517850969,
+      "lon": -104.9992739531253
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_20275e7b58c9432c",
+    "user_id": "usr_e905af71a0b1",
+    "amount": 233.01,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_afbb6757",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-02T13:03:57.544196",
+    "device_fingerprint": "fp_1c312128b188",
+    "ip_address_hash": "9ddd8ba439e15d44",
+    "location": {
+      "lat": 42.31707790179485,
+      "lon": -71.09432744399201
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_37cd493fb8934ada",
+    "user_id": "usr_e997df143621",
+    "amount": 118.07,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_dded88dd",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-02T13:23:48.544196",
+    "device_fingerprint": "fp_232e7982098e",
+    "ip_address_hash": "504c4c6f5582e6c8",
+    "location": {
+      "lat": 40.70299764821773,
+      "lon": -73.95985493321406
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_7c2a15e8e5154ee4",
+    "user_id": "usr_f6ba239b88cc",
+    "amount": 275.24,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_bca0c641",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-02T16:38:38.544196",
+    "device_fingerprint": "fp_38e42d8eb8b1",
+    "ip_address_hash": "fafb88eee8a6d630",
+    "location": {
+      "lat": 29.72737082521373,
+      "lon": -95.37894206298341
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_082a328abc95472b",
+    "user_id": "usr_8707710198ce",
+    "amount": 139.55,
+    "currency": "USD",
+    "merchant_id": "mrc_gam_1e97c646",
+    "merchant_category": "gambling",
+    "timestamp": "2025-12-02T17:24:45.544196",
+    "device_fingerprint": "fp_5ee89b7eb3c6",
+    "ip_address_hash": "c35fe39a0703d16c",
+    "location": {
+      "lat": 41.836292158338345,
+      "lon": -87.6177362209226
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_8a67b2c556284f2f",
+    "user_id": "usr_f32d3ed905d1",
+    "amount": 598.11,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_5e5d3103",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-02T17:30:50.544196",
+    "device_fingerprint": "fp_c5da4a18e257",
+    "ip_address_hash": "d2c6e000961a6d4a",
+    "location": {
+      "lat": 34.00266190948439,
+      "lon": -118.27419394222795
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_6435a1a5cd774b0c",
+    "user_id": "usr_cfd12aac462f",
+    "amount": 53.69,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_38ca0818",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-02T18:21:01.544196",
+    "device_fingerprint": "fp_4ef321c522bc",
+    "ip_address_hash": "eca2b2a6ee2ee558",
+    "location": {
+      "lat": 29.762827994450152,
+      "lon": -95.39049505855854
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_b74808da81834895",
+    "user_id": "usr_651e2a347276",
+    "amount": 490.56,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_80901144",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-02T18:53:05.544196",
+    "device_fingerprint": "fp_146a31e13004",
+    "ip_address_hash": "675b12396908a416",
+    "location": {
+      "lat": 37.75324519448366,
+      "lon": -122.42480372739422
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_33f6368fca454184",
+    "user_id": "usr_3e1affe73d54",
+    "amount": 917.03,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_18ece846",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-02T19:29:24.544196",
+    "device_fingerprint": "fp_c069cd2b84d4",
+    "ip_address_hash": "323e3510f99badb3",
+    "location": {
+      "lat": 37.82154806104933,
+      "lon": -122.38966404019725
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_e329d20f7347460c",
+    "user_id": "usr_c43ced415cc5",
+    "amount": 115.8,
+    "currency": "USD",
+    "merchant_id": "mrc_hea_18ac75ca",
+    "merchant_category": "healthcare",
+    "timestamp": "2025-12-02T21:48:19.544196",
+    "device_fingerprint": "fp_fd963ad51f43",
+    "ip_address_hash": "2341dac389bec64e",
+    "location": {
+      "lat": 34.04939359947552,
+      "lon": -118.20744004065769
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_d07a5e064f454f02",
+    "user_id": "usr_81104f2fb8ca",
+    "amount": 906.74,
+    "currency": "USD",
+    "merchant_id": "mrc_gro_d1f9119a",
+    "merchant_category": "grocery",
+    "timestamp": "2025-12-02T23:10:47.544196",
+    "device_fingerprint": "fp_bb0039e79f3e",
+    "ip_address_hash": "06f49ade3dc3ce1d",
+    "location": {
+      "lat": 33.43635423498429,
+      "lon": -112.0771357287444
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_5f298529c9f74cbc",
+    "user_id": "usr_ad7e80980cc1",
+    "amount": 611.02,
+    "currency": "USD",
+    "merchant_id": "mrc_ele_6abe9de5",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-02T23:11:44.544196",
+    "device_fingerprint": "fp_42cef21b140c",
+    "ip_address_hash": "c74899f2952c246c",
+    "location": {
+      "lat": 33.43454981697219,
+      "lon": -112.11372481667027
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_b1eb655aa001456a",
+    "user_id": "usr_bb0003d8e977",
+    "amount": 128.45,
+    "currency": "USD",
+    "merchant_id": "mrc_onl_c7094f3d",
+    "merchant_category": "online_retail",
+    "timestamp": "2025-12-02T23:15:26.544196",
+    "device_fingerprint": "fp_a70603039152",
+    "ip_address_hash": "2a3eccb0b1850e62",
+    "location": {
+      "lat": 47.63195214377346,
+      "lon": -122.3339980258867
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_58ba055feb8b4ba0",
+    "user_id": "usr_31a8520ab6a9",
+    "amount": 542.64,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_a41d3a23",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-02T23:31:27.544196",
+    "device_fingerprint": "fp_2447615af8bc",
+    "ip_address_hash": "cc7d9fb1135974fd",
+    "location": {
+      "lat": 29.77916262252933,
+      "lon": -95.3967167618509
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_b100359eb95f4252",
+    "user_id": "usr_f617fcea4476",
+    "amount": 325.7,
+    "currency": "USD",
+    "merchant_id": "mrc_ele_25098599",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-03T00:00:57.544196",
+    "device_fingerprint": "fp_ae00cd6a9c2e",
+    "ip_address_hash": "59bbd365a0dadc19",
+    "location": {
+      "lat": 25.7801378347815,
+      "lon": -80.19347569738873
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_8fb41ebb40324bc2",
+    "user_id": "usr_e905af71a0b1",
+    "amount": 865.48,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_7690176a",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-03T01:14:54.544196",
+    "device_fingerprint": "fp_1c312128b188",
+    "ip_address_hash": "18ea303b69f53f17",
+    "location": {
+      "lat": 42.37891907702914,
+      "lon": -71.0196676465643
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_da2121a8d0c44de3",
+    "user_id": "usr_bb240494738e",
+    "amount": 239.78,
+    "currency": "USD",
+    "merchant_id": "mrc_hea_6c19d84e",
+    "merchant_category": "healthcare",
+    "timestamp": "2025-12-03T02:01:48.544196",
+    "device_fingerprint": "fp_1cdf94fe3382",
+    "ip_address_hash": "931fb99b9e4222ba",
+    "location": {
+      "lat": 33.40429050277348,
+      "lon": -112.10158907005797
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_6cd898a2af864b32",
+    "user_id": "usr_651e2a347276",
+    "amount": 748.0,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_4813636e",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-03T02:48:13.544196",
+    "device_fingerprint": "fp_43356ccf43e7",
+    "ip_address_hash": "2a7219fbf2b1c224",
+    "location": {
+      "lat": 37.74425139630167,
+      "lon": -122.40182135899451
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_da5f52d9cb96406a",
+    "user_id": "usr_4da1784e23a4",
+    "amount": 985.67,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_4c5f6b1c",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-03T03:00:31.544196",
+    "device_fingerprint": "fp_38c6fcc2f795",
+    "ip_address_hash": "ed555679bfa68969",
+    "location": {
+      "lat": 37.749581812675565,
+      "lon": -122.41988011462878
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_72e59cc5c73a46a5",
+    "user_id": "usr_614d10d603bc",
+    "amount": 728.13,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_cef5a927",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-03T03:46:21.544196",
+    "device_fingerprint": "fp_cd00ce61d040",
+    "ip_address_hash": "96e0bbf876c2b532",
+    "location": {
+      "lat": 39.68949423927792,
+      "lon": -104.96257807038074
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_57b3e54ada154f21",
+    "user_id": "usr_c4fd96f843fa",
+    "amount": 389.39,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_7c4ee3a2",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-03T04:12:52.544196",
+    "device_fingerprint": "fp_d40bf727e552",
+    "ip_address_hash": "349966465f9b76a3",
+    "location": {
+      "lat": 34.04575678089156,
+      "lon": -118.24871784213815
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_a46481509ff8423e",
+    "user_id": "usr_9be23ae47cb9",
+    "amount": 387.16,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_ed701075",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-03T04:25:09.544196",
+    "device_fingerprint": "fp_c5d10d49310c",
+    "ip_address_hash": "62235cb82545e0c5",
+    "location": {
+      "lat": 41.86338585639593,
+      "lon": -87.59549966020124
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_9ed5a55289114576",
+    "user_id": "usr_38cd7d95faa8",
+    "amount": 183.04,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_251bbd65",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-03T06:51:07.544196",
+    "device_fingerprint": "fp_d5ecf8b1ac27",
+    "ip_address_hash": "ebf54e02e0fe46c1",
+    "location": {
+      "lat": 39.76593684043424,
+      "lon": -104.94253317743657
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_362355cbf22a4eba",
+    "user_id": "usr_7e164aa6d812",
+    "amount": 39.6,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_8467473a",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-03T06:54:59.544196",
+    "device_fingerprint": "fp_c9a3beda8d38",
+    "ip_address_hash": "94b9a5d016c64a96",
+    "location": {
+      "lat": 41.91421501211135,
+      "lon": -87.64624462076283
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_d2de105cc5174ca5",
+    "user_id": "usr_73c1f4e2a900",
+    "amount": 48.01,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_23e9fb73",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-03T07:21:04.544196",
+    "device_fingerprint": "fp_4dc7a527e4d0",
+    "ip_address_hash": "383519e60a560c55",
+    "location": {
+      "lat": 42.35261846840964,
+      "lon": -71.0606954126977
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_ad1172df7eed40b1",
+    "user_id": "usr_59284f4a6521",
+    "amount": 483.22,
+    "currency": "USD",
+    "merchant_id": "mrc_onl_263acec0",
+    "merchant_category": "online_retail",
+    "timestamp": "2025-12-03T07:21:25.544196",
+    "device_fingerprint": "fp_370c6288e988",
+    "ip_address_hash": "786f956883f4152b",
+    "location": {
+      "lat": 47.607339090092616,
+      "lon": -122.37557175422977
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_13dd4c28d759444f",
+    "user_id": "usr_2666e18e8ab2",
+    "amount": 265.29,
+    "currency": "USD",
+    "merchant_id": "mrc_tra_e36c6504",
+    "merchant_category": "travel",
+    "timestamp": "2025-12-03T07:22:43.544196",
+    "device_fingerprint": "fp_1d972308d766",
+    "ip_address_hash": "f84c668af3c35ad7",
+    "location": {
+      "lat": 39.7297443417976,
+      "lon": -104.97050623133423
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_ce1697aeb02d4ffb",
+    "user_id": "usr_e53ce98f19a1",
+    "amount": 52.93,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_9f222d00",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-03T08:54:35.544196",
+    "device_fingerprint": "fp_2d9df4e48871",
+    "ip_address_hash": "3bf54aca3ab3b2ce",
+    "location": {
+      "lat": 41.83127672948564,
+      "lon": -87.65848623615184
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_c4e2fe16cc454292",
+    "user_id": "usr_f617fcea4476",
+    "amount": 397.91,
+    "currency": "USD",
+    "merchant_id": "mrc_ele_69cb5f00",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-03T09:34:57.544196",
+    "device_fingerprint": "fp_ae00cd6a9c2e",
+    "ip_address_hash": "b1f35b3abd02d85d",
+    "location": {
+      "lat": 25.77809497704275,
+      "lon": -80.21524060022769
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_160b5903dd494836",
+    "user_id": "usr_7d363f4b4eed",
+    "amount": 480.73,
+    "currency": "USD",
+    "merchant_id": "mrc_onl_7fdb74a9",
+    "merchant_category": "online_retail",
+    "timestamp": "2025-12-03T09:56:46.544196",
+    "device_fingerprint": "fp_4477d9ae4057",
+    "ip_address_hash": "3b83c3e7febf675b",
+    "location": {
+      "lat": 39.74938336032664,
+      "lon": -104.97933886792863
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_5f3ac251fdb94334",
+    "user_id": "usr_437b7135ac59",
+    "amount": 1235.79,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_f21dbda4",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-03T10:20:01.544196",
+    "device_fingerprint": "fp_9f3064867e1d",
+    "ip_address_hash": "61d3a071a8721f20",
+    "location": {
+      "lat": 25.7617,
+      "lon": -80.1918
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": true,
+    "fraud_pattern": "account_takeover"
+  },
+  {
+    "transaction_id": "txn_3fdd7964f893409f",
+    "user_id": "usr_da237c84e7ea",
+    "amount": 645.13,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_56388015",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-03T10:43:22.544196",
+    "device_fingerprint": "fp_3a900e268f5d",
+    "ip_address_hash": "cc107c34f82aa9b6",
+    "location": {
+      "lat": 39.76775189973467,
+      "lon": -105.0370190816066
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_393ff6d46d8245d4",
+    "user_id": "usr_5477fa12ee8c",
+    "amount": 348.66,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_83cb6bb6",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-03T11:30:31.544196",
+    "device_fingerprint": "fp_785cba49d0ee",
+    "ip_address_hash": "9161c5c2e6fbcb02",
+    "location": {
+      "lat": 33.48583521524263,
+      "lon": -112.07564502613423
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_a6bc090994bf49f4",
+    "user_id": "usr_6fec53788dcb",
+    "amount": 182.27,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_2fb83f44",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-03T12:29:13.544196",
+    "device_fingerprint": "fp_d95233a48ddc",
+    "ip_address_hash": "9b26d5d328d5be65",
+    "location": {
+      "lat": 40.72315043615781,
+      "lon": -74.04231361664073
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_87d1133e5fb649c5",
+    "user_id": "usr_5477fa12ee8c",
+    "amount": 319.52,
+    "currency": "USD",
+    "merchant_id": "mrc_hea_b4eca958",
+    "merchant_category": "healthcare",
+    "timestamp": "2025-12-03T14:09:37.544196",
+    "device_fingerprint": "fp_55df590f9893",
+    "ip_address_hash": "5ad8feedf9a335f4",
+    "location": {
+      "lat": 33.48811657163685,
+      "lon": -112.05193722607906
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_df70e55362c645c6",
+    "user_id": "usr_f32d3ed905d1",
+    "amount": 117.47,
+    "currency": "USD",
+    "merchant_id": "mrc_gro_8d0c3193",
+    "merchant_category": "grocery",
+    "timestamp": "2025-12-03T14:29:42.544196",
+    "device_fingerprint": "fp_fb2a3b5adc63",
+    "ip_address_hash": "4437c8621f759c3a",
+    "location": {
+      "lat": 34.020181988652745,
+      "lon": -118.24074336010027
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_8d216a8e27a64024",
+    "user_id": "usr_eeeac299b395",
+    "amount": 294.63,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_f7380459",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-03T15:26:33.544196",
+    "device_fingerprint": "fp_1eafe13a13d2",
+    "ip_address_hash": "88e8b2bbc2008a0a",
+    "location": {
+      "lat": 47.64282724200527,
+      "lon": -122.28826845006722
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_c90c48c13f5d443b",
+    "user_id": "usr_d1dbeda4dad3",
+    "amount": 85.32,
+    "currency": "USD",
+    "merchant_id": "mrc_hea_92041362",
+    "merchant_category": "healthcare",
+    "timestamp": "2025-12-03T15:40:24.544196",
+    "device_fingerprint": "fp_3cc656e1d02c",
+    "ip_address_hash": "1c8458d466f1b0a8",
+    "location": {
+      "lat": 41.89298539351523,
+      "lon": -87.65812936235177
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_eb954e0b9c8d41e4",
+    "user_id": "usr_46a626e03f3d",
+    "amount": 537.59,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_dfbdf93b",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-03T17:55:20.544196",
+    "device_fingerprint": "fp_0b955f8cd4e5",
+    "ip_address_hash": "244e242a26b0ec0f",
+    "location": {
+      "lat": 42.34777949515667,
+      "lon": -71.03258224931484
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_d6fd3316afb24ec6",
+    "user_id": "usr_ec386debb47b",
+    "amount": 854.23,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_a7e508d0",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-03T18:26:20.544196",
+    "device_fingerprint": "fp_8fe2c8eb5410",
+    "ip_address_hash": "8b0dc0573ac42098",
+    "location": {
+      "lat": 33.483263170466856,
+      "lon": -112.09677693015797
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_b1fe24ef555f43cc",
+    "user_id": "usr_ec386debb47b",
+    "amount": 663.22,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_dc4f92d4",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-03T18:40:42.544196",
+    "device_fingerprint": "fp_2d8e972c3eff",
+    "ip_address_hash": "4316ba0dc5737b2b",
+    "location": {
+      "lat": 33.42851258812236,
+      "lon": -112.06840414863684
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_23481c148869483c",
+    "user_id": "usr_7d4bf23cfcc0",
+    "amount": 58.09,
+    "currency": "USD",
+    "merchant_id": "mrc_res_fda6343d",
+    "merchant_category": "restaurant",
+    "timestamp": "2025-12-03T18:54:22.544196",
+    "device_fingerprint": "fp_9a63026316d2",
+    "ip_address_hash": "bbb7af3142a04c65",
+    "location": {
+      "lat": 42.39565686992096,
+      "lon": -71.0986503602554
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_afbc3d4f4b934544",
+    "user_id": "usr_a08071d5f64f",
+    "amount": 265.19,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_d754cbd3",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-03T19:08:48.544196",
+    "device_fingerprint": "fp_cfc5c38662cc",
+    "ip_address_hash": "deb718a22b0c4f83",
+    "location": {
+      "lat": 47.636356401678654,
+      "lon": -122.32211379302782
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_19c7f5891da74876",
+    "user_id": "usr_ec386debb47b",
+    "amount": 407.57,
+    "currency": "USD",
+    "merchant_id": "mrc_onl_f9836451",
+    "merchant_category": "online_retail",
+    "timestamp": "2025-12-03T19:25:50.544196",
+    "device_fingerprint": "fp_9a9e0235a490",
+    "ip_address_hash": "b462ab2c47c1ccf4",
+    "location": {
+      "lat": 33.42637446536947,
+      "lon": -112.05710192771748
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_fea7b8f1a0a44e6d",
+    "user_id": "usr_bb0003d8e977",
+    "amount": 364.21,
+    "currency": "USD",
+    "merchant_id": "mrc_tra_8f424805",
+    "merchant_category": "travel",
+    "timestamp": "2025-12-03T20:43:24.544196",
+    "device_fingerprint": "fp_f4153ad0f080",
+    "ip_address_hash": "c5c2a04fd28b4a81",
+    "location": {
+      "lat": 47.56487980723451,
+      "lon": -122.31347112547272
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_766d76e60e3b4969",
+    "user_id": "usr_18ee8bbf1113",
+    "amount": 605.82,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_60fa70bb",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-03T20:44:01.544196",
+    "device_fingerprint": "fp_74ae9836cec3",
+    "ip_address_hash": "4a5dcdf2a771f274",
+    "location": {
+      "lat": 47.6318294891369,
+      "lon": -122.29202004758096
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_925ac70e955847be",
+    "user_id": "usr_5477fa12ee8c",
+    "amount": 203.19,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_f26c1df5",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-03T21:12:28.544196",
+    "device_fingerprint": "fp_e22f55a77076",
+    "ip_address_hash": "af41574affe743cf",
+    "location": {
+      "lat": 33.447272505880136,
+      "lon": -112.09281043895521
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_80f117172f7b4cf1",
+    "user_id": "usr_6fec53788dcb",
+    "amount": 690.45,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_ce548916",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-03T21:27:58.544196",
+    "device_fingerprint": "fp_f99259c25d41",
+    "ip_address_hash": "c4f2674b2d5b1096",
+    "location": {
+      "lat": 40.75385577023951,
+      "lon": -74.04653667112274
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_d62cd8a962db42c3",
+    "user_id": "usr_a1a2b5da8406",
+    "amount": 483.2,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_87fdbf8b",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-03T21:33:06.544196",
+    "device_fingerprint": "fp_d82d741c4995",
+    "ip_address_hash": "52b13961c6c607c5",
+    "location": {
+      "lat": 42.312841398855326,
+      "lon": -71.04055497742125
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_d18d080bc66d4063",
+    "user_id": "usr_05343d8d4e13",
+    "amount": 399.48,
+    "currency": "USD",
+    "merchant_id": "mrc_res_14744f14",
+    "merchant_category": "restaurant",
+    "timestamp": "2025-12-03T22:19:23.544196",
+    "device_fingerprint": "fp_450d16f30229",
+    "ip_address_hash": "f1f153145e60e84d",
+    "location": {
+      "lat": 37.76892560165256,
+      "lon": -122.46538975620392
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_8867905bb2a44c43",
+    "user_id": "usr_59a6f4106eb7",
+    "amount": 394.06,
+    "currency": "USD",
+    "merchant_id": "mrc_gam_600a233a",
+    "merchant_category": "gambling",
+    "timestamp": "2025-12-03T23:58:39.544196",
+    "device_fingerprint": "fp_69ee9b607581",
+    "ip_address_hash": "0d821ce37dcdd45e",
+    "location": {
+      "lat": 37.78056702503235,
+      "lon": -122.38009072987528
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": true,
+    "fraud_pattern": "friendly_fraud"
+  },
+  {
+    "transaction_id": "txn_ac064af46d804ab3",
+    "user_id": "usr_d179d9e18be1",
+    "amount": 281.91,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_e36a23fa",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-04T00:32:42.544196",
+    "device_fingerprint": "fp_dc765acafebe",
+    "ip_address_hash": "ce42965d69dabd9c",
+    "location": {
+      "lat": 41.902867267362254,
+      "lon": -87.63287563481391
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_69773fa583414805",
+    "user_id": "usr_f32d3ed905d1",
+    "amount": 326.43,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_282bd52d",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-04T02:26:40.544196",
+    "device_fingerprint": "fp_c5da4a18e257",
+    "ip_address_hash": "dc21bcd2540c2dc6",
+    "location": {
+      "lat": 34.039625232660036,
+      "lon": -118.23076452992655
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_618bfd6371b24143",
+    "user_id": "usr_d1edce1c7c99",
+    "amount": 228.71,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_07dd570c",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-04T02:36:27.544196",
+    "device_fingerprint": "fp_7f10dbba4d55",
+    "ip_address_hash": "1403cd1d2b3c0d5d",
+    "location": {
+      "lat": 47.634231178168875,
+      "lon": -122.32749267641962
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_6885f12c0b7f4ed5",
+    "user_id": "usr_77fb2f4630c1",
+    "amount": 177.6,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_557f0821",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-04T03:55:37.544196",
+    "device_fingerprint": "fp_d95924c11113",
+    "ip_address_hash": "28ba6ca30cacbe78",
+    "location": {
+      "lat": 29.750386650397125,
+      "lon": -95.38632287720803
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_451a62c31c384c83",
+    "user_id": "usr_43b3ece5f3bf",
+    "amount": 113.84,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_c542341d",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-04T04:19:03.544196",
+    "device_fingerprint": "fp_b04606068d3f",
+    "ip_address_hash": "78dc8b46ee563e45",
+    "location": {
+      "lat": 37.820895290694985,
+      "lon": -122.45408878800747
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_24d98ca8d69c4cc4",
+    "user_id": "usr_b2bcfcb7965f",
+    "amount": 360.91,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_f96b6b78",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-04T04:30:12.544196",
+    "device_fingerprint": "fp_f6be30ca8dd3",
+    "ip_address_hash": "4cd1da8f3123d021",
+    "location": {
+      "lat": 33.40378374307282,
+      "lon": -112.10011318073676
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_b7136bc5b0d9423f",
+    "user_id": "usr_0bb8879d5614",
+    "amount": 4143.37,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_1473426f",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-04T04:44:04.544196",
+    "device_fingerprint": "fp_7966a9260d13",
+    "ip_address_hash": "220f03d3b74d5312",
+    "location": {
+      "lat": 25.773515588907568,
+      "lon": -80.15515776567369
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": true,
+    "fraud_pattern": "bust_out"
+  },
+  {
+    "transaction_id": "txn_940508c61afd4f6a",
+    "user_id": "usr_64e75850964a",
+    "amount": 110.46,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_5dc47b58",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-04T05:26:51.544196",
+    "device_fingerprint": "fp_4d8aaa0a8e23",
+    "ip_address_hash": "887de1776120e790",
+    "location": {
+      "lat": 41.88503493783559,
+      "lon": -87.58395498798386
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_4857fb1e68914604",
+    "user_id": "usr_7e164aa6d812",
+    "amount": 48.21,
+    "currency": "USD",
+    "merchant_id": "mrc_gro_67776597",
+    "merchant_category": "grocery",
+    "timestamp": "2025-12-04T06:08:46.544196",
+    "device_fingerprint": "fp_b4f3def6c895",
+    "ip_address_hash": "58f47c8cbd535961",
+    "location": {
+      "lat": 41.844821057683134,
+      "lon": -87.6059318047198
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_8c52d2a9ffc24c12",
+    "user_id": "usr_e997df143621",
+    "amount": 330.94,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_e26403f1",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-04T07:00:20.544196",
+    "device_fingerprint": "fp_232e7982098e",
+    "ip_address_hash": "2522870e2f430a0e",
+    "location": {
+      "lat": 40.729897736668384,
+      "lon": -74.04940183330052
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_024a82cd3d3245ac",
+    "user_id": "usr_eeeac299b395",
+    "amount": 445.15,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_94034a6c",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-04T07:45:56.544196",
+    "device_fingerprint": "fp_6f6c6a211bc0",
+    "ip_address_hash": "bf8cfd1f74a7e79e",
+    "location": {
+      "lat": 47.62035414287674,
+      "lon": -122.33941448711175
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_dba3a4c6ef984eea",
+    "user_id": "usr_0fca7b5c4161",
+    "amount": 645.95,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_b5152ff4",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-04T07:47:28.544196",
+    "device_fingerprint": "fp_48ef0cdf1d0b",
+    "ip_address_hash": "d91484fefb0bf64c",
+    "location": {
+      "lat": 39.7228672084215,
+      "lon": -104.94295137245311
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_33648699c1e946ba",
+    "user_id": "usr_81104f2fb8ca",
+    "amount": 834.82,
+    "currency": "USD",
+    "merchant_id": "mrc_tra_f5ea96dd",
+    "merchant_category": "travel",
+    "timestamp": "2025-12-04T07:49:17.544196",
+    "device_fingerprint": "fp_106f833e1c34",
+    "ip_address_hash": "e0b027d207327549",
+    "location": {
+      "lat": 33.40043671088663,
+      "lon": -112.11731152287041
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_586ee05711154bac",
+    "user_id": "usr_086895307bfc",
+    "amount": 321.41,
+    "currency": "USD",
+    "merchant_id": "mrc_hea_6b9e715b",
+    "merchant_category": "healthcare",
+    "timestamp": "2025-12-04T07:53:02.544196",
+    "device_fingerprint": "fp_8f142804286d",
+    "ip_address_hash": "288ca57768263fc2",
+    "location": {
+      "lat": 29.742368236617775,
+      "lon": -95.32799528248992
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_a9170e7ade154eb6",
+    "user_id": "usr_43b3ece5f3bf",
+    "amount": 444.47,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_4f44a1d5",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-04T08:51:01.544196",
+    "device_fingerprint": "fp_b04606068d3f",
+    "ip_address_hash": "767b1b59729945a2",
+    "location": {
+      "lat": 37.756007295097845,
+      "lon": -122.46081299052035
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_3830a7f911ad4578",
+    "user_id": "usr_086895307bfc",
+    "amount": 45.37,
+    "currency": "USD",
+    "merchant_id": "mrc_onl_6b9f7f60",
+    "merchant_category": "online_retail",
+    "timestamp": "2025-12-04T10:02:17.544196",
+    "device_fingerprint": "fp_863a2d8aefb3",
+    "ip_address_hash": "0a8d4e5bf799e86c",
+    "location": {
+      "lat": 29.801032549110356,
+      "lon": -95.41961496852916
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_9e5f80364d7b4f31",
+    "user_id": "usr_bb240494738e",
+    "amount": 646.72,
+    "currency": "USD",
+    "merchant_id": "mrc_tra_b9fac0a3",
+    "merchant_category": "travel",
+    "timestamp": "2025-12-04T10:03:02.544196",
+    "device_fingerprint": "fp_455de8536862",
+    "ip_address_hash": "8a44ac8bed9ea963",
+    "location": {
+      "lat": 33.45831459701662,
+      "lon": -112.1058683690711
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_f105763e23924895",
+    "user_id": "usr_cfd12aac462f",
+    "amount": 73.96,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_a726163c",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-04T10:47:15.544196",
+    "device_fingerprint": "fp_0ffb1ff5a7ee",
+    "ip_address_hash": "26c04f0ff7f64144",
+    "location": {
+      "lat": 29.785362940786776,
+      "lon": -95.34295715186511
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_3fe0d5843bf54b14",
+    "user_id": "usr_f6ba239b88cc",
+    "amount": 294.06,
+    "currency": "USD",
+    "merchant_id": "mrc_res_aa56f206",
+    "merchant_category": "restaurant",
+    "timestamp": "2025-12-04T11:22:51.544196",
+    "device_fingerprint": "fp_38e42d8eb8b1",
+    "ip_address_hash": "9b49ebb8e86007d1",
+    "location": {
+      "lat": 29.782548207458635,
+      "lon": -95.4168504655213
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_c4f948e681f742af",
+    "user_id": "usr_b2bcfcb7965f",
+    "amount": 546.4,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_57f02d93",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-04T11:23:32.544196",
+    "device_fingerprint": "fp_f6be30ca8dd3",
+    "ip_address_hash": "ad18dbac1ca7eb30",
+    "location": {
+      "lat": 33.40938625568469,
+      "lon": -112.06123885359224
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_0a8ed42b2b5a473d",
+    "user_id": "usr_cfd12aac462f",
+    "amount": 94.98,
+    "currency": "USD",
+    "merchant_id": "mrc_res_f4f87f0c",
+    "merchant_category": "restaurant",
+    "timestamp": "2025-12-04T11:50:55.544196",
+    "device_fingerprint": "fp_0ffb1ff5a7ee",
+    "ip_address_hash": "ce0ba9761f1872b5",
+    "location": {
+      "lat": 29.771242207630202,
+      "lon": -95.35482200789784
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_0b4a28ae7ce446c9",
+    "user_id": "usr_086895307bfc",
+    "amount": 195.04,
+    "currency": "USD",
+    "merchant_id": "mrc_hea_60e04c0f",
+    "merchant_category": "healthcare",
+    "timestamp": "2025-12-04T12:09:37.544196",
+    "device_fingerprint": "fp_8f142804286d",
+    "ip_address_hash": "987decc4676c6bba",
+    "location": {
+      "lat": 29.807723632950268,
+      "lon": -95.34927155214112
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_b85d1b9eb0084c98",
+    "user_id": "usr_b2bcfcb7965f",
+    "amount": 164.26,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_cb29e2fa",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-04T13:02:38.544196",
+    "device_fingerprint": "fp_3f19da03dc45",
+    "ip_address_hash": "776146aa24e4e5e0",
+    "location": {
+      "lat": 33.45688779317132,
+      "lon": -112.0486277670356
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_c0b5beed003443f4",
+    "user_id": "usr_651e2a347276",
+    "amount": 172.42,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_7d47b66b",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-04T14:58:10.544196",
+    "device_fingerprint": "fp_43356ccf43e7",
+    "ip_address_hash": "3754fa3a7c24511d",
+    "location": {
+      "lat": 37.74838955047945,
+      "lon": -122.44237913950643
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_8c25848747af42bd",
+    "user_id": "usr_ec386debb47b",
+    "amount": 971.36,
+    "currency": "USD",
+    "merchant_id": "mrc_ele_c7a8931e",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-04T15:04:27.544196",
+    "device_fingerprint": "fp_2d8e972c3eff",
+    "ip_address_hash": "e959a7f56278d6cf",
+    "location": {
+      "lat": 33.49464222953245,
+      "lon": -112.06985777302037
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_bd8f50268fc64346",
+    "user_id": "usr_6ede960323e8",
+    "amount": 497.42,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_ffdb7c22",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-04T15:29:00.544196",
+    "device_fingerprint": "fp_3d21483804f5",
+    "ip_address_hash": "46ee16a462cfcd88",
+    "location": {
+      "lat": 37.81475091168756,
+      "lon": -122.46765091981393
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_21338913fc614de8",
+    "user_id": "usr_614d10d603bc",
+    "amount": 810.79,
+    "currency": "USD",
+    "merchant_id": "mrc_gas_81cc4603",
+    "merchant_category": "gas_station",
+    "timestamp": "2025-12-04T17:36:15.544196",
+    "device_fingerprint": "fp_cd00ce61d040",
+    "ip_address_hash": "94fa30c02cc4aec1",
+    "location": {
+      "lat": 39.76071832876757,
+      "lon": -104.94629712210015
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_10991a7d32a442dd",
+    "user_id": "usr_6603745af7a2",
+    "amount": 595.38,
+    "currency": "USD",
+    "merchant_id": "mrc_tra_45ed1590",
+    "merchant_category": "travel",
+    "timestamp": "2025-12-04T18:19:32.544196",
+    "device_fingerprint": "fp_bb0924a032f6",
+    "ip_address_hash": "c812d1053937fd52",
+    "location": {
+      "lat": 33.44370103271141,
+      "lon": -112.03937609127756
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_6ba2ede2dd9e4c8a",
+    "user_id": "usr_a1a2b5da8406",
+    "amount": 623.31,
+    "currency": "USD",
+    "merchant_id": "mrc_ent_b256116e",
+    "merchant_category": "entertainment",
+    "timestamp": "2025-12-04T18:23:59.544196",
+    "device_fingerprint": "fp_d82d741c4995",
+    "ip_address_hash": "be284bde51c61360",
+    "location": {
+      "lat": 42.336390091990516,
+      "lon": -71.09508164620412
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_a009ffe7b0014f6e",
+    "user_id": "usr_0823b462596a",
+    "amount": 343.48,
+    "currency": "USD",
+    "merchant_id": "mrc_wir_a976666c",
+    "merchant_category": "wire_transfer",
+    "timestamp": "2025-12-04T20:01:06.544196",
+    "device_fingerprint": "fp_8b7d66183eaf",
+    "ip_address_hash": "4881b4587ddc617d",
+    "location": {
+      "lat": 40.7442892515562,
+      "lon": -73.96271169738532
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_e61c31dc79104115",
+    "user_id": "usr_0823b462596a",
+    "amount": 649.7,
+    "currency": "USD",
+    "merchant_id": "mrc_uti_b6a074bb",
+    "merchant_category": "utilities",
+    "timestamp": "2025-12-04T20:26:43.544196",
+    "device_fingerprint": "fp_8b7d66183eaf",
+    "ip_address_hash": "f2346a5cdc910ce4",
+    "location": {
+      "lat": 40.691543498973004,
+      "lon": -74.04652290316653
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_21db2c18c4e4497a",
+    "user_id": "usr_f617fcea4476",
+    "amount": 176.8,
+    "currency": "USD",
+    "merchant_id": "mrc_ele_88bd216c",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-04T22:28:56.544196",
+    "device_fingerprint": "fp_ae00cd6a9c2e",
+    "ip_address_hash": "4d03f96f12257e7a",
+    "location": {
+      "lat": 25.751271981607854,
+      "lon": -80.23863103515036
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_4f42cc4a18a64829",
+    "user_id": "usr_3e1affe73d54",
+    "amount": 607.49,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_61f47b1d",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-04T22:42:05.544196",
+    "device_fingerprint": "fp_c069cd2b84d4",
+    "ip_address_hash": "5205b36feff80bd2",
+    "location": {
+      "lat": 37.79729663377147,
+      "lon": -122.37083038187775
+    },
+    "card_present": false,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_5005475771674059",
+    "user_id": "usr_18a713abf486",
+    "amount": 259.22,
+    "currency": "USD",
+    "merchant_id": "mrc_gam_42e35903",
+    "merchant_category": "gambling",
+    "timestamp": "2025-12-04T23:26:21.544196",
+    "device_fingerprint": "fp_f68f16faa948",
+    "ip_address_hash": "a28a5050d17becdd",
+    "location": {
+      "lat": 42.408964951084876,
+      "lon": -71.00999761640996
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_61cecd167f984f77",
+    "user_id": "usr_e905af71a0b1",
+    "amount": 740.54,
+    "currency": "USD",
+    "merchant_id": "mrc_tra_2d1367c5",
+    "merchant_category": "travel",
+    "timestamp": "2025-12-04T23:57:23.544196",
+    "device_fingerprint": "fp_1c312128b188",
+    "ip_address_hash": "5604545ff244ed6b",
+    "location": {
+      "lat": 42.40038170132209,
+      "lon": -71.03257250797498
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_4bf13c7656884cbc",
+    "user_id": "usr_48832e392cad",
+    "amount": 326.39,
+    "currency": "USD",
+    "merchant_id": "mrc_ele_20a234bd",
+    "merchant_category": "electronics",
+    "timestamp": "2025-12-05T00:23:41.544196",
+    "device_fingerprint": "fp_fc4ef7ecceca",
+    "ip_address_hash": "2c15358dc60f316d",
+    "location": {
+      "lat": 41.9134465338448,
+      "lon": -87.65740683459578
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_d510affd7e2a49a1",
+    "user_id": "usr_b3a49796ed9d",
+    "amount": 138.0,
+    "currency": "USD",
+    "merchant_id": "mrc_cry_8afc9af7",
+    "merchant_category": "crypto_exchange",
+    "timestamp": "2025-12-05T01:09:46.544196",
+    "device_fingerprint": "fp_868dfb7d8384",
+    "ip_address_hash": "2ec41f0d0b867b02",
+    "location": {
+      "lat": 42.40323967839533,
+      "lon": -71.05461040778215
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_1a50eb61f48e4681",
+    "user_id": "usr_43b3ece5f3bf",
+    "amount": 64.84,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_30f06a01",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-05T01:34:32.544196",
+    "device_fingerprint": "fp_b04606068d3f",
+    "ip_address_hash": "64315fb6841d809e",
+    "location": {
+      "lat": 37.742057101737004,
+      "lon": -122.38787580314629
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  },
+  {
+    "transaction_id": "txn_79d9eb3a9eee40de",
+    "user_id": "usr_cf3e028f66f9",
+    "amount": 1489.6,
+    "currency": "USD",
+    "merchant_id": "mrc_ret_aeda12f5",
+    "merchant_category": "retail",
+    "timestamp": "2025-12-05T02:36:59.544196",
+    "device_fingerprint": "fp_57aedc8b0d12",
+    "ip_address_hash": "67972392e74e9aa1",
+    "location": {
+      "lat": 29.76551668763676,
+      "lon": -95.40155772504714
+    },
+    "card_present": true,
+    "is_international": false,
+    "is_fraud": false,
+    "fraud_pattern": null
+  }
+]

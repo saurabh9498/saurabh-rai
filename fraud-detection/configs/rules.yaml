@@ -1,0 +1,142 @@
+# Rules Engine Configuration
+# Deterministic rules that complement ML models
+
+velocity_rules:
+  - name: hourly_count_limit
+    description: "Flag high transaction velocity"
+    metric: txn_count_1h
+    threshold: 15
+    action: review
+    priority: high
+    
+  - name: daily_count_limit
+    description: "Flag excessive daily transactions"
+    metric: txn_count_24h
+    threshold: 50
+    action: review
+    priority: medium
+    
+  - name: hourly_amount_limit
+    description: "Flag high hourly spending"
+    metric: amount_sum_1h
+    threshold: 5000
+    action: step_up
+    priority: high
+    
+  - name: daily_amount_limit
+    description: "Flag high daily spending"
+    metric: amount_sum_24h
+    threshold: 10000
+    action: review
+    priority: medium
+
+pattern_rules:
+  - name: first_high_value
+    description: "First transaction is high value"
+    condition: "is_first_transaction AND amount > 1000"
+    action: decline
+    priority: critical
+    
+  - name: new_merchant_high_value
+    description: "High value at new merchant"
+    condition: "is_new_merchant AND amount > 500"
+    action: step_up
+    priority: high
+    
+  - name: new_device_high_value
+    description: "High value from new device"
+    condition: "is_new_device AND amount > 300"
+    action: step_up
+    priority: high
+    
+  - name: velocity_spike
+    description: "Sudden increase in velocity"
+    condition: "txn_count_1h > 3 * avg_txn_count_1h"
+    action: review
+    priority: high
+    
+  - name: amount_deviation
+    description: "Amount significantly above normal"
+    condition: "deviation_from_avg > 4"
+    action: review
+    priority: medium
+
+geographic_rules:
+  - name: impossible_travel
+    description: "Impossible travel velocity"
+    condition: "distance_km > 500 AND time_since_last_txn < 3600"
+    action: decline
+    priority: critical
+    
+  - name: high_risk_country
+    description: "Transaction from high-risk country"
+    condition: "country IN high_risk_countries"
+    action: step_up
+    priority: high
+
+merchant_rules:
+  - name: high_risk_merchant
+    description: "High-risk merchant category"
+    condition: "merchant_risk_score > 0.7"
+    action: review
+    priority: medium
+    
+  - name: blacklisted_merchant
+    description: "Blacklisted merchant"
+    condition: "merchant_id IN blacklist"
+    action: decline
+    priority: critical
+
+channel_rules:
+  - name: channel_switch
+    description: "Unusual channel switch"
+    condition: "channel != last_channel AND time_since_last_txn < 300"
+    action: step_up
+    priority: medium
+
+# Rule actions
+actions:
+  approve:
+    description: "Auto-approve transaction"
+    requires_ml: false
+    
+  step_up:
+    description: "Require step-up authentication"
+    requires_ml: false
+    auth_methods:
+      - sms_otp
+      - push_notification
+      - biometric
+      
+  review:
+    description: "Queue for manual review"
+    requires_ml: true
+    sla_minutes: 30
+    
+  decline:
+    description: "Auto-decline transaction"
+    requires_ml: false
+    notify_customer: true
+
+# Rule evaluation
+evaluation:
+  mode: all  # all, first_match, weighted
+  priority_order:
+    - critical
+    - high
+    - medium
+    - low
+  ml_override: true  # Can ML override rule decisions?
+  
+# High-risk countries (ISO codes)
+high_risk_countries:
+  - RU
+  - NG
+  - UA
+  - BY
+
+# Blacklists (populated at runtime)
+blacklists:
+  merchants: []
+  devices: []
+  ips: []
