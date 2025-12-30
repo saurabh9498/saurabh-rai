@@ -1,0 +1,157 @@
+version: '3.8'
+
+services:
+  # ===========================================================================
+  # GPU ML Pipeline API
+  # ===========================================================================
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: production
+    container_name: gpu-ml-api
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - CUDA_VISIBLE_DEVICES=0
+      - MODEL_PATH=/app/engines/model.engine
+      - LOG_LEVEL=INFO
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../models:/app/models:ro
+      - ../engines:/app/engines:ro
+      - ../data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    networks:
+      - gpu-ml-network
+
+  # ===========================================================================
+  # Triton Inference Server
+  # ===========================================================================
+  triton:
+    image: nvcr.io/nvidia/tritonserver:23.10-py3
+    container_name: triton-server
+    runtime: nvidia
+    command: tritonserver --model-repository=/models --strict-model-config=false
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "8001:8000"   # HTTP
+      - "8002:8001"   # gRPC
+      - "8003:8002"   # Metrics
+    volumes:
+      - ../model_repository:/models:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/v2/health/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+    networks:
+      - gpu-ml-network
+
+  # ===========================================================================
+  # Prometheus (Metrics Collection)
+  # ===========================================================================
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+    networks:
+      - gpu-ml-network
+    profiles:
+      - monitoring
+
+  # ===========================================================================
+  # Grafana (Visualization)
+  # ===========================================================================
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+    restart: unless-stopped
+    networks:
+      - gpu-ml-network
+    profiles:
+      - monitoring
+
+  # ===========================================================================
+  # Development Container
+  # ===========================================================================
+  dev:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: development
+    container_name: gpu-ml-dev
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "8888:8888"   # Jupyter
+      - "8000:8000"   # API
+    volumes:
+      - ../:/app
+      - ~/.cache:/home/mluser/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    stdin_open: true
+    tty: true
+    networks:
+      - gpu-ml-network
+    profiles:
+      - dev
+
+# ===========================================================================
+# Networks
+# ===========================================================================
+networks:
+  gpu-ml-network:
+    driver: bridge
+
+# ===========================================================================
+# Volumes
+# ===========================================================================
+volumes:
+  prometheus-data:
+  grafana-data:
