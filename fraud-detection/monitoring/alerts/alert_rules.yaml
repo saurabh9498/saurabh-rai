@@ -1,0 +1,222 @@
+# Prometheus Alert Rules for Fraud Detection System
+# Place this file in your Prometheus rules directory
+
+groups:
+  - name: fraud_detection_availability
+    interval: 30s
+    rules:
+      # Service availability alerts
+      - alert: FraudDetectionServiceDown
+        expr: up{job="fraud-detection-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: fraud-ops
+        annotations:
+          summary: "Fraud Detection API is down"
+          description: "The fraud detection service has been unreachable for more than 1 minute."
+          runbook_url: "https://wiki.internal/runbooks/fraud-detection-down"
+      
+      - alert: FraudDetectionHighErrorRate
+        expr: |
+          sum(rate(fraud_detection_errors_total[5m])) 
+          / sum(rate(fraud_detection_requests_total[5m])) > 0.01
+        for: 5m
+        labels:
+          severity: critical
+          team: fraud-ops
+        annotations:
+          summary: "High error rate in Fraud Detection"
+          description: "Error rate is {{ $value | humanizePercentage }} (threshold: 1%)"
+          runbook_url: "https://wiki.internal/runbooks/fraud-detection-errors"
+
+  - name: fraud_detection_latency
+    interval: 30s
+    rules:
+      # Latency alerts
+      - alert: FraudDetectionHighLatencyP99
+        expr: |
+          histogram_quantile(0.99, rate(fraud_detection_latency_seconds_bucket[5m])) > 0.020
+        for: 5m
+        labels:
+          severity: warning
+          team: fraud-ops
+        annotations:
+          summary: "High P99 latency in Fraud Detection"
+          description: "P99 latency is {{ $value | humanizeDuration }} (threshold: 20ms)"
+          runbook_url: "https://wiki.internal/runbooks/fraud-detection-latency"
+      
+      - alert: FraudDetectionCriticalLatency
+        expr: |
+          histogram_quantile(0.99, rate(fraud_detection_latency_seconds_bucket[5m])) > 0.050
+        for: 2m
+        labels:
+          severity: critical
+          team: fraud-ops
+        annotations:
+          summary: "Critical P99 latency in Fraud Detection"
+          description: "P99 latency is {{ $value | humanizeDuration }} (threshold: 50ms)"
+          runbook_url: "https://wiki.internal/runbooks/fraud-detection-latency-critical"
+
+  - name: fraud_detection_throughput
+    interval: 30s
+    rules:
+      # Throughput alerts
+      - alert: FraudDetectionLowThroughput
+        expr: |
+          sum(rate(fraud_detection_requests_total[5m])) < 1000
+        for: 10m
+        labels:
+          severity: warning
+          team: fraud-ops
+        annotations:
+          summary: "Low throughput in Fraud Detection"
+          description: "Throughput is {{ $value | humanize }} TPS (expected: >1000 TPS)"
+          runbook_url: "https://wiki.internal/runbooks/fraud-detection-throughput"
+      
+      - alert: FraudDetectionThroughputSpike
+        expr: |
+          sum(rate(fraud_detection_requests_total[5m])) 
+          > 1.5 * sum(rate(fraud_detection_requests_total[1h] offset 1d))
+        for: 5m
+        labels:
+          severity: warning
+          team: fraud-ops
+        annotations:
+          summary: "Unusual traffic spike detected"
+          description: "Current throughput is 50% higher than same time yesterday"
+          runbook_url: "https://wiki.internal/runbooks/fraud-detection-spike"
+
+  - name: fraud_detection_model_performance
+    interval: 1m
+    rules:
+      # Model performance alerts
+      - alert: FraudDetectionHighDeclineRate
+        expr: |
+          sum(rate(fraud_detection_decisions_total{decision="DECLINE"}[1h])) 
+          / sum(rate(fraud_detection_decisions_total[1h])) > 0.05
+        for: 30m
+        labels:
+          severity: warning
+          team: fraud-ops
+          team_secondary: data-science
+        annotations:
+          summary: "High decline rate detected"
+          description: "Decline rate is {{ $value | humanizePercentage }} (threshold: 5%)"
+          runbook_url: "https://wiki.internal/runbooks/fraud-high-decline-rate"
+      
+      - alert: FraudDetectionLowDeclineRate
+        expr: |
+          sum(rate(fraud_detection_decisions_total{decision="DECLINE"}[1h])) 
+          / sum(rate(fraud_detection_decisions_total[1h])) < 0.001
+        for: 1h
+        labels:
+          severity: warning
+          team: data-science
+        annotations:
+          summary: "Abnormally low decline rate"
+          description: "Decline rate is {{ $value | humanizePercentage }} - model may not be working"
+          runbook_url: "https://wiki.internal/runbooks/fraud-low-decline-rate"
+      
+      - alert: FraudDetectionModelDrift
+        expr: |
+          abs(
+            avg(fraud_detection_risk_score{quantile="0.5"}) 
+            - avg(fraud_detection_risk_score{quantile="0.5"} offset 1d)
+          ) > 0.1
+        for: 2h
+        labels:
+          severity: warning
+          team: data-science
+        annotations:
+          summary: "Potential model drift detected"
+          description: "Median risk score has shifted significantly from yesterday"
+          runbook_url: "https://wiki.internal/runbooks/fraud-model-drift"
+
+  - name: fraud_detection_infrastructure
+    interval: 30s
+    rules:
+      # Infrastructure alerts
+      - alert: FraudDetectionRedisDown
+        expr: redis_up{job="fraud-detection-redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: fraud-ops
+        annotations:
+          summary: "Redis feature store is down"
+          description: "Redis connection lost - feature retrieval will fail"
+          runbook_url: "https://wiki.internal/runbooks/fraud-redis-down"
+      
+      - alert: FraudDetectionRedisHighLatency
+        expr: |
+          redis_commands_duration_seconds_total{cmd="hgetall"} / redis_commands_total{cmd="hgetall"} > 0.005
+        for: 5m
+        labels:
+          severity: warning
+          team: fraud-ops
+        annotations:
+          summary: "High Redis latency"
+          description: "Redis HGETALL average latency is {{ $value | humanizeDuration }}"
+          runbook_url: "https://wiki.internal/runbooks/fraud-redis-latency"
+      
+      - alert: FraudDetectionKafkaLag
+        expr: |
+          kafka_consumer_group_lag{group="fraud-detection-consumer"} > 10000
+        for: 5m
+        labels:
+          severity: warning
+          team: fraud-ops
+        annotations:
+          summary: "High Kafka consumer lag"
+          description: "Consumer lag is {{ $value }} messages"
+          runbook_url: "https://wiki.internal/runbooks/fraud-kafka-lag"
+      
+      - alert: FraudDetectionHighMemory
+        expr: |
+          container_memory_usage_bytes{container="fraud-detection-api"} 
+          / container_spec_memory_limit_bytes{container="fraud-detection-api"} > 0.85
+        for: 10m
+        labels:
+          severity: warning
+          team: fraud-ops
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value | humanizePercentage }} of limit"
+          runbook_url: "https://wiki.internal/runbooks/fraud-high-memory"
+
+  - name: fraud_detection_slo
+    interval: 1m
+    rules:
+      # SLO-based alerts
+      - alert: FraudDetectionSLOLatencyBreach
+        expr: |
+          (
+            sum(rate(fraud_detection_latency_seconds_bucket{le="0.020"}[1h])) 
+            / sum(rate(fraud_detection_latency_seconds_count[1h]))
+          ) < 0.99
+        for: 10m
+        labels:
+          severity: critical
+          team: fraud-ops
+          slo: latency
+        annotations:
+          summary: "SLO Breach: Latency"
+          description: "Less than 99% of requests completing under 20ms"
+          runbook_url: "https://wiki.internal/runbooks/fraud-slo-latency"
+      
+      - alert: FraudDetectionSLOAvailabilityBreach
+        expr: |
+          (
+            sum(rate(fraud_detection_requests_total[1h])) 
+            - sum(rate(fraud_detection_errors_total[1h]))
+          ) / sum(rate(fraud_detection_requests_total[1h])) < 0.999
+        for: 10m
+        labels:
+          severity: critical
+          team: fraud-ops
+          slo: availability
+        annotations:
+          summary: "SLO Breach: Availability"
+          description: "Availability dropped below 99.9%"
+          runbook_url: "https://wiki.internal/runbooks/fraud-slo-availability"

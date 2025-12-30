@@ -1,0 +1,196 @@
+# Kafka Topic Configurations for Fraud Detection System
+# Apply these configurations using kafka-topics.sh or Terraform
+
+# =============================================================================
+# Topic Definitions
+# =============================================================================
+
+topics:
+  # Main transaction ingestion topic
+  - name: transactions.incoming
+    partitions: 12
+    replication_factor: 3
+    configs:
+      retention.ms: 604800000          # 7 days retention
+      retention.bytes: -1               # No size-based retention
+      cleanup.policy: delete
+      min.insync.replicas: 2
+      compression.type: lz4
+      max.message.bytes: 1048576        # 1MB max message size
+      segment.bytes: 536870912          # 512MB segment size
+    description: >
+      Incoming transaction events from payment processors.
+      High throughput topic - expect 50K+ messages/second at peak.
+
+  # Scored transactions output
+  - name: transactions.scored
+    partitions: 12
+    replication_factor: 3
+    configs:
+      retention.ms: 2592000000          # 30 days retention
+      retention.bytes: -1
+      cleanup.policy: delete
+      min.insync.replicas: 2
+      compression.type: lz4
+    description: >
+      Transactions with fraud scores and decisions attached.
+      Consumed by downstream systems for action.
+
+  # Fraud alerts for high-risk transactions
+  - name: fraud.alerts
+    partitions: 6
+    replication_factor: 3
+    configs:
+      retention.ms: 7776000000          # 90 days retention
+      cleanup.policy: delete
+      min.insync.replicas: 2
+    description: >
+      High-priority fraud alerts requiring immediate action.
+      Only transactions with risk_score > 0.9 or decision = DECLINE.
+
+  # Dead letter queue for failed processing
+  - name: transactions.dlq
+    partitions: 3
+    replication_factor: 3
+    configs:
+      retention.ms: 2592000000          # 30 days retention
+      cleanup.policy: delete
+    description: >
+      Dead letter queue for transactions that failed processing.
+      Manual review required for messages in this topic.
+
+  # Model predictions audit log
+  - name: audit.predictions
+    partitions: 6
+    replication_factor: 3
+    configs:
+      retention.ms: 31536000000         # 365 days retention
+      cleanup.policy: delete
+      compression.type: gzip            # Better compression for audit logs
+    description: >
+      Complete audit trail of all model predictions.
+      Required for regulatory compliance and model retraining.
+
+  # Feature store updates
+  - name: features.updates
+    partitions: 12
+    replication_factor: 3
+    configs:
+      retention.ms: 86400000            # 1 day retention
+      cleanup.policy: compact           # Keep latest value per key
+      min.cleanable.dirty.ratio: 0.1
+      segment.ms: 3600000               # 1 hour segments for compaction
+    description: >
+      User feature updates for the feature store.
+      Compacted topic - keeps latest feature values per user_id.
+
+# =============================================================================
+# Consumer Group Configurations
+# =============================================================================
+
+consumer_groups:
+  - name: fraud-detection-consumer
+    topics:
+      - transactions.incoming
+    configs:
+      auto.offset.reset: earliest
+      enable.auto.commit: false         # Manual commit for exactly-once
+      max.poll.records: 500
+      max.poll.interval.ms: 300000
+      session.timeout.ms: 30000
+      heartbeat.interval.ms: 10000
+    
+  - name: fraud-alerts-consumer
+    topics:
+      - fraud.alerts
+    configs:
+      auto.offset.reset: earliest
+      enable.auto.commit: true
+      max.poll.records: 100
+
+  - name: audit-consumer
+    topics:
+      - audit.predictions
+    configs:
+      auto.offset.reset: earliest
+      enable.auto.commit: true
+      max.poll.records: 1000
+
+# =============================================================================
+# Producer Configurations
+# =============================================================================
+
+producer_configs:
+  fraud_detection_producer:
+    acks: all                           # Wait for all replicas
+    retries: 3
+    retry.backoff.ms: 100
+    max.in.flight.requests.per.connection: 5
+    enable.idempotence: true            # Exactly-once semantics
+    compression.type: lz4
+    linger.ms: 5                        # Batch for 5ms
+    batch.size: 32768                   # 32KB batches
+
+# =============================================================================
+# Schema Registry Subjects (if using Avro/Protobuf)
+# =============================================================================
+
+schemas:
+  - subject: transactions.incoming-value
+    type: AVRO
+    compatibility: BACKWARD
+    schema_file: schemas/transaction.avsc
+
+  - subject: transactions.scored-value
+    type: AVRO
+    compatibility: BACKWARD
+    schema_file: schemas/scored_transaction.avsc
+
+  - subject: fraud.alerts-value
+    type: AVRO
+    compatibility: BACKWARD
+    schema_file: schemas/fraud_alert.avsc
+
+# =============================================================================
+# ACLs (Access Control Lists)
+# =============================================================================
+
+acls:
+  # Fraud detection service
+  - principal: User:fraud-detection-service
+    operations: [READ, WRITE]
+    resources:
+      - type: TOPIC
+        name: transactions.incoming
+        pattern: LITERAL
+      - type: TOPIC
+        name: transactions.scored
+        pattern: LITERAL
+      - type: TOPIC
+        name: fraud.alerts
+        pattern: LITERAL
+      - type: TOPIC
+        name: transactions.dlq
+        pattern: LITERAL
+      - type: GROUP
+        name: fraud-detection-consumer
+        pattern: LITERAL
+
+  # Audit service (read-only)
+  - principal: User:audit-service
+    operations: [READ]
+    resources:
+      - type: TOPIC
+        name: audit.predictions
+        pattern: LITERAL
+      - type: GROUP
+        name: audit-consumer
+        pattern: LITERAL
+
+  # Monitoring (read-only for all topics)
+  - principal: User:monitoring-service
+    operations: [DESCRIBE, READ]
+    resources:
+      - type: TOPIC
+        name: "*"
+        pattern: LITERAL
