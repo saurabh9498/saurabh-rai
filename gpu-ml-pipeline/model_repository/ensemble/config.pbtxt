@@ -1,0 +1,84 @@
+name: "ensemble"
+platform: "ensemble"
+max_batch_size: 16
+
+# Ensemble pipeline: preprocessing -> inference -> postprocessing
+# This demonstrates model pipelining in Triton
+
+input [
+  {
+    name: "raw_image"
+    data_type: TYPE_UINT8
+    dims: [ -1, -1, 3 ]  # Variable size input image (H, W, C)
+  }
+]
+
+output [
+  {
+    name: "detections"
+    data_type: TYPE_FP32
+    dims: [ -1, 6 ]  # [x1, y1, x2, y2, confidence, class_id]
+  },
+  {
+    name: "num_detections"
+    data_type: TYPE_INT32
+    dims: [ 1 ]
+  }
+]
+
+# Ensemble scheduling defines the execution graph
+ensemble_scheduling {
+  step [
+    # Step 1: Preprocessing (resize, normalize)
+    {
+      model_name: "preprocessing"
+      model_version: -1
+      input_map {
+        key: "raw_image"
+        value: "raw_image"
+      }
+      output_map {
+        key: "processed_image"
+        value: "preprocessed"
+      }
+    },
+    # Step 2: YOLOv8 Inference
+    {
+      model_name: "yolov8"
+      model_version: -1
+      input_map {
+        key: "images"
+        value: "preprocessed"
+      }
+      output_map {
+        key: "output0"
+        value: "raw_output"
+      }
+    },
+    # Step 3: Postprocessing (NMS, format output)
+    {
+      model_name: "postprocessing"
+      model_version: -1
+      input_map {
+        key: "raw_detections"
+        value: "raw_output"
+      }
+      output_map {
+        key: "detections"
+        value: "detections"
+      }
+      output_map {
+        key: "num_detections"
+        value: "num_detections"
+      }
+    }
+  ]
+}
+
+# Instance configuration for ensemble
+instance_group [
+  {
+    count: 1
+    kind: KIND_CPU  # Ensemble logic runs on CPU
+  }
+]

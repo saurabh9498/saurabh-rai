@@ -1,0 +1,82 @@
+name: "yolov8"
+platform: "tensorrt_plan"
+max_batch_size: 16
+
+input [
+  {
+    name: "images"
+    data_type: TYPE_FP32
+    format: FORMAT_NCHW
+    dims: [ 3, 640, 640 ]
+  }
+]
+
+output [
+  {
+    name: "output0"
+    data_type: TYPE_FP32
+    dims: [ 84, 8400 ]  # YOLOv8 output format: [4 bbox + 80 classes, num_predictions]
+  }
+]
+
+# Dynamic batching for object detection
+dynamic_batching {
+  preferred_batch_size: [ 1, 4, 8, 16 ]
+  max_queue_delay_microseconds: 50
+  preserve_ordering: true
+}
+
+# Instance configuration
+instance_group [
+  {
+    count: 1
+    kind: KIND_GPU
+    gpus: [ 0 ]
+  }
+]
+
+# Version policy
+version_policy: { latest: { num_versions: 1 } }
+
+# Warmup configuration
+model_warmup [
+  {
+    name: "single_image_warmup"
+    batch_size: 1
+    inputs {
+      key: "images"
+      value: {
+        data_type: TYPE_FP32
+        dims: [ 3, 640, 640 ]
+        zero_data: true
+      }
+    }
+  }
+]
+
+# Optimization
+optimization {
+  input_pinned_memory { enable: true }
+  output_pinned_memory { enable: true }
+  
+  cuda {
+    graphs: true
+    output_copy_stream: true
+  }
+}
+
+# TensorRT parameters
+parameters {
+  key: "precision"
+  value: { string_value: "fp16" }
+}
+
+parameters {
+  key: "max_workspace_size"
+  value: { string_value: "2147483648" }  # 2GB workspace for YOLO
+}
+
+parameters {
+  key: "dla_core"
+  value: { string_value: "-1" }  # -1 means no DLA, use GPU only
+}
