@@ -1,0 +1,231 @@
+# =============================================================================
+# YOLOv8 Retail Detection Model Configuration
+# =============================================================================
+# Training configuration for retail-specific object detection
+# Fine-tuned for people, carts, baskets, products, shelves, and employees
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Dataset Configuration
+# -----------------------------------------------------------------------------
+path: ./data/retail_dataset  # Dataset root directory
+train: images/train          # Training images (relative to path)
+val: images/val              # Validation images (relative to path)
+test: images/test            # Test images (optional)
+
+# Class names
+names:
+  0: person
+  1: shopping_cart
+  2: basket
+  3: product
+  4: shelf
+  5: price_tag
+  6: employee
+
+# Number of classes
+nc: 7
+
+# -----------------------------------------------------------------------------
+# Model Architecture
+# -----------------------------------------------------------------------------
+# Base model to fine-tune (options: yolov8n, yolov8s, yolov8m, yolov8l, yolov8x)
+model: yolov8n.pt
+
+# Model scaling (for custom architectures)
+# Uncomment to customize
+# scales:
+#   depth_multiple: 0.33
+#   width_multiple: 0.25
+
+# -----------------------------------------------------------------------------
+# Training Hyperparameters
+# -----------------------------------------------------------------------------
+# Epochs
+epochs: 100
+patience: 20  # Early stopping patience
+
+# Batch size (adjust based on GPU memory)
+# GPU Memory recommendations:
+#   8GB  -> batch=8
+#   16GB -> batch=16
+#   24GB -> batch=32
+batch: 16
+
+# Image size (must be multiple of 32)
+imgsz: 640
+
+# Learning rate
+lr0: 0.01           # Initial learning rate
+lrf: 0.01           # Final learning rate (lr0 * lrf)
+
+# Optimizer
+optimizer: SGD      # Options: SGD, Adam, AdamW, RMSProp
+momentum: 0.937     # SGD momentum
+weight_decay: 0.0005
+
+# Warmup
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# -----------------------------------------------------------------------------
+# Data Augmentation
+# -----------------------------------------------------------------------------
+# Augmentation hyperparameters
+augment: true
+
+# Mosaic augmentation
+mosaic: 1.0         # Mosaic probability (0.0-1.0)
+close_mosaic: 10    # Disable mosaic for final N epochs
+
+# MixUp augmentation
+mixup: 0.0          # MixUp probability
+
+# Copy-paste augmentation (for segmentation)
+copy_paste: 0.0
+
+# Geometric augmentations
+degrees: 0.0        # Rotation (+/- degrees)
+translate: 0.1      # Translation (+/- fraction)
+scale: 0.5          # Scale (+/- gain)
+shear: 0.0          # Shear (+/- degrees)
+perspective: 0.0    # Perspective (+/- fraction)
+flipud: 0.0         # Vertical flip probability
+fliplr: 0.5         # Horizontal flip probability
+
+# Color augmentations
+hsv_h: 0.015        # HSV-Hue augmentation
+hsv_s: 0.7          # HSV-Saturation augmentation
+hsv_v: 0.4          # HSV-Value augmentation
+
+# -----------------------------------------------------------------------------
+# Loss Configuration
+# -----------------------------------------------------------------------------
+# Loss weights
+box: 7.5            # Box loss weight
+cls: 0.5            # Classification loss weight
+dfl: 1.5            # Distribution focal loss weight
+
+# Loss type
+# nms: true         # Use NMS in loss (for some architectures)
+
+# -----------------------------------------------------------------------------
+# Validation & Testing
+# -----------------------------------------------------------------------------
+# Validation settings
+val: true           # Run validation during training
+plots: true         # Generate plots
+
+# Confidence threshold
+conf: 0.25          # Confidence threshold for validation
+
+# IoU threshold
+iou: 0.7            # NMS IoU threshold
+
+# Maximum detections per image
+max_det: 300
+
+# -----------------------------------------------------------------------------
+# Hardware & Performance
+# -----------------------------------------------------------------------------
+# Device (cuda, cpu, or device id)
+device: 0           # GPU device (0, 1, 2, ... or 'cpu')
+
+# Multi-GPU training
+# device: 0,1,2,3   # Use multiple GPUs
+
+# Workers for data loading
+workers: 8
+
+# Mixed precision training
+amp: true           # Automatic Mixed Precision
+
+# Deterministic training (slower but reproducible)
+deterministic: false
+
+# Seed for reproducibility
+seed: 0
+
+# -----------------------------------------------------------------------------
+# Logging & Checkpoints
+# -----------------------------------------------------------------------------
+# Project name
+project: runs/detect
+name: retail_yolov8
+
+# Save settings
+save: true          # Save checkpoints
+save_period: 10     # Save checkpoint every N epochs
+cache: false        # Cache images (ram, disk, or false)
+
+# Logging
+verbose: true
+
+# Integration
+# wandb: false      # Weights & Biases logging
+# comet: false      # Comet ML logging
+# tensorboard: true # TensorBoard logging
+
+# -----------------------------------------------------------------------------
+# Inference Settings (for export)
+# -----------------------------------------------------------------------------
+# These settings are used when exporting to TensorRT/ONNX
+inference:
+  imgsz: [640, 640]      # Inference image size
+  half: true             # FP16 inference
+  dynamic: true          # Dynamic batch size
+  simplify: true         # ONNX simplification
+  opset: 17              # ONNX opset version
+  batch: 1               # Default batch size
+  
+# TensorRT specific
+tensorrt:
+  workspace: 4           # Workspace size (GB)
+  fp16: true             # FP16 precision
+  int8: false            # INT8 quantization
+  dynamic: true          # Dynamic shapes
+  min_batch: 1
+  opt_batch: 8
+  max_batch: 16
+
+# -----------------------------------------------------------------------------
+# Retail-Specific Settings
+# -----------------------------------------------------------------------------
+# Custom settings for retail environment
+retail:
+  # Track employee vs customer (if using employee class)
+  track_employees: true
+  
+  # Minimum confidence for each class
+  class_confidence:
+    person: 0.5
+    shopping_cart: 0.6
+    basket: 0.6
+    product: 0.4
+    shelf: 0.7
+    price_tag: 0.5
+    employee: 0.6
+  
+  # Focus areas (give more weight to certain regions)
+  # Useful for checkout areas, entrances, etc.
+  focus_regions:
+    - name: checkout
+      weight: 1.5
+    - name: entrance
+      weight: 1.2
+
+# -----------------------------------------------------------------------------
+# Notes
+# -----------------------------------------------------------------------------
+# Training command:
+#   yolo detect train data=configs/models/yolov8_retail.yaml
+#
+# Export command:
+#   yolo export model=runs/detect/retail_yolov8/weights/best.pt format=onnx
+#
+# TensorRT conversion:
+#   python scripts/convert_to_tensorrt.py \
+#       --input runs/detect/retail_yolov8/weights/best.onnx \
+#       --output data/models/yolov8_retail_fp16.engine \
+#       --precision fp16

@@ -1,0 +1,54 @@
+# =============================================================================
+# DeepStream Primary Inference Configuration - YOLOv8 Retail Detection
+# =============================================================================
+# TensorRT-optimized YOLOv8 model for retail object detection
+# =============================================================================
+
+[property]
+gpu-id=0
+net-scale-factor=0.0039215697906911373
+model-color-format=0
+
+# TensorRT engine file (generated from ONNX)
+model-engine-file=/opt/models/yolov8n_retail_fp16.engine
+
+# ONNX model (used if engine doesn't exist)
+onnx-file=/opt/models/yolov8n_retail.onnx
+
+# Labels file
+labelfile-path=/opt/configs/labels.txt
+
+# Input dimensions
+infer-dims=3;640;640
+batch-size=16
+
+# Network configuration
+network-mode=1  # 0=FP32, 1=FP16, 2=INT8
+num-detected-classes=7
+interval=0
+gie-unique-id=1
+
+# Processing configuration
+process-mode=1  # 1=Primary, 2=Secondary
+network-type=0  # 0=Detector, 1=Classifier, 2=Segmentation
+
+# Output parsing
+parse-bbox-func-name=NvDsInferParseYolo
+custom-lib-path=/opt/nvidia/deepstream/deepstream/lib/libnvdsinfer_custom_impl_Yolo.so
+output-blob-names=output0
+
+# Clustering
+cluster-mode=2  # 0=OpenCV, 1=DBSCAN, 2=NMS, 3=None
+nms-iou-threshold=0.45
+pre-cluster-threshold=0.25
+
+# Workspace size (MB)
+workspace-size=2048
+
+# Maintain aspect ratio
+maintain-aspect-ratio=1
+symmetric-padding=1
+
+[class-attrs-all]
+pre-cluster-threshold=0.5
+topk=300

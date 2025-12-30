@@ -1,0 +1,429 @@
+# =============================================================================
+# Retail Vision Analytics - Main Configuration
+# =============================================================================
+# This file contains all configurable parameters for the retail vision
+# analytics system. Copy to app_config.local.yaml for local overrides.
+
+# Application Settings
+app:
+  name: "Retail Vision Analytics"
+  version: "1.0.0"
+  environment: "development"  # development, staging, production
+  debug: true
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Device Configuration
+device:
+  device_id: "edge-001"
+  store_id: "store-001"
+  location: "San Francisco, CA"
+  gpu_id: 0
+  
+# DeepStream Pipeline Configuration
+deepstream:
+  # Stream multiplexer settings
+  streammux:
+    batch_size: 16
+    width: 1920
+    height: 1080
+    batched_push_timeout: 40000  # microseconds
+    live_source: true
+    enable_padding: false
+    
+  # Primary inference (object detection)
+  primary_gie:
+    model_engine_file: "models/yolov8n_retail_fp16.engine"
+    config_file: "configs/deepstream/config_infer_primary.txt"
+    batch_size: 16
+    interval: 0  # Process every frame
+    unique_id: 1
+    gpu_id: 0
+    
+  # Tracker configuration
+  tracker:
+    enabled: true
+    type: "NvDCF"  # IOU, NvDCF, DeepSORT, ByteTrack
+    width: 640
+    height: 384
+    config_file: "configs/deepstream/tracker_config.yml"
+    gpu_id: 0
+    ll_lib_file: "/opt/nvidia/deepstream/deepstream/lib/libnvds_nvmultiobjecttracker.so"
+    
+  # Analytics configuration
+  analytics:
+    enabled: true
+    config_file: "configs/deepstream/analytics_config.txt"
+    
+  # On-screen display
+  osd:
+    enabled: true
+    border_width: 2
+    text_size: 15
+    font: "Serif"
+    
+  # Output settings
+  output:
+    enabled: false
+    type: "rtsp"  # rtsp, file, display
+    codec: "H264"
+    bitrate: 4000000
+    
+# Video Stream Defaults
+streams:
+  default_width: 1920
+  default_height: 1080
+  default_fps: 30
+  default_codec: "H264"
+  reconnect_interval_sec: 5
+  max_reconnect_attempts: 10
+  inference_interval: 1
+  
+  # Pre-configured streams (can be added via API)
+  sources: []
+  #   - stream_id: "entrance-cam"
+  #     uri: "rtsp://192.168.1.10:554/stream"
+  #     protocol: "rtsp"
+  #     location: "main_entrance"
+  #     roi: [0.1, 0.1, 0.9, 0.9]
+
+# Model Configuration
+models:
+  # Detection model
+  detection:
+    architecture: "YOLOv8n"
+    weights_path: "models/yolov8n_retail.pt"
+    engine_path: "models/yolov8n_retail_fp16.engine"
+    input_size: [640, 640]
+    precision: "fp16"  # fp32, fp16, int8
+    confidence_threshold: 0.5
+    nms_threshold: 0.45
+    max_detections: 100
+    
+    # Class configuration
+    classes:
+      - name: "person"
+        id: 0
+        color: [0, 255, 0]  # BGR
+      - name: "shopping_cart"
+        id: 1
+        color: [255, 165, 0]
+      - name: "basket"
+        id: 2
+        color: [255, 0, 255]
+      - name: "product"
+        id: 3
+        color: [0, 255, 255]
+      - name: "shelf"
+        id: 4
+        color: [128, 128, 128]
+      - name: "price_tag"
+        id: 5
+        color: [255, 255, 0]
+      - name: "employee"
+        id: 6
+        color: [0, 0, 255]
+        
+  # ReID model (person re-identification)
+  reid:
+    enabled: false
+    engine_path: "models/osnet_retail_fp16.engine"
+    input_size: [128, 256]
+    embedding_dim: 512
+    
+# Tracker Configuration
+tracker:
+  algorithm: "bytetrack"  # sort, deepsort, bytetrack
+  
+  # ByteTrack parameters
+  bytetrack:
+    track_thresh: 0.5
+    track_buffer: 30
+    match_thresh: 0.8
+    min_box_area: 100
+    
+  # SORT parameters  
+  sort:
+    max_age: 30
+    min_hits: 3
+    iou_threshold: 0.3
+    
+  # Track management
+  max_tracks: 200
+  track_timeout_sec: 5.0
+  min_track_length: 5
+
+# Analytics Configuration
+analytics:
+  # Customer journey tracking
+  customer_journey:
+    enabled: true
+    zones_config: "configs/zones.yaml"
+    min_zone_dwell_sec: 2.0
+    max_journey_gap_sec: 300
+    
+  # Queue monitoring
+  queue_monitor:
+    enabled: true
+    lanes_config: "configs/queue_lanes.yaml"
+    position_threshold: 50  # pixels
+    wait_time_threshold_sec: 300
+    abandonment_threshold_sec: 30
+    staffing_target_wait_sec: 120
+    
+  # Heatmap generation
+  heatmap:
+    enabled: true
+    cell_size: 20  # pixels
+    temporal_decay: 0.995
+    update_interval_sec: 1.0
+    export_interval_sec: 300
+    
+  # Conversion funnel
+  funnel:
+    enabled: true
+    stages:
+      - name: "browsing"
+        zones: ["entrance", "aisle"]
+      - name: "engagement"
+        zones: ["product_display"]
+        min_dwell_sec: 5
+      - name: "consideration"
+        zones: ["product_display"]
+        min_dwell_sec: 30
+      - name: "checkout"
+        zones: ["checkout"]
+
+# Alert Configuration
+alerts:
+  enabled: true
+  deduplication_window_sec: 300
+  
+  # Alert rules
+  rules:
+    - name: "Queue Length Warning"
+      type: "queue_length"
+      severity: "warning"
+      conditions:
+        threshold: 6
+        duration_sec: 60
+      cooldown_sec: 300
+      
+    - name: "Queue Length Critical"
+      type: "queue_length"
+      severity: "critical"
+      conditions:
+        threshold: 10
+        duration_sec: 30
+      cooldown_sec: 180
+      
+    - name: "Long Wait Time"
+      type: "wait_time"
+      severity: "warning"
+      conditions:
+        threshold_sec: 300
+      cooldown_sec: 300
+      
+    - name: "Suspected Shrinkage"
+      type: "shrinkage"
+      severity: "critical"
+      conditions:
+        concealment_duration_sec: 3
+        exit_without_checkout: true
+      cooldown_sec: 60
+      
+  # Notification channels
+  notifications:
+    webhook:
+      enabled: false
+      url: "https://hooks.example.com/retail-alerts"
+      headers:
+        Authorization: "Bearer ${WEBHOOK_TOKEN}"
+        
+    email:
+      enabled: false
+      smtp_host: "smtp.example.com"
+      smtp_port: 587
+      from_address: "alerts@retailvision.example.com"
+      to_addresses:
+        - "manager@store.example.com"
+        
+    slack:
+      enabled: false
+      webhook_url: "${SLACK_WEBHOOK_URL}"
+      channel: "#store-alerts"
+
+# Database Configuration
+database:
+  # TimescaleDB for time-series data
+  timescaledb:
+    host: "localhost"
+    port: 5432
+    database: "retail_analytics"
+    username: "retail_user"
+    password: "${DB_PASSWORD}"
+    pool_size: 10
+    
+  # Redis for caching and pub/sub
+  redis:
+    host: "localhost"
+    port: 6379
+    password: "${REDIS_PASSWORD}"
+    db: 0
+    max_connections: 20
+    
+  # ClickHouse for analytics
+  clickhouse:
+    enabled: false
+    host: "localhost"
+    port: 8123
+    database: "retail"
+
+# Message Queue Configuration
+messaging:
+  # Kafka for event streaming
+  kafka:
+    enabled: false
+    brokers: "localhost:9092"
+    topics:
+      detections: "retail-detections"
+      analytics: "retail-analytics"
+      alerts: "retail-alerts"
+    consumer_group: "retail-edge-001"
+    
+  # Redis Streams (alternative to Kafka)
+  redis_streams:
+    enabled: true
+    max_stream_length: 10000
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  cors_origins: ["*"]
+  
+  # Authentication
+  auth:
+    enabled: false
+    jwt_secret: "${JWT_SECRET}"
+    jwt_algorithm: "HS256"
+    token_expire_minutes: 1440
+    
+  # Rate limiting
+  rate_limit:
+    enabled: true
+    requests_per_minute: 100
+
+# Edge-Cloud Sync Configuration
+sync:
+  enabled: true
+  cloud_host: "api.retailvision.cloud"
+  cloud_port: 443
+  use_tls: true
+  
+  # Upload settings
+  upload_interval_sec: 30
+  upload_batch_size: 100
+  compress_uploads: true
+  
+  # Download settings
+  check_updates_interval_sec: 300
+  auto_download_models: true
+  
+  # Buffer settings
+  buffer_db_path: "/var/lib/retail-vision/sync_buffer.db"
+  max_buffer_size_mb: 500
+  
+  # Health reporting
+  heartbeat_interval_sec: 60
+
+# Storage Configuration
+storage:
+  # Local storage
+  data_dir: "/var/lib/retail-vision/data"
+  models_dir: "/var/lib/retail-vision/models"
+  logs_dir: "/var/log/retail-vision"
+  
+  # Video clip storage (for alerts)
+  video_clips:
+    enabled: true
+    retention_days: 7
+    max_size_gb: 50
+    
+  # MinIO object storage
+  minio:
+    enabled: false
+    endpoint: "localhost:9000"
+    access_key: "${MINIO_ACCESS_KEY}"
+    secret_key: "${MINIO_SECRET_KEY}"
+    bucket: "retail-vision"
+
+# Performance Tuning
+performance:
+  # GPU memory management
+  gpu:
+    memory_fraction: 0.8
+    allow_growth: true
+    
+  # Thread pools
+  inference_threads: 2
+  analytics_threads: 4
+  io_threads: 2
+  
+  # Batch processing
+  detection_batch_size: 16
+  analytics_batch_size: 100
+  
+  # Latency targets (milliseconds)
+  targets:
+    inference_latency_ms: 10
+    e2e_latency_ms: 50
+
+# Monitoring Configuration
+monitoring:
+  # Prometheus metrics
+  prometheus:
+    enabled: true
+    port: 9090
+    path: "/metrics"
+    
+  # Grafana dashboards
+  grafana:
+    enabled: false
+    host: "localhost"
+    port: 3000
+
+# Jetson-specific Configuration
+jetson:
+  # Power management
+  power_mode: "MAXN"  # MAXN, 15W, 10W
+  enable_jetson_clocks: true
+  fan_speed_percent: 100
+  
+  # DLA configuration
+  dla:
+    enabled: false
+    core: 0  # 0 or 1
+    
+  # Memory optimization
+  swap_size_gb: 4
+  enable_nvmm: true
+
+# Development/Debug Settings
+debug:
+  # Visualization
+  show_detections: false
+  show_tracks: false
+  show_zones: false
+  show_heatmap: false
+  
+  # Profiling
+  enable_profiling: false
+  profile_output: "profile.json"
+  
+  # Logging
+  log_detections: false
+  log_tracks: false
+  save_debug_frames: false
+  debug_frame_interval: 100

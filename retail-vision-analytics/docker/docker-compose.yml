@@ -1,0 +1,358 @@
+# =============================================================================
+# Retail Vision Analytics - Docker Compose Configuration
+# =============================================================================
+# Full stack deployment including:
+# - Retail Vision Analytics (DeepStream + API)
+# - TimescaleDB (time-series database)
+# - Redis (caching + pub/sub)
+# - Grafana (visualization)
+# - Prometheus (metrics)
+#
+# Usage:
+#   Development:  docker-compose up -d
+#   Production:   docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#   Jetson:       docker-compose -f docker-compose.jetson.yml up -d
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # ===========================================================================
+  # Retail Vision Analytics - Main Application
+  # ===========================================================================
+  retail-vision:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: runtime
+    image: retail-vision:latest
+    container_name: retail-vision
+    restart: unless-stopped
+    
+    # GPU access
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu, video, compute]
+    
+    # Environment variables
+    environment:
+      - CONFIG_PATH=/app/configs/app_config.yaml
+      - LOG_LEVEL=INFO
+      - DB_HOST=timescaledb
+      - DB_PORT=5432
+      - DB_NAME=retail_analytics
+      - DB_USER=retail_user
+      - DB_PASSWORD=${DB_PASSWORD:-retailpass123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_BROKERS=kafka:9092
+      - PROMETHEUS_PORT=9090
+    
+    # Port mappings
+    ports:
+      - "8000:8000"   # REST API
+      - "8554:8554"   # RTSP output
+      - "9090:9090"   # Prometheus metrics
+    
+    # Volume mounts
+    volumes:
+      - ../configs:/app/configs:ro
+      - ../models:/app/models:ro
+      - retail-data:/var/lib/retail-vision
+      - retail-logs:/var/log/retail-vision
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro  # Display (optional)
+    
+    # Network
+    networks:
+      - retail-network
+    
+    # Dependencies
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # ===========================================================================
+  # TimescaleDB - Time-Series Database
+  # ===========================================================================
+  timescaledb:
+    image: timescale/timescaledb:latest-pg15
+    container_name: retail-timescaledb
+    restart: unless-stopped
+    
+    environment:
+      - POSTGRES_DB=retail_analytics
+      - POSTGRES_USER=retail_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-retailpass123}
+      - TIMESCALEDB_TELEMETRY=off
+    
+    ports:
+      - "5432:5432"
+    
+    volumes:
+      - timescale-data:/var/lib/postgresql/data
+      - ./init-scripts/timescaledb:/docker-entrypoint-initdb.d:ro
+    
+    networks:
+      - retail-network
+    
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U retail_user -d retail_analytics"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ===========================================================================
+  # Redis - Caching & Pub/Sub
+  # ===========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: retail-redis
+    restart: unless-stopped
+    
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    
+    ports:
+      - "6379:6379"
+    
+    volumes:
+      - redis-data:/data
+    
+    networks:
+      - retail-network
+    
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ===========================================================================
+  # Kafka - Event Streaming (Optional)
+  # ===========================================================================
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: retail-zookeeper
+    restart: unless-stopped
+    profiles:
+      - kafka
+    
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-logs:/var/lib/zookeeper/log
+    
+    networks:
+      - retail-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: retail-kafka
+    restart: unless-stopped
+    profiles:
+      - kafka
+    
+    depends_on:
+      - zookeeper
+    
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    
+    ports:
+      - "9092:9092"
+    
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    
+    networks:
+      - retail-network
+
+  # ===========================================================================
+  # Prometheus - Metrics Collection
+  # ===========================================================================
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: retail-prometheus
+    restart: unless-stopped
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=15d'
+      - '--web.enable-lifecycle'
+    
+    ports:
+      - "9091:9090"
+    
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    
+    networks:
+      - retail-network
+    
+    depends_on:
+      - retail-vision
+
+  # ===========================================================================
+  # Grafana - Visualization & Dashboards
+  # ===========================================================================
+  grafana:
+    image: grafana/grafana:10.1.0
+    container_name: retail-grafana
+    restart: unless-stopped
+    
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin123}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-piechart-panel
+    
+    ports:
+      - "3000:3000"
+    
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    
+    networks:
+      - retail-network
+    
+    depends_on:
+      - prometheus
+      - timescaledb
+
+  # ===========================================================================
+  # MinIO - Object Storage (Optional)
+  # ===========================================================================
+  minio:
+    image: minio/minio:latest
+    container_name: retail-minio
+    restart: unless-stopped
+    profiles:
+      - storage
+    
+    command: server /data --console-address ":9001"
+    
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ACCESS_KEY:-minioadmin}
+      - MINIO_ROOT_PASSWORD=${MINIO_SECRET_KEY:-minioadmin123}
+    
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    
+    volumes:
+      - minio-data:/data
+    
+    networks:
+      - retail-network
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # ===========================================================================
+  # RTSP Server (for testing/simulation)
+  # ===========================================================================
+  rtsp-server:
+    image: aler9/rtsp-simple-server:latest
+    container_name: retail-rtsp-server
+    restart: unless-stopped
+    profiles:
+      - testing
+    
+    ports:
+      - "8555:8554"
+    
+    networks:
+      - retail-network
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  retail-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# =============================================================================
+# Volumes
+# =============================================================================
+volumes:
+  retail-data:
+    driver: local
+  retail-logs:
+    driver: local
+  timescale-data:
+    driver: local
+  redis-data:
+    driver: local
+  kafka-data:
+    driver: local
+  zookeeper-data:
+    driver: local
+  zookeeper-logs:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+  minio-data:
+    driver: local
+
+# =============================================================================
+# Usage Examples
+# =============================================================================
+#
+# Start core services:
+#   docker-compose up -d retail-vision timescaledb redis grafana prometheus
+#
+# Start with Kafka:
+#   docker-compose --profile kafka up -d
+#
+# Start with object storage:
+#   docker-compose --profile storage up -d
+#
+# Start for testing (includes RTSP server):
+#   docker-compose --profile testing up -d
+#
+# View logs:
+#   docker-compose logs -f retail-vision
+#
+# Scale for multiple GPUs:
+#   docker-compose up -d --scale retail-vision=2
+#
+# Stop all:
+#   docker-compose down
+#
+# Clean volumes:
+#   docker-compose down -v
+#
+# =============================================================================

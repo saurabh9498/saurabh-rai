@@ -1,0 +1,423 @@
+# =============================================================================
+# Store Layout - Zone Configuration
+# =============================================================================
+# Defines zones for customer journey tracking, analytics, and alerts
+# Coordinates are normalized (0.0 to 1.0) relative to frame dimensions
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Store Information
+# -----------------------------------------------------------------------------
+store:
+  id: "store-001"
+  name: "Downtown Flagship Store"
+  address: "123 Main Street, San Diego, CA 92101"
+  timezone: "America/Los_Angeles"
+  
+  # Store dimensions (for reference, optional)
+  dimensions:
+    width_meters: 50
+    height_meters: 30
+    
+  # Operating hours (for analytics filtering)
+  operating_hours:
+    monday: { open: "09:00", close: "21:00" }
+    tuesday: { open: "09:00", close: "21:00" }
+    wednesday: { open: "09:00", close: "21:00" }
+    thursday: { open: "09:00", close: "21:00" }
+    friday: { open: "09:00", close: "22:00" }
+    saturday: { open: "10:00", close: "22:00" }
+    sunday: { open: "10:00", close: "20:00" }
+
+# -----------------------------------------------------------------------------
+# Camera Mappings
+# -----------------------------------------------------------------------------
+# Map zones to specific cameras for accurate tracking
+cameras:
+  - id: "cam-entrance-1"
+    name: "Main Entrance"
+    covers_zones: ["entrance", "vestibule"]
+    
+  - id: "cam-aisle-1"
+    name: "Aisle 1 - Produce"
+    covers_zones: ["aisle-1-produce", "produce-display"]
+    
+  - id: "cam-aisle-2"
+    name: "Aisle 2 - Dairy"
+    covers_zones: ["aisle-2-dairy", "refrigerated-section"]
+    
+  - id: "cam-aisle-3"
+    name: "Aisle 3 - Electronics"
+    covers_zones: ["aisle-3-electronics", "high-value-display"]
+    
+  - id: "cam-checkout-1"
+    name: "Checkout Area"
+    covers_zones: ["checkout-1", "checkout-2", "checkout-3", "impulse-display"]
+
+# -----------------------------------------------------------------------------
+# Zone Definitions
+# -----------------------------------------------------------------------------
+zones:
+  # ===========================================================================
+  # Entry/Exit Zones
+  # ===========================================================================
+  - id: "entrance"
+    name: "Main Entrance"
+    type: "entrance"
+    
+    # Polygon vertices (normalized coordinates)
+    # Listed clockwise starting from top-left
+    polygon:
+      - [0.00, 0.80]   # Top-left
+      - [0.15, 0.80]   # Top-right
+      - [0.15, 1.00]   # Bottom-right
+      - [0.00, 1.00]   # Bottom-left
+    
+    # Display settings
+    display:
+      color: "#00FF00"   # Green
+      opacity: 0.3
+      show_count: true
+      show_label: true
+    
+    # Analytics settings
+    analytics:
+      count_entries: true
+      count_exits: true
+      track_direction: true
+    
+    # Alert thresholds
+    alerts:
+      max_occupancy: 50
+      min_dwell_seconds: 0   # No minimum for entrance
+      max_dwell_seconds: 60  # Alert if lingering at entrance
+
+  - id: "vestibule"
+    name: "Vestibule/Cart Area"
+    type: "transition"
+    polygon:
+      - [0.00, 0.65]
+      - [0.20, 0.65]
+      - [0.20, 0.80]
+      - [0.00, 0.80]
+    display:
+      color: "#90EE90"
+      opacity: 0.2
+    analytics:
+      track_cart_pickup: true
+
+  # ===========================================================================
+  # Shopping Aisles
+  # ===========================================================================
+  - id: "aisle-1-produce"
+    name: "Aisle 1 - Produce Section"
+    type: "aisle"
+    category: "produce"
+    polygon:
+      - [0.00, 0.25]
+      - [0.30, 0.25]
+      - [0.30, 0.60]
+      - [0.00, 0.60]
+    display:
+      color: "#32CD32"
+      opacity: 0.3
+    analytics:
+      expected_dwell_seconds: 120
+      track_product_interaction: true
+    alerts:
+      crowding_threshold: 10
+
+  - id: "produce-display"
+    name: "Produce Feature Display"
+    type: "display"
+    category: "produce"
+    parent_zone: "aisle-1-produce"
+    polygon:
+      - [0.05, 0.35]
+      - [0.15, 0.35]
+      - [0.15, 0.50]
+      - [0.05, 0.50]
+    display:
+      color: "#228B22"
+      opacity: 0.4
+    analytics:
+      track_engagement: true
+      expected_dwell_seconds: 30
+
+  - id: "aisle-2-dairy"
+    name: "Aisle 2 - Dairy Section"
+    type: "aisle"
+    category: "dairy"
+    polygon:
+      - [0.32, 0.25]
+      - [0.60, 0.25]
+      - [0.60, 0.60]
+      - [0.32, 0.60]
+    display:
+      color: "#87CEEB"
+      opacity: 0.3
+    analytics:
+      expected_dwell_seconds: 90
+
+  - id: "refrigerated-section"
+    name: "Refrigerated Goods"
+    type: "special"
+    category: "refrigerated"
+    parent_zone: "aisle-2-dairy"
+    polygon:
+      - [0.50, 0.30]
+      - [0.58, 0.30]
+      - [0.58, 0.55]
+      - [0.50, 0.55]
+    display:
+      color: "#4169E1"
+      opacity: 0.4
+    analytics:
+      track_door_opens: true
+      expected_dwell_seconds: 45
+
+  - id: "aisle-3-electronics"
+    name: "Aisle 3 - Electronics"
+    type: "aisle"
+    category: "electronics"
+    polygon:
+      - [0.62, 0.25]
+      - [0.90, 0.25]
+      - [0.90, 0.60]
+      - [0.62, 0.60]
+    display:
+      color: "#9370DB"
+      opacity: 0.3
+    analytics:
+      expected_dwell_seconds: 180
+      high_value: true
+    alerts:
+      # Loss prevention alerts
+      max_dwell_seconds: 600
+      unattended_product_seconds: 120
+
+  - id: "high-value-display"
+    name: "High Value Electronics Display"
+    type: "display"
+    category: "electronics"
+    parent_zone: "aisle-3-electronics"
+    polygon:
+      - [0.70, 0.35]
+      - [0.85, 0.35]
+      - [0.85, 0.50]
+      - [0.70, 0.50]
+    display:
+      color: "#8A2BE2"
+      opacity: 0.5
+    analytics:
+      high_security: true
+      track_staff_presence: true
+      expected_dwell_seconds: 60
+    alerts:
+      require_staff_presence: true
+      max_customers_without_staff: 3
+
+  # ===========================================================================
+  # Checkout Zones
+  # ===========================================================================
+  - id: "checkout-area"
+    name: "Checkout Area"
+    type: "checkout"
+    polygon:
+      - [0.65, 0.65]
+      - [1.00, 0.65]
+      - [1.00, 1.00]
+      - [0.65, 1.00]
+    display:
+      color: "#FFD700"
+      opacity: 0.2
+    analytics:
+      conversion_zone: true
+
+  - id: "checkout-1"
+    name: "Checkout Lane 1"
+    type: "checkout_lane"
+    parent_zone: "checkout-area"
+    polygon:
+      - [0.68, 0.70]
+      - [0.78, 0.70]
+      - [0.78, 0.95]
+      - [0.68, 0.95]
+    display:
+      color: "#FFD700"
+      opacity: 0.4
+      show_queue_length: true
+    analytics:
+      queue_monitoring: true
+      queue_direction: "vertical"
+      service_point: [0.73, 0.72]
+    alerts:
+      queue_length_warning: 5
+      queue_length_critical: 10
+      wait_time_warning_seconds: 120
+      wait_time_critical_seconds: 300
+
+  - id: "checkout-2"
+    name: "Checkout Lane 2"
+    type: "checkout_lane"
+    parent_zone: "checkout-area"
+    polygon:
+      - [0.80, 0.70]
+      - [0.90, 0.70]
+      - [0.90, 0.95]
+      - [0.80, 0.95]
+    display:
+      color: "#FFD700"
+      opacity: 0.4
+      show_queue_length: true
+    analytics:
+      queue_monitoring: true
+      queue_direction: "vertical"
+      service_point: [0.85, 0.72]
+    alerts:
+      queue_length_warning: 5
+      queue_length_critical: 10
+
+  - id: "checkout-3"
+    name: "Self-Checkout"
+    type: "checkout_lane"
+    parent_zone: "checkout-area"
+    polygon:
+      - [0.92, 0.70]
+      - [0.98, 0.70]
+      - [0.98, 0.95]
+      - [0.92, 0.95]
+    display:
+      color: "#FFA500"
+      opacity: 0.4
+    analytics:
+      queue_monitoring: true
+      self_checkout: true
+    alerts:
+      queue_length_warning: 8
+      assistance_needed_seconds: 60
+
+  - id: "impulse-display"
+    name: "Checkout Impulse Display"
+    type: "display"
+    category: "impulse"
+    parent_zone: "checkout-area"
+    polygon:
+      - [0.65, 0.80]
+      - [0.68, 0.80]
+      - [0.68, 0.95]
+      - [0.65, 0.95]
+    display:
+      color: "#FF6347"
+      opacity: 0.4
+    analytics:
+      track_engagement: true
+      impulse_zone: true
+
+  # ===========================================================================
+  # Special Zones
+  # ===========================================================================
+  - id: "customer-service"
+    name: "Customer Service Desk"
+    type: "service"
+    polygon:
+      - [0.40, 0.00]
+      - [0.60, 0.00]
+      - [0.60, 0.15]
+      - [0.40, 0.15]
+    display:
+      color: "#FF69B4"
+      opacity: 0.3
+    analytics:
+      queue_monitoring: true
+      track_staff_response: true
+    alerts:
+      queue_length_warning: 3
+      unattended_seconds: 30
+
+  - id: "restrooms"
+    name: "Restroom Area"
+    type: "facility"
+    polygon:
+      - [0.00, 0.00]
+      - [0.15, 0.00]
+      - [0.15, 0.15]
+      - [0.00, 0.15]
+    display:
+      color: "#808080"
+      opacity: 0.2
+    analytics:
+      exclude_from_journey: true
+      count_only: true
+
+# -----------------------------------------------------------------------------
+# Conversion Funnel Definition
+# -----------------------------------------------------------------------------
+# Define the expected customer journey stages
+funnel:
+  stages:
+    - id: "entered"
+      name: "Entered Store"
+      zones: ["entrance"]
+      
+    - id: "browsing"
+      name: "Browsing"
+      zones: ["aisle-1-produce", "aisle-2-dairy", "aisle-3-electronics"]
+      
+    - id: "engaged"
+      name: "Product Engagement"
+      zones: ["produce-display", "refrigerated-section", "high-value-display"]
+      min_dwell_seconds: 30
+      
+    - id: "checkout_intent"
+      name: "Checkout Intent"
+      zones: ["checkout-area"]
+      
+    - id: "converted"
+      name: "Completed Purchase"
+      zones: ["checkout-1", "checkout-2", "checkout-3"]
+      min_dwell_seconds: 60
+
+# -----------------------------------------------------------------------------
+# Heatmap Configuration
+# -----------------------------------------------------------------------------
+heatmap:
+  resolution: [96, 54]   # Grid resolution
+  decay_rate: 0.99       # Per-frame decay
+  gaussian_sigma: 2.0    # Smoothing
+  update_interval_ms: 100
+  
+  # Exclude zones from heatmap
+  exclude_zones:
+    - "restrooms"
+    - "customer-service"
+
+# -----------------------------------------------------------------------------
+# Path Analysis
+# -----------------------------------------------------------------------------
+paths:
+  # Common expected paths
+  expected_paths:
+    - name: "Quick Shop"
+      sequence: ["entrance", "aisle-1-produce", "checkout-1"]
+      expected_duration_minutes: 10
+      
+    - name: "Full Shop"
+      sequence: ["entrance", "aisle-1-produce", "aisle-2-dairy", "aisle-3-electronics", "checkout-1"]
+      expected_duration_minutes: 30
+      
+    - name: "Electronics Focus"
+      sequence: ["entrance", "aisle-3-electronics", "high-value-display", "checkout-1"]
+      expected_duration_minutes: 20
+
+  # Anomalous paths to detect
+  anomaly_patterns:
+    - name: "Loop without purchase"
+      description: "Multiple loops through store without checkout"
+      pattern: ["entrance", "*", "*", "*", "entrance"]
+      alert_after_occurrences: 2
+      
+    - name: "High-value lingering"
+      description: "Extended time in high-value area without staff"
+      zones: ["high-value-display"]
+      max_dwell_minutes: 10

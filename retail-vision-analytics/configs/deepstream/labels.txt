@@ -1,0 +1,7 @@
+person
+shopping_cart
+basket
+product
+shelf
+price_tag
+employee

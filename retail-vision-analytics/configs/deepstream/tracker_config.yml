@@ -1,0 +1,93 @@
+# =============================================================================
+# DeepStream Tracker Configuration
+# =============================================================================
+# NvDCF (NVIDIA Deep Correlation Filter) tracker settings
+# =============================================================================
+
+%YAML:1.0
+
+BaseConfig:
+  minDetectorConfidence: 0.5
+  minTrackerConfidence: 0.4
+  minTargetBrightness: 0.1
+  maxShadowTrackingAge: 30
+  probationAge: 3
+  maxTargetsPerStream: 150
+  filterLr: 0.15
+  filterWeights: 0.5
+
+TargetManagement:
+  maxTargetsPerStream: 150
+  minIouDiff4NewTarget: 0.8
+  preserveStreamUpdateOrder: 0
+  enableBboxUnClipping: 0
+  minTrackerConfidence: 0.4
+  maxShadowTrackingAge: 30
+  probationAge: 3
+  earlyTerminationAge: 1
+
+TrajectoryManagement:
+  useUniqueID: 1
+  enableTrajectorySmoothing: 1
+  smoothingWindowSize: 10
+  trajectoryBufferLength: 100
+
+DataAssociator:
+  dataAssociatorType: 1  # 0: IoU, 1: DeepSORT
+  associationMatcherType: 1
+  checkClassMatch: 1
+
+  # IoU Threshold
+  minMatchingScore4Overall: 0.0
+  minMatchingScore4SizeSimilarity: 0.5
+  minMatchingScore4Iou: 0.2
+  minMatchingScore4VisualSimilarity: 0.7
+
+  matchingScoreWeight4VisualSimilarity: 0.6
+  matchingScoreWeight4SizeSimilarity: 0.1
+  matchingScoreWeight4Iou: 0.3
+  tentativeDetectorConfidence: 0.2
+  minTrackingConfidenceDuringInactive: 0.5
+
+  # Feature matching
+  maxCosineDistance: 0.3
+  nnBudget: 100
+
+FeatureExtractor:
+  featureExtractorType: 1  # 0: OSNet, 1: ResNet
+  batchSize: 16
+  inputOrder: 1  # 0: NCHW, 1: NHWC
+  inputShape: 3;128;64
+  networkMode: 1  # 0: FP32, 1: FP16, 2: INT8
+  modelEngine: /opt/models/osnet_x0_25_fp16.engine
+  modelOnnx: /opt/models/osnet_x0_25.onnx
+
+StateEstimator:
+  stateEstimatorType: 2  # 0: Simple, 1: DCF, 2: KalmanFilter
+
+KalmanFilter:
+  processNoiseVar4Loc: 0.05
+  processNoiseVar4Size: 0.00005
+  processNoiseVar4Vel: 0.0005
+  measurementNoiseVar4Loc: 0.0005
+  measurementNoiseVar4Size: 0.003
+
+ReID:
+  reidType: 2  # 0: None, 1: OSNet, 2: DeepSORT
+  batchSize: 16
+  maxTrackAge: 70
+  minCosineDistance: 0.3
+  maxGallerySize: 100
+
+# Visual Tracker (DCF)
+VisualTracker:
+  visualTrackerType: 1  # 0: None, 1: NvDCF
+  useColorNames: 1
+  useHog: 1
+  featureFocusOffsetFactor_y: -0.2
+  filterLr: 0.075
+  filterChannelWeightsLr: 0.1
+  gaussianSigma: 0.75
+  hogFeatureNBins: 9
+  searchRegionPaddingScale: 3
+  useGpuForVisualTracker: 1

@@ -1,0 +1,187 @@
+# =============================================================================
+# Retail Vision Analytics - Python Dependencies
+# =============================================================================
+# Install: pip install -r requirements.txt
+#
+# Note: PyTorch and TensorRT are installed separately via NVIDIA containers
+# or JetPack SDK on Jetson devices.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Core Dependencies
+# -----------------------------------------------------------------------------
+numpy>=1.24.0,<2.0.0
+scipy>=1.10.0
+pandas>=2.0.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# -----------------------------------------------------------------------------
+# Computer Vision
+# -----------------------------------------------------------------------------
+opencv-python-headless>=4.8.0
+Pillow>=10.0.0
+ultralytics>=8.0.0
+onnx>=1.14.0
+onnxruntime-gpu>=1.15.0
+
+# Object tracking
+filterpy>=1.4.5
+lap>=0.4.0
+cython-bbox>=0.1.3
+
+# -----------------------------------------------------------------------------
+# Deep Learning (version hints - actual install via NVIDIA)
+# -----------------------------------------------------------------------------
+# torch>=2.0.0
+# torchvision>=0.15.0
+# tensorrt>=8.6.0
+
+# -----------------------------------------------------------------------------
+# Web Framework & API
+# -----------------------------------------------------------------------------
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+python-multipart>=0.0.6
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+httpx>=0.24.0
+websockets>=11.0.0
+
+# -----------------------------------------------------------------------------
+# Database & Caching
+# -----------------------------------------------------------------------------
+# PostgreSQL / TimescaleDB
+asyncpg>=0.28.0
+psycopg2-binary>=2.9.0
+sqlalchemy>=2.0.0
+alembic>=1.11.0
+
+# Redis
+redis>=4.6.0
+aioredis>=2.0.0
+
+# ClickHouse (optional)
+clickhouse-driver>=0.2.0
+
+# SQLite (for local buffering)
+aiosqlite>=0.19.0
+
+# -----------------------------------------------------------------------------
+# Message Queue
+# -----------------------------------------------------------------------------
+kafka-python>=2.0.2
+aiokafka>=0.8.0
+confluent-kafka>=2.2.0
+
+# -----------------------------------------------------------------------------
+# Monitoring & Observability
+# -----------------------------------------------------------------------------
+prometheus-client>=0.17.0
+opentelemetry-api>=1.19.0
+opentelemetry-sdk>=1.19.0
+opentelemetry-instrumentation-fastapi>=0.40b0
+
+# System monitoring
+psutil>=5.9.0
+GPUtil>=1.4.0
+py3nvml>=0.2.7
+
+# -----------------------------------------------------------------------------
+# Logging
+# -----------------------------------------------------------------------------
+loguru>=0.7.0
+structlog>=23.1.0
+
+# -----------------------------------------------------------------------------
+# Utilities
+# -----------------------------------------------------------------------------
+tqdm>=4.65.0
+python-dateutil>=2.8.0
+pytz>=2023.3
+typing-extensions>=4.7.0
+tenacity>=8.2.0
+orjson>=3.9.0
+
+# -----------------------------------------------------------------------------
+# Object Storage
+# -----------------------------------------------------------------------------
+boto3>=1.28.0
+minio>=7.1.0
+
+# -----------------------------------------------------------------------------
+# Visualization (optional, for notebooks)
+# -----------------------------------------------------------------------------
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# -----------------------------------------------------------------------------
+# Testing
+# -----------------------------------------------------------------------------
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+hypothesis>=6.82.0
+faker>=19.0.0
+
+# -----------------------------------------------------------------------------
+# Development Tools
+# -----------------------------------------------------------------------------
+black>=23.7.0
+flake8>=6.1.0
+isort>=5.12.0
+mypy>=1.4.0
+pre-commit>=3.3.0
+
+# Type stubs
+types-redis>=4.6.0
+types-pyyaml>=6.0.0
+types-python-dateutil>=2.8.0
+
+# -----------------------------------------------------------------------------
+# Documentation
+# -----------------------------------------------------------------------------
+mkdocs>=1.5.0
+mkdocs-material>=9.1.0
+mkdocstrings[python]>=0.22.0
+
+# -----------------------------------------------------------------------------
+# Jupyter (optional, for notebooks)
+# -----------------------------------------------------------------------------
+jupyter>=1.0.0
+ipykernel>=6.25.0
+ipywidgets>=8.1.0
+nbformat>=5.9.0
+
+# -----------------------------------------------------------------------------
+# GStreamer Python Bindings (installed via system package manager)
+# -----------------------------------------------------------------------------
+# PyGObject (gi) - installed via apt: python3-gi
+# GStreamer - installed via apt: gstreamer1.0-*
+
+# -----------------------------------------------------------------------------
+# NVIDIA DeepStream Python Bindings (installed via DeepStream SDK)
+# -----------------------------------------------------------------------------
+# pyds - installed via DeepStream SDK
+
+# =============================================================================
+# Installation Notes
+# =============================================================================
+#
+# For development on x86_64:
+#   pip install -r requirements.txt
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+#
+# For Jetson (ARM64):
+#   # Use NVIDIA pre-built wheels
+#   pip install -r requirements.txt --no-deps
+#   # Install PyTorch from NVIDIA forum/developer site
+#
+# For production:
+#   pip install -r requirements.txt --no-cache-dir
+#
+# =============================================================================
