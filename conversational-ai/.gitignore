@@ -1,0 +1,378 @@
+# =============================================================================
+# Conversational AI Assistant - Git Ignore
+# =============================================================================
+
+# =============================================================================
+# Python
+# =============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+pdm.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.local
+.env.*.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# =============================================================================
+# IDE / Editor
+# =============================================================================
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+.\#*
+.dir-locals.el
+
+# Eclipse
+.project
+.pydevproject
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+
+# =============================================================================
+# OS Generated
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# Project Specific
+# =============================================================================
+
+# Model files (large binaries)
+models/
+*.pt
+*.pth
+*.onnx
+*.bin
+*.h5
+*.pkl
+*.pickle
+*.safetensors
+
+# Hugging Face cache
+.cache/huggingface/
+
+# Whisper cache
+.cache/whisper/
+
+# TTS cache
+.cache/TTS/
+
+# Audio files
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.webm
+!data/sample/audio/*.wav
+
+# Data files (keep samples)
+data/raw/
+data/processed/
+data/large/
+!data/sample/
+
+# Logs
+logs/
+*.log
+log/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# Secrets and credentials
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
+.secrets
+
+# Docker volumes
+docker/volumes/
+
+# Redis dump
+dump.rdb
+
+# Prometheus data
+prometheus-data/
+
+# Grafana data
+grafana-data/
+
+# Nginx logs
+nginx/logs/
+
+# SSL certificates (local)
+certs/
+*.crt
+*.key
+*.pem
+!certs/.gitkeep
+
+# Benchmark results
+benchmarks/results/
+*.benchmark
+
+# Profiling
+*.prof
+*.lprof
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# =============================================================================
+# Build / Deploy
+# =============================================================================
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Kubernetes
+*.kubeconfig
+
+# Helm
+charts/*.tgz
+
+# AWS
+.aws/
+
+# GCP
+.gcloud/
+*.json
+!configs/*.json
+!data/sample/*.json
+
+# =============================================================================
+# Testing
+# =============================================================================
+
+# Test artifacts
+test-results/
+test-reports/
+junit.xml
+report.xml
+
+# Allure
+allure-results/
+allure-report/
+
+# =============================================================================
+# Documentation
+# =============================================================================
+
+# Built docs
+docs/_build/
+site/
+
+# =============================================================================
+# Misc
+# =============================================================================
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Lock files (keep package-lock.json if using npm for frontend)
+# package-lock.json
+# yarn.lock
+
+# Node (if any frontend components)
+node_modules/
+
+# Local configuration
+local.py
+local_settings.py
+config.local.yaml
+
+# Scratch / experimental
+scratch/
+experiments/
+playground/
