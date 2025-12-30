@@ -1,0 +1,166 @@
+{
+  "benchmark_info": {
+    "date": "2024-01-15T14:30:00Z",
+    "environment": {
+      "gpu": "NVIDIA RTX 4090",
+      "gpu_memory_gb": 24,
+      "cuda_version": "12.1",
+      "tensorrt_version": "8.6.1",
+      "driver_version": "535.104.05",
+      "os": "Ubuntu 22.04 LTS"
+    },
+    "settings": {
+      "warmup_iterations": 100,
+      "measurement_iterations": 1000,
+      "cuda_graphs": true,
+      "pinned_memory": true
+    }
+  },
+  "models": {
+    "resnet50": {
+      "input_shape": [3, 224, 224],
+      "results": {
+        "fp32": {
+          "batch_1": {
+            "throughput_fps": 450,
+            "latency_p50_ms": 2.2,
+            "latency_p95_ms": 2.4,
+            "latency_p99_ms": 2.6,
+            "memory_mb": 512
+          },
+          "batch_8": {
+            "throughput_fps": 1200,
+            "latency_p50_ms": 6.5,
+            "latency_p95_ms": 7.0,
+            "latency_p99_ms": 7.5,
+            "memory_mb": 892
+          },
+          "batch_32": {
+            "throughput_fps": 1850,
+            "latency_p50_ms": 17.0,
+            "latency_p95_ms": 18.2,
+            "latency_p99_ms": 19.5,
+            "memory_mb": 1456
+          }
+        },
+        "fp16": {
+          "batch_1": {
+            "throughput_fps": 890,
+            "latency_p50_ms": 1.1,
+            "latency_p95_ms": 1.2,
+            "latency_p99_ms": 1.3,
+            "memory_mb": 384
+          },
+          "batch_8": {
+            "throughput_fps": 2400,
+            "latency_p50_ms": 3.3,
+            "latency_p95_ms": 3.6,
+            "latency_p99_ms": 3.9,
+            "memory_mb": 612
+          },
+          "batch_32": {
+            "throughput_fps": 3800,
+            "latency_p50_ms": 8.4,
+            "latency_p95_ms": 9.0,
+            "latency_p99_ms": 9.8,
+            "memory_mb": 1024
+          }
+        },
+        "int8": {
+          "batch_1": {
+            "throughput_fps": 1250,
+            "latency_p50_ms": 0.8,
+            "latency_p95_ms": 0.9,
+            "latency_p99_ms": 1.0,
+            "memory_mb": 298
+          },
+          "batch_8": {
+            "throughput_fps": 3600,
+            "latency_p50_ms": 2.2,
+            "latency_p95_ms": 2.4,
+            "latency_p99_ms": 2.6,
+            "memory_mb": 445
+          },
+          "batch_32": {
+            "throughput_fps": 5200,
+            "latency_p50_ms": 6.1,
+            "latency_p95_ms": 6.5,
+            "latency_p99_ms": 7.0,
+            "memory_mb": 756
+          }
+        }
+      },
+      "accuracy": {
+        "fp32": {"top1": 76.15, "top5": 92.87},
+        "fp16": {"top1": 76.13, "top5": 92.85},
+        "int8": {"top1": 75.89, "top5": 92.71}
+      }
+    },
+    "yolov8n": {
+      "input_shape": [3, 640, 640],
+      "results": {
+        "fp32": {
+          "batch_1": {
+            "throughput_fps": 185,
+            "latency_p50_ms": 5.4,
+            "latency_p95_ms": 5.8,
+            "latency_p99_ms": 6.2,
+            "memory_mb": 1024
+          },
+          "batch_4": {
+            "throughput_fps": 320,
+            "latency_p50_ms": 12.4,
+            "latency_p95_ms": 13.2,
+            "latency_p99_ms": 14.0,
+            "memory_mb": 1856
+          }
+        },
+        "fp16": {
+          "batch_1": {
+            "throughput_fps": 380,
+            "latency_p50_ms": 2.6,
+            "latency_p95_ms": 2.8,
+            "latency_p99_ms": 3.0,
+            "memory_mb": 768
+          },
+          "batch_4": {
+            "throughput_fps": 680,
+            "latency_p50_ms": 5.8,
+            "latency_p95_ms": 6.2,
+            "latency_p99_ms": 6.8,
+            "memory_mb": 1280
+          }
+        },
+        "int8": {
+          "batch_1": {
+            "throughput_fps": 520,
+            "latency_p50_ms": 1.9,
+            "latency_p95_ms": 2.1,
+            "latency_p99_ms": 2.3,
+            "memory_mb": 512
+          },
+          "batch_4": {
+            "throughput_fps": 890,
+            "latency_p50_ms": 4.5,
+            "latency_p95_ms": 4.8,
+            "latency_p99_ms": 5.2,
+            "memory_mb": 892
+          }
+        }
+      },
+      "accuracy": {
+        "fp32": {"mAP50": 37.3, "mAP50-95": 25.8},
+        "fp16": {"mAP50": 37.2, "mAP50-95": 25.7},
+        "int8": {"mAP50": 36.8, "mAP50-95": 25.3}
+      }
+    }
+  },
+  "comparison": {
+    "resnet50_batch1_fp16": {
+      "tensorrt": {"fps": 890, "latency_p99_ms": 1.3},
+      "onnxruntime_cuda": {"fps": 620, "latency_p99_ms": 1.8},
+      "pytorch_compile": {"fps": 450, "latency_p99_ms": 2.4},
+      "tensorflow_xla": {"fps": 380, "latency_p99_ms": 2.9}
+    }
+  }
+}
