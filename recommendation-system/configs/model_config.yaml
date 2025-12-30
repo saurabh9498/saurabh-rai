@@ -1,0 +1,299 @@
+# Recommendation System Configuration
+# =====================================
+#
+# This file contains all configuration parameters for the recommendation
+# system including model architectures, serving settings, and training config.
+
+# -----------------------------------------------------------------------------
+# Model Configurations
+# -----------------------------------------------------------------------------
+
+models:
+  # Two-Tower Retrieval Model
+  two_tower:
+    name: "two_tower_retrieval"
+    version: "v2.3.1"
+    
+    architecture:
+      embedding_dim: 128
+      user_hidden_dims: [512, 256, 128]
+      item_hidden_dims: [256, 128]
+      dropout: 0.1
+      
+    user_features:
+      categorical:
+        - name: "age_bucket"
+          vocab_size: 10
+          embedding_dim: 16
+        - name: "gender"
+          vocab_size: 3
+          embedding_dim: 8
+        - name: "country"
+          vocab_size: 250
+          embedding_dim: 32
+        - name: "platform"
+          vocab_size: 5
+          embedding_dim: 8
+      dense:
+        - name: "account_age_days"
+          normalization: "log"
+        - name: "total_purchases"
+          normalization: "standard"
+        - name: "avg_session_duration"
+          normalization: "standard"
+      sequence:
+        max_length: 50
+        use_attention: true
+        num_heads: 4
+        
+    item_features:
+      categorical:
+        - name: "category"
+          vocab_size: 1000
+          embedding_dim: 32
+        - name: "subcategory"
+          vocab_size: 5000
+          embedding_dim: 32
+        - name: "brand"
+          vocab_size: 10000
+          embedding_dim: 32
+      dense:
+        - name: "price_normalized"
+        - name: "popularity_score"
+        - name: "avg_rating"
+      text:
+        encoder: "distilbert-base-uncased"
+        embedding_dim: 768
+        
+    training:
+      optimizer: "adam"
+      learning_rate: 0.001
+      batch_size: 4096
+      epochs: 10
+      warmup_steps: 1000
+      temperature: 0.05
+      negative_sampling: "in_batch"
+      
+  # DLRM Ranking Model
+  dlrm:
+    name: "dlrm_ranking"
+    version: "v2.3.1"
+    
+    architecture:
+      bottom_mlp_dims: [512, 256, 64]
+      top_mlp_dims: [512, 256, 1]
+      embedding_dim: 64
+      interaction_type: "dot"
+      
+    sparse_features:
+      - name: "user_id"
+        vocab_size: 10000000
+        embedding_dim: 64
+      - name: "item_id"
+        vocab_size: 1000000
+        embedding_dim: 64
+      - name: "category"
+        vocab_size: 1000
+        embedding_dim: 32
+      - name: "brand"
+        vocab_size: 10000
+        embedding_dim: 32
+      - name: "user_segment"
+        vocab_size: 100
+        embedding_dim: 16
+        
+    dense_features:
+      - "user_click_rate_7d"
+      - "user_purchase_rate_30d"
+      - "item_popularity"
+      - "item_avg_rating"
+      - "price_sensitivity_match"
+      - "category_affinity_score"
+      - "hour_of_day"
+      - "day_of_week"
+      - "is_weekend"
+      - "session_depth"
+      - "time_since_last_click"
+      - "items_in_cart"
+      - "embedding_similarity"
+      
+    training:
+      optimizer: "adagrad"
+      learning_rate: 0.01
+      batch_size: 65536
+      epochs: 3
+      loss: "binary_cross_entropy"
+      mixed_precision: true
+      
+  # DCN-v2 Model (alternative ranker)
+  dcn:
+    name: "dcn_v2_ranking"
+    version: "v1.0.0"
+    
+    architecture:
+      num_cross_layers: 3
+      deep_mlp_dims: [512, 256, 128]
+      embedding_dim: 64
+      
+    training:
+      optimizer: "adam"
+      learning_rate: 0.001
+      batch_size: 32768
+
+# -----------------------------------------------------------------------------
+# Feature Store Configuration
+# -----------------------------------------------------------------------------
+
+feature_store:
+  backend: "redis"
+  
+  redis:
+    host: "${REDIS_HOST:-localhost}"
+    port: ${REDIS_PORT:-6379}
+    db: 0
+    pool_size: 50
+    
+  cache:
+    user_ttl_seconds: 3600
+    item_ttl_seconds: 86400
+    context_ttl_seconds: 300
+    
+  feast:
+    enabled: false
+    repo_path: "/opt/feast/feature_repo"
+    
+# -----------------------------------------------------------------------------
+# Serving Configuration
+# -----------------------------------------------------------------------------
+
+serving:
+  api:
+    host: "0.0.0.0"
+    port: 8000
+    workers: 4
+    timeout: 30
+    max_request_size: "10MB"
+    
+  retrieval:
+    index_type: "IVF4096,Flat"
+    metric: "inner_product"
+    nprobe: 64
+    use_gpu: true
+    num_candidates: 1000
+    
+  ranking:
+    batch_size: 256
+    max_candidates: 1000
+    timeout_ms: 10
+    
+  business_rules:
+    min_score_threshold: 0.01
+    max_same_category: 5
+    diversity_factor: 0.3
+    freshness_boost: 0.1
+    freshness_window_days: 7
+    
+  caching:
+    enabled: true
+    ttl_seconds: 60
+    max_size: 100000
+
+# -----------------------------------------------------------------------------
+# Triton Inference Server Configuration
+# -----------------------------------------------------------------------------
+
+triton:
+  url: "${TRITON_URL:-localhost:8001}"
+  
+  models:
+    two_tower_user:
+      name: "two_tower_user"
+      version: 1
+      batch_size: 64
+      
+    two_tower_item:
+      name: "two_tower_item"
+      version: 1
+      batch_size: 256
+      
+    dlrm:
+      name: "dlrm_ranker"
+      version: 1
+      batch_size: 256
+      
+  client:
+    timeout_ms: 50
+    retries: 2
+    concurrency: 10
+
+# -----------------------------------------------------------------------------
+# Monitoring Configuration
+# -----------------------------------------------------------------------------
+
+monitoring:
+  metrics:
+    enabled: true
+    port: 9090
+    path: "/metrics"
+    
+  logging:
+    level: "INFO"
+    format: "json"
+    
+  alerts:
+    latency_p99_threshold_ms: 50
+    error_rate_threshold: 0.01
+    coverage_threshold: 0.3
+    
+  dashboards:
+    - name: "recommendation_overview"
+      refresh_interval: "30s"
+    - name: "model_performance"
+      refresh_interval: "5m"
+
+# -----------------------------------------------------------------------------
+# Training Pipeline Configuration
+# -----------------------------------------------------------------------------
+
+training:
+  data:
+    source: "s3://recommendation-data/training/"
+    validation_split: 0.1
+    test_split: 0.05
+    
+  pipeline:
+    framework: "pytorch"
+    distributed: true
+    num_gpus: 8
+    precision: "fp16"
+    
+  mlflow:
+    tracking_uri: "${MLFLOW_TRACKING_URI:-http://localhost:5000}"
+    experiment_name: "recommendation_models"
+    
+  artifacts:
+    model_path: "s3://recommendation-models/"
+    checkpoint_interval: 1000
+
+# -----------------------------------------------------------------------------
+# A/B Testing Configuration
+# -----------------------------------------------------------------------------
+
+ab_testing:
+  enabled: true
+  
+  experiments:
+    - name: "dlrm_v2_test"
+      description: "Testing DLRM v2 with new features"
+      traffic_percentage: 10
+      control_model: "dlrm_v1"
+      treatment_model: "dlrm_v2"
+      metrics:
+        - "ctr"
+        - "conversion_rate"
+        - "revenue_per_session"
+      min_sample_size: 100000
+      
+  bucketing:
+    method: "user_id_hash"
+    salt: "rec_experiment_2024"

@@ -1,0 +1,335 @@
+# =============================================================================
+# Feature Configuration
+# Defines all features used in the recommendation system
+# =============================================================================
+
+# Feature store settings
+feature_store:
+  backend: redis
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    db: 0
+    prefix: "features:"
+  
+  cache:
+    user_ttl: 3600       # 1 hour
+    item_ttl: 86400      # 24 hours
+    context_ttl: 300     # 5 minutes
+
+# =============================================================================
+# User Features
+# =============================================================================
+user_features:
+  # Categorical features
+  categorical:
+    - name: user_id
+      cardinality: 10000000
+      embedding_dim: 64
+      
+    - name: age_bucket
+      cardinality: 10
+      embedding_dim: 8
+      buckets: [18, 25, 35, 45, 55, 65, 75, 100]
+      
+    - name: gender
+      cardinality: 4
+      embedding_dim: 4
+      values: [unknown, male, female, other]
+      
+    - name: country
+      cardinality: 250
+      embedding_dim: 16
+      
+    - name: device_type
+      cardinality: 5
+      embedding_dim: 4
+      values: [unknown, mobile, tablet, desktop, tv]
+      
+    - name: platform
+      cardinality: 4
+      embedding_dim: 4
+      values: [unknown, ios, android, web]
+      
+    - name: user_segment
+      cardinality: 20
+      embedding_dim: 8
+      
+  # Dense/numerical features
+  dense:
+    - name: account_age_days
+      normalization: log1p
+      mean: 365
+      std: 200
+      
+    - name: total_orders
+      normalization: log1p
+      mean: 10
+      std: 15
+      
+    - name: total_spend
+      normalization: log1p
+      mean: 500
+      std: 1000
+      
+    - name: avg_order_value
+      normalization: standard
+      mean: 75
+      std: 50
+      
+    - name: days_since_last_order
+      normalization: log1p
+      mean: 30
+      std: 45
+      
+    - name: session_count_30d
+      normalization: log1p
+      mean: 5
+      std: 8
+      
+    - name: click_rate_30d
+      normalization: none
+      min: 0
+      max: 1
+      
+    - name: purchase_rate_30d
+      normalization: none
+      min: 0
+      max: 1
+
+  # Sequence features (user history)
+  sequences:
+    - name: viewed_items
+      max_length: 50
+      item_embedding_dim: 64
+      aggregation: attention
+      
+    - name: purchased_items
+      max_length: 20
+      item_embedding_dim: 64
+      aggregation: attention
+      
+    - name: searched_queries
+      max_length: 10
+      embedding_dim: 128
+      aggregation: mean
+
+# =============================================================================
+# Item Features
+# =============================================================================
+item_features:
+  # Categorical features
+  categorical:
+    - name: item_id
+      cardinality: 10000000
+      embedding_dim: 64
+      
+    - name: category_l1
+      cardinality: 50
+      embedding_dim: 16
+      
+    - name: category_l2
+      cardinality: 500
+      embedding_dim: 32
+      
+    - name: category_l3
+      cardinality: 5000
+      embedding_dim: 64
+      
+    - name: brand_id
+      cardinality: 50000
+      embedding_dim: 32
+      
+    - name: seller_id
+      cardinality: 100000
+      embedding_dim: 32
+      
+    - name: color
+      cardinality: 50
+      embedding_dim: 8
+      
+    - name: size_category
+      cardinality: 20
+      embedding_dim: 8
+      
+  # Dense/numerical features
+  dense:
+    - name: price
+      normalization: log1p
+      mean: 50
+      std: 100
+      
+    - name: original_price
+      normalization: log1p
+      mean: 60
+      std: 120
+      
+    - name: discount_pct
+      normalization: none
+      min: 0
+      max: 1
+      
+    - name: rating
+      normalization: none
+      min: 0
+      max: 5
+      
+    - name: review_count
+      normalization: log1p
+      mean: 100
+      std: 500
+      
+    - name: view_count_7d
+      normalization: log1p
+      mean: 1000
+      std: 5000
+      
+    - name: purchase_count_7d
+      normalization: log1p
+      mean: 50
+      std: 200
+      
+    - name: ctr_7d
+      normalization: none
+      min: 0
+      max: 1
+      
+    - name: conversion_rate_7d
+      normalization: none
+      min: 0
+      max: 1
+      
+    - name: days_since_listed
+      normalization: log1p
+      mean: 90
+      std: 180
+      
+    - name: inventory_level
+      normalization: log1p
+      mean: 100
+      std: 500
+
+  # Text features
+  text:
+    - name: title
+      max_length: 128
+      encoder: distilbert
+      embedding_dim: 768
+      pooling: cls
+      
+    - name: description
+      max_length: 512
+      encoder: distilbert
+      embedding_dim: 768
+      pooling: mean
+
+  # Image features (pre-computed)
+  image:
+    - name: image_embedding
+      embedding_dim: 512
+      encoder: resnet50
+
+# =============================================================================
+# Context Features
+# =============================================================================
+context_features:
+  categorical:
+    - name: page_type
+      cardinality: 10
+      embedding_dim: 4
+      values: [home, search, category, product, cart, checkout, account]
+      
+    - name: traffic_source
+      cardinality: 10
+      embedding_dim: 4
+      values: [direct, organic, paid, social, email, referral, unknown]
+      
+    - name: day_of_week
+      cardinality: 7
+      embedding_dim: 4
+      
+    - name: hour_of_day
+      cardinality: 24
+      embedding_dim: 8
+      
+  dense:
+    - name: session_duration_sec
+      normalization: log1p
+      mean: 300
+      std: 600
+      
+    - name: pages_viewed
+      normalization: log1p
+      mean: 5
+      std: 10
+      
+    - name: items_in_cart
+      normalization: log1p
+      mean: 2
+      std: 5
+      
+    - name: cart_value
+      normalization: log1p
+      mean: 100
+      std: 200
+
+# =============================================================================
+# Cross Features (Interactions)
+# =============================================================================
+cross_features:
+  - name: user_category_affinity
+    description: User's historical engagement with item category
+    features: [user_id, category_l2]
+    
+  - name: user_brand_affinity
+    description: User's historical engagement with brand
+    features: [user_id, brand_id]
+    
+  - name: user_price_sensitivity
+    description: User's price sensitivity based on purchase history
+    features: [user_id, price_bucket]
+    
+  - name: category_time_preference
+    description: Category popularity by time of day
+    features: [category_l2, hour_of_day]
+
+# =============================================================================
+# Feature Groups (for model inputs)
+# =============================================================================
+feature_groups:
+  two_tower_user:
+    categorical: [user_id, age_bucket, gender, country, device_type]
+    dense: [account_age_days, total_orders, days_since_last_order, click_rate_30d]
+    sequences: [viewed_items, purchased_items]
+    
+  two_tower_item:
+    categorical: [item_id, category_l1, category_l2, brand_id]
+    dense: [price, rating, review_count, ctr_7d]
+    text: [title]
+    
+  dlrm_ranking:
+    sparse:
+      - user_id
+      - item_id
+      - category_l2
+      - brand_id
+      - age_bucket
+      - gender
+      - country
+      - device_type
+      - page_type
+      - hour_of_day
+    dense:
+      - price
+      - rating
+      - review_count
+      - discount_pct
+      - ctr_7d
+      - conversion_rate_7d
+      - account_age_days
+      - total_orders
+      - days_since_last_order
+      - session_duration_sec
+      - items_in_cart
+      - cart_value
+      - user_category_affinity_score

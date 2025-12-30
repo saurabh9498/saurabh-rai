@@ -1,0 +1,356 @@
+# Real-Time Personalization Engine - Docker Compose
+# Full production stack with GPU support
+#
+# Usage:
+#   Development: docker-compose up -d
+#   Production:  docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#   Training:    docker-compose --profile training up -d
+#
+# Prerequisites:
+#   - NVIDIA Docker runtime installed
+#   - Docker Compose v2.0+
+
+version: '3.9'
+
+services:
+  # ===========================================================================
+  # Core Application Services
+  # ===========================================================================
+  
+  recommendation-api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: production
+    image: recommendation-system:latest
+    container_name: recommendation-api
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - REDIS_URL=redis://redis:6379
+      - TRITON_URL=triton:8001
+      - LOG_LEVEL=INFO
+      - WORKERS=4
+      - MODEL_PATH=/app/models
+      - FEATURE_STORE_BACKEND=redis
+      - ENABLE_METRICS=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../models:/app/models:ro
+      - ../logs:/app/logs
+      - model-cache:/app/cache
+    depends_on:
+      redis:
+        condition: service_healthy
+      triton:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+        limits:
+          memory: 8G
+    networks:
+      - recommendation-network
+    restart: unless-stopped
+
+  # ===========================================================================
+  # Triton Inference Server
+  # ===========================================================================
+  
+  triton:
+    image: nvcr.io/nvidia/tritonserver:23.12-py3
+    container_name: triton-server
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    command: >
+      tritonserver
+      --model-repository=/models
+      --strict-model-config=false
+      --log-verbose=1
+      --exit-on-error=false
+      --http-port=8001
+      --grpc-port=8002
+      --metrics-port=8003
+    ports:
+      - "8001:8001"  # HTTP
+      - "8002:8002"  # gRPC
+      - "8003:8003"  # Metrics
+    volumes:
+      - ../models/triton:/models:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/v2/health/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+        limits:
+          memory: 16G
+    networks:
+      - recommendation-network
+    restart: unless-stopped
+
+  # ===========================================================================
+  # Feature Store Backend
+  # ===========================================================================
+  
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis-feature-store
+    command: >
+      redis-server
+      --maxmemory 4gb
+      --maxmemory-policy allkeys-lru
+      --appendonly yes
+      --appendfsync everysec
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 5G
+    networks:
+      - recommendation-network
+    restart: unless-stopped
+
+  # ===========================================================================
+  # Monitoring Stack
+  # ===========================================================================
+  
+  prometheus:
+    image: prom/prometheus:v2.47.0
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=15d'
+      - '--web.enable-lifecycle'
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - recommendation-network
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_ROOT_URL=${GRAFANA_ROOT_URL:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - recommendation-network
+    restart: unless-stopped
+
+  # ===========================================================================
+  # Vector Database (Optional - for distributed index)
+  # ===========================================================================
+  
+  milvus:
+    image: milvusdb/milvus:v2.3.3
+    container_name: milvus
+    profiles:
+      - distributed
+    environment:
+      - ETCD_ENDPOINTS=etcd:2379
+      - MINIO_ADDRESS=minio:9000
+    ports:
+      - "19530:19530"  # gRPC
+      - "9091:9091"    # Metrics
+    volumes:
+      - milvus-data:/var/lib/milvus
+    depends_on:
+      - etcd
+      - minio
+    networks:
+      - recommendation-network
+
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+    container_name: etcd
+    profiles:
+      - distributed
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+    volumes:
+      - etcd-data:/etcd
+    networks:
+      - recommendation-network
+
+  minio:
+    image: minio/minio:RELEASE.2023-10-16T04-13-43Z
+    container_name: minio
+    profiles:
+      - distributed
+    environment:
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - recommendation-network
+
+  # ===========================================================================
+  # Training Services (Optional)
+  # ===========================================================================
+  
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.8.0
+    container_name: mlflow
+    profiles:
+      - training
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=sqlite:///mlflow.db
+      - MLFLOW_DEFAULT_ARTIFACT_ROOT=/mlflow/artifacts
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:///mlflow.db
+      --default-artifact-root /mlflow/artifacts
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow-data:/mlflow
+    networks:
+      - recommendation-network
+
+  training:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: training
+    container_name: training
+    profiles:
+      - training
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - WANDB_API_KEY=${WANDB_API_KEY:-}
+      - DATA_PATH=/app/data
+      - CHECKPOINT_PATH=/app/checkpoints
+    volumes:
+      - ../data:/app/data:ro
+      - ../checkpoints:/app/checkpoints
+      - ../configs:/app/configs:ro
+    depends_on:
+      - mlflow
+      - redis
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - recommendation-network
+
+  # ===========================================================================
+  # Load Testing (Optional)
+  # ===========================================================================
+  
+  locust:
+    image: locustio/locust:2.19.1
+    container_name: locust
+    profiles:
+      - testing
+    command: >
+      -f /locust/locustfile.py
+      --host http://recommendation-api:8000
+      --web-host 0.0.0.0
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./locust:/locust:ro
+    depends_on:
+      - recommendation-api
+    networks:
+      - recommendation-network
+
+# =============================================================================
+# Networks
+# =============================================================================
+
+networks:
+  recommendation-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# =============================================================================
+# Volumes
+# =============================================================================
+
+volumes:
+  redis-data:
+    driver: local
+  model-cache:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+  mlflow-data:
+    driver: local
+  milvus-data:
+    driver: local
+  etcd-data:
+    driver: local
+  minio-data:
+    driver: local

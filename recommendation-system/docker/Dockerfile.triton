@@ -1,0 +1,58 @@
+# =============================================================================
+# Triton Inference Server - Custom Dockerfile
+# Includes model repository and custom backends
+# =============================================================================
+
+FROM nvcr.io/nvidia/tritonserver:23.10-py3
+
+LABEL maintainer="Saurabh <saurabh@example.com>"
+LABEL description="Triton Inference Server for Recommendation Models"
+
+# Environment variables
+ENV MODEL_REPOSITORY=/models \
+    TRITON_SERVER_CPU_ONLY=0 \
+    LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libtcmalloc.so.4
+
+# Install additional dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3-pip \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python packages for custom backends
+RUN pip3 install --no-cache-dir \
+    numpy \
+    torch \
+    transformers \
+    faiss-gpu
+
+# Create model repository structure
+RUN mkdir -p ${MODEL_REPOSITORY}/two_tower_user/1 \
+    && mkdir -p ${MODEL_REPOSITORY}/two_tower_item/1 \
+    && mkdir -p ${MODEL_REPOSITORY}/dlrm/1 \
+    && mkdir -p ${MODEL_REPOSITORY}/ensemble/1
+
+# Copy model configurations
+COPY triton_models/ ${MODEL_REPOSITORY}/
+
+# Copy custom backend scripts (if any)
+COPY backends/ /opt/tritonserver/backends/
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8000/v2/health/ready || exit 1
+
+# Expose ports
+# 8000 - HTTP
+# 8001 - gRPC  
+# 8002 - Metrics
+EXPOSE 8000 8001 8002
+
+# Default command
+CMD ["tritonserver", \
+     "--model-repository=${MODEL_REPOSITORY}", \
+     "--strict-model-config=false", \
+     "--log-verbose=1", \
+     "--exit-on-error=false", \
+     "--model-control-mode=poll", \
+     "--repository-poll-secs=30"]

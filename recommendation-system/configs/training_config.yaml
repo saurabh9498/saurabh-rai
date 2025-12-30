@@ -1,0 +1,284 @@
+# =============================================================================
+# Training Configuration
+# Model training pipeline settings
+# =============================================================================
+
+# =============================================================================
+# Data Configuration
+# =============================================================================
+data:
+  # Data sources
+  sources:
+    interactions:
+      type: parquet
+      path: "s3://data-bucket/interactions/"
+      partition_cols: [date]
+      
+    user_features:
+      type: parquet
+      path: "s3://data-bucket/user_features/"
+      
+    item_features:
+      type: parquet
+      path: "s3://data-bucket/item_features/"
+      
+  # Train/validation split
+  split:
+    method: time  # time, random
+    train_days: 30
+    validation_days: 7
+    test_days: 7
+    
+  # Sampling
+  sampling:
+    negative_sampling_ratio: 4
+    hard_negative_ratio: 0.5
+    
+  # Data preprocessing
+  preprocessing:
+    min_user_interactions: 5
+    min_item_interactions: 10
+    max_sequence_length: 50
+
+# =============================================================================
+# Two-Tower Model Training
+# =============================================================================
+two_tower:
+  # Architecture
+  architecture:
+    user_embedding_dim: 64
+    item_embedding_dim: 64
+    output_embedding_dim: 128
+    
+    user_mlp_dims: [256, 128]
+    item_mlp_dims: [256, 128]
+    
+    history_encoder:
+      type: attention
+      num_heads: 4
+      dropout: 0.1
+      
+    dropout_rate: 0.1
+    
+  # Training
+  training:
+    batch_size: 4096
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    
+    epochs: 20
+    early_stopping_patience: 3
+    
+    optimizer: adam
+    scheduler:
+      type: cosine
+      warmup_steps: 1000
+      
+    # Loss
+    loss:
+      type: sampled_softmax
+      temperature: 0.05
+      num_negatives: 100
+      
+    # Mixed precision
+    mixed_precision: true
+    
+  # Distributed training
+  distributed:
+    enabled: true
+    strategy: ddp
+    num_gpus: 8
+    
+  # Checkpointing
+  checkpointing:
+    save_every_n_steps: 1000
+    keep_last_n: 3
+    
+  # Evaluation
+  evaluation:
+    metrics: [recall@10, recall@50, recall@100, ndcg@10, ndcg@50]
+    eval_batch_size: 1024
+
+# =============================================================================
+# DLRM Model Training
+# =============================================================================
+dlrm:
+  # Architecture
+  architecture:
+    sparse_embedding_dim: 64
+    bottom_mlp_dims: [512, 256, 64]
+    top_mlp_dims: [512, 256, 1]
+    
+    interaction_type: dot
+    
+    dropout_rate: 0.1
+    
+  # Training
+  training:
+    batch_size: 65536
+    learning_rate: 0.01
+    weight_decay: 0.0
+    
+    epochs: 5
+    early_stopping_patience: 2
+    
+    optimizer: sgd
+    scheduler:
+      type: step
+      step_size: 1
+      gamma: 0.95
+      
+    # Loss
+    loss:
+      type: bce
+      label_smoothing: 0.0
+      
+    # Mixed precision
+    mixed_precision: true
+    
+  # Distributed training
+  distributed:
+    enabled: true
+    strategy: ddp
+    num_gpus: 8
+    
+  # Embedding sharding (for large tables)
+  sharding:
+    enabled: true
+    strategy: table_wise
+    
+  # Evaluation
+  evaluation:
+    metrics: [auc, log_loss, accuracy]
+    eval_batch_size: 65536
+
+# =============================================================================
+# Multi-Task Learning
+# =============================================================================
+multi_task:
+  enabled: true
+  
+  tasks:
+    ctr:
+      weight: 1.0
+      loss: bce
+      
+    cvr:
+      weight: 0.5
+      loss: bce
+      
+    revenue:
+      weight: 0.3
+      loss: mse
+      
+  # Task balancing
+  balancing:
+    method: uncertainty_weighting
+    
+  # Expert architecture
+  experts:
+    num_shared_experts: 4
+    num_task_experts: 2
+    expert_dim: 256
+
+# =============================================================================
+# Hyperparameter Optimization
+# =============================================================================
+hpo:
+  enabled: false
+  
+  framework: optuna
+  
+  search_space:
+    learning_rate:
+      type: loguniform
+      low: 0.0001
+      high: 0.01
+      
+    batch_size:
+      type: categorical
+      choices: [2048, 4096, 8192, 16384]
+      
+    embedding_dim:
+      type: categorical
+      choices: [32, 64, 128]
+      
+    dropout_rate:
+      type: uniform
+      low: 0.0
+      high: 0.3
+      
+  optimization:
+    direction: maximize
+    metric: auc
+    n_trials: 50
+    timeout_hours: 24
+    
+  pruning:
+    enabled: true
+    min_trials: 5
+
+# =============================================================================
+# Infrastructure
+# =============================================================================
+infrastructure:
+  # Compute
+  compute:
+    instance_type: p4d.24xlarge
+    num_instances: 4
+    spot_instances: false
+    
+  # Storage
+  storage:
+    checkpoint_path: "s3://model-bucket/checkpoints/"
+    model_output_path: "s3://model-bucket/models/"
+    
+  # Container
+  container:
+    image: "nvcr.io/nvidia/merlin/merlin-pytorch:23.10"
+    
+# =============================================================================
+# MLOps
+# =============================================================================
+mlops:
+  # Experiment tracking
+  experiment_tracking:
+    backend: mlflow
+    tracking_uri: "http://mlflow:5000"
+    experiment_name: "recommendation-models"
+    
+  # Model registry
+  model_registry:
+    enabled: true
+    backend: mlflow
+    auto_register: true
+    
+  # Artifacts
+  artifacts:
+    log_model: true
+    log_embeddings: true
+    log_metrics: true
+    
+  # Notifications
+  notifications:
+    slack_webhook: "${SLACK_WEBHOOK_URL}"
+    notify_on: [training_complete, training_failed, new_best_model]
+
+# =============================================================================
+# Scheduled Training
+# =============================================================================
+scheduling:
+  # Two-Tower embedding refresh
+  two_tower:
+    enabled: true
+    cron: "0 */4 * * *"  # Every 4 hours
+    
+  # DLRM ranking model
+  dlrm:
+    enabled: true
+    cron: "0 2 * * *"  # Daily at 2 AM
+    
+  # Item embedding update
+  item_embeddings:
+    enabled: true
+    cron: "*/15 * * * *"  # Every 15 minutes
