@@ -1,0 +1,190 @@
+# Logging Configuration
+# This file configures the logging behavior for the multi-agent system.
+
+# =============================================================================
+# General Settings
+# =============================================================================
+logging:
+  # Default logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: INFO
+  
+  # Output format: console, json, both
+  format: both
+  
+  # Include timestamp in logs
+  include_timestamp: true
+  
+  # Include source location (file, function, line)
+  include_source: true
+
+# =============================================================================
+# Console Output
+# =============================================================================
+console:
+  enabled: true
+  level: INFO
+  
+  # Use colored output (disable for CI/CD environments)
+  colored: true
+  
+  # Format string for console output
+  format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+  
+  # Date format
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# =============================================================================
+# File Output
+# =============================================================================
+file:
+  enabled: true
+  level: DEBUG
+  
+  # Log file path (supports environment variables)
+  path: "./logs/app.log"
+  
+  # Rotation settings
+  rotation:
+    # Max size per file before rotation (bytes)
+    max_bytes: 10485760  # 10MB
+    
+    # Number of backup files to keep
+    backup_count: 5
+  
+  # Alternative: time-based rotation
+  # time_rotation:
+  #   when: midnight
+  #   interval: 1
+  #   backup_count: 30
+  
+  # Use JSON format for file logs (easier to parse)
+  json_format: true
+
+# =============================================================================
+# Structured Logging
+# =============================================================================
+structured:
+  # Fields to always include in structured logs
+  default_fields:
+    service: multi-agent-system
+    environment: "${ENVIRONMENT:development}"
+    version: "1.0.0"
+  
+  # Mask sensitive fields
+  sensitive_fields:
+    - api_key
+    - password
+    - token
+    - secret
+  
+  # Mask pattern for sensitive data
+  mask_pattern: "***REDACTED***"
+
+# =============================================================================
+# Per-Logger Configuration
+# =============================================================================
+loggers:
+  # Root logger
+  root:
+    level: INFO
+  
+  # Application loggers
+  src.agents:
+    level: DEBUG
+    propagate: true
+  
+  src.rag:
+    level: DEBUG
+    propagate: true
+  
+  src.tools:
+    level: INFO
+    propagate: true
+  
+  src.api:
+    level: INFO
+    propagate: true
+  
+  # Third-party loggers (reduce noise)
+  httpx:
+    level: WARNING
+  
+  httpcore:
+    level: WARNING
+  
+  openai:
+    level: WARNING
+  
+  anthropic:
+    level: WARNING
+  
+  chromadb:
+    level: WARNING
+  
+  uvicorn:
+    level: INFO
+  
+  uvicorn.access:
+    level: WARNING
+
+# =============================================================================
+# Performance Logging
+# =============================================================================
+performance:
+  # Log slow operations
+  slow_threshold_ms: 1000
+  
+  # Log LLM API calls
+  log_llm_calls: true
+  
+  # Log retrieval operations
+  log_retrievals: true
+  
+  # Log token usage
+  log_token_usage: true
+  
+  # Log cache hits/misses
+  log_cache: true
+
+# =============================================================================
+# Error Tracking
+# =============================================================================
+errors:
+  # Include full stack traces
+  include_traceback: true
+  
+  # Maximum traceback depth
+  max_traceback_depth: 10
+  
+  # Log error context (local variables, etc.)
+  include_context: false  # Be careful with sensitive data
+
+# =============================================================================
+# Request Tracking
+# =============================================================================
+request_tracking:
+  # Generate request IDs for tracing
+  enabled: true
+  
+  # Header name for incoming request IDs
+  header_name: X-Request-ID
+  
+  # Generate UUID if not provided
+  auto_generate: true
+  
+  # Include in all log messages
+  include_in_logs: true
+
+# =============================================================================
+# Metrics & Monitoring
+# =============================================================================
+metrics:
+  # Export metrics to Prometheus
+  prometheus:
+    enabled: false
+    port: 9090
+  
+  # Log aggregated metrics periodically
+  periodic_stats:
+    enabled: true
+    interval_seconds: 60
