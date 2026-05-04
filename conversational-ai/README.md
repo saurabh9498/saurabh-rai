@@ -137,7 +137,3 @@ If you're working on similar systems and want to compare notes — happy to talk
 ## License
 
 MIT — see [LICENSE](./LICENSE)
-<p align="center">
-  <b>Built with ❤️ for natural human-computer interaction</b><br>
-  <i>Targeting: Google, Amazon Alexa, Apple Siri, Voice AI startups</i>
-</p>
