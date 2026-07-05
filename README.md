@@ -10,6 +10,8 @@ I build AI infrastructure where the cost of being wrong is measured in milliseco
 
 This repo is a portfolio of projects I've shipped or built — production systems, reference architectures, and experiments. Each folder has its own README with the technical detail, results, and what I'd do differently.
 
+**Latest:** [`dynosim-disaggregation-study`](./dynosim-disaggregation-study) — a reproducible 108-run study of when disaggregated serving beats aggregated under an iso-GPU budget, with first-user notes for the Dynamo team.
+
 ---
 
 ## Projects
