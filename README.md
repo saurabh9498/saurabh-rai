@@ -16,6 +16,7 @@ This repo is a portfolio of projects I've shipped or built — production system
 
 | Project | What it is | Stack |
 |---|---|---|
+| [`dynosim-disaggregation-study`](./dynosim-disaggregation-study) — a reproducible 108-run study of when disaggregated serving beats aggregated under an iso-GPU budget, with first-user notes for the Dynamo team.
 | [`gpu-ml-pipeline`](./gpu-ml-pipeline) | GPU-accelerated ML inference pipeline. Cross-architecture compilation, TensorRT INT8 quantization, Triton on EKS with KEDA autoscaling on DCGM metrics. | NVIDIA Merlin, TensorRT, Triton, EKS, KEDA, DCGM |
 | [`multi-agent-orchestration`](./multi-agent-orchestration) | Multi-agent NL-to-SQL system with Builder + Judge architecture and LogProb-based confidence clarification. Schema RAG via vector DB. | LangChain, RAPIDS, Pinecone, FastAPI |
 | [`recommendation-system`](./recommendation-system) | GPU-accelerated recommendation engine. RAPIDS cuDF + Dask feature engineering, hybrid collaborative + content-based ranking, A/B testing harness. | NVIDIA Merlin, RAPIDS, PyTorch |
