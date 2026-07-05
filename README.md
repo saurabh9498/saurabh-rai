@@ -62,6 +62,7 @@ These are projects where the patterns and architecture in this repo trace back t
 - **Product Manager / Software Engineer**, Tata Consultancy Services (Jul 2013 – Aug 2020)
 
 **MS Business Analytics** — UC San Diego, Rady School of Management
+
 **B.Tech Chemical Engineering** — SRM University, Chennai
 
 ---
