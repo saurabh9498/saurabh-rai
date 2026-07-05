@@ -2,7 +2,7 @@
 
 **Senior Product Manager | GPU Inference Infrastructure | Kubernetes, Distributed Systems, Agentic AI**
 
-NVIDIA NCA-AIIO Certified · NVIDIA GenAI Professional (in progress) · NVIDIA Infrastructure Professional (in progress)
+NVIDIA NCA-AIIO Certified
 
 ---
 
