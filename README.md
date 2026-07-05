@@ -59,6 +59,7 @@ These are projects where the patterns and architecture in this repo trace back t
 
 - **Senior Product Manager**, Deloitte (Feb 2022 – Present)
 - **Product Management Intern**, Tesla (Oct 2021 – Dec 2021)
+- **Product Management Intern**, Icertis (Jul 2021 – Sep 2021)
 - **Product Manager / Software Engineer**, Tata Consultancy Services (Jul 2013 – Aug 2020)
 
 **MS Business Analytics** — UC San Diego, Rady School of Management
