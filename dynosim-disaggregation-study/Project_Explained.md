@@ -1,23 +1,9 @@
-# WS0 Explained: The DynoSim Disaggregation Study
-### Why it was done, what it proves, how it works, and how to talk about it
+# Project Explained: The DynoSim Disaggregation Study
+### Why it was done, what it proves, how it works
 
 ---
 
-## Part 1 — Why WS0 exists at all
-
-### The problem it solves
-
-Your pivot is from Product Manager to Solution Architect in AI infrastructure. The single
-biggest objection any hiring panel will raise — spoken or unspoken — is: **"This person
-has talked about GPU inference for years, but has he ever touched it himself?"** The
-NVIDIA PMM loop ended partly on this axis: deep conceptual fluency, thin hands-on
-evidence. A resume can claim anything; interviewers discount claims.
-
-WS0 exists to convert one specific claim from *asserted* to *demonstrated*. Not "I
-understand disaggregated serving" but "here is my public, reproducible experiment on
-disaggregated serving, with a finding you can check in 25 seconds on your laptop." That
-is a categorically different kind of evidence, and almost nobody applying for SA roles
-has it.
+## Part 1 — Why project exists at all
 
 ### Why this specific project
 
@@ -30,27 +16,7 @@ Four properties made this the right first move:
 
 2. **Zero GPU cost.** DynoSim is a simulator: it runs on a laptop CPU in seconds. The
    alternative — real benchmarks — costs hundreds of dollars of cloud GPU time and weeks
-   of setup. WS0 was publishable in one day.
-
-3. **It opens a warm networking channel.** DynoSim's author (Vikram, a 1st-degree
-   connection) publicly invited community experiments. Doing one gives you a
-   substantive, no-ask reason to message the Dynamo team — infinitely better than
-   "I admire your work."
-
-4. **It feeds every other workstream.** The same material becomes: GitHub portfolio
-   piece (WS5), a guide chapter on disaggregation (WS2), a LinkedIn post (WS4), and an
-   interview story you own end-to-end (WS1). One effort, four outputs.
-
-### What it signals to an SA hiring panel
-
-Solution Architects don't build inference engines — they help customers **choose
-configurations**: how many GPUs, aggregated or disaggregated, what worker split, what
-SLA is achievable. WS0 is literally a miniature of that job: take a customer-shaped
-question ("should my agentic workload use disaggregation?"), design an experiment with
-vendor tooling, run it under constraints, and deliver a decision framework with charts.
-It also demonstrates the SA's most underrated skill: **honest framing** — the README
-explicitly says "simulation, not hardware benchmark," which is exactly the intellectual
-honesty that builds customer trust.
+   of setup. Project was publishable in one day.
 
 ---
 
@@ -86,62 +52,6 @@ architectures (x86_64 in a cloud sandbox; arm64 via Docker on your MacBook) with
 matching results — 7,446 vs 7,452 tok/s on the headline cell. Reproducibility is what
 separates an experiment from a demo.
 
-**The publication:** everything — harness, data, charts, write-up, and four "first-user
-notes" documenting undocumented behaviors — is public on your GitHub.
-
----
-
-## Part 3 — The STAR story (interview-ready)
-
-Use this when asked "tell me about a hands-on project," "how do you approach capacity
-planning," or "how do you learn new technology."
-
-**Situation.** "I was preparing for Solution Architect roles in AI inference, and the
-hottest architectural question in the space is disaggregated serving — splitting
-prefill and decode onto dedicated workers. Everyone quotes the vendor guidance that
-disaggregation helps 'at scale with long prompts,' but I couldn't find anyone who had
-mapped *where the crossover actually sits* — especially for agentic traffic, which has
-a distinctive shape: very long, highly repetitive prompts and short outputs. NVIDIA had
-just shipped DynoSim, a discrete-event simulator for exactly these questions, and the
-author had publicly invited community experiments. Nobody had published one yet."
-
-**Task.** "I set out to answer one falsifiable question: under a fixed budget of four
-workers, at what combination of workload shape, prefix-cache reuse, and load does
-disaggregation beat aggregation — and does the answer differ for agentic traffic? I
-gave myself three constraints: zero GPU spend, full reproducibility by anyone in under
-a minute, and honest framing — simulation results presented as simulation results, not
-benchmarks."
-
-**Action.** "I designed a full-factorial sweep: three workload profiles modeled on
-chat, RAG, and agentic traffic; four worker splits at iso-budget; three prefix-reuse
-ratios; three concurrency levels — 108 runs. I built a ~150-line Python harness on
-DynoSim's replay API, using its synthetic multi-turn workload generator with shared-
-prefix controls to model agents re-sending tool context. Along the way I hit three
-undocumented behaviors — disaggregated mode silently requires a `worker_type` field in
-the engine args, the Python API needs `MockEngineArgs` objects rather than dicts, and
-the released trace-format name differs from the docs — which I documented as first-user
-notes. When I replicated on my own MacBook I also uncovered and root-caused a platform
-bug: the amd64 wheel segfaults under Docker emulation on Apple Silicon while the arm64
-wheel works, with a nasty image-cache trap that hides the cause. I filed that upstream
-with a minimal repro."
-
-**Result.** "Three findings. For chat traffic, aggregated wins everywhere — short
-prompts mean worker-splitting just strands capacity. For agentic traffic,
-disaggregation wins on throughput, and — the finding I didn't expect — the optimal
-prefill:decode ratio *shifts with prefix-cache hit rate*: prefill-heavy 3P+1D wins at
-20% reuse, but at 90% reuse decode-heavy 2P+2D takes it, beating aggregated by 24%.
-And universally, aggregation wins time-to-first-token while disaggregation wins
-inter-token stability by ~20x — p99 ITL of 7–9ms versus 88–184ms — because it
-eliminates prefill-decode interference. For multi-turn agents, that stability *is* the
-user experience. The whole study reproduces on a laptop CPU in about 25 seconds, ran
-identically on two architectures, and is public on my GitHub with the dataset and
-harness. It also became my first contribution touchpoint with the Dynamo team — a
-filed platform bug and docs gaps rather than a cold 'hi.'"
-
-**One-line close if the interviewer wants the takeaway:** "The right disaggregation
-split is a function of your cache hit rate — which is exactly why static topologies
-lose to planner-driven dynamic disaggregation as workloads shift."
-
 ---
 
 ## Part 4 — The three findings, and why each matters
@@ -155,7 +65,7 @@ disaggregation to a chatbot customer; you'd be reducing their capacity.*
 **Finding 2 — Agentic: disaggregation wins, and the split follows the cache.** With 8K
 prompts, prefill dominates — at 20% prefix reuse the best config is 3 prefill + 1
 decode. But raise reuse to 90% and most prefill work disappears into cache hits, so the
-winner migrates to 2P+2D (12,069 tok/s vs aggregated's 9,719 — +24%). *SA translation:
+winner migrates to 2P+2D (12,069 tok/s vs aggregated's 9,719 — +24%). *Translation:
 you can't size the P:D ratio without knowing the customer's prefix hit rate — and
 because hit rates drift, static splits go stale, which is the business case for Dynamo's
 Planner and dynamic disaggregation.*
@@ -335,25 +245,15 @@ docker run --rm -it --platform linux/arm64 -v "$PWD":/work -w /work \
 ```
 
 **Significance:** this debugging arc — macOS: no wheels → emulation: segfault → cache
-trap → native ARM: success — became a filed upstream bug and is itself SA-grade
-evidence: platform pragmatics is daily SA work, and ARM fluency matters in a
+trap → native ARM: success — became a filed upstream bug and is itself
+evidence: platform pragmatics is daily work, and ARM fluency matters in a
 Grace-CPU world.
-
-### 5.10 Git & GitHub — the publication layer
-
-**What:** git for version history, GitHub as the public face. **How used:** clone →
-copy artifacts → `git add` → `commit` → `push`; the study lives as a folder in your
-portfolio monorepo with the README auto-rendering charts inline, linked as the flagship
-from the top-level README. **Significance:** publication is what converts private work
-into career evidence — the URL is now citable in applications, the Vikram DM, the
-upstream issue, and LinkedIn.
 
 ---
 
 ## Part 6 — The intellectual moves worth internalizing
 
-Beyond the artifacts, WS0 modeled five habits that transfer to every future project and
-to the SA job itself:
+Beyond the artifacts, project modeled five habits that transfer to every project:
 
 1. **Falsifiable hypotheses stated upfront.** We predicted H1/H2/H3 before running;
    H2 was partially *wrong* (high reuse didn't erase disagg's edge — it changed which
@@ -375,5 +275,4 @@ to the SA job itself:
 
 *Companion artifacts: the study itself
 (github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study), the
-upstream issue draft (dynamo-issue-draft.md), and the Vikram outreach message
-(in chat).*
+upstream issue draft (dynamo-issue.md).*
