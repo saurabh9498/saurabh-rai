@@ -1,16 +1,3 @@
-<!--
-HOW TO FILE THIS ISSUE
-======================
-GitHub issues are filed on the PROJECT's repo, not yours.
-1. Go to: https://github.com/ai-dynamo/dynamo/issues
-2. Click "New issue" (pick "Bug report" template if offered; otherwise blank)
-3. Copy the TITLE line below into the title field
-4. Copy everything below the second divider into the body
-5. Before submitting, replace [YOUR-STUDY-LINK] with:
-   https://github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study
-Optionally keep this file in your repo (e.g. as notes/filed-issues.md) as a record.
--->
-
 TITLE: Apple Silicon: amd64 wheel segfaults under Docker emulation at mocker engine init; arm64 wheel works (+ 2 small docs gaps)
 
 ---
