@@ -76,5 +76,7 @@ would also solve it.
 
 Found while running a small community study with DynoSim — a 108-run sweep of
 aggregated vs. disaggregated splits across chat/RAG/agentic workload shapes:
-[YOUR-STUDY-LINK]. DynoSim is excellent; results reproduced across x86_64 and arm64
+https://github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study
+
+DynoSim is excellent; results reproduced across x86_64 and arm64
 environments within noise. Happy to provide more detail or test fixes.
