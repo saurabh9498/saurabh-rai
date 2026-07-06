@@ -47,7 +47,7 @@ rate**. That's a genuinely useful, non-obvious capacity-planning insight, and it
 simulation-level argument for why NVIDIA built *dynamic* disaggregation and the Planner.
 
 **The validation:** the full sweep was run independently on two different machines and
-architectures (x86_64 in a cloud sandbox; arm64 via Docker on your MacBook) with
+architectures (x86_64 in a cloud sandbox; arm64 via Docker on my MacBook) with
 matching results — 7,446 vs 7,452 tok/s on the headline cell. Reproducibility is what
 separates an experiment from a demo.
 
@@ -227,7 +227,7 @@ needed because the aggregated-vs-disagg gap spans an order of magnitude.
 
 ### 5.9 Docker & CPU architectures — the replication layer
 
-**What:** `ai-dynamo-runtime` ships Linux-only compiled wheels, so your Mac needed a
+**What:** `ai-dynamo-runtime` ships Linux-only compiled wheels, so my Mac needed a
 Linux environment: Docker runs one in a lightweight VM. Apple Silicon adds the
 architecture dimension — the M-series chip is **arm64**, while most published software
 targets **x86_64 (amd64)**; Docker can run amd64 images through slow, imperfect
