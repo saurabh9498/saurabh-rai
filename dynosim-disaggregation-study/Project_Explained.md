@@ -11,8 +11,7 @@ Four properties made this the right first move:
 
 1. **It sits on the exact topic of the moment.** Disaggregated prefill/decode serving is
    the central architectural debate in LLM inference right now — it's why NVIDIA built
-   Dynamo, why the llm-d project exists, and what your NVIDIA panel spent whiteboard time
-   on. A study here is automatically relevant to every company on your target list.
+   Dynamo, why the llm-d project exists. It's the question every inference team is actively debating..
 
 2. **Zero GPU cost.** DynoSim is a simulator: it runs on a laptop CPU in seconds. The
    alternative — real benchmarks — costs hundreds of dollars of cloud GPU time and weeks
@@ -89,8 +88,7 @@ multi-turn agents that stream on every turn, steadiness usually wins.*
 sits above inference engines (vLLM, SGLang, TensorRT-LLM) and handles routing, worker
 management, KV-cache awareness, disaggregation, and autoscaling across a GPU cluster.
 **Significance here:** it is both the subject of the study and its strategic anchor —
-Dynamo is NVIDIA's answer to the disaggregation era, the product your target teams
-build. **How used:** installed via `pip install ai-dynamo` (the Python package bundles
+Dynamo is NVIDIA's answer to the disaggregation era, the product at the center of NVIDIA's inference stack. **How used:** installed via `pip install ai-dynamo` (the Python package bundles
 a compiled Rust core, `ai-dynamo-runtime`, that does the heavy lifting).
 
 ### 5.2 DynoSim — the simulator (the instrument)
@@ -269,7 +267,7 @@ Beyond the artifacts, project modeled five habits that transfer to every project
    claims precisely is how you earn one.
 5. **Friction is content.** Every undocumented behavior and platform bug became a
    first-user note or an upstream issue — turning debugging cost into community
-   contribution and networking currency.
+   contribution.
 
 ---
 
