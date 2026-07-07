@@ -82,3 +82,8 @@ https://github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-stud
 
 DynoSim is excellent; results reproduced across x86_64 and arm64
 environments within noise. Happy to provide more detail or test fixes.
+
+
+**Status (Jul 6):** After maintainer triage, the original single-replay repro was found
+NOT to reproduce — the reliable reproducer is the in-process API sweep (sweep.py) under
+Rosetta, invariant to VM memory. See the corrected matrix in the issue thread.
