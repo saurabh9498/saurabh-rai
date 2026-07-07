@@ -25,7 +25,7 @@ And when we measure either one, averages lie. A mean ITL of 15ms tells you nothi
  
 ## What disaggregation actually is
  
-In a conventional ("aggregated") deployment, every GPU worker does both jobs: it prefills incoming prompts and decodes ongoing responses, interleaved in the same batch. This is how vLLM and most serving engines run out of the box, and it has one glaring failure mode: **interference**. When a 8,000-token prompt lands on a worker that's mid-stream on twenty other conversations, that heavyweight prefill elbows into compute the decode steps needed — and every one of those twenty users sees their token stream stutter at once.
+In a conventional ("aggregated") deployment, every GPU worker does both jobs: it prefills incoming prompts and decodes ongoing responses, interleaved in the same batch. This is how vLLM and most serving engines run out of the box, and it has one glaring failure mode: **interference**. When an 8,000-token prompt lands on a worker that's mid-stream on twenty other conversations, that heavyweight prefill elbows the compute that decode steps need — and every one of those twenty users sees their token stream stutter at once.
  
 Disaggregation splits the fleet: some workers *only* prefill, some workers *only* decode. A finished prefill hands its KV cache — the model's working memory for that conversation — across the wire to a decode worker, which streams the response. Prefill spikes can no longer touch decode latency, because they're physically on different silicon.
  
@@ -55,6 +55,7 @@ So the real question an architect asks isn't "which is faster?" — it's **"whic
  
 - If your product promise is *the response starts fast* — search-style interactions, single-turn Q&A — aggregated's TTFT edge is the one that matters.
 - If your product promise is *the stream never stutters* — voice agents, coding assistants mid-generation, any multi-turn agent where the user watches tokens render dozens of times per session — a 184 ms freeze at p99 is a broken product, and disaggregation's 20x steadier tail is what you're buying.
+
 For multi-turn agentic traffic, ITL stability compounds: a p99 hiccup that hits once per 100 requests hits almost every *session* when a session is 40 requests long. That arithmetic is why agentic serving keeps pulling toward disaggregation even where TTFT gets slightly worse.
  
 ## When disaggregation doesn't pay
@@ -65,6 +66,7 @@ The sweep plus first principles give a short checklist. Disaggregation is the wr
 2. **Traffic is low or spiky.** A divided fleet strands capacity at low utilization; if your GPUs are at 30%, your problem is demand, not interference.
 3. **KV transfer costs more than it saves.** The KV cache handoff between pools rides the interconnect. On NVLink-class links (~900 GB/s on Hopper, ~1.8 TB/s on Blackwell), a 1 GB cache moves in about a millisecond — effectively free. Over PCIe or commodity Ethernet, transfer time can approach or exceed the prefill time you're trying to protect, and the architecture defeats itself. *(Interconnects get their full treatment in Part 4.)*
 4. **You're serving one user or a few.** Interference needs contention; a single stream has nothing to interfere with.
+
 Notice what's *not* on the list: model size, GPU generation, or which serving engine you run. The decision is about workload shape and interconnect, not about hardware prestige.
  
 ## The decision in one pass
