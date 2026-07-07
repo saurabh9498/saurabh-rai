@@ -12,7 +12,8 @@ This repo is a portfolio of projects I've shipped or built — production system
 
 **Latest:** [`dynosim-disaggregation-study`](./dynosim-disaggregation-study) — a reproducible 108-run study of when disaggregated serving beats aggregated under an iso-GPU budget, with first-user notes for the Dynamo team.
 
-**[Field Guide to AI Infrastructure](./field-guide)** — a bottom-to-top guide to the AI/semiconductor stack, in progress. First up: [When Does Disaggregation Pay?](./field-guide/disaggregation/01-when-does-disaggregation-pay.md)
+**[Field Guide to AI Infrastructure](./field-guide)** — a bottom-to-top guide to the AI/semiconductor stack, in progress. 
+First up: [When Does Disaggregation Pay?](./field-guide/disaggregation/01-when-does-disaggregation-pay.md)
 
 ---
 
