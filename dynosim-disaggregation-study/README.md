@@ -97,12 +97,8 @@ Things the docs don't tell you, found the hard way:
 4. **Apple Silicon:** there are no macOS wheels, so use Docker — and pass
    `--platform linux/arm64` explicitly. The arm64 Linux wheels work perfectly
    (this study's sweep: 108/108 in ~20 s). Under amd64 *emulation* (Rosetta),
-   single CLI replays complete, but this sweep — looped in-process calls via the
-   Python API — segfaults at engine init regardless of VM memory or workload
-   size. Beware Docker's cache trap: if an amd64 image was ever pulled, it is
-   silently reused even without a platform flag (the tell is a
-   `WARNING: image's platform does not match` line). Details:
-   [ai-dynamo/dynamo#11228](https://github.com/ai-dynamo/dynamo/issues/11228).
+   multi-turn replays (--turns-per-session) segfault under Rosetta's amd64 emulation — single-turn completes; use --platform linux/arm64" Details:
+   [ai-dynamo/dynamo#11228](https://github.com/ai-dynamo/dynamo/issues/11228#issuecomment-4913150538).
 ## Limitations & next steps
  
 - Default mocker timing (no `--aic-*` calibration) — next fidelity step is AIC-backed
