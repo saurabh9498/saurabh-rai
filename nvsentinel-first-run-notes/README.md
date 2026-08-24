@@ -56,7 +56,8 @@ Things the docs don't tell you, found the hard way:
    `Demo Complete! 🎉` with a checkmark next to "How Fault Quarantine automatically
    cordons faulty nodes", and exits 0. For a fault-detection product, that's the one
    thing you'd least want the first-run experience to do.
-   Filed as [NVIDIA/NVSentinel#1647](https://github.com/NVIDIA/NVSentinel/issues/1647).
+   Filed as [NVIDIA/NVSentinel#1647](https://github.com/NVIDIA/NVSentinel/issues/1647);
+   fix in [#1655](https://github.com/NVIDIA/NVSentinel/pull/1655).
 ## Design decisions worth noticing
  
 Reading the Helm values while waiting for pods, three choices stood out as adoption
