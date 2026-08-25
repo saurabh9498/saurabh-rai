@@ -20,7 +20,7 @@ First up: [When Does Disaggregation Pay?](./field-guide/disaggregation/01-when-d
 ## Open source
  
 - **[ai-dynamo/dynamo](https://github.com/ai-dynamo/dynamo)** — filed and bisected [#11228](https://github.com/ai-dynamo/dynamo/issues/11228) down to a one-flag reproduction; root-caused by NVIDIA's team as an Apple Rosetta translation bug. Fixed in [#11430](https://github.com/ai-dynamo/dynamo/pull/11430), with the workarounds landing in the Dynamo docs.
-- **[NVIDIA/NVSentinel](https://github.com/NVIDIA/NVSentinel)** — filed [#1647](https://github.com/NVIDIA/NVSentinel/issues/1647): demo scripts reporting success without checking the result. Triaged P2 and assigned; fix in [#1655](https://github.com/NVIDIA/NVSentinel/pull/1655). [First-run notes](./nvsentinel-first-run-notes).
+- **[NVIDIA/NVSentinel](https://github.com/NVIDIA/NVSentinel)** — filed [#1647](https://github.com/NVIDIA/NVSentinel/issues/1647): demo scripts reporting success without checking the result. Triaged P2, assigned, and fixed in [#1655](https://github.com/NVIDIA/NVSentinel/pull/1655) — merged. [First-run notes](./nvsentinel-first-run-notes).
 - **DynoSim** — [108-run disaggregation study](./dynosim-disaggregation-study) published against NVIDIA's community-experiments invitation, with first-user notes fed back to the team.
 ---
  
