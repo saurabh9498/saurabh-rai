@@ -1,0 +1,24 @@
+[
+  {
+    "phase": "A: repatriation",
+    "total_gpus": 15,
+    "bidding_gpus": 10,
+    "llm_groups": 5,
+    "avg_qps": 17361,
+    "design_peak_qps": 50000,
+    "peak_qps_per_hub": 10000,
+    "peak_qps_per_bidding_replica": 5000,
+    "per_replica_if_one_gpu_fails": 10000
+  },
+  {
+    "phase": "B: scale-up",
+    "total_gpus": 60,
+    "bidding_gpus": 20,
+    "llm_groups": 10,
+    "avg_qps": 34722,
+    "design_peak_qps": 100000,
+    "peak_qps_per_hub": 10000,
+    "peak_qps_per_bidding_replica": 5000,
+    "per_replica_if_one_gpu_fails": 10000
+  }
+]

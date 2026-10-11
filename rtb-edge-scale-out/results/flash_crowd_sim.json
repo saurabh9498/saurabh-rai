@@ -1,0 +1,24 @@
+{
+  "assumptions": {
+    "rows": 200000,
+    "hot_rows": 4000,
+    "promo_slots": 1000,
+    "qps": 5000,
+    "zipf_s": 1.418,
+    "flash_share": 0.18,
+    "flash_rows": 600,
+    "promote_after": ">5 fetches in 10s"
+  },
+  "static": {
+    "hit_before": 0.9797,
+    "hit_first_second_of_crowd": 0.806,
+    "hit_settled": 0.8039,
+    "seconds_to_recover_within_0.5pt": null
+  },
+  "adaptive": {
+    "hit_before": 0.9797,
+    "hit_first_second_of_crowd": 0.8802,
+    "hit_settled": 0.9808,
+    "seconds_to_recover_within_0.5pt": 30
+  }
+}

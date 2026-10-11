@@ -1,0 +1,11 @@
+# Archive
+
+Older reference implementations from 2025, kept for history. They predate the current
+portfolio and are not maintained.
+
+- `gpu-ml-pipeline/` — superseded by [`rtb-gpu-inference`](../rtb-gpu-inference).
+  Its benchmark tables are illustrative and were not produced by code in the folder.
+- `recommendation-system/` — superseded by [`rtb-edge-scale-out`](../rtb-edge-scale-out).
+
+GitHub only runs workflows from the repository root, so the CI files inside these folders
+do not run.

@@ -1,0 +1,5 @@
+# CPU-runnable parts: sizing, simulation, circuit breaker, context fallback, tests.
+numpy>=1.26
+pyyaml>=6.0
+pytest>=8.0
+# Optional in production: redis (the context resolver accepts a redis.Redis client unchanged).

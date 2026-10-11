@@ -1,0 +1,37 @@
+# Triton model configuration for the INT8 TensorRT dense scorer.
+# Designed for an A10G (24 GB); NOT run in this repo's CPU checks.
+
+name: "dlrm_dense"
+platform: "tensorrt_plan"
+max_batch_size: 128
+
+input [
+  { name: "dense"      data_type: TYPE_FP32  dims: [ 13 ] },
+  { name: "embeddings" data_type: TYPE_FP32  dims: [ 26, 64 ] }
+]
+output [
+  { name: "click_prob" data_type: TYPE_FP32  dims: [ 1 ] }
+]
+
+# One instance per GPU. A second instance adds another TensorRT execution context with its
+# own activation memory, which would eat into the 7 GB hot-cache reservation
+# (see sizing/vram_budget.py).
+instance_group [ { count: 1  kind: KIND_GPU } ]
+
+# The latency budget gives the queue 5 ms (sizing/latency_budget.py). Triton waits at most
+# that long to fill a batch, then dispatches whatever it has.
+dynamic_batching {
+  preferred_batch_size: [ 32, 64, 128 ]
+  max_queue_delay_microseconds: 5000
+}
+
+# Run a full-size batch before the model reports ready, so the first real bid never pays
+# first-run CUDA initialisation and lazy kernel loading. The startupProbe covers this window.
+model_warmup [
+  {
+    name: "warmup_batch_128"
+    batch_size: 128
+    inputs { key: "dense"      value: { data_type: TYPE_FP32 dims: [ 13 ]     random_data: true } }
+    inputs { key: "embeddings" value: { data_type: TYPE_FP32 dims: [ 26, 64 ] random_data: true } }
+  }
+]

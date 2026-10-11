@@ -1,0 +1,48 @@
+{
+  "stages_ms": {
+    "network_in": 5.0,
+    "triton_queue": 5.0,
+    "compute_int8": 30.0,
+    "network_out": 5.0
+  },
+  "hot_path_p99_ms": 45.0,
+  "cold_path_p99_ms": 60.0,
+  "lookup_hit_rate": 0.98,
+  "big_table_lookups_per_request": 2,
+  "cold_request_fraction": 0.0396,
+  "blended_p99_upper_bound_ms": 60.0,
+  "headroom_ms": 40.0,
+  "lookup_hit_rate_needed_for_hot_p99": 0.99499
+}
+{
+  "stages_ms": {
+    "network_in": 5.0,
+    "triton_queue": 5.0,
+    "compute_int8": 30.0,
+    "network_out": 5.0
+  },
+  "hot_path_p99_ms": 45.0,
+  "cold_path_p99_ms": 60.0,
+  "lookup_hit_rate": 0.98,
+  "big_table_lookups_per_request": 26,
+  "cold_request_fraction": 0.4086,
+  "blended_p99_upper_bound_ms": 60.0,
+  "headroom_ms": 40.0,
+  "lookup_hit_rate_needed_for_hot_p99": 0.99961
+}
+{
+  "stages_ms": {
+    "network_in": 5.0,
+    "triton_queue": 5.0,
+    "compute_int8": 30.0,
+    "network_out": 5.0
+  },
+  "hot_path_p99_ms": 45.0,
+  "cold_path_p99_ms": 60.0,
+  "lookup_hit_rate": 0.996,
+  "big_table_lookups_per_request": 2,
+  "cold_request_fraction": 0.008,
+  "blended_p99_upper_bound_ms": 45.0,
+  "headroom_ms": 55.0,
+  "lookup_hit_rate_needed_for_hot_p99": 0.99499
+}

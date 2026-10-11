@@ -1,0 +1,80 @@
+# Triton inference pods on A10G nodes (g5.xlarge class) in EKS.
+# Designed manifest; NOT applied in this repo. Validated as YAML by the test suite.
+#
+# Three production lessons are encoded here:
+#   1. startupProbe  - an init container pulls ~12 GB (5 GB engine + 7 GB hot-cache
+#                      snapshot); then Triton loads both into VRAM and warms up. A liveness
+#                      probe tuned for steady state kills Triton mid-load and creates a
+#                      restart loop. The startupProbe holds liveness checks off for up to
+#                      5 minutes after Triton starts. (Probes do not cover init containers;
+#                      the pull has its own budget via the init container's runtime.)
+#   2. preStop sleep - on a spot reclaim, SIGTERM would drop batches already queued in
+#                      Triton. A 5 s preStop sleep lets the Service stop routing new bids
+#                      while the in-flight batch (queue cap 5 ms + compute ~30 ms) drains.
+#   3. no CPU HPA    - CPU is a lagging signal for bursty bid traffic; scaling is driven by
+#                      Triton's queue time via KEDA (keda-scaledobject.yaml).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: triton-dlrm
+  labels: { app: triton-dlrm }
+spec:
+  replicas: 40
+  selector:
+    matchLabels: { app: triton-dlrm }
+  template:
+    metadata:
+      labels: { app: triton-dlrm }
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8002"
+    spec:
+      nodeSelector:
+        node.kubernetes.io/instance-type: g5.xlarge
+      tolerations:
+        - { key: nvidia.com/gpu, operator: Exists, effect: NoSchedule }
+      terminationGracePeriodSeconds: 30
+      initContainers:
+        - name: fetch-serving-payload
+          image: amazon/aws-cli:2.17.0
+          command: ["sh", "-c"]
+          args:
+            - aws s3 sync "$PAYLOAD_URI" /models --only-show-errors
+          env:
+            - { name: PAYLOAD_URI, value: "s3://REPLACE-ME/rtb/serving-payload/current/" }
+          volumeMounts:
+            - { name: models, mountPath: /models }
+      containers:
+        - name: triton
+          image: nvcr.io/nvidia/tritonserver:24.08-py3
+          args:
+            - tritonserver
+            - --model-repository=/models/model_repository
+            - --strict-readiness=true
+          ports:
+            - { name: grpc, containerPort: 8001 }
+            - { name: http, containerPort: 8000 }
+            - { name: metrics, containerPort: 8002 }
+          resources:
+            limits: { nvidia.com/gpu: 1 }
+          startupProbe:
+            httpGet: { path: /v2/health/ready, port: http }
+            periodSeconds: 10
+            failureThreshold: 30          # 30 x 10 s = 5 minutes to pull, load and warm up
+          readinessProbe:
+            httpGet: { path: /v2/health/ready, port: http }
+            periodSeconds: 5
+            failureThreshold: 2
+          livenessProbe:
+            httpGet: { path: /v2/health/live, port: http }
+            periodSeconds: 10
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 5"]
+          volumeMounts:
+            - { name: models, mountPath: /models }
+      volumes:
+        - name: models
+          emptyDir: { sizeLimit: 20Gi }

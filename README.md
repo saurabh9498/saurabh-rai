@@ -30,24 +30,33 @@ This repo holds my open-source work, a published study, a field guide to the AI 
 | [`field-guide`](./field-guide) | A bottom-to-top guide to the AI infrastructure and semiconductor stack, in progress. Starts with disaggregated serving. | — |
 | [`nvsentinel-first-run-notes`](./nvsentinel-first-run-notes) | Running NVSentinel without a GPU: pipeline walkthrough, five things the docs don't say, and the upstream issue that led to PR #1655. | NVSentinel, Kubernetes, KIND, DCGM, Helm, CEL |
 
+## Architecture reconstructions — real-time bidding
+
+The production architecture of a three-phase GPU program, rebuilt as runnable code, simulations, configuration and sizing math. Not client code; every number is labelled as measured, derived or designed.
+
+| Folder | What it is | Stack |
+|---|---|---|
+| [`rtb-gpu-inference`](./rtb-gpu-inference) | **Phase 1.** A 1.2 TB DLRM trained on one 8×H100 node, compiled to INT8 TensorRT and served by Triton on 24 GB A10Gs under a 100 ms timeout: training-memory, VRAM and latency sizing, a hot-cache simulation under Zipfian traffic, ONNX export, Triton, Kubernetes and KEDA configuration. | PyTorch, ONNX, TensorRT, Triton, EKS, KEDA |
+| [`rtb-edge-scale-out`](./rtb-edge-scale-out) | **Phases 2–3.** Bare-metal edge hubs with separate bidding and LLM GPUs, KV-cache sizing that forces TP=4 for a 70B model, a latched DCGM → BGP circuit breaker with tests, a flash-crowd cache simulation, and checkpoint-cadence math for hourly retraining on a 32-node H100 cluster. | Triton, TensorRT-LLM, DCGM, Prometheus, Arista eAPI, Slurm, BCM |
+
 ## Reference implementations
 
 Patterns from production work, rebuilt as standalone examples. Not client code.
 
 | Folder | What it is | Stack |
 |---|---|---|
-| [`gpu-ml-pipeline`](./gpu-ml-pipeline) | GPU inference pipeline: TensorRT INT8 quantization, Triton on EKS, KEDA autoscaling on DCGM and queue metrics. | NVIDIA Merlin, TensorRT, Triton, EKS, KEDA, DCGM |
 | [`multi-agent-orchestration`](./multi-agent-orchestration) | Builder + Judge multi-agent NL-to-SQL with LogProb confidence clarification and schema RAG. | LangChain, RAPIDS, Pinecone, FastAPI |
-| [`recommendation-system`](./recommendation-system) | GPU recommendation engine: RAPIDS cuDF + Dask feature engineering, hybrid ranking, A/B harness. | NVIDIA Merlin, RAPIDS, PyTorch |
 | [`conversational-ai`](./conversational-ai) | Multi-turn dialogue with KV-cache-aware routing on Triton + NIM, on-prem deployment for regulated industries. | Triton, NIM, LangChain |
 | [`retail-vision-analytics`](./retail-vision-analytics) | Edge computer vision: INT8 quantization on constrained hardware, generic model plus per-store calibration. | YOLOv8, TensorRT, DeepStream |
 | [`fraud-detection`](./fraud-detection) | Real-time fraud detection on streaming transactions across ACH, wire and card. | Spark Streaming, Kafka, PyTorch |
+
+Older 2025 folders are kept in [`archive/`](./archive).
 
 ---
 
 ## Where these patterns come from
 
-- **Real-time bidding** — CPU-to-GPU inference migration at billions of requests a day under a 100 ms SLA; later repatriated to bare-metal edge hubs, with training on a multi-node H100 SuperPOD.
+- **Real-time bidding** — CPU-to-GPU inference migration at billions of requests a day under a 100 ms SLA; later repatriated to bare-metal edge hubs, with training on a multi-node H100 SuperPOD. Reconstructed in [`rtb-gpu-inference`](./rtb-gpu-inference) and [`rtb-edge-scale-out`](./rtb-edge-scale-out).
 - **GPU analytics** — RAPIDS segmentation over tens of millions of users, with a Builder + Judge natural-language-to-SQL layer.
 - **Healthcare conversational AI** — HIPAA-compliant patient scheduling agents across multiple health systems; multi-turn dialogue on Triton + NIM, deployed on-prem.
 - **Edge computer vision** — hundreds of unattended retail sites; accelerator chosen on workload fit and total cost.

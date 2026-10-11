@@ -1,0 +1,31 @@
+# Edge-local Alertmanager: each hub decides its own health. A hub losing its link to the
+# central monitoring stack must not be declared dead by the centre while it is still
+# serving bids locally - only the hub itself withdraws its prefix.
+# Designed config; the test suite runs `amtool check-config` when amtool is installed and
+# checks that breaker alerts also reach a human.
+route:
+  receiver: ops-default
+  group_by: [alertname, Hostname, gpu]
+  group_wait: 0s            # breaker inputs go out immediately; `for: 15s` already debounced
+  repeat_interval: 1m
+  routes:
+    - matchers: [ 'route="breaker"' ]
+      receiver: circuit-breaker
+      continue: true        # keep matching, so the paging route below also fires
+    - matchers: [ 'severity="page"' ]
+      receiver: oncall-pager
+receivers:
+  - name: circuit-breaker
+    webhook_configs:
+      - url: http://breaker.edge-system.svc:9099/
+        send_resolved: true # resolved alerts start the cooldown; they never re-announce directly
+        http_config:
+          authorization:
+            credentials_file: /etc/alertmanager/secrets/breaker-token
+  - name: oncall-pager
+    webhook_configs:
+      - url: http://pager-relay.edge-system.svc:8080/page    # relay to the paging provider
+        send_resolved: true
+  - name: ops-default
+    webhook_configs:
+      - url: http://pager-relay.edge-system.svc:8080/ticket  # non-urgent: open a ticket

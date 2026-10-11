@@ -1,0 +1,10 @@
+# CPU-runnable parts (model, export, sizing, simulation, benchmark, tests)
+torch>=2.3
+onnx>=1.16
+onnxruntime>=1.18
+numpy>=1.26
+pyyaml>=6.0
+pytest>=8.0
+
+# GPU-only parts (build/), installed on the A10G builder node, not here:
+#   tensorrt (trtexec), pycuda, tritonserver container nvcr.io/nvidia/tritonserver:24.08-py3

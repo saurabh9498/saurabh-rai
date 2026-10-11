@@ -1,0 +1,46 @@
+{
+  "rows": 2343750000.0,
+  "hot_fraction": 0.023333333333333334,
+  "hit_rate_by_skew": [
+    {
+      "zipf_s": 0.8,
+      "hit_rate": 0.46529
+    },
+    {
+      "zipf_s": 0.9,
+      "hit_rate": 0.64844
+    },
+    {
+      "zipf_s": 1.0,
+      "hit_rate": 0.83036
+    },
+    {
+      "zipf_s": 1.05,
+      "hit_rate": 0.89804
+    },
+    {
+      "zipf_s": 1.1,
+      "hit_rate": 0.94411
+    },
+    {
+      "zipf_s": 1.2,
+      "hit_rate": 0.98647
+    }
+  ],
+  "skew_needed_for_98pct": 1.174,
+  "skew_implied_by_top3pct_80pct": 0.973,
+  "analytic_vs_monte_carlo_1M_rows": [
+    {
+      "zipf_s": 0.9,
+      "analytic": 0.5896,
+      "monte_carlo": 0.5894
+    },
+    {
+      "zipf_s": 1.1,
+      "analytic": 0.8582,
+      "monte_carlo": 0.8579
+    }
+  ]
+}
+
+With 2.33% of rows cached, a 98% hit rate needs Zipf skew s >= 1.17.

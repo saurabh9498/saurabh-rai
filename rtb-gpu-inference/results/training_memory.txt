@@ -1,0 +1,14 @@
+{
+  "node_hbm_gb": 640.0,
+  "naive_adam_training_tb": 4.8,
+  "naive_vs_hbm_ratio": 7.5,
+  "rowwise_adagrad_state_gb": 9.375,
+  "full_adam_state_on_embeddings_tb": 2.4,
+  "hot_rows_gb": 36.0,
+  "hot_row_replication_hbm_cost_gb": 288.0,
+  "checkpoint_bounce_buffer_s": 240.0,
+  "checkpoint_gds_s": 26.666666666666668,
+  "pcie_gen5_vs_hbm3_bandwidth_ratio": 52.34375
+}
+
+Naive Adam needs 4.8 TB against 640 GB HBM (7.5x over). Row-wise Adagrad state: 9.4 GB instead of 2.4 TB. Replicating the hot 36 GB on 8 GPUs costs 288 GB HBM. Checkpoint: 240 s via bounce buffer vs 27 s with GDS.

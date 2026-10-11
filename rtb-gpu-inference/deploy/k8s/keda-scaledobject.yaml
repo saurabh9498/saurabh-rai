@@ -1,0 +1,42 @@
+# Scale Triton pods on GPU queue time, not CPU.
+# Designed manifest; NOT applied in this repo. Validated as YAML by the test suite.
+#
+# Triton exports cumulative counters; average queue time per request over the last
+# minute is  increase(queue_duration_us) / increase(request_success), converted to ms.
+# Scaling starts when that average passes 15 ms - well before the 5 ms batching window
+# plus ~30 ms compute can push a bid past the exchange's 100 ms timeout.
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: triton-dlrm-queue
+spec:
+  scaleTargetRef:
+    name: triton-dlrm
+  minReplicaCount: 20
+  maxReplicaCount: 60
+  pollingInterval: 10
+  # Scale-down pacing is set by the HPA behavior below (cooldownPeriod only applies to
+  # scale-to-zero, which this fleet never does).
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleUp:
+          stabilizationWindowSeconds: 0
+          policies: [ { type: Percent, value: 25, periodSeconds: 30 } ]
+        scaleDown:
+          stabilizationWindowSeconds: 300
+          policies: [ { type: Pods, value: 2, periodSeconds: 60 } ]
+  triggers:
+    - type: prometheus
+      # The query already returns a fleet-wide average, so compare it directly. The default
+      # (AverageValue) would divide it by the replica count and never scale out.
+      metricType: Value
+      metadata:
+        serverAddress: http://prometheus.monitoring.svc:9090
+        threshold: "15"
+        query: |
+          (
+            sum(increase(nv_inference_queue_duration_us{model="dlrm_dense"}[1m]))
+            /
+            clamp_min(sum(increase(nv_inference_request_success{model="dlrm_dense"}[1m])), 1)
+          ) / 1000

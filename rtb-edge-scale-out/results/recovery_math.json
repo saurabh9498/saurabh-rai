@@ -1,0 +1,28 @@
+{
+  "cluster": {
+    "nodes": 32,
+    "gpus": 256,
+    "hbm_tb": 20.48
+  },
+  "young_daly_interval_h_for_2wk_mtbf_10s_cost": 1.4,
+  "recovery_with_3min_checkpoints": {
+    "state_read_s": 12.0,
+    "restart_end_to_end_min": 2,
+    "lost_work_avg_min": 1.5,
+    "lost_work_worst_min": 3,
+    "total_avg_min": 3.5,
+    "total_worst_min": 5
+  },
+  "recovery_with_60min_checkpoints": {
+    "state_read_s": 12.0,
+    "restart_end_to_end_min": 2,
+    "lost_work_avg_min": 30.0,
+    "lost_work_worst_min": 60,
+    "total_avg_min": 32.0,
+    "total_worst_min": 62
+  },
+  "deadline_check_50min_job": {
+    "3min_checkpoints_fits_one_failure": true,
+    "60min_checkpoints_fits_one_failure": false
+  }
+}

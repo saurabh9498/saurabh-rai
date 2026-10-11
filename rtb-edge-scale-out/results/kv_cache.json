@@ -1,0 +1,96 @@
+{
+  "Llama-3-8B": {
+    "kv_bytes_per_token": 65536.0,
+    "context_tokens": 1024,
+    "per_stream": {
+      "MB": 67.1,
+      "MiB": 64.0
+    },
+    "streams": 128,
+    "pool": {
+      "GB": 8.59,
+      "GiB": 8.0
+    }
+  },
+  "Llama-3-70B": {
+    "kv_bytes_per_token": 163840.0,
+    "context_tokens": 1280,
+    "per_stream": {
+      "MB": 209.7,
+      "MiB": 200.0
+    },
+    "streams": 500,
+    "pool": {
+      "GB": 104.86,
+      "GiB": 97.66
+    }
+  },
+  "Llama-3-8B_TP1_plan": {
+    "model": "Llama-3-8B",
+    "tp": 1,
+    "pool_gb": 96.0,
+    "weights_gb": 8.0,
+    "kv_cache_gb": 8.59,
+    "workspace_gb": 4.0,
+    "cuda_ctx_gb": 0.5,
+    "used_gb": 21.09,
+    "headroom_gb": 74.91,
+    "headroom_frac": 0.78,
+    "fits": true
+  },
+  "Llama-3-70B_tp_options": [
+    {
+      "model": "Llama-3-70B",
+      "tp": 1,
+      "pool_gb": 96.0,
+      "weights_gb": 70.0,
+      "kv_cache_gb": 104.86,
+      "workspace_gb": 3.0,
+      "cuda_ctx_gb": 0.5,
+      "used_gb": 178.36,
+      "headroom_gb": -82.36,
+      "headroom_frac": -0.858,
+      "fits": false
+    },
+    {
+      "model": "Llama-3-70B",
+      "tp": 2,
+      "pool_gb": 192.0,
+      "weights_gb": 70.0,
+      "kv_cache_gb": 104.86,
+      "workspace_gb": 6.0,
+      "cuda_ctx_gb": 1.0,
+      "used_gb": 181.86,
+      "headroom_gb": 10.14,
+      "headroom_frac": 0.053,
+      "fits": true
+    },
+    {
+      "model": "Llama-3-70B",
+      "tp": 4,
+      "pool_gb": 384.0,
+      "weights_gb": 70.0,
+      "kv_cache_gb": 104.86,
+      "workspace_gb": 12.0,
+      "cuda_ctx_gb": 2.0,
+      "used_gb": 188.86,
+      "headroom_gb": 195.14,
+      "headroom_frac": 0.508,
+      "fits": true
+    },
+    {
+      "model": "Llama-3-70B",
+      "tp": 8,
+      "pool_gb": 768.0,
+      "weights_gb": 70.0,
+      "kv_cache_gb": 104.86,
+      "workspace_gb": 24.0,
+      "cuda_ctx_gb": 4.0,
+      "used_gb": 202.86,
+      "headroom_gb": 565.14,
+      "headroom_frac": 0.736,
+      "fits": true
+    }
+  ],
+  "Llama-3-70B_chosen_tp": 4
+}
