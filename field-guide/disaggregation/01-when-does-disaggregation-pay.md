@@ -43,7 +43,7 @@ The mechanism is the fleet-division cost from the last section, with nothing to 
  
 This is worth sitting with, because chat is not an edge case — it's arguably the single most common LLM workload in production. If your traffic looks like chat, the trendy architecture is the wrong architecture, and the boring one is free capacity.
  
-## Finding 3 — The tradeoff nobody escapes
+## Finding 2 — The tradeoff nobody escapes
  
 Across all 27 workload cells, one pattern held without exception: **aggregated wins p99 TTFT, and disaggregation wins ITL stability.** Neither architecture escapes its half of the tradeoff; they just choose different victims.
  
@@ -82,7 +82,7 @@ Four questions, and three of them are about your workload rather than anyone's p
  
 ## The part I haven't told you yet
  
-Everything above treats "disaggregated" as one thing. It isn't. A disaggregated fleet has a ratio — how many workers prefill versus decode — and the sweep's most interesting result is that **the right ratio isn't a constant. It moves with your prefix-cache hit rate**, and at the extreme (90% cache reuse, high load) the right split beat aggregated throughput by 24%.
+Everything above treats "disaggregated" as one thing. It isn't. A disaggregated fleet has a ratio — how many workers prefill versus decode — and the sweep's most interesting result is that **the right ratio isn't a constant. It moves with your prefix-cache hit rate**, and at the extreme (90% cache reuse, high load) the right split beat aggregated throughput by 22–24% across repeated runs.
  
 Which means a static split is a snapshot of a moving target — and *that* is the actual argument for dynamic disaggregation and planner-driven scaling, the subject of Post 2.
  
@@ -92,4 +92,4 @@ These are discrete-event simulation results from [NVIDIA Dynamo's DynoSim](https
  
 ---
  
-*Next: [Post 2 — Dynamic Disaggregation and the Planner], where the P:D ratio stops being a config value and starts being a control loop.*
+*Next: [Post 2 — Dynamic Disaggregation and the Planner](./02-dynamic-disaggregation-and-the-planner.md), where the P:D ratio stops being a config value and starts being a control loop.*

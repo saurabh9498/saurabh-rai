@@ -39,7 +39,7 @@ With short prompts, splitting the worker pool just strands capacity.
 prefill/decode ratio shifts with prefix-cache reuse.** At low reuse (0.2) the workload is
 prefill-bound and 3P+1D wins. As reuse rises, cached prefixes shrink prefill work and the
 winner migrates toward decode-heavy splits — at 0.9 reuse and high load, 2P+2D delivers
-**12,069 tok/s vs. 9,719 tok/s aggregated (+24%)**. The right P:D ratio is a *function of
+**about 12,060 tok/s vs. 9,716–9,906 tok/s aggregated (+22–24% across four runs)**. The right P:D ratio is a *function of
 your prefix hit rate* — which is exactly why dynamic disaggregation and planner-driven
 scaling exist.
  
@@ -59,6 +59,11 @@ The full 108-run sweep was executed independently on two environments — an x86
 container and an arm64 Linux container (Docker on Apple Silicon) — completing in ~20–25 s
 on CPU with 0 failures on both. Headline results matched within noise (e.g., agentic
 1P+3D @ 0.9 prefix / cc=128: 7,446 vs. 7,452 tok/s; p99 ITL 7.1 ms on both).
+
+**Run-to-run variance (checked Oct 2026).** Across four complete runs on ai-dynamo 1.2.1,
+106 of 108 cells varied by less than 1%. The two exceptions are aggregated agentic cells at
+0.9 prefix (2.0% at cc=128, 2.6% at cc=32), so the headline gain is stated as a range. The
+committed `results.csv` is one of those runs (+22% in the headline cell).
  
 ## Reproduce
  
