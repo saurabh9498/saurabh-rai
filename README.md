@@ -88,6 +88,7 @@ Patterns from production work, rebuilt as standalone examples. Not client code.
 - **Software Engineer**, Tata Consultancy Services — Jul 2013 – Mar 2016
 
 **MS Business Analytics** — UC San Diego, Rady School of Management
+
 **B.Tech Chemical Engineering** — SRM University, Chennai
 
 ---
