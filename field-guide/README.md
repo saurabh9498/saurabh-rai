@@ -1,6 +1,6 @@
 # Field Guide to AI Infrastructure
  
-*A bottom-to-top guide to how the modern AI/semiconductor stack works — from sand to orbital inference — written while breaking into the field, for anyone trying to do the same.*
+*A bottom-to-top guide to how the modern AI/semiconductor stack works — from sand to orbital inference — written for anyone who wants to understand the stack end to end.*
  
 The guide is organized as ~26 Parts covering the full stack: fabrication → silicon → memory → interconnect → datacenter → software → inference mechanics → serving → orchestration → economics → careers. Parts are written in the order that matters for practitioners (serving and inference first), not reading order — so the table of contents below fills in non-linearly.
  
@@ -10,7 +10,7 @@ Where possible, each topic is grounded in a real deployment or a reproducible ex
  
 | Post | Guide section | TL;DR |
 |---|---|---|
-| [When Does Disaggregation Pay?](./disaggregation/01-when-does-disaggregation-pay.md) | 14.6 / 15.4 (1 of 2) | Chat traffic and agentic traffic want opposite serving architectures. Aggregated wins p99 TTFT everywhere; disaggregation buys ~20x steadier inter-token latency. Four questions decide it. |
+| [When Does Disaggregation Pay?](./disaggregation/01-when-does-disaggregation-pay.md) | 14.6 / 15.4 (1 of 2) | Chat traffic and agentic traffic want opposite serving architectures. Aggregated wins p99 TTFT everywhere; on long prompts, disaggregation buys 7–27x steadier inter-token latency. Four questions decide it. |
 | [Dynamic Disaggregation and the Planner](./disaggregation/02-dynamic-disaggregation-and-the-planner.md) | 14.6 / 15.4 (2 of 2) | The optimal prefill:decode ratio moves with the prefix-cache hit rate. At high load every static split loses 18%+ somewhere; how Dynamo's Planner resizes the pools from TTFT and ITL. |
  
 Diagrams and prose follow one [style guide](./STYLE.md).

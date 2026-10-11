@@ -9,7 +9,7 @@ If you've read anything about LLM serving in the last year, you've heard the pit
  
 The honest answer is less tidy: **whether disaggregation pays depends almost entirely on the shape of your workload** — and for one of the most common workload shapes on the planet, it doesn't pay at all.
  
-I ran a 108-configuration simulation sweep to find the crossover: chat, RAG, and agentic traffic profiles, four worker splits under an identical GPU budget, three prefix-reuse rates, three load levels. The full study — code, data, charts, all reproducible on a CPU in about 25 seconds — is [on GitHub](https://github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study). This post is what the results mean if you're the person deciding how to serve a model.
+I ran a 108-configuration simulation sweep to find the crossover: chat, RAG (retrieval-augmented generation), and agentic traffic profiles, four worker splits under an identical GPU budget, three prefix-reuse rates, three load levels. The full study — code, data, charts, all reproducible on a CPU in about 25 seconds — is [on GitHub](https://github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study). This post is what the results mean if you're the person deciding how to serve a model.
  
 The short version: chat traffic and agentic traffic want *opposite* architectures. Everything else in this post is the why.
  
@@ -21,17 +21,17 @@ Every LLM request has two phases that could hardly be more different. **Prefill*
  
 That split is why serving has two latency metrics, not one. **Time to first token (TTFT)** is how long until the response starts appearing — dominated by prefill, plus any time spent waiting in a queue. **Inter-token latency (ITL)** is the gap between tokens once they're streaming — the decode heartbeat. A system can have excellent TTFT and terrible ITL, or the reverse, and users experience those failures very differently: slow TTFT feels like the system is ignoring you; jittery ITL feels like it's choking mid-sentence.
  
-And when we measure either one, averages lie. A mean ITL of 15ms tells you nothing if every twentieth token stalls for 200ms. Production SLAs are written against **percentiles** — p99 means "the worst experience 1 in 100 requests gets" — because tail behavior, not typical behavior, is what users remember and what contracts are written against.
+And when we measure either one, averages lie. A mean ITL of 12 ms looks healthy even if one token in every hundred stalls for 200 ms. Production service-level agreements (SLAs) are written against **percentiles** — p99 means "the worst experience 1 in 100 requests gets" — because tail behavior, not typical behavior, is what users remember and what contracts are written against.
  
 ## What disaggregation actually is
  
 In a conventional ("aggregated") deployment, every GPU worker does both jobs: it prefills incoming prompts and decodes ongoing responses, interleaved in the same batch. This is how vLLM and most serving engines run out of the box, and it has one glaring failure mode: **interference**. When an 8,000-token prompt lands on a worker that's mid-stream on twenty other conversations, that heavyweight prefill elbows the compute that decode steps need — and every one of those twenty users sees their token stream stutter at once.
  
-Disaggregation splits the fleet: some workers *only* prefill, some workers *only* decode. A finished prefill hands its KV cache — the model's working memory for that conversation — across the wire to a decode worker, which streams the response. Prefill spikes can no longer touch decode latency, because they're physically on different silicon.
+Disaggregation splits the fleet: some workers *only* prefill, some workers *only* decode. A finished prefill hands its KV (key-value) cache — the model's working memory for that conversation — across the wire to a decode worker, which streams the response. Prefill spikes can no longer touch decode latency, because they're physically on different silicon.
  
 The price of admission is that KV transfer between pools, plus a subtler cost that this study quantifies: **a split fleet is a divided fleet.** Under a fixed GPU budget, every worker you dedicate to prefill is a worker that can't decode, and vice versa. If your workload doesn't generate enough of both kinds of work to keep both pools busy, you've stranded capacity that an aggregated deployment would have used.
  
-Two production-grade implementations of this idea exist today — NVIDIA Dynamo and the CNCF-governed llm-d — and Part 2 of this series digs into how they orchestrate it. This post stays at the architecture level: *when* is the split worth it, regardless of whose software does the splitting?
+Two production-grade implementations of this idea exist today — NVIDIA Dynamo and llm-d, governed by the Cloud Native Computing Foundation (CNCF) — and Post 2 of this series digs into how Dynamo's Planner sizes the split. This post stays at the architecture level: *when* is the split worth it, regardless of whose software does the splitting?
  
 ## Finding 1 — For chat traffic, don't bother
  
@@ -45,18 +45,20 @@ This is worth sitting with, because chat is not an edge case — it's arguably t
  
 ## Finding 2 — The tradeoff nobody escapes
  
-Across all 27 workload cells, one pattern held without exception: **aggregated wins p99 TTFT, and disaggregation wins ITL stability.** Neither architecture escapes its half of the tradeoff; they just choose different victims.
+Across all 27 workload cells, one pattern held without exception: **aggregated wins p99 TTFT.** The other half of the tradeoff — ITL stability — shows up only where prompts are long enough for prefill to interfere with decode. Where it does, it is large.
  
 ![ITL stability: aggregated vs. disaggregated](../../dynosim-disaggregation-study/chart3_itl_stability.png)
  
-The magnitude is what makes this an architectural decision rather than a tuning detail. At high concurrency (128 concurrent sessions), aggregated serving's p99 ITL landed between **88 and 184 ms** depending on profile — every so often, a stream visibly freezes because a big prefill just landed on its worker. Every disaggregated split, at the same load, held p99 ITL at **7–9 ms**. That's roughly a **20x difference in tail stability**, and it comes from exactly one design choice: prefill physically cannot interrupt decode when they don't share silicon.
+The magnitude is what makes this an architectural decision rather than a tuning detail. At high concurrency (128 concurrent sessions), for agentic traffic at every reuse level and RAG at low reuse, aggregated serving's p99 ITL landed between **88 and 184 ms** — every so often, a stream visibly freezes because a big prefill just landed on its worker. The disaggregated splits, at the same load, held p99 ITL at **7–25 ms**, with decode-heavy splits steadiest. That's a **7–27x difference in tail stability**, and it comes from exactly one design choice: prefill physically cannot interrupt decode when they don't share silicon.
+
+For chat, and for RAG at higher reuse, there was no such penalty: aggregated p99 ITL stayed at 6–10 ms, as steady as any split. Short prompts don't create enough prefill to interfere.
  
 So the real question an architect asks isn't "which is faster?" — it's **"which SLA am I paid to hit?"**
  
 - If your product promise is *the response starts fast* — search-style interactions, single-turn Q&A — aggregated's TTFT edge is the one that matters.
-- If your product promise is *the stream never stutters* — voice agents, coding assistants mid-generation, any multi-turn agent where the user watches tokens render dozens of times per session — a 184 ms freeze at p99 is a broken product, and disaggregation's 20x steadier tail is what you're buying.
+- If your product promise is *the stream never stutters* — voice agents, coding assistants mid-generation, any multi-turn agent where the user watches tokens render dozens of times per session — a 184 ms freeze at p99 is a broken product, and disaggregation's order-of-magnitude steadier tail is what you're buying — provided your prompts are long enough to cause the freeze in the first place.
 
-For multi-turn agentic traffic, ITL stability compounds: a p99 hiccup that hits once per 100 requests hits almost every *session* when a session is 40 requests long. That arithmetic is why agentic serving keeps pulling toward disaggregation even where TTFT gets slightly worse.
+For multi-turn agentic traffic, ITL stability compounds: a p99 hiccup that hits once per 100 requests hits about one *session* in three when a session is 40 requests long. That arithmetic is why agentic serving keeps pulling toward disaggregation even where TTFT gets slightly worse.
  
 ## When disaggregation doesn't pay
  
@@ -74,7 +76,7 @@ Notice what's *not* on the list: model size, GPU generation, or which serving en
 If you take one thing from this post, take the order of questions:
  
 **1. What shape is the traffic?** Short-prompt, chat-like → aggregated, stop here. Long-prompt or multi-turn agentic → keep going.
-**2. Which tail SLA is the product built on?** TTFT → aggregated keeps its edge. ITL stability → disaggregation is buying you ~20x.
+**2. Which tail SLA is the product built on?** TTFT → aggregated keeps its edge. ITL stability on long prompts → disaggregation is buying you 7–27x.
 **3. Can the interconnect carry the KV handoff for free?** NVLink-class → yes. PCIe/Ethernet-class → measure before committing.
 **4. Is there enough sustained load to keep two pools busy?** If not, the split strands capacity no matter what the benchmarks promised.
  
@@ -88,7 +90,7 @@ Which means a static split is a snapshot of a moving target — and *that* is th
  
 ## Methods, honestly
  
-These are discrete-event simulation results from [NVIDIA Dynamo's DynoSim](https://docs.nvidia.com/dynamo/user-guides/dynosim) mocker engine with default timing models — **not hardware benchmarks, and not AIC-calibrated GPU timing**. The relative behavior across configurations is the finding; the absolute numbers are not. Per NVIDIA's own guidance, DynoSim narrows the search space; it doesn't replace real-hardware validation. The full 108-run sweep — code, results, charts — is [on GitHub](https://github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study), reproduces on CPU in ~25 seconds, and was verified independently on two environments.
+These are discrete-event simulation results from [NVIDIA Dynamo's DynoSim](https://docs.nvidia.com/dynamo/user-guides/dynosim) mocker engine with default timing models — **not hardware benchmarks, and not AI Configurator (AIC)-calibrated GPU timing**. The relative behavior across configurations is the finding; the absolute numbers are not. Per NVIDIA's own guidance, DynoSim narrows the search space; it doesn't replace real-hardware validation. The full 108-run sweep — code, results, charts — is [on GitHub](https://github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study), reproduces on CPU in ~25 seconds, and was verified independently on two environments.
  
 ---
  

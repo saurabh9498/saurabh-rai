@@ -114,7 +114,7 @@
 
   <!-- loop return -->
   <path d="M1040,610 L1040,640 L160,640 L160,614" fill="none" stroke="#6D28D9" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrPurple)"/>
-  <text x="330" y="664" class="sm s">repeat every 180 s by default · load-based mode (vLLM only) separately nudges ±1 replica every 5 s</text>
+  <text x="330" y="664" class="sm s">repeat every 180 s by default · load-based mode (vLLM, TensorRT-LLM) separately nudges ±1 replica every 5 s</text>
 
   <line x1="1040" y1="676" x2="1040" y2="712" stroke="#6D28D9" stroke-width="2.5" marker-end="url(#arrPurple)"/>
   <text x="820" y="700" class="sm s">set P and D replica counts</text>

@@ -7,17 +7,18 @@
 
 ## The problem: a split tuned for yesterday's cache
 
-Here is one cell from the [108-run DynoSim study](../../dynosim-disaggregation-study) behind this series. Agentic traffic, 128 concurrent sessions, 20% of each prompt already sitting in the prefix cache. Four simulated GPU workers, split four different ways:
+Here is one cell from the [108-run DynoSim study](../../dynosim-disaggregation-study) behind this series. Agentic traffic, 128 concurrent sessions, 20% of each prompt already sitting in the prefix cache. Four simulated GPU workers, arranged four different ways:
 
 | Split | Output throughput | p99 time to first token |
 |---|---|---|
+| Aggregated (all 4 do both) | 2,595 tok/s | **4.3 s** |
 | 3 prefill + 1 decode | **2,728 tok/s** | 5.5 s |
 | 2 prefill + 2 decode | 1,898 tok/s | 8.1 s |
-| 1 prefill + 3 decode | 961 tok/s | **16.1 s** |
+| 1 prefill + 3 decode | 961 tok/s | 16.1 s |
 
 Same hardware budget, same traffic. The decode-heavy split delivers a third of the throughput and makes the worst-off user wait sixteen seconds for the first token.
 
-Now the uncomfortable part. 1 prefill + 3 decode is not a bad configuration. At 90% cache reuse and 32 concurrent sessions, it is the *best* split in the whole sweep. Someone who measured their traffic on a day when the cache was hot, picked 1P+3D, and shipped it would have made a correct decision. Then a new feature changes the prompts, the cache hit rate falls, and the same fleet loses 65% of its throughput without a single line of configuration changing.
+Now the uncomfortable part. 1 prefill + 3 decode is not a bad configuration. At 90% cache reuse and 32 concurrent sessions, it is the *best* split in the whole sweep. Someone who measured their traffic on a day when the cache was hot, picked 1P+3D, and shipped it would have made a correct decision. Then a new feature changes the prompts, the cache hit rate falls to 20%, and the same fleet ends up delivering a third of what the best split would — 65% behind at 128 sessions — without a single line of configuration changing.
 
 Post 1 ended on the claim that the right prefill:decode ratio moves with the prefix-cache hit rate. This post is about what that means in practice: why it moves, by how much, what it costs when the ratio is wrong, and how NVIDIA Dynamo's Planner turns the ratio from a configuration value into a control loop.
 
@@ -71,7 +72,7 @@ The Planner is the component of [NVIDIA Dynamo](https://github.com/ai-dynamo/dyn
 It has two scaling modes, which can run together:
 
 - **Throughput-based scaling** sizes both pools from forecast traffic and pre-measured performance curves. It runs every 180 seconds by default and requires profiling data.
-- **Load-based scaling** watches per-iteration engine metrics and nudges replica counts up or down by one, on a 5-second default interval. It needs no profiling data. In v1.2.1 it is supported with vLLM only.
+- **Load-based scaling** watches per-iteration engine metrics and nudges replica counts up or down by one, on a 5-second default interval. It needs no profiling data. In v1.2.1 it relies on per-iteration engine metrics that vLLM and TensorRT-LLM (non-attention-data-parallel workers) emit; SGLang's pipeline is wired but its 1.2.0 runtime image doesn't include the metrics module yet.
 
 When both are on, the throughput-based result acts as a floor and load-based scaling handles bursts above it. This post follows the throughput-based path, because that is the one that sets the ratio. One cycle has five steps:
 
@@ -171,7 +172,7 @@ Where this example came from matters. Agentic workloads are where the hit rate s
 
 **Profiling is a prerequisite.** Throughput-based scaling needs pre-deployment profiling for each model, GPU and parallelism combination: either real GPU sweeps or AI Configurator estimates. That is real work, and it goes stale when the model, engine version or hardware changes.
 
-**The loop is slower than some traffic.** At the 180-second default, a burst that lasts a minute is over before the throughput path reacts. The load-based mode exists for that, with its own constraint: one replica of change per 5-second step, and vLLM only in this release.
+**The loop is slower than some traffic.** At the 180-second default, a burst that lasts a minute is over before the throughput path reacts. The load-based mode exists for that, with its own constraint: one replica of change per 5-second step, and only on backends that emit the per-iteration metrics (vLLM and TensorRT-LLM in this release).
 
 **Scaling up pays the full cold start.** A new worker has to be scheduled, pull its container, load weights and register before it helps. If that takes longer than the adjustment interval, decisions overlap. The design document says so directly and recommends shorter intervals only for workloads with fast model loading. (Cold starts get their own leaf in Part 16.)
 
@@ -193,7 +194,7 @@ Where this example came from matters. Agentic workloads are where the hit rate s
 
 "In disaggregated serving, you split GPUs into prefill workers that read the prompt and decode workers that generate the response, and the ratio between them is the main sizing decision. The ratio depends mostly on how much of each prompt is already in the prefix cache. Prefill only has to process the uncached tokens, so when the cache hit rate goes from 20% to 90%, prefill work drops eightfold for the same traffic.
 
-I measured this in a 108-run DynoSim study. At low reuse, three prefill and one decode was best. At high reuse, the winner moved toward decode-heavy splits. The bigger finding was the downside: a decode-heavy split that's best on a hot cache lost 65% of its throughput when reuse dropped to 20%, and at high load every static split lost at least 18% somewhere in the range.
+I measured this in a 108-run DynoSim study. At low reuse, three prefill and one decode was best. At high reuse, the winner moved toward decode-heavy splits. The bigger finding was the downside: a decode-heavy split that's best on a hot cache fell 65% behind the best split when reuse dropped to 20%, and at high load every static split lost at least 18% somewhere in the range.
 
 That's the case for Dynamo's Planner. Every three minutes by default, it reads TTFT, ITL and traffic from Prometheus, compares latency with what profiling predicted, and resizes both pools. It never measures the hit rate directly — cache hits show up as TTFT coming in below prediction, which lowers the prefill estimate. So the ratio follows the cache, one interval behind. The limits are that it needs profiling up front, it works from averages, and it can't react faster than a new worker can start."
 
@@ -203,7 +204,7 @@ These are discrete-event simulation results from [NVIDIA Dynamo's DynoSim](https
 
 The study holds the fleet at four workers and compares fixed splits; it does not run the Planner itself. The link between the two is the derivation and the Planner's published sizing formulas, not a measured closed-loop experiment. Running the Planner against the mocker with a shifting hit rate is the natural next step.
 
-The full sweep reproduces in about 25–35 seconds on a CPU. Across four complete runs, 106 of 108 cells varied by less than 1%; the two exceptions are aggregated agentic cells (2.0% and 2.6% spread). Code, data and charts are [in the study folder](../../dynosim-disaggregation-study).
+The full sweep reproduces in about 25 seconds on a CPU. Across four complete runs, 106 of 108 cells varied by less than 1%; the two exceptions are aggregated agentic cells (2.0% and 2.6% spread). Code, data and charts are [in the study folder](../../dynosim-disaggregation-study).
 
 ## Further reading
 
