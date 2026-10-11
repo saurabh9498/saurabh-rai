@@ -6,6 +6,9 @@ portfolio and are not maintained.
 - `gpu-ml-pipeline/` — superseded by [`rtb-gpu-inference`](../rtb-gpu-inference).
   Its benchmark tables are illustrative and were not produced by code in the folder.
 - `recommendation-system/` — superseded by [`rtb-edge-scale-out`](../rtb-edge-scale-out).
+- `multi-agent-orchestration/` — a generic multi-agent RAG system, superseded by
+  [`gpu-analytics-nl2sql`](../gpu-analytics-nl2sql). Its metrics table was not produced by
+  code in the folder.
 
 GitHub only runs workflows from the repository root, so the CI files inside these folders
 do not run.

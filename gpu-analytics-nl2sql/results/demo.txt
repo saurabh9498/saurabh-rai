@@ -1,0 +1,28 @@
+
+== runs
+status: ok (attempts: 1)
+sql:    SELECT segment, COUNT(*) AS users FROM segments GROUP BY segment ORDER BY users DESC
+        ('casual', 162439)
+        ('lapsed', 30702)
+        ('high_value', 2896)
+        ('engaged_viewer', 793)
+
+== fixed on retry
+status: ok (attempts: 2)
+sql:    SELECT category, COUNT(*) AS views FROM events WHERE event_type = 'video_view' GROUP BY category ORDER BY views DESC
+        ('finance', 40274)
+        ('entertainment', 40271)
+        ('auto', 40185)
+        ('travel', 39961)
+        ('news', 39854)
+        ('sports', 39576)
+
+== too uncertain to run
+status: clarify (attempts: 1)
+sql:    SELECT user_id FROM events ORDER BY spend_usd DESC LIMIT 10
+ask:    "top customers last month" could be read more than one way. Which metric, time window and segment do you mean?
+
+== blocked by role
+status: rejected (attempts: 1)
+sql:    SELECT u.signup_days_ago FROM users u
+why:    role 'marketing' may not read column users.signup_days_ago

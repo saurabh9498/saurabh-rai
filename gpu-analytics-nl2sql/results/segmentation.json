@@ -1,0 +1,23 @@
+{
+  "engine": "pandas",
+  "host": {
+    "machine": "x86_64",
+    "cpus": 2,
+    "python": "3.13.16"
+  },
+  "rows": {
+    "users": 200000,
+    "events": 4000000,
+    "segmented_users": 196830
+  },
+  "seconds": {
+    "load": 0.2,
+    "segment": 0.38
+  },
+  "segment_sizes": {
+    "casual": 162439,
+    "engaged_viewer": 793,
+    "high_value": 2896,
+    "lapsed": 30702
+  }
+}
