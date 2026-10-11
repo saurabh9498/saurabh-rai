@@ -56,8 +56,15 @@ Things the docs don't tell you, found the hard way:
    `Demo Complete! 🎉` with a checkmark next to "How Fault Quarantine automatically
    cordons faulty nodes", and exits 0. For a fault-detection product, that's the one
    thing you'd least want the first-run experience to do.
-   Filed as [NVIDIA/NVSentinel#1647](https://github.com/NVIDIA/NVSentinel/issues/1647);
-   fixed in [#1655](https://github.com/NVIDIA/NVSentinel/pull/1655), merged.
+
+> **Update — notes 4 and 5 are fixed upstream.** I filed both as
+> [NVIDIA/NVSentinel#1647](https://github.com/NVIDIA/NVSentinel/issues/1647), was assigned
+> the issue, and authored the fix: [#1655](https://github.com/NVIDIA/NVSentinel/pull/1655),
+> merged to main. `00-setup.sh` now prints the fake-DCGM success message only when the
+> readiness wait succeeds, and `03-verify-cordon.sh` reports "Demo Incomplete" and exits
+> non-zero when the node isn't cordoned. If you run the demo from main today, you won't hit
+> either one.
+
 ## Design decisions worth noticing
  
 Reading the Helm values while waiting for pods, three choices stood out as adoption
@@ -73,6 +80,7 @@ decisions rather than engineering ones:
 - **Quarantine policy is configurable CEL, not hardcoded logic** — so an operator encodes
   their own risk tolerance instead of inheriting NVIDIA's. A research cluster and one
   serving customer traffic have very different views on when it's acceptable to pull a node.
+
 ## Reproduce
  
 ```bash
@@ -98,7 +106,8 @@ Watch the transition yourself in a second terminal: `kubectl get nodes -w`
   architecture.
 - Everything about component behaviour is inferred from logs and config, not from reading
   the Go source.
+
 ## Author
  
 Saurabh Rai — AI infrastructure solution architecture.
-GitHub: [saurabh9498](https://github.com/saurabh9498) ·
+GitHub: [saurabh9498](https://github.com/saurabh9498) · LinkedIn: [saurabh-rai-aipm](https://www.linkedin.com/in/saurabh-rai-aipm/)
