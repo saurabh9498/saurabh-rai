@@ -64,7 +64,7 @@ disaggregation to a chatbot customer; you'd be reducing their capacity.*
 **Finding 2 — Agentic: disaggregation wins, and the split follows the cache.** With 8K
 prompts, prefill dominates — at 20% prefix reuse the best config is 3 prefill + 1
 decode. But raise reuse to 90% and most prefill work disappears into cache hits, so the
-winner migrates to 2P+2D (12,069 tok/s vs aggregated's 9,719 — +24%). *Translation:
+winner migrates to 2P+2D (about 12,060 tok/s vs aggregated's 9,716–9,906 — +22–24% across four runs). *Translation:
 you can't size the P:D ratio without knowing the customer's prefix hit rate — and
 because hit rates drift, static splits go stale, which is the business case for Dynamo's
 Planner and dynamic disaggregation.*

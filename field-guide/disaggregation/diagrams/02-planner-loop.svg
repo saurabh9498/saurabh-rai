@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" font-family="Helvetica, Arial, sans-serif">
+  <title>Dynamic disaggregation: the Dynamo Planner control loop</title>
+  <defs>
+    <marker id="arrPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6D28D9"/></marker>
+    <marker id="arrSlate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B45309"/></marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803D"/></marker>
+    <style>
+      .t { fill: #111827; }
+      .s { fill: #374151; }
+      .h { font-size: 17px; font-weight: 700; }
+      .b { font-size: 13.5px; }
+      .sm { font-size: 12.5px; }
+      .mono { font-family: Menlo, Consolas, monospace; font-size: 12px; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="1500" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="40" y="48" class="t" font-size="26" font-weight="700">Dynamic disaggregation — how the Planner keeps the prefill:decode ratio right</text>
+  <text x="40" y="76" class="s" font-size="15">The hit rate moves the ideal ratio. The Planner never sees the hit rate; it sees TTFT come in below prediction and resizes the pools.</text>
+
+  <!-- Layer 1: Traffic (workload, amber) -->
+  <rect x="40" y="100" width="1120" height="112" rx="10" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/>
+  <text x="60" y="128" class="h" fill="#B45309">Traffic — what changes hour to hour</text>
+  <text x="60" y="154" class="b t">• Request rate R: sets how big each pool must be</text>
+  <text x="60" y="176" class="b t">• Prompt length I (ISL) and response length O (OSL): set the baseline ratio</text>
+  <text x="60" y="198" class="b t">• Agentic turns re-send a growing history: long prompts, short responses</text>
+  <text x="640" y="154" class="b t">• Prefix-cache hit rate h: share of prompt tokens already cached</text>
+  <text x="640" y="176" class="b t">• h swings with prompt changes, new sessions, tool results</text>
+  <text x="640" y="198" class="b t">• Only I × (1 − h) tokens need real prefill work</text>
+
+  <line x1="600" y1="212" x2="600" y2="240" stroke="#B45309" stroke-width="2.5" marker-end="url(#arrAmber)"/>
+
+  <!-- Layer 2: Frontend + router (control, purple) -->
+  <rect x="40" y="244" width="1120" height="96" rx="10" fill="#EDE9FE" stroke="#6D28D9" stroke-width="2"/>
+  <text x="60" y="272" class="h" fill="#6D28D9">Frontend + KV-aware router</text>
+  <text x="60" y="298" class="b t">• Receives every request; routes it to the worker already holding its prefix</text>
+  <text x="60" y="320" class="b t">• Cache hits shorten prefill, so they show up as lower time to first token (TTFT)</text>
+  <text x="640" y="298" class="b t">• Exports TTFT, inter-token latency (ITL), request count,</text>
+  <text x="640" y="320" class="b t">  mean ISL and OSL on its metrics endpoint → Prometheus</text>
+
+  <line x1="600" y1="340" x2="600" y2="372" stroke="#475569" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrSlate)"/>
+  <text x="614" y="362" class="sm s">metrics, every interval</text>
+
+  <!-- Layer 3: Planner loop (control, purple) -->
+  <rect x="40" y="376" width="1120" height="300" rx="12" fill="#FFFFFF" stroke="#6D28D9" stroke-width="2.5"/>
+  <text x="60" y="404" class="h" fill="#6D28D9">The Planner — throughput-based scaling loop (Dynamo v1.2.1)</text>
+
+  <!-- step boxes -->
+  <g>
+    <rect x="60" y="420" width="200" height="190" rx="8" fill="#F1F5F9" stroke="#475569" stroke-width="1.5"/>
+    <text x="74" y="444" font-size="15" font-weight="700" fill="#475569">1 · Measure</text>
+    <text x="74" y="468" class="sm t">Query Prometheus for</text>
+    <text x="74" y="486" class="sm t">the last interval:</text>
+    <text x="74" y="506" class="sm t">• mean TTFT and ITL</text>
+    <text x="74" y="524" class="sm t">• request count</text>
+    <text x="74" y="542" class="sm t">• mean ISL and OSL</text>
+    <text x="74" y="566" class="sm s">h is never measured</text>
+    <text x="74" y="584" class="sm s">directly</text>
+  </g>
+  <g>
+    <rect x="280" y="420" width="200" height="190" rx="8" fill="#EDE9FE" stroke="#6D28D9" stroke-width="1.5"/>
+    <text x="294" y="444" font-size="15" font-weight="700" fill="#6D28D9">2 · Correct</text>
+    <text x="294" y="468" class="sm t">Compare reality with</text>
+    <text x="294" y="486" class="sm t">pre-deployment profiling:</text>
+    <text x="294" y="508" class="mono t">p = actual / expected</text>
+    <text x="294" y="524" class="mono t">    TTFT</text>
+    <text x="294" y="546" class="sm t">Cache hits → TTFT below</text>
+    <text x="294" y="564" class="sm t">prediction → p &lt; 1</text>
+    <text x="294" y="586" class="sm s">Queueing pushes p up</text>
+  </g>
+  <g>
+    <rect x="500" y="420" width="200" height="190" rx="8" fill="#EDE9FE" stroke="#6D28D9" stroke-width="1.5"/>
+    <text x="514" y="444" font-size="15" font-weight="700" fill="#6D28D9">3 · Predict</text>
+    <text x="514" y="468" class="sm t">Forecast next interval's</text>
+    <text x="514" y="486" class="sm t">requests, ISL and OSL</text>
+    <text x="514" y="510" class="sm t">• ARIMA (default)</text>
+    <text x="514" y="528" class="sm t">• Kalman — bursty traffic</text>
+    <text x="514" y="546" class="sm t">• Prophet — seasonality</text>
+    <text x="514" y="564" class="sm t">• Constant — fallback</text>
+    <text x="514" y="586" class="sm s">until history exists</text>
+  </g>
+  <g>
+    <rect x="720" y="420" width="200" height="190" rx="8" fill="#EDE9FE" stroke="#6D28D9" stroke-width="1.5"/>
+    <text x="734" y="444" font-size="15" font-weight="700" fill="#6D28D9">4 · Size</text>
+    <text x="734" y="466" class="sm t">Prefill load =</text>
+    <text x="734" y="484" class="mono t">R × I × min(1, p)</text>
+    <text x="734" y="502" class="sm t">÷ profiled prefill rate</text>
+    <text x="734" y="526" class="sm t">Decode load = R × O</text>
+    <text x="734" y="544" class="sm t">÷ best decode rate that</text>
+    <text x="734" y="562" class="sm t">still meets the ITL target</text>
+    <text x="734" y="586" class="sm s">min(1, p) stands in for 1 − h</text>
+  </g>
+  <g>
+    <rect x="940" y="420" width="200" height="190" rx="8" fill="#EDE9FE" stroke="#6D28D9" stroke-width="1.5"/>
+    <text x="954" y="444" font-size="15" font-weight="700" fill="#6D28D9">5 · Act</text>
+    <text x="954" y="468" class="sm t">Write new replica counts</text>
+    <text x="954" y="486" class="sm t">via a connector</text>
+    <text x="954" y="510" class="sm t">• Kubernetes: patch the</text>
+    <text x="954" y="528" class="sm t">  deployment resource</text>
+    <text x="954" y="546" class="sm t">• Budget cap: 8 GPUs</text>
+    <text x="954" y="564" class="sm t">• min = max budget pins</text>
+    <text x="954" y="582" class="sm t">  the total; only the split</text>
+    <text x="954" y="600" class="sm t">  moves (iso-budget)</text>
+  </g>
+
+  <!-- step arrows -->
+  <line x1="260" y1="515" x2="278" y2="515" stroke="#6D28D9" stroke-width="2.5" marker-end="url(#arrPurple)"/>
+  <line x1="480" y1="515" x2="498" y2="515" stroke="#6D28D9" stroke-width="2.5" marker-end="url(#arrPurple)"/>
+  <line x1="700" y1="515" x2="718" y2="515" stroke="#6D28D9" stroke-width="2.5" marker-end="url(#arrPurple)"/>
+  <line x1="920" y1="515" x2="938" y2="515" stroke="#6D28D9" stroke-width="2.5" marker-end="url(#arrPurple)"/>
+
+  <!-- loop return -->
+  <path d="M1040,610 L1040,640 L160,640 L160,614" fill="none" stroke="#6D28D9" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrPurple)"/>
+  <text x="330" y="664" class="sm s">repeat every 180 s by default · load-based mode (vLLM only) separately nudges ±1 replica every 5 s</text>
+
+  <line x1="1040" y1="676" x2="1040" y2="712" stroke="#6D28D9" stroke-width="2.5" marker-end="url(#arrPurple)"/>
+  <text x="820" y="700" class="sm s">set P and D replica counts</text>
+
+  <!-- Layer 4: Pools -->
+  <rect x="40" y="716" width="440" height="230" rx="10" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="2"/>
+  <text x="60" y="744" class="h" fill="#1D4ED8">Prefill pool — P workers</text>
+  <text x="60" y="770" class="b t">• Reads the prompt in one parallel pass</text>
+  <text x="60" y="792" class="b t">• Compute-bound: limited by GPU math throughput</text>
+  <text x="60" y="814" class="b t">• Work per request = I × (1 − h) uncached tokens</text>
+  <text x="60" y="836" class="b t">• Too small → prompts queue → TTFT explodes</text>
+  <text x="60" y="858" class="b t">• Too big → idle GPUs on a hot cache</text>
+  <rect x="60" y="876" width="400" height="52" rx="6" fill="#CCFBF1" stroke="#0F766E" stroke-width="1.5"/>
+  <text x="74" y="898" class="sm" fill="#0F766E" font-weight="700">KV cache written here</text>
+  <text x="74" y="916" class="sm t">attention state for every prompt token</text>
+
+  <rect x="500" y="770" width="200" height="120" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+  <text x="514" y="796" font-size="15" font-weight="700" fill="#15803D">KV transfer</text>
+  <text x="514" y="818" class="sm t">• Finished prefill hands</text>
+  <text x="514" y="836" class="sm t">  its KV cache to decode</text>
+  <text x="514" y="854" class="sm t">• Cheap on NVLink-class</text>
+  <text x="514" y="872" class="sm t">  links (see Post 1)</text>
+  <line x1="480" y1="830" x2="498" y2="830" stroke="#15803D" stroke-width="2.5"/>
+  <line x1="700" y1="830" x2="718" y2="830" stroke="#15803D" stroke-width="2.5" marker-end="url(#arrGreen)"/>
+
+  <rect x="720" y="716" width="440" height="230" rx="10" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="2"/>
+  <text x="740" y="744" class="h" fill="#1D4ED8">Decode pool — D workers</text>
+  <text x="740" y="770" class="b t">• Generates the response one token at a time</text>
+  <text x="740" y="792" class="b t">• Memory-bandwidth-bound: re-reads weights + KV</text>
+  <text x="740" y="814" class="b t">• Work per request = O generated tokens</text>
+  <text x="740" y="836" class="b t">• Too small → ITL rises, streams slow down</text>
+  <text x="740" y="858" class="b t">• Unaffected by cache hits — O does not shrink</text>
+  <rect x="740" y="876" width="400" height="52" rx="6" fill="#CCFBF1" stroke="#0F766E" stroke-width="1.5"/>
+  <text x="754" y="898" class="sm" fill="#0F766E" font-weight="700">KV cache read here every step</text>
+  <text x="754" y="916" class="sm t">longer context → lower tokens/s per GPU</text>
+
+  <!-- Layer 5: derivation and evidence -->
+  <rect x="40" y="976" width="545" height="224" rx="10" fill="#FFFFFF" stroke="#6D28D9" stroke-width="1.5"/>
+  <text x="60" y="1004" class="h" fill="#6D28D9">Why the ratio moves</text>
+  <text x="60" y="1036" class="mono t" font-size="14">P / D = (I / O) × (1 − h) × (Td / Tp)</text>
+  <text x="60" y="1062" class="b t">• I / O and h belong to the traffic; Td / Tp to the hardware</text>
+  <text x="60" y="1084" class="b t">• Request rate cancels: load sizes the pools, h sets the split</text>
+  <text x="60" y="1106" class="b t">• Agentic turn, 8,000-token prompt, 128-token response:</text>
+  <text x="76" y="1128" class="b t">h = 0.2 → 6,400 prefill tokens → 50 per decode token</text>
+  <text x="76" y="1150" class="b t">h = 0.9 →    800 prefill tokens → 6.25 per decode token</text>
+  <text x="60" y="1176" class="b" fill="#6D28D9" font-weight="700">Eight times less prefill work for the same traffic</text>
+
+  <rect x="615" y="976" width="545" height="224" rx="10" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="635" y="1004" class="h" fill="#1D4ED8">Best split by hit rate — DynoSim, 4 workers</text>
+  <text x="635" y="1034" class="b s" font-weight="700">Hit rate</text>
+  <text x="790" y="1034" class="b s" font-weight="700">32 sessions</text>
+  <text x="960" y="1034" class="b s" font-weight="700">128 sessions</text>
+  <line x1="635" y1="1044" x2="1140" y2="1044" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="635" y="1068" class="b t">20%</text>
+  <text x="790" y="1068" class="b t">3P+1D</text>
+  <text x="960" y="1068" class="b t">3P+1D</text>
+  <text x="635" y="1094" class="b t">60%</text>
+  <text x="790" y="1094" class="b t">2P+2D</text>
+  <text x="960" y="1094" class="b t">3P+1D</text>
+  <text x="635" y="1120" class="b t">90%</text>
+  <text x="790" y="1120" class="b t">1P+3D</text>
+  <text x="960" y="1120" class="b t">2P+2D, +22–24% vs agg.</text>
+  <line x1="635" y1="1134" x2="1140" y2="1134" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="635" y="1158" class="b t">• Prefill-heavy → decode-heavy as the cache warms</text>
+  <text x="635" y="1180" class="b t">• High load delays the shift: one prefill worker still queues</text>
+
+  <!-- Layer 6: comparison -->
+  <rect x="40" y="1224" width="1120" height="176" rx="10" fill="#FFFFFF" stroke="#475569" stroke-width="1.5"/>
+  <text x="60" y="1252" class="h" fill="#111827">Static split vs Planner</text>
+  <rect x="60" y="1266" width="530" height="118" rx="8" fill="#FEE2E2" stroke="#B91C1C" stroke-width="1.5"/>
+  <text x="76" y="1290" font-size="15" font-weight="700" fill="#B91C1C">Static split — sized once</text>
+  <text x="76" y="1314" class="b t">• Correct for the hit rate on the day it was measured</text>
+  <text x="76" y="1336" class="b t">• 1P+3D, best on a hot cache, loses 65% at 20% reuse</text>
+  <text x="76" y="1358" class="b t">• At 128 sessions every static split loses ≥18% somewhere</text>
+  <rect x="610" y="1266" width="530" height="118" rx="8" fill="#EDE9FE" stroke="#6D28D9" stroke-width="1.5"/>
+  <text x="626" y="1290" font-size="15" font-weight="700" fill="#6D28D9">Planner — resized every interval</text>
+  <text x="626" y="1314" class="b t">• Ratio follows the cache, one interval behind</text>
+  <text x="626" y="1336" class="b t">• Costs: profiling first, mean ISL/OSL, 180 s default lag</text>
+  <text x="626" y="1358" class="b t">• Cannot react faster than a new worker can start</text>
+
+  <!-- Layer 7: benefits + legend -->
+  <rect x="40" y="1418" width="1120" height="64" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="60" y="1442" class="sm t"><tspan font-weight="700">Buys:</tspan> throughput kept as the cache hit rate drifts · no hand-retuning when prompts change · iso-budget mode for fixed fleets</text>
+  <rect x="60" y="1456" width="14" height="14" fill="#FEF3C7" stroke="#B45309"/><text x="80" y="1468" class="sm s">workload</text>
+  <rect x="150" y="1456" width="14" height="14" fill="#EDE9FE" stroke="#6D28D9"/><text x="170" y="1468" class="sm s">control</text>
+  <rect x="232" y="1456" width="14" height="14" fill="#DBEAFE" stroke="#1D4ED8"/><text x="252" y="1468" class="sm s">compute</text>
+  <rect x="320" y="1456" width="14" height="14" fill="#CCFBF1" stroke="#0F766E"/><text x="340" y="1468" class="sm s">memory</text>
+  <rect x="402" y="1456" width="14" height="14" fill="#DCFCE7" stroke="#15803D"/><text x="422" y="1468" class="sm s">fabric</text>
+  <rect x="476" y="1456" width="14" height="14" fill="#F1F5F9" stroke="#475569"/><text x="496" y="1468" class="sm s">observability</text>
+  <rect x="592" y="1456" width="14" height="14" fill="#FEE2E2" stroke="#B91C1C"/><text x="612" y="1468" class="sm s">risk</text>
+  <text x="652" y="1468" class="sm s">Sources: Dynamo v1.2.1 Planner · DynoSim, 4-run medians (simulation)</text>
+</svg>

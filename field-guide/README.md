@@ -11,8 +11,10 @@ Where possible, each topic is grounded in a real deployment or a reproducible ex
 | Post | Guide section | TL;DR |
 |---|---|---|
 | [When Does Disaggregation Pay?](./disaggregation/01-when-does-disaggregation-pay.md) | 14.6 / 15.4 (1 of 2) | Chat traffic and agentic traffic want opposite serving architectures. Aggregated wins p99 TTFT everywhere; disaggregation buys ~20x steadier inter-token latency. Four questions decide it. |
-| *Dynamic Disaggregation and the Planner* — coming next | 14.6 / 15.4 (2 of 2) | The optimal prefill:decode ratio isn't a constant — it moves with your prefix-cache hit rate. Why static splits are fragile and planner-driven scaling exists. |
+| [Dynamic Disaggregation and the Planner](./disaggregation/02-dynamic-disaggregation-and-the-planner.md) | 14.6 / 15.4 (2 of 2) | The optimal prefill:decode ratio moves with the prefix-cache hit rate. At high load every static split loses 18%+ somewhere; how Dynamo's Planner resizes the pools from TTFT and ITL. |
  
+Diagrams and prose follow one [style guide](./STYLE.md).
+
 ## Coming up
  
 Inference mechanics (prefill/decode, latency metrics, batching) · Inference optimization (quantization, speculative decoding, KV-cache engineering) · Serving engines (vLLM, SGLang, TensorRT-LLM, Dynamo, llm-d) · Memory & the memory wall · Interconnect & networking · Orchestration & production
