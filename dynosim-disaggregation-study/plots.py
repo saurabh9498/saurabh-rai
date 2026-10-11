@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the three WS0 charts from results.csv. See README.md."""
+"""Generate the three study charts from results.csv. See README.md."""
 import pandas as pd
 import matplotlib
 matplotlib.use("Agg")

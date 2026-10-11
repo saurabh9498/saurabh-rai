@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-WS0: When Does Disaggregation Pay?
+When Does Disaggregation Pay?
 DynoSim sweep — aggregated vs disaggregated prefill/decode under iso-GPU budget,
 across workload profiles (chat / RAG / agentic), prefix-reuse ratios, and load levels.
 

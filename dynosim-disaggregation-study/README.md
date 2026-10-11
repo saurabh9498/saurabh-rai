@@ -18,7 +18,7 @@ does the crossover sit for **agentic** traffic specifically?
  
 ## Experiment design
  
-108 DynoSim offline runs (`python -m dynamo.replay` via the Python API), full factorial:
+108 DynoSim offline replay runs, driven through the Python API (`dynamo.replay.api.run_synthetic_trace_replay`, the same engine as `python -m dynamo.replay`), full factorial:
  
 | Dimension | Values |
 |---|---|
@@ -33,21 +33,27 @@ Constants: 200 sessions, KV router, 8 prefix groups, 250 ms inter-turn delay, bl
  
 **1. For chat traffic, aggregated wins everywhere.** Across every prefix ratio and load
 level, aggregated 4W beats every disaggregated split on *both* throughput and p99 TTFT.
-With short prompts, splitting the worker pool just strands capacity.
+With short prompts, splitting the worker pool just strands capacity. RAG mostly follows
+chat: aggregated wins 7 of its 9 cells, with 1P+3D ahead only at cc=32 and low-to-mid reuse.
  
 **2. For agentic traffic, disaggregation wins on throughput — and the optimal
 prefill/decode ratio shifts with prefix-cache reuse.** At low reuse (0.2) the workload is
-prefill-bound and 3P+1D wins. As reuse rises, cached prefixes shrink prefill work and the
+prefill-bound and 3P+1D wins at moderate and high load (2P+2D edges it at cc=8). As reuse rises, cached prefixes shrink prefill work and the
 winner migrates toward decode-heavy splits — at 0.9 reuse and high load, 2P+2D delivers
 **about 12,060 tok/s vs. 9,716–9,906 tok/s aggregated (+22–24% across four runs)**. The right P:D ratio is a *function of
 your prefix hit rate* — which is exactly why dynamic disaggregation and planner-driven
 scaling exist.
  
-**3. The universal tradeoff is TTFT vs. ITL stability.** Aggregated wins p99 TTFT in
-*every* cell. But it pays in prefill–decode interference: at cc=128 aggregated p99 ITL is
-**88–184 ms** across profiles, while every disaggregated split holds p99 ITL at **7–9 ms**
-(~20x steadier). For multi-turn agents, where a user watches tokens stream on every one of
-many turns, ITL stability *is* the experience.
+**3. The tradeoff is TTFT vs. ITL stability — and the ITL penalty only appears when
+prefill is heavy.** Aggregated wins p99 TTFT in *every* one of the 27 cells. Where prompts
+are long — agentic at every reuse level, and RAG at 20% reuse — it pays in prefill–decode
+interference: at cc=128 aggregated p99 ITL is **88–184 ms**, against **7–25 ms** for the
+disaggregated splits (about 7–27x steadier; decode-heavy splits are steadiest, 3P+1D with
+a single decode worker the least). For chat, and for RAG at higher reuse, aggregated p99 ITL
+stays at 6–10 ms — as steady as or steadier than any split — so it carries no streaming
+penalty. For multi-turn
+agents, where a user watches tokens stream on every one of many turns, ITL stability *is*
+the experience.
  
 ![Pareto by profile](chart1_pareto_by_profile.png)
 ![Agentic split vs prefix](chart2_agentic_split_vs_prefix.png)
@@ -72,7 +78,7 @@ committed `results.csv` is one of those runs (+22% in the headline cell).
 On any Linux machine or Google Colab:
  
 ```bash
-pip install ai-dynamo pandas matplotlib
+pip install ai-dynamo==1.2.1 pandas matplotlib
 RUST_LOG=off python3 sweep.py      # ~25s on CPU, no GPU required
 python3 plots.py
 ```
@@ -81,7 +87,7 @@ On **macOS (Apple Silicon)**, use Docker with an explicit ARM platform flag:
  
 ```bash
 docker run --rm -it --platform linux/arm64 -v "$PWD":/work -w /work python:3.12-slim bash -c \
-  "pip install ai-dynamo pandas matplotlib && RUST_LOG=off python3 sweep.py && python3 plots.py"
+  "pip install ai-dynamo==1.2.1 pandas matplotlib && RUST_LOG=off python3 sweep.py && python3 plots.py"
 ```
  
 ## First-user notes (ai-dynamo 1.2.1 pip release, July 2026)
@@ -101,14 +107,18 @@ Things the docs don't tell you, found the hard way:
    internally.
 4. **Apple Silicon:** there are no macOS wheels, so use Docker — and pass
    `--platform linux/arm64` explicitly. The arm64 Linux wheels work perfectly
-  (this study's sweep: 108/108 in ~20 s). Under amd64 emulation via Rosetta,
+   (this study's sweep: 108/108 in ~20 s). Under amd64 emulation via Rosetta,
    multi-turn/prefix replays with `--num-workers > 1` hit a confirmed **Apple
    Rosetta translation bug** (a 32-byte AVX2 store only half-executed) and
    segfault at first request admission — single-turn completes, and the same
-   commands are fine under QEMU and native arm64. Beware Docker's cache trap: if an amd64 image was ever
+   commands are fine under QEMU and native arm64. NVIDIA root-caused it and added the
+   workarounds to the Dynamo docs in
+   [#11430](https://github.com/ai-dynamo/dynamo/pull/11430).
+   Beware Docker's cache trap: if an amd64 image was ever
    pulled, it is silently reused even without a platform flag (the tell is a
    `WARNING: image's platform does not match` line). Details:
    [ai-dynamo/dynamo#11228](https://github.com/ai-dynamo/dynamo/issues/11228#issuecomment-4913150538).
+
 ## Limitations & next steps
  
 - Default mocker timing (no `--aic-*` calibration) — next fidelity step is AIC-backed
@@ -117,7 +127,8 @@ Things the docs don't tell you, found the hard way:
   is the natural validation step.
 - Planned follow-up: the same workload matrix on **llm-d** for an architecture-level
   comparison of the two disaggregation stacks.
+
 ## Author
  
 Saurabh Rai — AI infrastructure solution architecture.
-GitHub: [saurabh9498](https://github.com/saurabh9498) ·
+GitHub: [saurabh9498](https://github.com/saurabh9498) · LinkedIn: [saurabh-rai-aipm](https://www.linkedin.com/in/saurabh-rai-aipm/)

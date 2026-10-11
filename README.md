@@ -26,7 +26,7 @@ This repo holds my open-source work, a published study, a field guide to the AI 
 
 | Folder | What it is | Stack |
 |---|---|---|
-| [`dynosim-disaggregation-study`](./dynosim-disaggregation-study) | **When does disaggregation pay?** 108 simulated runs of aggregated vs. disaggregated prefill/decode serving for chat, RAG and agentic workloads. The optimal prefill:decode split shifts with prefix-cache reuse (3P+1D at 20%, 2P+2D at 90%; +24% over aggregated), and aggregated serving pays ~20× in p99 inter-token latency under load. Reproducible on CPU in ~25 s. | NVIDIA Dynamo, DynoSim, KV Router, Python |
+| [`dynosim-disaggregation-study`](./dynosim-disaggregation-study) | **When does disaggregation pay?** 108 simulated runs of aggregated vs. disaggregated prefill/decode serving for chat, RAG and agentic workloads. The optimal prefill:decode split shifts with prefix-cache reuse (3P+1D at 20%, 2P+2D at 90%; +22–24% over aggregated), and on prefill-heavy traffic aggregated serving pays up to ~27× in p99 inter-token latency under load. Reproducible on CPU in ~25 s. | NVIDIA Dynamo, DynoSim, KV Router, Python |
 | [`field-guide`](./field-guide) | A bottom-to-top guide to the AI infrastructure and semiconductor stack, in progress. Starts with disaggregated serving. | — |
 | [`nvsentinel-first-run-notes`](./nvsentinel-first-run-notes) | Running NVSentinel without a GPU: pipeline walkthrough, five things the docs don't say, and the upstream issue that led to PR #1655. | NVSentinel, Kubernetes, KIND, DCGM, Helm, CEL |
 

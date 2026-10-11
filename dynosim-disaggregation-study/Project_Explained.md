@@ -3,19 +3,19 @@
 
 ---
 
-## Part 1 — Why project exists at all
+## Part 1 — Why this project
 
 ### Why this specific project
 
-Four properties made this the right first move:
+Two properties made this the right first project:
 
 1. **It sits on the exact topic of the moment.** Disaggregated prefill/decode serving is
    the central architectural debate in LLM inference right now — it's why NVIDIA built
-   Dynamo, why the llm-d project exists. It's the question every inference team is actively debating..
+   Dynamo, why the llm-d project exists. It's the question every inference team is actively working through.
 
 2. **Zero GPU cost.** DynoSim is a simulator: it runs on a laptop CPU in seconds. The
    alternative — real benchmarks — costs hundreds of dollars of cloud GPU time and weeks
-   of setup. Project was publishable in one day.
+   of setup. Anyone can rerun the whole study in under a minute.
 
 ---
 
@@ -41,7 +41,7 @@ levels (20% / 60% / 90%) and three load levels (concurrency 8 / 32 / 128). That'
 3 × 4 × 3 × 3 = **108 simulations**, each replaying 200 multi-turn sessions through
 NVIDIA's simulator and recording latency and throughput statistics.
 
-**The result:** three findings (detailed in Part 4), the headline being that **the
+**The result:** three findings (detailed in Part 3), the headline being that **the
 optimal prefill:decode ratio is not fixed — it shifts with your prefix-cache hit
 rate**. That's a genuinely useful, non-obvious capacity-planning insight, and it's the
 simulation-level argument for why NVIDIA built *dynamic* disaggregation and the Planner.
@@ -53,7 +53,7 @@ separates an experiment from a demo.
 
 ---
 
-## Part 4 — The three findings, and why each matters
+## Part 3 — The three findings, and why each matters
 
 **Finding 1 — Chat: aggregated wins everywhere.** All 9 chat cells (every reuse level ×
 every load) favored aggregated 4W on *both* throughput and p99 TTFT. Why: 512-token
@@ -64,25 +64,27 @@ disaggregation to a chatbot customer; you'd be reducing their capacity.*
 **Finding 2 — Agentic: disaggregation wins, and the split follows the cache.** With 8K
 prompts, prefill dominates — at 20% prefix reuse the best config is 3 prefill + 1
 decode. But raise reuse to 90% and most prefill work disappears into cache hits, so the
-winner migrates to 2P+2D (about 12,060 tok/s vs aggregated's 9,716–9,906 — +22–24% across four runs). *Translation:
+winner migrates toward decode-heavy splits — 2P+2D at high load (about 12,060 tok/s vs aggregated's 9,716–9,906 — +22–24% across four runs). *Translation:
 you can't size the P:D ratio without knowing the customer's prefix hit rate — and
 because hit rates drift, static splits go stale, which is the business case for Dynamo's
 Planner and dynamic disaggregation.*
 
-**Finding 3 — The universal tradeoff: TTFT vs ITL stability.** Aggregated won p99
+**Finding 3 — The tradeoff: TTFT vs ITL stability.** Aggregated won p99
 time-to-first-token in *all 27 comparison cells* — dedicating fewer workers to prefill
-means prompts queue. But aggregated pays in **prefill-decode interference**: when an
-8K-token prefill lands on a worker mid-decode, every active generation stream on that
-worker stalls. At high load, aggregated p99 inter-token latency was 88–184ms; every
-disaggregated split held 7–9ms. *SA translation: the question to ask a customer isn't
+means prompts queue. But where prompts are long, aggregated pays in **prefill-decode
+interference**: when an 8K-token prefill lands on a worker mid-decode, every active
+generation stream on that worker stalls. At high load, aggregated p99 inter-token latency
+was 88–184ms for agentic (every reuse level) and RAG at 20% reuse; the disaggregated splits
+held 7–25ms, decode-heavy splits steadiest. For chat, and RAG at higher reuse, aggregated p99 ITL
+stayed at 6–10ms, as steady as any split — short prompts don't interfere. *SA translation: the question to ask a customer isn't
 "do you want lower latency" but "which latency" — first token, or steady streaming? For
 multi-turn agents that stream on every turn, steadiness usually wins.*
 
 ---
 
-## Part 5 — The technology stack, piece by piece
+## Part 4 — The technology stack, piece by piece
 
-### 5.1 NVIDIA Dynamo — the platform under study
+### 4.1 NVIDIA Dynamo — the platform under study
 
 **What:** NVIDIA's open-source distributed inference-serving framework — the layer that
 sits above inference engines (vLLM, SGLang, TensorRT-LLM) and handles routing, worker
@@ -91,7 +93,7 @@ management, KV-cache awareness, disaggregation, and autoscaling across a GPU clu
 Dynamo is NVIDIA's answer to the disaggregation era, the product at the center of NVIDIA's inference stack. **How used:** installed via `pip install ai-dynamo` (the Python package bundles
 a compiled Rust core, `ai-dynamo-runtime`, that does the heavy lifting).
 
-### 5.2 DynoSim — the simulator (the instrument)
+### 4.2 DynoSim — the simulator (the instrument)
 
 **What:** Dynamo's simulation stack — not a separate product but the surface connecting
 the mocker engine, replay runs, sweeps, Router simulation, and Planner simulation. It
@@ -115,7 +117,7 @@ python -m dynamo.replay \
 Offline mode is pure simulation — no NATS, no etcd, no frontend, no GPUs. It prints an
 AIPerf-style metrics table and writes a JSON report with ~70 statistics.
 
-### 5.3 The mocker engine — how simulation without GPUs is credible
+### 4.3 The mocker engine — how simulation without GPUs is credible
 
 **What:** a discrete-event model of an inference engine. It doesn't run a neural
 network; it *bookkeeps* what an engine would do: continuous batching decisions, KV-cache
@@ -127,7 +129,7 @@ only the per-step timing is a default model rather than calibrated GPU timing.
 **Where it showed up in results:** the ITL-interference finding is pure scheduler
 dynamics — exactly what the mocker models best.
 
-### 5.4 Prefill/decode disaggregation — the concept under test
+### 4.4 Prefill/decode disaggregation — the concept under test
 
 **What:** LLM inference has two phases with opposite hardware personalities. *Prefill*
 processes the whole prompt at once — compute-bound, bursty. *Decode* generates one
@@ -147,7 +149,7 @@ else:  # e.g. 2 prefill + 2 decode
         decode_engine_args=engine_args(block_size=64, worker_type="decode"))
 ```
 
-### 5.5 Prefix caching & the KV router — the moving part behind Finding 2
+### 4.5 Prefix caching & the KV router — the moving part behind Finding 2
 
 **What:** the KV cache stores attention state per token block; if a new request starts
 with the same tokens as a cached one (system prompt, tool definitions, conversation
@@ -167,16 +169,16 @@ inter_turn_delay_ms=250.0,      # think-time between agent turns
 This is what makes the traffic *agentic-shaped* rather than generic: long shared
 prefixes re-sent every turn is precisely the tool-calling pattern.
 
-### 5.6 The metrics — TTFT, ITL, and why percentiles
+### 4.6 The metrics — TTFT, ITL, and why percentiles
 
 **TTFT** (time to first token) = responsiveness; dominated by prefill + queueing.
 **ITL** (inter-token latency) = streaming smoothness; its *p99 and standard deviation*
-expose interference that averages hide — aggregated's mean ITL looked fine (10.5ms)
-while its p99 (138ms) revealed decode stalls. **Throughput (tok/s)** = capacity =
+expose interference that averages hide — for agentic traffic at 90% reuse and cc=128,
+aggregated's mean ITL looked fine (11.1ms) while its p99 (88.5ms) revealed decode stalls. **Throughput (tok/s)** = capacity =
 cost-per-token at fixed hardware. Every report carries mean/median/p75/p90/p95/p99/std
 for each — we keyed the analysis on p99 because SLAs are written on tails, not means.
 
-### 5.7 The sweep harness (`sweep.py`) — our actual code
+### 4.7 The sweep harness (`sweep.py`) — our actual code
 
 **What:** ~150 lines that turn one simulator call into an experiment. Structure:
 declare the design space as data, iterate the Cartesian product, call DynoSim's Python
@@ -210,7 +212,7 @@ of the numbers rests on NVIDIA's simulator, not our code — a large custom fram
 would *reduce* trust, not add it. SA-shaped work is experiment design + interpretation,
 and the code volume reflects that.
 
-### 5.8 Analysis & visualization — pandas + matplotlib (`plots.py`)
+### 4.8 Analysis & visualization — pandas + matplotlib (`plots.py`)
 
 **What:** pandas for the winner analysis (group the 108 rows by cell, find the best
 split per cell — this one-liner produced Finding 2's crossover map):
@@ -225,33 +227,35 @@ Pareto tradeoff view; (2) throughput vs prefix ratio per split for agentic — t
 crossover chart, the study's signature figure; (3) p99 ITL bars on a **log scale** —
 needed because the aggregated-vs-disagg gap spans an order of magnitude.
 
-### 5.9 Docker & CPU architectures — the replication layer
+### 4.9 Docker & CPU architectures — the replication layer
 
 **What:** `ai-dynamo-runtime` ships Linux-only compiled wheels, so my Mac needed a
 Linux environment: Docker runs one in a lightweight VM. Apple Silicon adds the
 architecture dimension — the M-series chip is **arm64**, while most published software
 targets **x86_64 (amd64)**; Docker can run amd64 images through slow, imperfect
 emulation. **What we learned the hard way (first-user note #4):** the emulated amd64
-wheel segfaults inside Dynamo's Rust core at engine init; the native arm64 wheel works
+wheel segfaults inside Dynamo's Rust core at first request admission (an Apple Rosetta
+translation defect, root-caused by NVIDIA); the native arm64 wheel works
 perfectly; and Docker's image cache silently serves a previously-pulled amd64 image
 even when you don't ask for it, hiding the cause. The fix:
 
 ```bash
 docker run --rm -it --platform linux/arm64 -v "$PWD":/work -w /work \
   python:3.12-slim bash -c \
-  "pip install ai-dynamo pandas matplotlib && RUST_LOG=off python3 sweep.py"
+  "pip install ai-dynamo==1.2.1 pandas matplotlib && RUST_LOG=off python3 sweep.py"
 ```
 
 **Significance:** this debugging arc — macOS: no wheels → emulation: segfault → cache
-trap → native ARM: success — became a filed upstream bug and is itself
+trap → native ARM: success — became a filed and bisected upstream issue (#11228; workarounds
+now in the Dynamo docs via NVIDIA-authored #11430) and is itself
 evidence: platform pragmatics is daily work, and ARM fluency matters in a
 Grace-CPU world.
 
 ---
 
-## Part 6 — The intellectual moves worth internalizing
+## Part 5 — The intellectual moves worth internalizing
 
-Beyond the artifacts, project modeled five habits that transfer to every project:
+Beyond the artifacts, the project modeled five habits that transfer to every project:
 
 1. **Falsifiable hypotheses stated upfront.** We predicted H1/H2/H3 before running;
    H2 was partially *wrong* (high reuse didn't erase disagg's edge — it changed which
@@ -273,4 +277,4 @@ Beyond the artifacts, project modeled five habits that transfer to every project
 
 *Companion artifacts: the study itself
 (github.com/saurabh9498/saurabh-rai/tree/main/dynosim-disaggregation-study), the
-upstream issue draft (dynamo-issue.md).*
+upstream issue log (dynamo-issue.md).*
