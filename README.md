@@ -42,8 +42,6 @@ Production architectures rebuilt as runnable code, simulations, configuration an
 | [`healthcare-dialog-agents`](./healthcare-dialog-agents) | **Healthcare scheduling agents.** A multi-turn booking agent that minimises PHI before text reaches the model or the logs, acts only on an explicit read-back, hands off on urgent symptoms, and keeps a hash-chained audit trail; plus a simulation of KV-cache-aware routing for multi-turn traffic, and on-prem NIM serving with egress locked down. | Python, NVIDIA NIM, Kubernetes NetworkPolicy |
 | [`edge-vision-retail`](./edge-vision-retail) | **Edge computer vision.** Per-channel vs per-tensor INT8 quantization measured, one generic model plus a label-free per-store calibration measured against store-specific models, an offline-first store-and-forward buffer, staged fleet updates with local A/B rollback, and device sizing. | PyTorch, scikit-learn, SQLite |
 
-Older 2025 folders are kept in [`archive/`](./archive).
-
 ---
 
 ## Where these patterns come from
