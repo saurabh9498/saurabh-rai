@@ -1,0 +1,63 @@
+# On-prem LLM endpoint for the agent's language layer: an NVIDIA NIM container (TensorRT-LLM
+# inside, OpenAI-compatible API). Designed manifest; NOT applied from this repo.
+#
+# Why on-prem: appointment dates tied to a person are PHI, so even redacted prompts carry
+# some PHI. The model has to run inside the HIPAA boundary; redaction only minimises what
+# it sees.
+#
+# Air-gapped by design: the model profile is pre-loaded into the cache volume during
+# provisioning, so the pod never pulls weights from the internet at runtime, and the
+# NetworkPolicy in networkpolicy.yaml blocks egress anyway.
+#
+# Not included here: a Service and a KV-cache-aware router in front of the replicas (for
+# example NVIDIA Dynamo's KV router). routing/prefix_routing_sim.py models that choice.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-nim
+  namespace: phi-inference
+  labels: { app: llm-nim }
+spec:
+  replicas: 4
+  selector:
+    matchLabels: { app: llm-nim }
+  template:
+    metadata:
+      labels: { app: llm-nim }
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: nim
+          image: nvcr.io/nim/meta/llama-3.1-8b-instruct:PINNED_TAG   # pin a validated tag
+          ports:
+            - { name: http, containerPort: 8000 }
+          env:
+            - { name: NIM_CACHE_PATH, value: /opt/nim/.cache }
+            # Reuse KV cache for repeated prefixes (system prompt, earlier turns). This is what
+            # makes conversation-affine routing pay off; see routing/prefix_routing_sim.py.
+            - { name: NIM_ENABLE_KV_CACHE_REUSE, value: "1" }
+          resources:
+            limits: { nvidia.com/gpu: 1 }
+          readinessProbe:
+            httpGet: { path: /v1/health/ready, port: http }
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /v1/health/live, port: http }
+            periodSeconds: 20
+            failureThreshold: 3
+          startupProbe:
+            httpGet: { path: /v1/health/ready, port: http }
+            periodSeconds: 10
+            failureThreshold: 60          # engine load can take minutes
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+          volumeMounts:
+            - { name: nim-cache, mountPath: /opt/nim/.cache }
+      volumes:
+        - name: nim-cache
+          persistentVolumeClaim:
+            claimName: nim-model-cache

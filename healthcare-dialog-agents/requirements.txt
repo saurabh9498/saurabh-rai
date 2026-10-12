@@ -1,0 +1,5 @@
+pyyaml>=6.0
+pytest>=8.0
+# Pure Python otherwise: no model or GPU is needed to run anything here. The production
+# language layer is an OpenAI-compatible on-prem endpoint (see serving/), wired in through
+# agent/model_nlu.py.

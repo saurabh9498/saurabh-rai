@@ -1,0 +1,95 @@
+# Data stays in. Both namespaces that handle PHI are locked down:
+#   phi-inference     (the LLM)   accepts traffic only from the agent; reaches only DNS
+#   scheduling-agent  (holds raw PHI in the vault) reaches only DNS, the LLM and the
+#                     scheduling API; accepts traffic only from the ingress gateway
+# Designed policy; NOT applied from this repo. Requires a CNI that enforces NetworkPolicy
+# (Calico, Cilium, ...). If the cluster uses NodeLocal DNSCache (169.254.20.10), add an
+# ipBlock rule for it, or DNS will be blocked too.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: phi-inference
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-agent-to-llm
+  namespace: phi-inference
+spec:
+  podSelector:
+    matchLabels: { app: llm-nim }
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: { kubernetes.io/metadata.name: scheduling-agent }
+      ports:
+        - { protocol: TCP, port: 8000 }
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-dns-only
+  namespace: phi-inference
+spec:
+  podSelector: {}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels: { kubernetes.io/metadata.name: kube-system }
+          podSelector:
+            matchLabels: { k8s-app: kube-dns }
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: scheduling-agent
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: agent-allowed-traffic
+  namespace: scheduling-agent
+spec:
+  podSelector:
+    matchLabels: { app: scheduling-agent }
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: { kubernetes.io/metadata.name: ingress-gateway }
+      ports:
+        - { protocol: TCP, port: 8080 }
+  egress:
+    - to:                                   # cluster DNS
+        - namespaceSelector:
+            matchLabels: { kubernetes.io/metadata.name: kube-system }
+          podSelector:
+            matchLabels: { k8s-app: kube-dns }
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+    - to:                                   # the on-prem LLM
+        - namespaceSelector:
+            matchLabels: { kubernetes.io/metadata.name: phi-inference }
+          podSelector:
+            matchLabels: { app: llm-nim }
+      ports:
+        - { protocol: TCP, port: 8000 }
+    - to:                                   # the scheduling (EHR) integration service
+        - namespaceSelector:
+            matchLabels: { kubernetes.io/metadata.name: ehr-integration }
+      ports:
+        - { protocol: TCP, port: 443 }

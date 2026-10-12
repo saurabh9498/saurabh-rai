@@ -9,6 +9,8 @@ portfolio and are not maintained.
 - `multi-agent-orchestration/` — a generic multi-agent RAG system, superseded by
   [`gpu-analytics-nl2sql`](../gpu-analytics-nl2sql). Its metrics table was not produced by
   code in the folder.
+- `conversational-ai/` — a generic voice-pipeline reference (speech recognition, intent,
+  speech synthesis), superseded by [`healthcare-dialog-agents`](../healthcare-dialog-agents).
 
 GitHub only runs workflows from the repository root, so the CI files inside these folders
 do not run.

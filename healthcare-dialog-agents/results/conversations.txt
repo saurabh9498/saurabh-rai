@@ -1,0 +1,92 @@
+
+===== book =====
+patient: Hi, I need to book a cardiology appointment next Tuesday afternoon
+agent:   To get started, please tell me your full name and date of birth.
+patient: My name is Maria Lopez, born on 03/14/1985
+agent:   Thanks, Maria Lopez. Here are the next openings in cardiology:
+           1. cardiology, Tuesday, March 17 at 12:30 PM
+           2. cardiology, Tuesday, March 17 at 1:00 PM
+           3. cardiology, Tuesday, March 17 at 1:30 PM
+         Which works for you?
+patient: the first one
+agent:   Just to confirm: book cardiology on Tuesday, March 17 at 12:30 PM. Shall I go ahead?
+patient: yes, book it
+agent:   You're booked for cardiology on Tuesday, March 17 at 12:30 PM. You'll get a reminder the day before.
+-- final stage: done
+-- language layer saw:
+     Hi, I need to book a cardiology appointment next Tuesday afternoon
+     My name is [NAME_1], born on [DOB_1]
+     the first one
+     yes, book it
+-- audit log (log-level redaction):
+     [patient] message        'Hi, I need to book a cardiology appointment next Tuesday afternoon'
+     [  agent] verify         'To get started, please tell me your full name and date of birth.'
+     [patient] message        'My name is [NAME_1], born on [DOB_1]'
+     [ system] verified       'pt_5b62fa6157d2ef10'
+     [  agent] offer          'Thanks, [NAME_1]. Here are the next openings in cardiology:\n  1. cardiology, Tuesday, [DAT'
+     [patient] message        'the first one'
+     [  agent] confirm        'Just to confirm: book cardiology on Tuesday, [DATE_1] at 12:30 PM. Shall I go ahead?'
+     [patient] message        'yes, book it'
+     [ system] booked         'cardiology'
+     [  agent] done           "You're booked for cardiology on Tuesday, [DATE_1] at 12:30 PM. You'll get a reminder the d"
+-- audit chain intact: True
+
+===== cancel =====
+patient: My name is Maria Lopez, DOB 03/14/1985 - I want to cancel my appointment
+agent:   Thanks, Maria Lopez. Which appointment would you like to cancel?
+           1. dermatology, Thursday, March 19 at 2:00 PM
+patient: the first one
+agent:   Just to confirm: cancel dermatology on Thursday, March 19 at 2:00 PM. Shall I go ahead?
+patient: yes
+agent:   Done - your dermatology appointment on Thursday, March 19 at 2:00 PM is cancelled.
+-- final stage: done
+-- language layer saw:
+     My name is [NAME_1], DOB [DOB_1] - I want to cancel my appointment
+     the first one
+     yes
+-- audit log (log-level redaction):
+     [patient] message        'My name is [NAME_1], DOB [DOB_1] - I want to cancel my appointment'
+     [ system] verified       'pt_5b62fa6157d2ef10'
+     [  agent] offer          'Thanks, [NAME_1]. Which appointment would you like to cancel?\n  1. dermatology, Thursday, '
+     [patient] message        'the first one'
+     [  agent] confirm        'Just to confirm: cancel dermatology on Thursday, [DATE_1] at 2:00 PM. Shall I go ahead?'
+     [patient] message        'yes'
+     [ system] cancelled      'dermatology'
+     [  agent] done           'Done - your dermatology appointment on Thursday, [DATE_1] at 2:00 PM is cancelled.'
+-- audit chain intact: True
+
+===== verification fails =====
+patient: My name is Maria Lopez, born on 01/01/1990, I want a dermatology appointment
+agent:   I couldn't match those details. Please check your full name and date of birth.
+patient: My name is Maria Lopez, born on 02/02/1991
+agent:   I couldn't match those details. Please check your full name and date of birth.
+patient: My name is Maria Lopez, born on 03/03/1992
+agent:   I wasn't able to verify your details. I'm connecting you with a member of our staff, who can help from here.
+-- final stage: handoff (verification failed 3 times)
+-- language layer saw:
+     My name is [NAME_1], born on [DOB_1], I want a dermatology appointment
+     My name is [NAME_1], born on [DOB_2]
+     My name is [NAME_1], born on [DOB_3]
+-- audit log (log-level redaction):
+     [patient] message        'My name is [NAME_1], born on [DOB_1], I want a dermatology appointment'
+     [ system] verify_failed  ''
+     [  agent] verify         "I couldn't match those details. Please check your full name and date of birth."
+     [patient] message        'My name is [NAME_1], born on [DOB_2]'
+     [ system] verify_failed  ''
+     [  agent] verify         "I couldn't match those details. Please check your full name and date of birth."
+     [patient] message        'My name is [NAME_1], born on [DOB_3]'
+     [ system] verify_failed  ''
+     [ system] handoff        'verification failed 3 times'
+     [  agent] handoff        "I wasn't able to verify your details. I'm connecting you with a member of our staff, who c"
+-- audit chain intact: True
+
+===== urgent =====
+patient: I'm Priya Raman, DOB 06/30/1990, and I've had chest pain since this morning
+agent:   If you are having a medical emergency, please call 911 now. If you are thinking about harming yourself, you can call or text 988 at any time. I'm connecting you with a member of our staff.
+-- final stage: handoff (urgent symptoms)
+-- language layer saw:
+-- audit log (log-level redaction):
+     [patient] message        "I'm [NAME_1], DOB [DOB_1], and I've had chest pain since this morning"
+     [ system] handoff        'urgent symptoms'
+     [  agent] handoff        'If you are having a medical emergency, please call 911 now. If you are thinking about harm'
+-- audit chain intact: True
