@@ -11,6 +11,9 @@ portfolio and are not maintained.
   code in the folder.
 - `conversational-ai/` — a generic voice-pipeline reference (speech recognition, intent,
   speech synthesis), superseded by [`healthcare-dialog-agents`](../healthcare-dialog-agents).
+- `retail-vision-analytics/` — a generic DeepStream/Jetson retail-vision platform, superseded
+  by [`edge-vision-retail`](../edge-vision-retail). Its impact and benchmark tables were not
+  produced by code in the folder.
 
 GitHub only runs workflows from the repository root, so the CI files inside these folders
 do not run.

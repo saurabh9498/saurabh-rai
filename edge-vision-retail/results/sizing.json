@@ -1,0 +1,60 @@
+{
+  "assumptions": {
+    "device": {
+      "memory_mb": 8192,
+      "sustained_tops": 40.0,
+      "runtime_overhead_mb": 512
+    },
+    "models": [
+      {
+        "name": "person detector",
+        "weights_mb": 12,
+        "activations_mb": 96,
+        "tops_per_inference": 0.06,
+        "fps_per_camera": 15
+      },
+      {
+        "name": "shelf product classifier",
+        "weights_mb": 8,
+        "activations_mb": 64,
+        "tops_per_inference": 0.02,
+        "fps_per_camera": 2
+      },
+      {
+        "name": "queue / zone counter",
+        "weights_mb": 6,
+        "activations_mb": 48,
+        "tops_per_inference": 0.03,
+        "fps_per_camera": 5
+      },
+      {
+        "name": "re-identification embedder",
+        "weights_mb": 10,
+        "activations_mb": 64,
+        "tops_per_inference": 0.01,
+        "fps_per_camera": 15
+      }
+    ],
+    "cameras": 12,
+    "headroom": 0.3
+  },
+  "packing": {
+    "models": 4,
+    "cameras": 12,
+    "memory_mb_needed": 1128,
+    "memory_mb_available": 8192,
+    "memory_utilisation": 0.138,
+    "tops_needed": 14.88,
+    "tops_available": 40.0,
+    "compute_utilisation": 0.372,
+    "fits_with_headroom": true
+  },
+  "max_cameras_per_device": 22,
+  "max_cameras_detector_only": 31,
+  "offline_72h": {
+    "bytes_per_hour_mb": 7.92,
+    "hours": 72,
+    "disk_needed_mb": 570,
+    "with_2x_margin_mb": 1140
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "test_images": 540,
+  "accuracy": {
+    "fp32": 0.9944,
+    "fp32_bn_folded": 0.9944,
+    "w8_per_tensor_a8": 0.9926,
+    "w8_per_channel_a8": 0.9944,
+    "w4_per_tensor_a8": 0.9759,
+    "w4_per_channel_a8": 0.9926
+  },
+  "layer_errors_int8": [
+    {
+      "layer": "features.0",
+      "channels": 16,
+      "channel_range_ratio": 2.0,
+      "rel_sq_error_per_tensor": "2.83e-05",
+      "rel_sq_error_per_channel": "1.40e-05"
+    },
+    {
+      "layer": "features.2",
+      "channels": 32,
+      "channel_range_ratio": 2.1,
+      "rel_sq_error_per_tensor": "7.79e-05",
+      "rel_sq_error_per_channel": "3.64e-05"
+    },
+    {
+      "layer": "features.5",
+      "channels": 64,
+      "channel_range_ratio": 1.9,
+      "rel_sq_error_per_tensor": "8.81e-05",
+      "rel_sq_error_per_channel": "4.02e-05"
+    }
+  ],
+  "layer_errors_int4": [
+    {
+      "layer": "features.0",
+      "channels": 16,
+      "channel_range_ratio": 2.0,
+      "rel_sq_error_per_tensor": "1.02e-02",
+      "rel_sq_error_per_channel": "3.57e-03"
+    },
+    {
+      "layer": "features.2",
+      "channels": 32,
+      "channel_range_ratio": 2.1,
+      "rel_sq_error_per_tensor": "2.50e-02",
+      "rel_sq_error_per_channel": "1.19e-02"
+    },
+    {
+      "layer": "features.5",
+      "channels": 64,
+      "channel_range_ratio": 1.9,
+      "rel_sq_error_per_tensor": "2.89e-02",
+      "rel_sq_error_per_channel": "1.32e-02"
+    }
+  ],
+  "int8_error_vs_channel_range_ratio": [
+    {
+      "channel_range_ratio": 1,
+      "mean_channel_rel_error_per_tensor": "9.74e-05",
+      "weights_rounded_to_zero_per_tensor": 0.015,
+      "mean_channel_rel_error_per_channel": "5.05e-05",
+      "weights_rounded_to_zero_per_channel": 0.011
+    },
+    {
+      "channel_range_ratio": 4,
+      "mean_channel_rel_error_per_tensor": "2.72e-04",
+      "weights_rounded_to_zero_per_tensor": 0.021,
+      "mean_channel_rel_error_per_channel": "4.77e-05",
+      "weights_rounded_to_zero_per_channel": 0.008
+    },
+    {
+      "channel_range_ratio": 16,
+      "mean_channel_rel_error_per_tensor": "3.85e-03",
+      "weights_rounded_to_zero_per_tensor": 0.068,
+      "mean_channel_rel_error_per_channel": "5.15e-05",
+      "weights_rounded_to_zero_per_channel": 0.008
+    },
+    {
+      "channel_range_ratio": 64,
+      "mean_channel_rel_error_per_tensor": "2.27e-02",
+      "weights_rounded_to_zero_per_tensor": 0.137,
+      "mean_channel_rel_error_per_channel": "4.82e-05",
+      "weights_rounded_to_zero_per_channel": 0.011
+    },
+    {
+      "channel_range_ratio": 256,
+      "mean_channel_rel_error_per_tensor": "1.72e-01",
+      "weights_rounded_to_zero_per_tensor": 0.306,
+      "mean_channel_rel_error_per_channel": "5.30e-05",
+      "weights_rounded_to_zero_per_channel": 0.011
+    }
+  ]
+}

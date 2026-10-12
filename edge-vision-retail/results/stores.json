@@ -1,0 +1,179 @@
+{
+  "clean_test_accuracy": 0.9944,
+  "stores": 12,
+  "unlabelled_images_per_store": 200,
+  "mean_accuracy": {
+    "generic": 0.5827,
+    "calibrated": 0.94,
+    "calibrated_int8": 0.9394,
+    "store_specific": 0.934
+  },
+  "worst_store_accuracy": {
+    "generic": 0.1148,
+    "calibrated": 0.6148,
+    "calibrated_int8": 0.613,
+    "store_specific": 0.7315
+  },
+  "per_store_artifact_values": {
+    "calibration": 224,
+    "store_specific_model": 24170
+  },
+  "per_store": [
+    {
+      "store": 0,
+      "camera": {
+        "gain": 0.85,
+        "offset": 0.08,
+        "noise": 0.064,
+        "blur": 0.15
+      },
+      "generic": 0.9537,
+      "calibrated": 0.987,
+      "calibrated_int8": 0.987,
+      "store_specific": 0.9759
+    },
+    {
+      "store": 1,
+      "camera": {
+        "gain": 0.95,
+        "offset": -0.24,
+        "noise": 0.106,
+        "blur": 0.1
+      },
+      "generic": 0.5981,
+      "calibrated": 0.9667,
+      "calibrated_int8": 0.9667,
+      "store_specific": 0.9463
+    },
+    {
+      "store": 2,
+      "camera": {
+        "gain": 0.43,
+        "offset": 0.32,
+        "noise": 0.026,
+        "blur": 0.32
+      },
+      "generic": 0.1889,
+      "calibrated": 0.9741,
+      "calibrated_int8": 0.9759,
+      "store_specific": 0.9833
+    },
+    {
+      "store": 3,
+      "camera": {
+        "gain": 0.45,
+        "offset": -0.18,
+        "noise": 0.08,
+        "blur": 0.6
+      },
+      "generic": 0.1148,
+      "calibrated": 0.6148,
+      "calibrated_int8": 0.613,
+      "store_specific": 0.7315
+    },
+    {
+      "store": 4,
+      "camera": {
+        "gain": 1.76,
+        "offset": -0.08,
+        "noise": 0.046,
+        "blur": 0.54
+      },
+      "generic": 0.8944,
+      "calibrated": 0.9778,
+      "calibrated_int8": 0.9796,
+      "store_specific": 0.9722
+    },
+    {
+      "store": 5,
+      "camera": {
+        "gain": 1.46,
+        "offset": -0.07,
+        "noise": 0.033,
+        "blur": 0.1
+      },
+      "generic": 0.9833,
+      "calibrated": 0.9926,
+      "calibrated_int8": 0.9926,
+      "store_specific": 0.9741
+    },
+    {
+      "store": 6,
+      "camera": {
+        "gain": 0.74,
+        "offset": -0.19,
+        "noise": 0.116,
+        "blur": 0.11
+      },
+      "generic": 0.3722,
+      "calibrated": 0.937,
+      "calibrated_int8": 0.9333,
+      "store_specific": 0.9167
+    },
+    {
+      "store": 7,
+      "camera": {
+        "gain": 0.89,
+        "offset": -0.33,
+        "noise": 0.029,
+        "blur": 0.56
+      },
+      "generic": 0.2241,
+      "calibrated": 0.9481,
+      "calibrated_int8": 0.9463,
+      "store_specific": 0.9278
+    },
+    {
+      "store": 8,
+      "camera": {
+        "gain": 0.66,
+        "offset": -0.28,
+        "noise": 0.021,
+        "blur": 0.4
+      },
+      "generic": 0.1796,
+      "calibrated": 0.9556,
+      "calibrated_int8": 0.9574,
+      "store_specific": 0.9741
+    },
+    {
+      "store": 9,
+      "camera": {
+        "gain": 0.97,
+        "offset": -0.02,
+        "noise": 0.033,
+        "blur": 0.23
+      },
+      "generic": 0.987,
+      "calibrated": 0.987,
+      "calibrated_int8": 0.987,
+      "store_specific": 0.8741
+    },
+    {
+      "store": 10,
+      "camera": {
+        "gain": 1.7,
+        "offset": 0.26,
+        "noise": 0.115,
+        "blur": 0.37
+      },
+      "generic": 0.6241,
+      "calibrated": 0.9741,
+      "calibrated_int8": 0.9704,
+      "store_specific": 0.9648
+    },
+    {
+      "store": 11,
+      "camera": {
+        "gain": 1.6,
+        "offset": -0.33,
+        "noise": 0.095,
+        "blur": 0.48
+      },
+      "generic": 0.8722,
+      "calibrated": 0.9648,
+      "calibrated_int8": 0.963,
+      "store_specific": 0.9667
+    }
+  ]
+}
