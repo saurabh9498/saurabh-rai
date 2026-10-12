@@ -66,25 +66,14 @@ Older 2025 folders are kept in [`archive/`](./archive).
 
 ## Technical focus
 
-**Programming** — Python (PyTorch, TensorFlow, JAX, NumPy, Pandas, XGBoost) · CUDA · C++ · Java · Shell · SQL
-
-**GPU optimization** — warp divergence · occupancy · memory coalescing · roofline analysis · kernel fusion · Nsight · PyTorch Profiler
-
-**Inference & serving** — TensorRT, TensorRT-LLM, Triton, NVIDIA NIM, NVIDIA Dynamo, vLLM, ONNX Runtime, NeMo, NGC, KServe · disaggregated serving (prefill/decode) · KV-cache management and KV-aware routing · PagedAttention · FlashAttention · continuous batching · speculative decoding · FP16/INT8/FP8/FP4/NVFP4 · PTQ/QAT/KL calibration · Merlin/HugeCTR · UVM tiering · hot-row replication · tensor/pipeline/3D parallelism · edge inference
-
-**GPU & HPC** — DGX (A100, H100, B200) · H100 SuperPOD · A10G · RTX PRO 6000 Blackwell · MIG · RAPIDS (cuDF, Dask) · NCCL (AllReduce, AllToAll) · Slurm · Base Command Manager
-
-**Networking & storage** — NVLink · NVSwitch · InfiniBand (Quantum-2) · RoCE · RDMA · PCIe Gen5 · BGP Anycast · Arista eAPI · GPUDirect Storage · NVMe · WEKA · Apache Iceberg · DPU/BlueField
-
-**Kubernetes & IaC** — Kubernetes (EKS, GKE, bare metal) · GPU Operator · DRA (Dynamic Resource Allocation) · KEDA · Helm · Kubeflow · Slurm-on-K8s · Docker · containerd · Linux · blue-green rollouts · Terraform · Ansible · CI/CD · GitOps · MLflow
-
-**Reliability & observability** — DCGM, dcgm-exporter, nvidia-smi · Prometheus, Alertmanager, Grafana, Thanos · eBPF · OpenTelemetry tail-based sampling · Xid triage · straggler and throttle detection · cordon/drain · fault quarantine and remediation · health-based autoscaling · circuit breakers · hot-spare recovery · fault tolerance for distributed serving · failure attribution · p50/p90/p99 latency profiling
-
-**AI/ML & LLMs** — LLMs (Llama-3 8B/70B, BERT) · CLIP/ViT · DLRM · Hugging Face · LangChain · FastAPI · fine-tuning (LoRA/QLoRA/PEFT) · RLHF · RAG · vector databases (Pinecone, FAISS) · multi-agent systems (Builder + Judge) · conversational AI · NLP · computer vision · recommender systems · MLOps · A/B testing
-
-**Cloud, data & compliance** — AWS (EC2 P4d/P5/G5, EKS, S3, ElastiCache, SageMaker) · GCP (Vertex AI) · Azure · Snowflake · Spark · Kafka · Airflow · HIPAA · PCI-DSS · SOC 2 · GDPR/CCPA · IAM · RBAC · signed model artifacts · confidential computing
-
-**Solution architecture** — requirements discovery · capacity and VRAM sizing · TCO and cost-per-token modeling · CapEx vs OpEx · reference architectures · PoCs · build-vs-buy · REST and gRPC APIs · microservices · event-driven architecture · SDK development · HPC strategy · SDLC · Agile/Scrum
+- **Inference and serving** — TensorRT, TensorRT-LLM, Triton, NVIDIA NIM, NVIDIA Dynamo, vLLM · quantization (INT8, FP8) · continuous batching · disaggregated serving
+- **Training and data** — PyTorch, distributed training, NCCL · RAPIDS · Spark, Kafka
+- **GPU platforms** — H100, Blackwell, A10G · CUDA · Kubernetes with the GPU Operator · Slurm · MIG
+- **Networking and storage** — NVLink, InfiniBand, RDMA, GPUDirect Storage, NVMe
+- **Reliability and observability** — DCGM, Prometheus, Grafana · autoscaling · failover
+- **AI applications** — LLMs, RAG, multi-agent systems, recommender systems, computer vision
+- **Languages and tools** — Python, CUDA, C++, SQL · Docker, Helm, Terraform, CI/CD
+- **Cloud** — AWS, GCP, Azure
 
 ---
 
