@@ -12,6 +12,7 @@ Where possible, each topic is grounded in a real deployment or a reproducible ex
 |---|---|---|
 | [When Does Disaggregation Pay?](./disaggregation/01-when-does-disaggregation-pay.md) | 14.6 / 15.4 (1 of 2) | Chat traffic and agentic traffic want opposite serving architectures. Aggregated wins p99 TTFT everywhere; on long prompts, disaggregation buys 7–27x steadier inter-token latency. Four questions decide it. |
 | [Dynamic Disaggregation and the Planner](./disaggregation/02-dynamic-disaggregation-and-the-planner.md) | 14.6 / 15.4 (2 of 2) | The optimal prefill:decode ratio moves with the prefix-cache hit rate. At high load every static split loses 18%+ somewhere; how Dynamo's Planner resizes the pools from TTFT and ITL. |
+| [KV-Cache Tiering Below GPU Memory](./kv-cache/01-kv-cache-tiering-below-gpu-memory.md) | 14.4 | Every tier is a bet that moving bytes beats recomputing the prompt. A bandwidth floor and a length floor decide the bet; context length dominates. |
  
 Diagrams and prose follow one [style guide](./STYLE.md).
 

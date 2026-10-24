@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1180" width="1200" height="1180" font-family="Helvetica, Arial, sans-serif">
+  <title>KV-cache tiers and the load-versus-recompute crossover</title>
+  <defs>
+    <marker id="aT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/></marker>
+    <style>.t{fill:#111827} .s{fill:#374151} .h{font-size:17px;font-weight:700} .b{font-size:13.5px} .sm{font-size:12.5px} .mono{font-family:Menlo,Consolas,monospace;font-size:13px}</style>
+  </defs>
+  <rect width="1200" height="1180" fill="#FFFFFF"/>
+  <text x="40" y="48" class="t" font-size="26" font-weight="700">KV-cache tiering — every tier is a bet that moving bytes beats redoing math</text>
+  <text x="40" y="76" class="s" font-size="15">Left: where the cache can live. Right: when loading it back is faster than recomputing the prompt.</text>
+
+  <!-- tiers -->
+  <text x="40" y="118" class="h" fill="#0F766E">The tiers (NVIDIA Dynamo KVBM names)</text>
+  <g>
+    <rect x="40" y="132" width="540" height="96" rx="10" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="2"/>
+    <text x="58" y="158" class="h" fill="#1D4ED8">G1 · GPU memory (HBM)</text>
+    <text x="58" y="182" class="b t">• The only tier the model computes from</text>
+    <text x="58" y="202" class="b t">• Terabytes per second, tens of GB per GPU</text>
+    <text x="58" y="222" class="b t">• Fills first: weights + every live session</text>
+  </g>
+  <g>
+    <rect x="40" y="246" width="540" height="96" rx="10" fill="#CCFBF1" stroke="#0F766E" stroke-width="2"/>
+    <text x="58" y="272" class="h" fill="#0F766E">G2 · CPU memory (pinned DRAM)</text>
+    <text x="58" y="296" class="b t">• Over PCIe Gen5 x16: ~63 GB/s per direction</text>
+    <text x="58" y="316" class="b t">• Hundreds of GB to a few TB per server</text>
+    <text x="58" y="336" class="b t">• Right home for the 15-minute reuse window</text>
+  </g>
+  <g>
+    <rect x="40" y="360" width="540" height="96" rx="10" fill="#CCFBF1" stroke="#0F766E" stroke-width="2"/>
+    <text x="58" y="386" class="h" fill="#0F766E">G3 · Local NVMe SSD</text>
+    <text x="58" y="410" class="b t">• ~13.5 GB/s measured (py-kvcache, 2026); GDS optional</text>
+    <text x="58" y="430" class="b t">• Tens of TB per server; holds hours to days</text>
+    <text x="58" y="450" class="b t">• Writes wear flash: size endurance, not just capacity</text>
+  </g>
+  <g>
+    <rect x="40" y="474" width="540" height="96" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="2"/>
+    <text x="58" y="500" class="h" fill="#15803D">G4 · Shared remote tier (via NIXL)</text>
+    <text x="58" y="524" class="b t">• Any prefill node can hit any prefix</text>
+    <text x="58" y="544" class="b t">• Fixed per-hit cost: lookup + round trip + setup</text>
+    <text x="58" y="564" class="b t">• DeepSeek: ~100 PiB SSD, ~14.4 TB/GPU logical</text>
+  </g>
+  <line x1="600" y1="150" x2="600" y2="560" stroke="#0F766E" stroke-width="2.5" marker-end="url(#aT)"/>
+  <line x1="612" y1="560" x2="612" y2="150" stroke="#1D4ED8" stroke-width="2.5" marker-end="url(#aT)"/>
+  <text x="590" y="590" class="sm s" text-anchor="middle">offload ↓ · onboard ↑</text>
+
+  <!-- chart -->
+  <text x="620" y="118" class="h" fill="#111827">Load vs recompute, one cached prefix</text>
+  <line x1="650.0" y1="150" x2="650.0" y2="480" stroke="#E5E7EB"/><text x="650.0" y="500" text-anchor="middle" class="sm s">0K</text><line x1="772.5" y1="150" x2="772.5" y2="480" stroke="#E5E7EB"/><text x="772.5" y="500" text-anchor="middle" class="sm s">16K</text><line x1="895.0" y1="150" x2="895.0" y2="480" stroke="#E5E7EB"/><text x="895.0" y="500" text-anchor="middle" class="sm s">32K</text><line x1="1017.5" y1="150" x2="1017.5" y2="480" stroke="#E5E7EB"/><text x="1017.5" y="500" text-anchor="middle" class="sm s">48K</text><line x1="1140.0" y1="150" x2="1140.0" y2="480" stroke="#E5E7EB"/><text x="1140.0" y="500" text-anchor="middle" class="sm s">64K</text><line x1="650" y1="480.0" x2="1140" y2="480.0" stroke="#E5E7EB"/><text x="642" y="484.0" text-anchor="end" class="sm s">0.0 s</text><line x1="650" y1="397.5" x2="1140" y2="397.5" stroke="#E5E7EB"/><text x="642" y="401.5" text-anchor="end" class="sm s">0.4 s</text><line x1="650" y1="315.0" x2="1140" y2="315.0" stroke="#E5E7EB"/><text x="642" y="319.0" text-anchor="end" class="sm s">0.8 s</text><line x1="650" y1="232.5" x2="1140" y2="232.5" stroke="#E5E7EB"/><text x="642" y="236.5" text-anchor="end" class="sm s">1.2 s</text><line x1="650" y1="150.0" x2="1140" y2="150.0" stroke="#E5E7EB"/><text x="642" y="154.0" text-anchor="end" class="sm s">1.6 s</text>
+  <line x1="650" y1="480" x2="1140" y2="480" stroke="#6B7280"/>
+  <line x1="650" y1="150" x2="650" y2="480" stroke="#6B7280"/>
+  <polyline points="650.0,480.0 657.7,476.0 665.3,472.0 673.0,468.0 680.6,464.0 688.3,460.0 695.9,456.0 703.6,452.0 711.2,448.0 718.9,444.0 726.6,440.0 734.2,435.9 741.9,431.9 749.5,427.9 757.2,423.9 764.8,419.9 772.5,415.9 780.2,411.9 787.8,407.9 795.5,403.9 803.1,399.9 810.8,395.9 818.4,391.9 826.1,387.9 833.8,383.9 841.4,379.9 849.1,375.9 856.7,371.9 864.4,367.9 872.0,363.9 879.7,359.9 887.3,355.8 895.0,351.8 902.7,347.8 910.3,343.8 918.0,339.8 925.6,335.8 933.3,331.8 940.9,327.8 948.6,323.8 956.2,319.8 963.9,315.8 971.6,311.8 979.2,307.8 986.9,303.8 994.5,299.8 1002.2,295.8 1009.8,291.8 1017.5,287.8 1025.2,283.8 1032.8,279.8 1040.5,275.8 1048.1,271.7 1055.8,267.7 1063.4,263.7 1071.1,259.7 1078.8,255.7 1086.4,251.7 1094.1,247.7 1101.7,243.7 1109.4,239.7 1117.0,235.7 1124.7,231.7 1132.3,227.7 1140.0,223.7" fill="none" stroke="#1D4ED8" stroke-width="3"/><polyline points="650.0,411.9 657.7,411.0 665.3,410.1 673.0,409.1 680.6,408.2 688.3,407.2 695.9,406.3 703.6,405.4 711.2,404.4 718.9,403.5 726.6,402.5 734.2,401.6 741.9,400.7 749.5,399.7 757.2,398.8 764.8,397.8 772.5,396.9 780.2,396.0 787.8,395.0 795.5,394.1 803.1,393.2 810.8,392.2 818.4,391.3 826.1,390.3 833.8,389.4 841.4,388.5 849.1,387.5 856.7,386.6 864.4,385.6 872.0,384.7 879.7,383.8 887.3,382.8 895.0,381.9 902.7,380.9 910.3,380.0 918.0,379.1 925.6,378.1 933.3,377.2 940.9,376.2 948.6,375.3 956.2,374.4 963.9,373.4 971.6,372.5 979.2,371.6 986.9,370.6 994.5,369.7 1002.2,368.7 1009.8,367.8 1017.5,366.9 1025.2,365.9 1032.8,365.0 1040.5,364.0 1048.1,363.1 1055.8,362.2 1063.4,361.2 1071.1,360.3 1078.8,359.3 1086.4,358.4 1094.1,357.5 1101.7,356.5 1109.4,355.6 1117.0,354.6 1124.7,353.7 1132.3,352.8 1140.0,351.8" fill="none" stroke="#0F766E" stroke-width="3"/><polyline points="650.0,411.9 657.7,406.9 665.3,401.8 673.0,396.8 680.6,391.7 688.3,386.7 695.9,381.6 703.6,376.6 711.2,371.5 718.9,366.5 726.6,361.4 734.2,356.4 741.9,351.3 749.5,346.2 757.2,341.2 764.8,336.1 772.5,331.1 780.2,326.0 787.8,321.0 795.5,315.9 803.1,310.9 810.8,305.8 818.4,300.8 826.1,295.7 833.8,290.7 841.4,285.6 849.1,280.6 856.7,275.5 864.4,270.4 872.0,265.4 879.7,260.3 887.3,255.3 895.0,250.2 902.7,245.2 910.3,240.1 918.0,235.1 925.6,230.0 933.3,225.0 940.9,219.9 948.6,214.9 956.2,209.8 963.9,204.8 971.6,199.7 979.2,194.7 986.9,189.6 994.5,184.5 1002.2,179.5 1009.8,174.4 1017.5,169.4 1025.2,164.3 1032.8,159.3 1040.5,154.2 1048.1,150.0" fill="none" stroke="#B91C1C" stroke-width="3" stroke-dasharray="7 5"/>
+  <circle cx="820.0" cy="391.1" r="6" fill="#FFFFFF" stroke="#111827" stroke-width="2"/>
+  <text x="836.0" y="449.1" class="sm t" font-weight="700">crossover ≈ 22K tokens</text>
+  <text x="895.0" y="522" text-anchor="middle" class="sm s">cached prefix length (tokens)</text>
+  <text x="1136.0" y="215.7" text-anchor="end" class="sm" fill="#1D4ED8" font-weight="700">recompute</text>
+  <text x="1136.0" y="377.8" text-anchor="end" class="sm" fill="#0F766E" font-weight="700">load at 10.8 GB/s</text>
+  <text x="956.2" y="199.8" text-anchor="end" class="sm" fill="#B91C1C" font-weight="700">load at 2 GB/s — never wins</text>
+  <text x="650" y="546" class="sm s">Fixed cost 0.33 s and 2.53 GB/s floor from Ibrahim (2026), GLM-5.3 on 8× B300;</text>
+  <text x="650" y="564" class="sm s">prefill ≈ 51,500 tok/s and ≈ 49 KB/token back-calculated from them.</text>
+
+  <!-- math panels -->
+  <rect x="40" y="610" width="545" height="250" rx="10" fill="#FFFFFF" stroke="#6D28D9" stroke-width="1.5"/>
+  <text x="60" y="638" class="h" fill="#6D28D9">The crossover in two lines</text>
+  <text x="60" y="668" class="mono t">recompute = n / P</text>
+  <text x="60" y="690" class="mono t">load      = F + n × b / B</text>
+  <text x="60" y="718" class="b t">• n prefix tokens · P prefill tokens/s · b KV bytes/token</text>
+  <text x="60" y="738" class="b t">• B tier bandwidth · F fixed cost per hit</text>
+  <text x="60" y="766" class="b t"><tspan font-weight="700">Bandwidth floor:</tspan> B &gt; b × P, or loading never wins</text>
+  <text x="60" y="790" class="b t"><tspan font-weight="700">Length floor:</tspan> n &gt; F / (1/P − b/B); at least F × P</text>
+  <text x="60" y="818" class="b t">• Faster GPUs (higher P) raise both floors</text>
+  <text x="60" y="840" class="b t">• Smaller KV (lower b) lowers the bandwidth floor</text>
+
+  <rect x="615" y="610" width="545" height="250" rx="10" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="635" y="638" class="h" fill="#1D4ED8">Which variable dominates</text>
+  <text x="635" y="668" class="b t"><tspan font-weight="700">Context length</tspan> — per-token prefill cost rises with it,</text>
+  <text x="635" y="688" class="b t">so the bandwidth floor falls: ~23.2 → 10.4 → 3.5 GB/s</text>
+  <text x="635" y="708" class="b t">at 1K → 8K → 80K tokens (py-kvcache, H100)</text>
+  <text x="635" y="738" class="b t"><tspan font-weight="700">Reuse rate</tspan> — break-even reuse ~77.8% at 8K,</text>
+  <text x="635" y="758" class="b t">~7.8% at 80K tokens</text>
+  <text x="635" y="788" class="b t"><tspan font-weight="700">Concurrency</tspan> — decides how much reaches a tier,</text>
+  <text x="635" y="808" class="b t">and whether synchronous loads queue</text>
+  <text x="635" y="838" class="b t" fill="#6D28D9" font-weight="700">Admit hits per request, not fleet-wide</text>
+
+  <!-- comparison -->
+  <rect x="40" y="884" width="1120" height="190" rx="10" fill="#FFFFFF" stroke="#475569" stroke-width="1.5"/>
+  <text x="60" y="912" class="h" fill="#111827">Same tier, two outcomes — remote KV tier, GLM-5.3, 8× B300 (Ibrahim, Oct 2026)</text>
+  <rect x="60" y="926" width="530" height="132" rx="8" fill="#FEE2E2" stroke="#B91C1C" stroke-width="1.5"/>
+  <text x="76" y="950" font-size="15" font-weight="700" fill="#B91C1C">As first deployed</text>
+  <text x="76" y="974" class="b t">• Remote hit 0.88 s vs 0.31 s to recompute</text>
+  <text x="76" y="996" class="b t">• Median TTFT unchanged; 16K p99 3.96 s → 17.3 s</text>
+  <text x="76" y="1018" class="b t">• Synchronous loads: p99 83 s with GPUs 7% busy</text>
+  <text x="76" y="1040" class="b t">• One store shared by every GPU rank</text>
+  <rect x="610" y="926" width="530" height="132" rx="8" fill="#CCFBF1" stroke="#0F766E" stroke-width="1.5"/>
+  <text x="626" y="950" font-size="15" font-weight="700" fill="#0F766E">After the fixes</text>
+  <text x="626" y="974" class="b t">• Store sharded; one tier instance per rank</text>
+  <text x="626" y="996" class="b t">• Read bandwidth up 6.3× to 10.76 GB/s</text>
+  <text x="626" y="1018" class="b t">• Asynchronous loading off the critical path</text>
+  <text x="626" y="1040" class="b t">• p99 83.32 s → 0.67 s; 98.5% of tokens from the tier</text>
+
+  <rect x="40" y="1094" width="1120" height="64" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="60" y="1118" class="sm t"><tspan font-weight="700">Buys:</tspan> more sessions than GPU memory holds · long agent contexts kept warm through tool calls · prefill work skipped on reuse</text>
+  <rect x="60" y="1132" width="14" height="14" fill="#DBEAFE" stroke="#1D4ED8"/><text x="80" y="1144" class="sm s">compute</text>
+  <rect x="148" y="1132" width="14" height="14" fill="#CCFBF1" stroke="#0F766E"/><text x="168" y="1144" class="sm s">memory &amp; storage</text>
+  <rect x="290" y="1132" width="14" height="14" fill="#DCFCE7" stroke="#15803D"/><text x="310" y="1144" class="sm s">fabric</text>
+  <rect x="364" y="1132" width="14" height="14" fill="#EDE9FE" stroke="#6D28D9"/><text x="384" y="1144" class="sm s">control</text>
+  <rect x="446" y="1132" width="14" height="14" fill="#FEE2E2" stroke="#B91C1C"/><text x="466" y="1144" class="sm s">risk</text>
+  <text x="520" y="1144" class="sm s">Sources: Dynamo KVBM v1.2.1 · arXiv 2610.21500 · arXiv 2609.11744 · DeepSeek DeepInfer Q&amp;A</text>
+</svg>
