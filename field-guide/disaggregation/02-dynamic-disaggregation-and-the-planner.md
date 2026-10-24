@@ -20,7 +20,7 @@ Same hardware budget, same traffic. The decode-heavy split delivers a third of t
 
 Now the uncomfortable part. 1 prefill + 3 decode is not a bad configuration. At 90% cache reuse and 32 concurrent sessions, it is the *best* split in the whole sweep. Someone who measured their traffic on a day when the cache was hot, picked 1P+3D, and shipped it would have made a correct decision. Then a new feature changes the prompts, the cache hit rate falls to 20%, and the same fleet ends up delivering a third of what the best split would — 65% behind at 128 sessions — without a single line of configuration changing.
 
-Post 1 ended on the claim that the right prefill:decode ratio moves with the prefix-cache hit rate. This post is about what that means in practice: why it moves, by how much, what it costs when the ratio is wrong, and how NVIDIA Dynamo's Planner turns the ratio from a configuration value into a control loop.
+Post 1 ended on the claim that the right prefill:decode ratio moves with the prefix-cache hit rate. This post covers why it moves, what a wrong ratio costs, and how NVIDIA Dynamo's Planner turns the ratio from a configuration value into a control loop.
 
 ## First principles
 
@@ -34,7 +34,7 @@ Post 1 ended on the claim that the right prefill:decode ratio moves with the pre
 
 **Iso-budget.** Comparing configurations under the same total number of GPUs. The study holds the fleet at four workers and only changes how they are divided. This isolates the ratio from the question of how big the fleet should be.
 
-**A control loop.** A system that repeatedly measures an output, compares it with a target, and adjusts an input to close the gap. A thermostat is one. The Planner is one: it measures latency and traffic, compares latency with a service-level agreement (SLA), and adjusts the number of prefill and decode workers.
+**A control loop.** A system that repeatedly measures an output, compares it with a target and adjusts an input — a thermostat. The Planner measures latency and traffic, compares latency with a service-level agreement (SLA), and adjusts worker counts.
 
 ## The mechanism, part 1: why the hit rate moves the ratio
 
@@ -72,7 +72,7 @@ The Planner is the component of [NVIDIA Dynamo](https://github.com/ai-dynamo/dyn
 It has two scaling modes, which can run together:
 
 - **Throughput-based scaling** sizes both pools from forecast traffic and pre-measured performance curves. It runs every 180 seconds by default and requires profiling data.
-- **Load-based scaling** watches per-iteration engine metrics and nudges replica counts up or down by one, on a 5-second default interval. It needs no profiling data. In v1.2.1 it relies on per-iteration engine metrics that vLLM and TensorRT-LLM (non-attention-data-parallel workers) emit; SGLang's pipeline is wired but its 1.2.0 runtime image doesn't include the metrics module yet.
+- **Load-based scaling** watches per-iteration engine metrics and nudges replica counts up or down by one, on a 5-second default interval. It needs no profiling data. In v1.2.1 those metrics come from vLLM and TensorRT-LLM; SGLang support is wired but not yet shipped in its runtime image.
 
 When both are on, the throughput-based result acts as a floor and load-based scaling handles bursts above it. This post follows the throughput-based path, because that is the one that sets the ratio. One cycle has five steps:
 
@@ -98,17 +98,7 @@ prefill_replicas = ceil(predicted_load / interpolated_throughput / gpus_per_engi
 
 Read it against the derivation above. `next_requests * next_isl / interval` is *R* × *I*. `min(1, prefill_correction)` stands in for (1 − *h*). Dividing by profiled throughput is dividing by *T*ₚ. The Planner is computing the left side of the ratio, with the hit rate inferred from latency rather than counted.
 
-The decode pool is sized differently, because decode latency depends on how much context each step must read:
-
-```python
-corrected_itl      = target_itl / decode_correction
-throughput_per_gpu = decode_interpolator.find_best_throughput_per_gpu(
-                         itl=corrected_itl,
-                         context_length=next_isl + next_osl / 2)
-decode_replicas    = ceil(next_num_req * next_osl / interval / throughput_per_gpu / gpus_per_engine)
-```
-
-It finds the highest per-GPU decode throughput that still meets the ITL target at the predicted context length, then divides total decode work (*R* × *O*) by it.
+The decode pool is sized against the ITL target instead: the Planner looks up the highest per-GPU decode throughput that still meets the target at the predicted context length (ISL + OSL/2), then divides total decode work (*R* × *O*) by it.
 
 **5. Act.** The Planner writes the new counts to the deployment through a connector. On Kubernetes it patches the DynamoGraphDeployment resource and lets the operator reconcile. A virtual connector exists for other orchestrators.
 
@@ -133,11 +123,11 @@ All throughput figures below are medians of four complete runs of the sweep (the
 
 ![Agentic throughput by split as prefix reuse rises](../../dynosim-disaggregation-study/chart2_agentic_split_vs_prefix.png)
 
-Four things to read from it:
+What to read from it:
 
 - **At 32 sessions, the winner walks across the table exactly as the derivation predicts:** prefill-heavy at low reuse, balanced in the middle, decode-heavy at high reuse.
 - **At 128 sessions, the walk is delayed.** 3P+1D still wins at 60% reuse, and the decode-heavy split never wins. With 128 concurrent sessions, one prefill worker is a queue even when each prompt is 90% cached: 1P+3D's p99 TTFT at 0.9 reuse is 2.1 s against 1.1 s for 2P+2D. Load does not move the ideal ratio in the simple model; it moves the penalty for undersizing a pool.
-- **Aggregated serving never wins agentic throughput in these six cells.** At 90% reuse and 128 sessions, 2P+2D delivered about 12,060 tok/s against 9,716–9,906 for aggregated across the four runs: **+22% to +24%**. The aggregated figure is one of the two noisiest cells in the sweep (2.0% spread); every disaggregated cell here varied by well under 1%.
+- **Aggregated serving never wins agentic throughput in these six cells.** At 90% reuse and 128 sessions, 2P+2D delivered about 12,060 tok/s against 9,716–9,906 for aggregated across the four runs: **+22% to +24%**.
 - **The cost of a wrong static split is larger than the gain from the right one.** The best case is +22–24% over aggregated. The worst case for a reasonable-looking static split is −65%.
 
 **What each static split risks, across the three hit rates:**
@@ -152,6 +142,18 @@ At moderate load, 2P+2D is a safe static choice: never more than 4% from the bes
 
 **Planner defaults, v1.2.1:** 180-second throughput adjustment interval; 5-second load-based interval; ARIMA predictor; 30-second startup delay before the first decision; GPU budget cap of 8; minimum of one worker per pool.
 
+## Beyond the simulation: what public measurements show
+
+DynoSim is a simulator. Three public results on real GPUs, published in September and October 2026, point the same way.
+
+**A peer study where the fixed ratio lost every time (independent).** A public blueprint by a Principal Solutions Architect ran three matched Dynamo studies on 16 H200 GPUs, aggregated against disaggregated, same model and image. [Aggregated won all three](https://github.com/bhajian/serving-solutions): 5.5×, 1.62× and 1.34×. The author's own reconciliation is the useful part: *"each study fixed the P:D ratio at a value that was wrong for its workload."* A prefill-heavy run had one prefill worker where aggregated had two that could prefill; a decode-heavy run left its prefill worker idle, and its 1.34× gap is close to the 4:3 ratio of decode-capable workers. Disaggregation still won the metric Post 1 predicted: the worst inter-token gap was 1.1 s disaggregated against 40.4 s aggregated. The largest loss, 5.5×, had a second cause that belongs in this post: the disaggregated follow-up turns recomputed their 256K-token prefixes instead of reusing them. Lose the cache and no ratio saves you.
+
+**A vendor result where moving the ratio paid 2.5× (vendor, MLPerf-submitted).** Crusoe's [MLPerf Inference v6.1 write-up](https://www.crusoe.ai/resources/blog/crusoes-mlperf-inference-v6-1-results-on-nvidia-gb200-nvl72) (16 September 2026) ran Qwen3-VL-235B-A22B on 16 GB200 NVL72 GPUs under Dynamo. Its first Interactive-scenario run used a 75:25 prefill:decode GPU split and measured 15.85 queries/s. Decode was the bottleneck; rebalancing to 50:50 and re-searching the sustainable query rate reached 39.85 queries/s. Two cautions: the gain combines the new split with a re-searched query rate, and the same post describes its final topology as six two-GPU prefill workers and four one-GPU decode workers, which reads as 12:4, not 50:50. Treat the direction as reported and the exact split as unreconciled.
+
+**A small-scale replication of the ITL trade-off (vLLM project).** The vLLM blog's [practical guide to disaggregated serving](https://vllm.ai/blog/2026-09-29-disaggregated-serving-guide) (29 September 2026) ran Qwen2.5-7B with ~8K-token prompts on two L40S GPUs. At 0.4 requests/s, collocated p99 inter-token latency jumped to 169 ms while the prefill/decode pair held at 29 ms, never exceeding 52 ms up to 2 requests/s. The price was time to first token: median 2.2 s disaggregated against 0.7 s collocated, mostly because each prompt's ~470 MB of KV cache took about 1.3 s to reach the decode GPU on a PCIe pair without peer-to-peer copies.
+
+**How high hit rates run in practice.** The hit rate *h* is the variable this post turns on, so it helps to know real values. DeepSeek reported [56.3% of a day's 608 billion input tokens hitting its on-disk KV cache](https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md) (February 2025, mixed production traffic). NVIDIA and PyTorch reported a prefix-cache hit rate above 94.5% on an [agentic benchmark under Dynamo](https://pytorch.org/blog/session-aware-agentic-inference-with-nvidia-dynamo/) (October 2026). Both sit inside the study's range.
+
 ## Worked example: following one agentic turn
 
 Take a single turn in the agentic profile: an 8,000-token prompt (system instructions, tool definitions, conversation so far, the last tool result) and a 128-token response (the next tool call).
@@ -162,19 +164,21 @@ Take a single turn in the agentic profile: an 8,000-token prompt (system instruc
 
 **What the Planner sees as this happens.** Nothing in its inputs says "the hit rate rose." Average ISL is still 8,000. What changes is TTFT: prefill is doing an eighth of the work profiling assumed, so observed TTFT drops well below the prediction and `prefill_correction` falls. The next sizing pass multiplies the prefill load estimate by that smaller factor, asks for fewer prefill replicas, and — if the budget is pinned — hands the freed GPUs to decode. The ratio follows the cache, one adjustment interval behind it.
 
-Where this example came from matters. Agentic workloads are where the hit rate swings hardest, because each turn re-sends a growing history. A tool result that changes the conversation, a new session, or a changed system prompt can all reset what is cached. The same customer can sit at 90% reuse in one hour and 30% in the next.
+Agentic workloads are where the hit rate swings hardest: each turn re-sends a growing history, and a new session or a changed system prompt resets what is cached.
 
 ## Trade-offs, and when not to use a planner
 
 **Chat-shaped traffic.** Post 1's finding stands: for short prompts and longer responses, aggregated serving won every cell in the study. A planner that tunes the ratio of a disaggregated fleet does not help a workload that should not be disaggregated. In v1.2.1 the load-based mode can scale aggregated deployments too, but that is replica scaling, not ratio tuning.
 
-**Stable traffic.** If the hit rate and the ISL/OSL mix genuinely do not move, measure once, pick the split, and save the operational surface. The table above says 2P+2D-style balanced splits are forgiving at moderate load.
+**Stable traffic.** If the hit rate and the ISL/OSL mix genuinely do not move, measure once, pick the split and save the operational surface. Balanced splits are forgiving at moderate load.
 
-**Profiling is a prerequisite.** Throughput-based scaling needs pre-deployment profiling for each model, GPU and parallelism combination: either real GPU sweeps or AI Configurator estimates. That is real work, and it goes stale when the model, engine version or hardware changes.
+**Profiling is a prerequisite.** Throughput-based scaling needs pre-deployment profiling for each model, GPU and parallelism combination, and the profile goes stale when any of them changes.
 
 **The loop is slower than some traffic.** At the 180-second default, a burst that lasts a minute is over before the throughput path reacts. The load-based mode exists for that, with its own constraint: one replica of change per 5-second step, and only on backends that emit the per-iteration metrics (vLLM and TensorRT-LLM in this release).
 
-**Scaling up pays the full cold start.** A new worker has to be scheduled, pull its container, load weights and register before it helps. If that takes longer than the adjustment interval, decisions overlap. The design document says so directly and recommends shorter intervals only for workloads with fast model loading. (Cold starts get their own leaf in Part 16.)
+**Scaling up pays the full cold start.** A new worker has to be scheduled, pull its container, load weights and register before it helps. If that takes longer than the adjustment interval, decisions overlap. The design document says so directly and recommends shorter intervals only for workloads with fast model loading. Weight loading is the part that is improving fastest. An [llm-d benchmark of ModelExpress](https://github.com/llm-d/llm-d/tree/v1.0.0/guides/modelexpress-p2p/benchmark-results/gke-a3u-roce-gpt-oss-120b.md) (August 2026), which copies weights GPU-to-GPU from a running worker, loaded 33.51 GB per rank in 0.70 s against 21–22 s from warm local NVMe on H200 nodes with 400 Gb/s RoCE. How fast a worker can change roles bounds how fast the ratio can move. (Cold starts get their own leaf in Part 16.)
+
+**Chunked prefill is the alternative to compare against.** Splitting long prompts into chunks that interleave with decode attacks the same interference without a KV handoff. It is not free, and the right chunk size depends on the hardware. One [published course module](https://github.com/yiqiao-yin/deepspeed-course/pull/61) (October 2026) simulated a single 8K-token prompt landing on two live streams, using constants measured on a laptop GPU with a 0.6B-parameter model. Chunking at 256 tokens cut the worst decode stall from 310 ms to 116 ms but raised p99 time to first token 2.86× over the unchunked baseline; disaggregation cost 10% on the same metric but used more GPU-seconds. Its sizing rule: chunk = (decode step time − fixed per-pass overhead) ÷ per-token prefill time.
 
 ## How it fails in production
 
@@ -182,9 +186,13 @@ Where this example came from matters. Agentic workloads are where the hit rate s
 
 **Poisoned correction factors.** *Symptom:* the Planner sizes badly right after a deployment or restart, then slowly recovers. *Cause:* cold caches and warm-up effects distort observed TTFT and ITL, and the factors faithfully learn the distortion. *Check first:* the factor values over the first few intervals. The documented remedy is `--no-correction` while cold-start artifacts dominate.
 
-**One number carrying two opposite signals.** *Symptom:* TTFT climbing under burst load while the prefill pool does not grow. *Cause:* this one follows from the formula rather than from documented incidents. Cache hits push `prefill_correction` down; queueing pushes it up. The `min(1, …)` clamp means a factor above 1 is ignored, so queueing pressure cannot raise the prefill estimate through this path. Bursts are what the load-based mode is for. *Check first:* whether load-based scaling is enabled alongside throughput-based scaling, and whether your backend supports it.
+**One number carrying two opposite signals.** *Symptom:* TTFT climbing under burst load while the prefill pool does not grow. *Cause (follows from the formula, not from documented incidents):* cache hits push `prefill_correction` down and queueing pushes it up, but the `min(1, …)` clamp ignores values above 1, so queueing cannot raise the prefill estimate through this path. *Check first:* whether load-based scaling, which exists for bursts, is enabled and supported on your backend.
 
 **Averages hiding two workloads.** *Symptom:* SLA misses on one class of request while aggregate metrics look healthy. *Cause:* throughput-based sizing uses average ISL and OSL, which the design document lists as a known limitation for bimodal or heavy-tailed traffic. An agentic fleet that also serves short chat turns is exactly that shape. *Check first:* the ISL histogram, not the mean. Consider separate deployments per traffic class.
+
+**A KV handoff far slower than the link.** *Symptom:* disaggregated TTFT much worse than the arithmetic predicts. *Cause:* the transfer path, not the link speed. A 10K-token prompt on a 70B-class model carries about 3 GB of KV cache, roughly 65 ms at a 400 Gb/s line rate. In the vLLM guide above, a 470 MB cache took about 1.3 s on a PCIe pair without peer-to-peer copies, and the authors attribute most of that to overhead around the copy. A transfer library that has quietly fallen back from RDMA to TCP produces the same symptom. *Check first:* measured KV transfer time per request against size ÷ line rate, and which transport the transfer library actually selected.
+
+**Disaggregation that loses the prefix cache.** *Symptom:* follow-up turns as slow as first turns. *Cause:* the decode side or the router does not reuse prefixes across the split — the peer study above saw its 256K-token prefixes recomputed every turn, with the cause undiagnosed and decode-side caching off by default in that engine's disaggregated mode. *Check first:* per-turn cache hits in both modes before comparing them.
 
 **Scaling that disturbs the cache it depends on.** *Symptom:* hit rate dropping right after scale events. *Cause (my reasoning, not documented behaviour):* a new worker starts with an empty cache, and requests routed to it miss prefixes that were warm elsewhere. The lower hit rate raises the prefill estimate on the next pass, which can trigger more scaling. Dynamo's KV-aware router routes on cached prefixes, which should limit this. *Check first:* hit rate per worker before and after a scale event.
 
@@ -200,11 +208,7 @@ That's the case for Dynamo's Planner. Every three minutes by default, it reads T
 
 ## Methods, honestly
 
-These are discrete-event simulation results from [NVIDIA Dynamo's DynoSim](https://docs.nvidia.com/dynamo/user-guides/dynosim) mocker engine with its default timing model — **not hardware benchmarks and not AI Configurator-calibrated GPU timing.** The relative behaviour across configurations is the finding; the absolute throughput numbers are not.
-
-The study holds the fleet at four workers and compares fixed splits; it does not run the Planner itself. The link between the two is the derivation and the Planner's published sizing formulas, not a measured closed-loop experiment. Running the Planner against the mocker with a shifting hit rate is the natural next step.
-
-The full sweep reproduces in about 25 seconds on a CPU. Across four complete runs, 106 of 108 cells varied by less than 1%; the two exceptions are aggregated agentic cells (2.0% and 2.6% spread). Code, data and charts are [in the study folder](../../dynosim-disaggregation-study).
+The study's numbers are discrete-event simulation results from [NVIDIA Dynamo's DynoSim](https://docs.nvidia.com/dynamo/user-guides/dynosim) mocker with its default timing model — **not hardware benchmarks.** The relative behaviour across configurations is the finding; the absolute numbers are not. The study compares fixed splits and does not run the Planner; the link between the two is the derivation and the Planner's published formulas, not a closed-loop experiment. The sweep reproduces in about 25 seconds on a CPU; across four runs, 106 of 108 cells varied by less than 1%. Code and data are [in the study folder](../../dynosim-disaggregation-study). The public results in this post are each labelled with who measured them.
 
 ## Further reading
 
@@ -212,6 +216,9 @@ The full sweep reproduces in about 25 seconds on a CPU. Across four complete run
 - **Dynamo Planner source, v1.2.1** — scaling modes, defaults (`config/defaults.py`) and budget clamping (`core/budget.py`). [GitHub](https://github.com/ai-dynamo/dynamo/tree/v1.2.1/components/src/dynamo/planner)
 - **Zhong et al., "DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving," OSDI 2024** — the case for separating the phases and sizing each against its own latency target. [arXiv:2401.09670](https://arxiv.org/abs/2401.09670)
 - **Patel et al., "Splitwise: Efficient Generative LLM Inference Using Phase Splitting," ISCA 2024** — phase splitting across machine pools, including mixed hardware. [arXiv:2311.18677](https://arxiv.org/abs/2311.18677)
+- **vLLM, "Taking vLLM Apart: A Practical Guide to Disaggregated Serving" (29 Sep 2026)** — measured ITL and TTFT trade-off on two GPUs, plus KV-size arithmetic. [vllm.ai](https://vllm.ai/blog/2026-09-29-disaggregated-serving-guide)
+- **bhajian/serving-solutions, chapter 12 (2026)** — three matched aggregated-vs-disaggregated Dynamo studies on 16 H200s, with the reconciliation quoted above. [GitHub](https://github.com/bhajian/serving-solutions)
+- **Dhanani, Li and Chung, "Session-Aware Agentic Inference with NVIDIA Dynamo" (8 Oct 2026)** — how the router, engine and KV-cache manager cooperate on agentic traffic. [PyTorch blog](https://pytorch.org/blog/session-aware-agentic-inference-with-nvidia-dynamo/)
 - **When Does Disaggregation Pay? — the DynoSim study** — the 108-run sweep this post draws on. [GitHub](../../dynosim-disaggregation-study)
 
 ---
