@@ -14,7 +14,7 @@
     <rect x="40" y="132" width="540" height="96" rx="10" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="2"/>
     <text x="58" y="158" class="h" fill="#1D4ED8">G1 · GPU memory (HBM)</text>
     <text x="58" y="182" class="b t">• The only tier the model computes from</text>
-    <text x="58" y="202" class="b t">• Terabytes per second, tens of GB per GPU</text>
+    <text x="58" y="202" class="b t">• Terabytes per second, tens to hundreds of GB per GPU</text>
     <text x="58" y="222" class="b t">• Fills first: weights + every live session</text>
   </g>
   <g>
@@ -27,7 +27,7 @@
   <g>
     <rect x="40" y="360" width="540" height="96" rx="10" fill="#CCFBF1" stroke="#0F766E" stroke-width="2"/>
     <text x="58" y="386" class="h" fill="#0F766E">G3 · Local NVMe SSD</text>
-    <text x="58" y="410" class="b t">• ~13.5 GB/s measured (py-kvcache, 2026); GDS optional</text>
+    <text x="58" y="410" class="b t">• ~9–13.5 GB/s reported (py-kvcache, 2026); GDS optional</text>
     <text x="58" y="430" class="b t">• Tens of TB per server; holds hours to days</text>
     <text x="58" y="450" class="b t">• Writes wear flash: size endurance, not just capacity</text>
   </g>
